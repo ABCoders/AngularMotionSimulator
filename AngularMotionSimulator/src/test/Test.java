@@ -6,4 +6,8 @@ public class Test {
 			System.out.println("TEST" + i);
 		}
 	}
+	
+	public void test() {
+		System.out.println("NOPE");
+	}
 }

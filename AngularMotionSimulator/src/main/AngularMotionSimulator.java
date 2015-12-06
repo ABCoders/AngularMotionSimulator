@@ -22,4 +22,4 @@ public class AngularMotionSimulator {
 		Test test = new Test();
 		//infinite loops are bad news
 	}
-}
+} 
