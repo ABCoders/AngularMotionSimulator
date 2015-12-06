@@ -6,20 +6,17 @@
 
 package main;
 
-import test.Test;
+import java.awt.*;
+import javax.swing.*;
 
 public class AngularMotionSimulator {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Hello World");
-		System.out.println("CTHULHU == NICOLAS CAGE == THE ONION == THE LOTUS");
-		int a = 0;
-		while (a < 50) {
-			System.out.println("NANDEE");
-			a++;
-		}
-		Test test = new Test();
-		//infinite loops are bad news
+		JFrame frame = new JFrame("Angular Motion Simulator");
+		frame.setContentPane(new JPanel());
+		
+		frame.setVisible(true);
+		frame.setSize(new Dimension(500,500));
+		frame.setLocation(100,100);
 	}
 } 
