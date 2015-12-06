@@ -12,8 +12,11 @@ public class AngularMotionSimulator {
 		// TODO Auto-generated method stub
 		System.out.println("Hello World");
 		System.out.println("CTHU:HU == NICOLAS CAGE == THE ONION == THE LOTUS");
-		while (true) {
+		int a = 0;
+		while (a < 50) {
 			System.out.println("NANDEE");
+			a++;
 		}
+		//infinite loops are bad news
 	}
 }
