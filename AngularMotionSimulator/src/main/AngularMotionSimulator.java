@@ -12,6 +12,8 @@ public class AngularMotionSimulator {
 		// TODO Auto-generated method stub
 		System.out.println("Hello World");
 		System.out.println("CTHU:HU == NICOLAS CAGE == THE ONION == THE LOTUS");
-		System.out.println("https://www.youtube.com/watch?v=4bPGxLxogvw&list=PLsFTdR1jOCVefyeicymR7BEwRAOZpJgkw&index=1");
+		while (true) {
+			System.out.println("NANDEE");
+		}
 	}
 }
