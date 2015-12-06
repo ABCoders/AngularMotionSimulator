@@ -19,6 +19,7 @@ public class AngularMotionSimulator {
 			System.out.println("NANDEE");
 			a++;
 		}
+		Test test = new Test();
 		//infinite loops are bad news
 	}
 }
