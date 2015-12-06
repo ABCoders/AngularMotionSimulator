@@ -6,6 +6,8 @@
 
 package main;
 
+import test.Test;
+
 public class AngularMotionSimulator {
 
 	public static void main(String[] args) {
