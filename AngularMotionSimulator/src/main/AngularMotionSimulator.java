@@ -12,7 +12,7 @@ public class AngularMotionSimulator {
 		// TODO Auto-generated method stub
 		System.out.println("Hello World");
 		System.out.println("CTHU:HU == NICOLAS CAGE == THE ONION == THE LOTUS");
-		System.out.println("WHHHHHHHHHYYYYYY!!!1");
+		System.out.println("WHHHHHHHHHYYYYYY!!!");
 	}
 
 }
