@@ -12,8 +12,9 @@ import javax.swing.*;
 public class AngularMotionSimulator {
 
 	public static void main(String[] args) {
+		AngularMotionSimulatorPanel contentPane = new AngularMotionSimulatorPanel();
 		JFrame frame = new JFrame("Angular Motion Simulator");
-		frame.setContentPane(new JPanel());
+		frame.setContentPane(contentPane);
 		
 		frame.setVisible(true);
 		frame.setSize(new Dimension(500,500));
