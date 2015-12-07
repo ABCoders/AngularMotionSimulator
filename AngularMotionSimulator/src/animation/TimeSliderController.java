@@ -12,8 +12,10 @@ import javax.swing.event.ChangeListener;
  */
 public class TimeSliderController implements ChangeListener {
 	
-	public TimeSliderController() {
-		
+	private Animation animation;
+
+	public TimeSliderController(Animation animation) {
+		this.animation = animation;
 	}
 	
 	@Override

@@ -17,7 +17,7 @@ public class AngularMotionSimulator {
 		frame.setContentPane(contentPane);
 		
 		frame.setVisible(true);
-		frame.setSize(new Dimension(500,500));
+		frame.setSize(new Dimension(1000,500));
 		frame.setLocation(100,100);
 	}
 } 

@@ -12,8 +12,10 @@ import javax.swing.event.ChangeListener;
  */
 public class ScaleSliderController implements ChangeListener {
 
-	public ScaleSliderController() {
-		
+	private Animation animation;
+
+	public ScaleSliderController(Animation animation) {
+		this.animation = animation;
 	}
 	
 	@Override

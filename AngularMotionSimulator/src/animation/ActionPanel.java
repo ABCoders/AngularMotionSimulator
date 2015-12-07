@@ -8,17 +8,45 @@ import javax.swing.*;
  * @since 7/12/2015
  */
 public class ActionPanel extends JPanel {
+	private Animation animation;
 	
-	public ActionPanel() {
-		
+	private JButton playButton;
+	private JButton pauseButton;
+	private JButton clearButton;
+	private JSlider timeSlider;
+	private JSlider scaleSlider;
+	
+	public ActionPanel(Animation animation) {
+		super();
+		this.animation = animation;
+		this.createComponents();
+		this.createPanel();
+		this.registerControllers();
 	}
 	
-	public void createComponents() {
-		
+	private void createComponents() {
+		playButton = new JButton("PLAY");
+		pauseButton = new JButton("PAUSE");
+		clearButton = new JButton("CLEAR");
+		timeSlider = new JSlider();
+		scaleSlider = new JSlider();
 	}
 	
-	public void createPanel() {
-		
+	private void createPanel() {
+		this.add(scaleSlider);
+		this.add(timeSlider);
+		this.add(playButton);
+		this.add(pauseButton);
+		this.add(clearButton);
+	}
+	
+	private void registerControllers() {
+		playButton.addActionListener(new ActionController(animation));
+		pauseButton.addActionListener(new ActionController(animation));
+		clearButton.addActionListener(new ActionController(animation));
+			
+		timeSlider.addChangeListener(new TimeSliderController(animation));
+		scaleSlider.addChangeListener(new ScaleSliderController(animation));
 	}
 	
 	public void update() {

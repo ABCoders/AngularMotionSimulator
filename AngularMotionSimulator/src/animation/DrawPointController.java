@@ -10,9 +10,12 @@ import java.awt.event.MouseListener;
  * @since 7/12/2015
  */
 public class DrawPointController implements MouseListener {
-
-	public DrawPointController () {
-		
+	private Animation animation;
+	private int drawX;
+	private int drawY;
+	
+	public DrawPointController (Animation animation) {
+		this.animation = animation;
 	}
 	
 	@Override
@@ -21,7 +24,11 @@ public class DrawPointController implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-
+		if (!animation.getState()) {
+			drawX = (int) Math.floor(e.getX());
+			drawY = (int) Math.floor(e.getY());
+			animation.setDrawPoints(drawX, drawY);
+		}
 	}
 
 	@Override
