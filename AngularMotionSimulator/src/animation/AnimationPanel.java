@@ -18,18 +18,22 @@ public class AnimationPanel extends JPanel {
 		this.animation = animation;
 		createComponents();
 		createPanel();
+		registerControllers();
 	}
 	
-	public void createComponents() {
+	private void createComponents() {
 		actionPanel = new ActionPanel(animation);
 		animationComponent = new AnimationComponent(animation);
 	}
 	
-	public void createPanel() {
+	private void createPanel() {
 		this.setLayout(new BorderLayout());
 		this.add(actionPanel, BorderLayout.NORTH);
 		this.add(animationComponent, BorderLayout.CENTER);
-		
+	}
+	
+	private void registerControllers() {
+		animationComponent.addMouseListener(new DrawPointController(animation));
 	}
 	
 	public void update() {

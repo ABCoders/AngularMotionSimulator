@@ -21,7 +21,6 @@ public class Animation implements Runnable {
 	private Point drawPoint;
 	private double pointAngle;
 	private Point pointCoord;
-	private Point distanceCoord;
 	private int distance;
 	
 	private int scale;
@@ -98,8 +97,8 @@ public class Animation implements Runnable {
 	}
 	
 	public void setDrawPoints(int drawX, int drawY) {
-		this.drawPoint.x = drawX;
-		this.drawPoint.y = drawY;
+		drawPoint = new Point(drawX, drawY);
+		this.calculateDistance();
 	}
 
 	public void setState(boolean newState) {
@@ -108,6 +107,18 @@ public class Animation implements Runnable {
 	
 	public void clear() {
 		
+	}
+	
+	private void calculateDistance() {
+		int dBetweenX = xCoord + radius - drawPoint.x;
+		int dBetweenY = component.getHeight() - radius - drawPoint.y;
+		distance = (int) Math.sqrt(Math.pow(dBetweenX, 2) + Math.pow(dBetweenY, 2));
+		pointAngle = Math.atan((double) dBetweenY / (double) dBetweenX);
+		if (drawPoint.x < xCoord + radius) {
+			pointAngle = -pointAngle - 0.5 * Math.PI;
+		} else {
+			pointAngle = -pointAngle + 0.5 * Math.PI;
+		}
 	}
 	
 	public void update() {

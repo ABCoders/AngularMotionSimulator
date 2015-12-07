@@ -23,7 +23,6 @@ public class ActionController implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("Action performed");
 		String command = e.getActionCommand();
 		if (command.equalsIgnoreCase("play")) {
 			animation.setState(true);
