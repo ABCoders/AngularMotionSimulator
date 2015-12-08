@@ -11,8 +11,7 @@ public class OptionsController implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void actionPerformed(ActionEvent e) {
+		System.out.println(e.getActionCommand());
 	}
 }

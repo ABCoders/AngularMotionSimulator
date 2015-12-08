@@ -37,10 +37,9 @@ public class OptionsMenuBar extends JMenuBar {
 	}
 	
 	private void registerControllers() {
-		
-	}
-	
-	public void update() {
-		
+		saveItem.addActionListener(new OptionsController(options));
+		loadItem.addActionListener(new OptionsController(options));
+		helpItem.addActionListener(new OptionsController(options));
+		colorItem.addActionListener(new OptionsController(options));
 	}
 }
