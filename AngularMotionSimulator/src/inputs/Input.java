@@ -21,7 +21,9 @@ public class Input extends Object{
 	
 	public Input()
 	{
-		
+		this.animation = new Animation(this);
+		this.options = new Options(this);
+		this.calculations = new Calculations(this);
 	}
 	
 	public void setGUI(InputPanel input)
