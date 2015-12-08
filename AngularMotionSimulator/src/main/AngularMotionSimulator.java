@@ -18,6 +18,7 @@ public class AngularMotionSimulator {
 		Input input = new Input();
 		JFrame frame = new JFrame("Angular Motion Simulator");
 		frame.setContentPane(contentPane);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		frame.setVisible(true);
 		frame.setSize(new Dimension(700,300));
