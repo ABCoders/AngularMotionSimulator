@@ -72,6 +72,10 @@ public class Calculations {
 		return angle;
 	}
 	
+	public void saveProcess(String saveString){
+		
+	}
+	
 	public String getEquation(){
 		return this.equation;
 	}
