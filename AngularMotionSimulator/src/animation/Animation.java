@@ -110,7 +110,7 @@ public class Animation implements Runnable {
 	}
 	
 	public void clear() {
-		
+		distance = 0;
 	}
 	
 	private void calculateDistance() {
