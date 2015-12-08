@@ -5,7 +5,7 @@ import javax.swing.*;
 import inputs.Input;
 import main.AngularMotionSimulatorPanel;
 
-public class Calculations {
+public class Calculations extends Object{
 	
 	private AngularMotionSimulatorPanel amsPanel;
 	private ProcessFrame processFrame;
