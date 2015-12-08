@@ -2,7 +2,7 @@ package calculation;
 
 import javax.swing.*;
 
-public class CalculationsPanel {
+public class CalculationsPanel extends JPanel{
 	
 	private Calculations calculations;
 	private JLabel wantedLabel;
@@ -11,6 +11,7 @@ public class CalculationsPanel {
 	private JLabel calcAnswer;
 	
 	public CalculationsPanel(Calculations calculations){
+		super();
 		this.calculations = calculations;
 		this.layoutView();
 	}

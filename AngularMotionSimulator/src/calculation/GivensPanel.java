@@ -2,7 +2,7 @@ package calculation;
 
 import javax.swing.*;
 
-public class GivensPanel {
+public class GivensPanel extends JPanel{
 	private Calculations calculations;
 	private JLabel angularVelocity;
 	private JLabel linearVelocity;
@@ -12,6 +12,7 @@ public class GivensPanel {
 	private JLabel arcLength;
 	
 	public GivensPanel(Calculations calculations){
+		super();
 		this.calculations = calculations;
 		this.layoutView();
 	}
