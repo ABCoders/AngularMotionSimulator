@@ -12,9 +12,6 @@ public class Options {
 		this.input = input;
 	}
 	
-	public void setGUI() {
-	}
-	
 	public void save() {
 		
 	}
