@@ -1,9 +1,9 @@
 package options;
 
-import javax.swing.event.MenuKeyEvent;
-import javax.swing.event.MenuKeyListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class OptionsController implements MenuKeyListener {
+public class OptionsController implements ActionListener {
 	private Options options;
 	
 	public OptionsController(Options options) {
@@ -11,16 +11,8 @@ public class OptionsController implements MenuKeyListener {
 	}
 
 	@Override
-	public void menuKeyPressed(MenuKeyEvent e) {
-		//Stub
-	}
-
-	@Override
-	public void menuKeyReleased(MenuKeyEvent e) {
-		//Stub
-	}
-
-	@Override
-	public void menuKeyTyped(MenuKeyEvent e) {
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }
