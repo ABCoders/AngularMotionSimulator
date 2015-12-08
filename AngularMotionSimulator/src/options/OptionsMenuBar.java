@@ -11,8 +11,9 @@ public class OptionsMenuBar extends JMenuBar {
 	private JMenuItem helpItem;
 	private JMenuItem colorItem;
 	
-	public OptionsMenuBar() {
+	public OptionsMenuBar(Options options) {
 		super();
+		this.options = options;
 		createComponents();
 		createMenuBar();
 		registerControllers();
