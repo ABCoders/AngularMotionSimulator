@@ -5,6 +5,7 @@ import javax.swing.*;
 
 import animation.Animation;
 import animation.AnimationPanel;
+import inputs.Input;
 
 /**AngularMotionSimulatorPanel
  * The main Container of the program
@@ -14,10 +15,11 @@ import animation.AnimationPanel;
 public class AngularMotionSimulatorPanel extends JPanel {
 	private AnimationPanel animationPanel;
 	private Animation animation;
+	private Input input;
 	
-	public AngularMotionSimulatorPanel() {
+	public AngularMotionSimulatorPanel(Input input) {
 		super();
-		animation = new Animation();
+		animation = input.getAnimation();
 		createComponents();
 		createPanel();
 	}

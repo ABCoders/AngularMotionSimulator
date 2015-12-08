@@ -2,6 +2,8 @@ package animation;
 
 import java.awt.*;
 
+import inputs.Input;
+
 /**Animation
  * The model of the animation
  * Contains all variables needed to create and configure the animation
@@ -10,6 +12,7 @@ import java.awt.*;
  */
 public class Animation implements Runnable {
 	private AnimationComponent component;
+	private Input input;
 	
 	private int diameter;
 	private int radius;
@@ -27,7 +30,8 @@ public class Animation implements Runnable {
 	private int time;
 	private boolean state = false;
 	
-	public Animation() {
+	public Animation(Input input) {
+		this.input = input;
 		this.radius = 50;
 		this.xCoord = 0;
 		this.linearVelocity = 1;

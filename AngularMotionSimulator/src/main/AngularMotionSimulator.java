@@ -14,9 +14,9 @@ import inputs.Input;
 public class AngularMotionSimulator {
 
 	public static void main(String[] args) {
-		AngularMotionSimulatorPanel contentPane = new AngularMotionSimulatorPanel();
-		Input input = new Input();
 		JFrame frame = new JFrame("Angular Motion Simulator");
+		Input input = new Input();
+		AngularMotionSimulatorPanel contentPane = new AngularMotionSimulatorPanel(input);
 		frame.setContentPane(contentPane);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
