@@ -1,6 +1,9 @@
 package inputs;
 
 import javax.swing.*;
+
+import calculation.Calculations;
+
 import java.awt.*;
 
 public class AnswerMachinePanel extends JPanel{
@@ -11,7 +14,7 @@ public class AnswerMachinePanel extends JPanel{
 	private JPanel wantedPanel;
 	private WantedFieldPanel wantedFieldPanel;
 	
-	public AnswerMachinePanel(Calculation calculations)
+	public AnswerMachinePanel(Calculations calculations)
 	{
 		
 	}

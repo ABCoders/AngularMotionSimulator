@@ -1,5 +1,8 @@
 package inputs;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
 
 public class RemoveController implements ActionListener{
 
@@ -12,7 +15,7 @@ public class RemoveController implements ActionListener{
 		this.delete = delete;
 	}
 	
-	public actionPerformed(ActionEvent e)
+	public void actionPerformed(ActionEvent e)
 	{
 		
 	}

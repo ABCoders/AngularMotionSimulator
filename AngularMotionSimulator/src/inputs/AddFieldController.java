@@ -1,5 +1,8 @@
 package inputs;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
 
 public class AddFieldController implements ActionListener{
 
@@ -12,7 +15,7 @@ public class AddFieldController implements ActionListener{
 		this.addVariable = button;
 	}
 	
-	public actionPerformed(ActionEvent e)
+	public void actionPerformed(ActionEvent e)
 	{
 		
 	}

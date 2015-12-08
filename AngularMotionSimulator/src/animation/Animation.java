@@ -23,7 +23,6 @@ public class Animation implements Runnable {
 
 	private Point drawPoint;
 	private double pointAngle;
-	private Point pointCoord;
 	private int distance;
 	
 	private int scale;
@@ -90,10 +89,6 @@ public class Animation implements Runnable {
 
 	public int getScale() {
 		return scale;
-	}
-	
-	public Point getPointCoord() {
-		return pointCoord;
 	}
 
 	public boolean getState() {

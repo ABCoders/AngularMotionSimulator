@@ -18,9 +18,6 @@ public class AnimationComponent extends JComponent {
 	private double angle;
 	private int distance;
 	private double pointAngle;
-	private Point pointCoord;
-	private int circleX;
-	private int circleY;
 	
 	public AnimationComponent(Animation animation) {
 		this.animation = animation;
@@ -47,8 +44,8 @@ public class AnimationComponent extends JComponent {
 		int endX = (int) (x + radius * Math.sin(angle));
 		int endY = (int) (y + radius * Math.cos(angle));
 
-		circleX = (int) (x + distance * Math.sin(pointAngle));
-		circleY = (int) (y + distance * Math.cos(pointAngle));
+		int circleX = (int) (x + distance * Math.sin(pointAngle));
+		int circleY = (int) (y + distance * Math.cos(pointAngle));
 		
 		// Circle
 		d.drawOval(xCoord, this.getHeight() - diameter, diameter, diameter);

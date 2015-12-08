@@ -1,5 +1,9 @@
 package inputs;
 
+import animation.Animation;
+import calculation.Calculations;
+import options.Options;
+
 public class Input extends Object{
 	
 	private Animation animation;
