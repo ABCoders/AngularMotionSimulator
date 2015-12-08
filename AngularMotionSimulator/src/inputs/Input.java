@@ -1,5 +1,5 @@
 package inputs;
 
-public class Inputs {
+public class Input {
 
 }
