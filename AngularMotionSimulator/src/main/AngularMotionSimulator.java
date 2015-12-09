@@ -21,7 +21,7 @@ public class AngularMotionSimulator {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		frame.setVisible(true);
-		frame.setSize(new Dimension(700,300));
+		frame.setSize(new Dimension(1000,500));
 		frame.setLocation(100,100);
 	}
 } 

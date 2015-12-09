@@ -21,5 +21,4 @@ public class ScaleSliderController implements ChangeListener {
 	@Override
 	public void stateChanged(ChangeEvent e) {
 	}
-
 }

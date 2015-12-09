@@ -14,10 +14,10 @@ public class Animation implements Runnable {
 	private AnimationComponent component;
 	private Input input;
 	
-	private int diameter;
-	private int radius;
-	private int xCoord;
-	private int linearVelocity;
+	private double diameter;
+	private double radius;
+	private double xCoord;
+	private double linearVelocity;
 	private double angularVelocity;
 	private double angle;
 
@@ -25,7 +25,7 @@ public class Animation implements Runnable {
 	private double pointAngle;
 	private int distance;
 	
-	private int scale;
+	private double scale;
 	private int time;
 	private boolean state = false;
 	
@@ -67,11 +67,11 @@ public class Animation implements Runnable {
 		}
 	}
 
-	public int getRadius() {
+	public double getRadius() {
 		return radius;
 	}
 
-	public int getXCoord() {
+	public double getXCoord() {
 		return xCoord;
 	}
 
@@ -87,12 +87,20 @@ public class Animation implements Runnable {
 		return distance;
 	}
 
-	public int getScale() {
+	public double getScale() {
 		return scale;
 	}
 
 	public boolean getState() {
 		return state;
+	}
+	
+	public double getAngularVelocity() {
+		return angularVelocity;
+	}
+	
+	public double getLinearVelocity() {
+		return linearVelocity;
 	}
 	
 	public void setDrawPoints(int drawX, int drawY) {
@@ -109,8 +117,8 @@ public class Animation implements Runnable {
 	}
 	
 	private void calculateDistance() {
-		int dBetweenX = xCoord + radius - drawPoint.x;
-		int dBetweenY = component.getHeight() - radius - drawPoint.y;
+		int dBetweenX = (int)(xCoord + radius - drawPoint.x);
+		int dBetweenY = (int)(component.getHeight() - radius - drawPoint.y);
 		distance = (int) Math.sqrt(Math.pow(dBetweenX, 2) + Math.pow(dBetweenY, 2));
 		pointAngle = Math.atan((double) dBetweenY / (double) dBetweenX);
 		if (drawPoint.x < xCoord + radius) {
@@ -120,7 +128,7 @@ public class Animation implements Runnable {
 		}
 	}
 	
-	public void update() {
+	private void update() {
 		component.repaint();
 	}
 }

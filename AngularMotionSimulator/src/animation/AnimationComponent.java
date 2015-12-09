@@ -25,8 +25,8 @@ public class AnimationComponent extends JComponent {
 	}
 	
 	private void getVariables() {
-		this.xCoord = animation.getXCoord();
-		this.radius = animation.getRadius();
+		this.xCoord = (int)animation.getXCoord();
+		this.radius = (int)animation.getRadius();
 		this.diameter = radius*2;
 		this.angle = animation.getAngle();
 		this.distance = animation.getDistance();

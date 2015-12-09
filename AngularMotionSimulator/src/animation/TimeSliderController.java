@@ -20,7 +20,5 @@ public class TimeSliderController implements ChangeListener {
 	
 	@Override
 	public void stateChanged(ChangeEvent e) {
-
 	}
-
 }
