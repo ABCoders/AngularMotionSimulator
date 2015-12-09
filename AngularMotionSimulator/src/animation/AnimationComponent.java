@@ -47,11 +47,11 @@ public class AnimationComponent extends JComponent {
 		int circleX = (int) (x + distance * Math.sin(pointAngle));
 		int circleY = (int) (y + distance * Math.cos(pointAngle));
 		
-		Color color = Color.BLUE;
+		Color color = Color.YELLOW;
 		
 		// Circle
 		d.setColor(color);
-		d.fillOval(xCoord, this.getHeight() - diameter, diameter, diameter);
+		d.drawOval(xCoord, this.getHeight() - diameter, diameter, diameter);
 		d.setColor(Color.BLACK);
 		d.drawLine(x, y, endX, endY);
 
@@ -63,7 +63,7 @@ public class AnimationComponent extends JComponent {
 		d.drawLine(0, this.getHeight() - 1, this.getWidth(), this.getHeight() - 1);
 		if (this.xCoord + diameter > this.getWidth()) {
 			d.setColor(color);
-			d.fillOval(-this.getWidth() + xCoord, this.getHeight() - diameter, diameter, diameter);
+			d.drawOval(-this.getWidth() + xCoord, this.getHeight() - diameter, diameter, diameter);
 			d.setColor(Color.BLACK);
 			d.drawLine(-this.getWidth() + x, y, -this.getWidth() + endX, endY);
 			d.setColor(Color.RED);
