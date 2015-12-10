@@ -13,6 +13,8 @@ public class ActionPanel extends JPanel {
 	private JButton playButton;
 	private JButton pauseButton;
 	private JButton clearButton;
+	private JLabel timeLabel;
+	private JLabel scaleLabel;
 	private JSlider timeSlider;
 	private JSlider scaleSlider;
 	
@@ -28,12 +30,16 @@ public class ActionPanel extends JPanel {
 		playButton = new JButton("PLAY");
 		pauseButton = new JButton("PAUSE");
 		clearButton = new JButton("CLEAR");
+		timeLabel = new JLabel("TIME");
+		scaleLabel = new JLabel("SCALE");
 		timeSlider = new JSlider();
 		scaleSlider = new JSlider();
 	}
 	
 	private void createPanel() {
+		this.add(scaleLabel);
 		this.add(scaleSlider);
+		this.add(timeLabel);
 		this.add(timeSlider);
 		this.add(playButton);
 		this.add(pauseButton);

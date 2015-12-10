@@ -7,7 +7,7 @@ import options.Options;
 public class HelpFrame extends JFrame{
 	private JTextArea text;
 	
-	public HelpFrame(Options options){
+	public HelpFrame(){
 		super();
 	}
 	
