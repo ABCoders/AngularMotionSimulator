@@ -11,10 +11,14 @@ import inputs.Input;
  * @since 7/12/2015
  */
 public class Animation implements Runnable {
+	//Make time appropriately relative to linear velocity
+	//xCoord is dependent on time
+	//Make pixels to meters (25 pixels to 0.25m)
+	//Make slider change values of component
+	private AnimationPanel animationPanel;
 	private AnimationComponent component;
 	private Input input;
 	
-	private double diameter;
 	private double radius;
 	private double xCoord;
 	private double linearVelocity;
@@ -25,8 +29,8 @@ public class Animation implements Runnable {
 	private double pointAngle;
 	private int distance;
 	
-	private double scale;
-	private int time;
+	private int scale;
+	private double time;
 	private boolean state = false;
 	
 	public Animation(Input input) {
@@ -40,8 +44,9 @@ public class Animation implements Runnable {
 		this.distance = 0;
 	}
 	
-	public void setGUI(AnimationComponent animiationComponent) {
-		this.component = animiationComponent;
+	public void setGUI(AnimationPanel animationPanel) {
+		this.animationPanel = animationPanel;
+		this.component = animationPanel.getAnimationComponent();
 		new Thread(this).start();
 	}
 	
@@ -52,6 +57,7 @@ public class Animation implements Runnable {
 				this.xCoord += linearVelocity;
 				this.angle -= angularVelocity;
 				this.pointAngle -= angularVelocity;
+				this.time +=0.1;
 				try {
 					Thread.sleep(10);
 				} catch (Exception e) {}
@@ -65,6 +71,9 @@ public class Animation implements Runnable {
 			} catch (Exception e) {}
 			update();
 		}
+	}
+	public void getVariables() {
+		
 	}
 
 	public double getRadius() {
@@ -87,8 +96,12 @@ public class Animation implements Runnable {
 		return distance;
 	}
 
-	public double getScale() {
+	public int getScale() {
 		return scale;
+	}
+	
+	public int getTime() {
+		return (int)Math.round(time);
 	}
 
 	public boolean getState() {
@@ -107,7 +120,15 @@ public class Animation implements Runnable {
 		drawPoint = new Point(drawX, drawY);
 		this.calculateDistance();
 	}
-
+	
+	public void setScale(int scale) {
+		this.scale = scale;
+	}
+	
+	public void setTime(int time) {
+		this.time = time;
+	}
+	
 	public void setState(boolean newState) {
 		this.state = newState;
 	}
@@ -129,7 +150,7 @@ public class Animation implements Runnable {
 	}
 	
 	private void update() {
-		component.repaint();
+		animationPanel.update();
 	}
 }
  

@@ -32,8 +32,16 @@ public class ActionPanel extends JPanel {
 		clearButton = new JButton("CLEAR");
 		timeLabel = new JLabel("TIME");
 		scaleLabel = new JLabel("SCALE");
-		timeSlider = new JSlider();
-		scaleSlider = new JSlider();
+		timeSlider = new JSlider(JSlider.HORIZONTAL, 60);
+		timeSlider.setMajorTickSpacing(10);
+		timeSlider.setMinorTickSpacing(2);
+		timeSlider.setPaintTicks(true);
+		timeSlider.setPaintLabels(true);
+		scaleSlider = new JSlider(JSlider.HORIZONTAL, 60);
+		scaleSlider.setMajorTickSpacing(10);
+		scaleSlider.setMinorTickSpacing(2);
+		scaleSlider.setPaintTicks(true);
+		scaleSlider.setPaintLabels(true);
 	}
 	
 	private void createPanel() {
@@ -56,6 +64,15 @@ public class ActionPanel extends JPanel {
 	}
 	
 	public void update() {
-		
+		if (animation.getState()) {
+			playButton.setEnabled(false);
+			pauseButton.setEnabled(true);
+			timeSlider.setValue(animation.getTime());
+			scaleSlider.setValue(animation.getScale());
+		}
+		else {
+			playButton.setEnabled(true);
+			pauseButton.setEnabled(false);
+		}
 	}
 }

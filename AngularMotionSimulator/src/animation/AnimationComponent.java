@@ -21,7 +21,6 @@ public class AnimationComponent extends JComponent {
 	
 	public AnimationComponent(Animation animation) {
 		this.animation = animation;
-		animation.setGUI(this);
 	}
 	
 	private void getVariables() {
@@ -51,7 +50,7 @@ public class AnimationComponent extends JComponent {
 		
 		// Circle
 		d.setColor(color);
-		d.drawOval(xCoord, this.getHeight() - diameter, diameter, diameter);
+		d.fillOval(xCoord, this.getHeight() - diameter, diameter, diameter);
 		d.setColor(Color.BLACK);
 		d.drawLine(x, y, endX, endY);
 
@@ -60,16 +59,17 @@ public class AnimationComponent extends JComponent {
 		d.fillOval(circleX - 10, circleY - 10, 20, 20);
 		d.setColor(Color.BLACK);
 
-		d.drawLine(0, this.getHeight() - 1, this.getWidth(), this.getHeight() - 1);
+		
 		if (this.xCoord + diameter > this.getWidth()) {
 			d.setColor(color);
-			d.drawOval(-this.getWidth() + xCoord, this.getHeight() - diameter, diameter, diameter);
+			d.fillOval(-this.getWidth() + xCoord, this.getHeight() - diameter, diameter, diameter);
 			d.setColor(Color.BLACK);
 			d.drawLine(-this.getWidth() + x, y, -this.getWidth() + endX, endY);
 			d.setColor(Color.RED);
 			d.drawLine(-this.getWidth() + x, y, -this.getWidth() + circleX, circleY);
 			d.fillOval(-this.getWidth() + circleX - 10, circleY - 10, 20, 20);
-			d.setColor(color);
+			d.setColor(Color.BLACK);
 		}
+		d.drawLine(0, this.getHeight() - 1, this.getWidth(), this.getHeight() - 1);
 	}
 }

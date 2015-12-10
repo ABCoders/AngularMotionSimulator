@@ -21,7 +21,12 @@ public class AnimationPanel extends JPanel {
 		this.animation = animation;
 		createComponents();
 		createPanel();
+		this.animation.setGUI(this);
 		registerControllers();
+	}
+	
+	public AnimationComponent getAnimationComponent() {
+		return animationComponent;
 	}
 	
 	private void createComponents() {
@@ -48,6 +53,7 @@ public class AnimationPanel extends JPanel {
 	}
 	
 	public void update() {
-		
+		animationComponent.repaint();
+		actionPanel.update();
 	}
 }
