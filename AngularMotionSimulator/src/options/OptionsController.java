@@ -17,6 +17,7 @@ public class OptionsController implements ActionListener {
 			options.showHelp();
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("change color")) {
+			System.out.println("Choosing color");
 			options.changeColor();
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("save as")) {

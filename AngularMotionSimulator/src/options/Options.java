@@ -1,6 +1,8 @@
 package options;
 
+import java.awt.Color;
 import java.io.File;
+import java.util.Scanner;
 
 import javax.swing.*;
 import javax.swing.filechooser.*;
@@ -19,7 +21,8 @@ public class Options {
 	}
 	
 	public void save() {
-		fileChooser.showSaveDialog(null); 
+		fileChooser.showSaveDialog(null);
+		this.sendVariables();
 	}
 	
 	public void load() {
@@ -37,6 +40,22 @@ public class Options {
 	}
 	
 	public void changeColor() {
-		
+		JFrame frame = new JFrame();
+		JPanel panel = new JPanel();
+		JColorChooser colorChooser = new JColorChooser();
+		panel.add(colorChooser);
+		frame.setContentPane(panel);
+		frame.setVisible(true);
+		frame.pack();
+		Color color = colorChooser.getColor();
+	}
+	
+	private void sendVariables() {
+		try {
+			Scanner in = new Scanner(file);
+			input.setRadius(in.nextInt());
+			in.close();
+		} catch (Exception e) {
+		}
 	}
 }
