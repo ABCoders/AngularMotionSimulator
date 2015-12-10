@@ -14,7 +14,7 @@ public class OptionsController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		System.out.println(e.getActionCommand());
 		if (e.getActionCommand().equalsIgnoreCase("help")) {
-			options.showHelp();
+			new HelpFrame();
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("change color")) {
 			System.out.println("Choosing color");

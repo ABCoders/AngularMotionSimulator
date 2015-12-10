@@ -5,11 +5,23 @@ import calculation.Calculations;
 import options.Options;
 
 public class Input extends Object{
+	public static final String[] VARIABLES = {"Angular Velocity",
+			"Linear Velocity", 
+			"Radius", 
+			"Arc Length",
+			"Time", 
+			"Angle"};
 	
 	private Animation animation;
 	private Options options;
 	private Calculations calculations;
 	private InputPanel inputPanel;
+	
+	public static final int MIN_FIELDS = 2;
+	public static final int MAX_FIELDS = 5;
+	
+	private int numberFields;
+	
 	private String wantedVariable;
 	private double radius;
 	private double time;
@@ -17,18 +29,17 @@ public class Input extends Object{
 	private double linearVelocity;
 	private double arclength;
 	private double angle;
-	private int numberFields;
 	
-	public Input()
-	{
+	public Input() {
 		this.animation = new Animation(this);
 		this.options = new Options(this);
 		this.calculations = new Calculations(this);
+		
+		this.numberFields = 2;
 	}
 	
-	public void setGUI(InputPanel input)
-	{
-		
+	public void setGUI(InputPanel inputPanel) {
+		this.inputPanel = inputPanel;
 	}
 	
 	public void updateView()

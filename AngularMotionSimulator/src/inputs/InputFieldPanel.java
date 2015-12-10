@@ -7,28 +7,37 @@ import java.util.ArrayList;
 public class InputFieldPanel extends JPanel{
 	
 	private Input input;
+	
 	private JComboBox <String> variablePicker;
 	private JSpinner valueSpinner;
-	private JButton delete;
+	private JButton deleteButton;
 	
-	public InputFieldPanel(Input input)
-	{
-		
+	public InputFieldPanel(Input input) {
+		super();
+		this.input = input;
+		this.createComponent();
+		this.createPanel();
+		this.registerControllers();
 	}
 	
-	public void layoutView()
-	{
-	
+	private void createComponent() {
+		variablePicker = new JComboBox<String>(Input.VARIABLES);
+		variablePicker.setSelectedIndex(0);
+		valueSpinner = new JSpinner();
+		deleteButton = new JButton("X");
 	}
 	
-	public void registerControllers()
-	{
-		
+	private void createPanel() {
+		this.add(variablePicker);
+		this.add(valueSpinner);
+		this.add(deleteButton);
 	}
 	
-	public void update()
-	{
+	private void registerControllers() {
+		deleteButton.addActionListener(new RemoveController(input, this));
+	}
+	
+	public void update() {
 	
 	}
-
 }

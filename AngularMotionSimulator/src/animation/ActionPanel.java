@@ -31,7 +31,9 @@ public class ActionPanel extends JPanel {
 		pauseButton = new JButton("PAUSE");
 		clearButton = new JButton("CLEAR");
 		timeLabel = new JLabel("TIME");
+		timeLabel.setLabelFor(timeSlider);
 		scaleLabel = new JLabel("SCALE");
+		scaleLabel.setLabelFor(scaleSlider);
 		timeSlider = new JSlider(JSlider.HORIZONTAL, 60);
 		timeSlider.setMajorTickSpacing(10);
 		timeSlider.setMinorTickSpacing(2);

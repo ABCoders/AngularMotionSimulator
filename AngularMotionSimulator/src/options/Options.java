@@ -35,10 +35,6 @@ public class Options {
 		}
 	}
 	
-	public void showHelp() {
-		new HelpFrame();
-	}
-	
 	public void changeColor() {
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();

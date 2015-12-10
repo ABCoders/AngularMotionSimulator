@@ -35,13 +35,15 @@ public class Animation implements Runnable {
 	
 	public Animation(Input input) {
 		this.input = input;
-		this.radius = 50;
+		this.radius = 100;
 		this.xCoord = 0;
 		this.linearVelocity = 1;
 		this.angularVelocity = (double) linearVelocity / radius;
 		this.angle = 0;
 		this.pointAngle = 0;
 		this.distance = 0;
+		this.time = 0;
+		this.scale = 30;
 	}
 	
 	public void setGUI(AnimationPanel animationPanel) {

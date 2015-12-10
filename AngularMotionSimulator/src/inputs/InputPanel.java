@@ -6,27 +6,33 @@ import java.util.ArrayList;
 public class InputPanel extends JPanel{
 	
 	private Input input;
-	private JPanel inputPanel;
 	private ArrayList<InputFieldPanel> field;
-	private JButton addButton;
 	
-	public InputPanel(Input input)
-	{
-	
+	public InputPanel(Input input) {
+		this.input = input;
+		this.createComponents();
+		this.createPanel();
+		this.registerControllers();
 	}
 	
-	public void layoutView()
-	{
-	
+	private void createComponents() {
+		field = new ArrayList<InputFieldPanel>();
+		for (int i=0; i<input.getNumberFields(); i++) {
+			field.add(new InputFieldPanel(input));
+		}
 	}
 	
-	public void registerControllers()
-	{
-		
+	private void createPanel() {
+		this.setLayout(new GridLayout(field.size(), 1));
+		for (int i=0; i<field.size(); i++) {
+			this.add(field.get(i));
+		}
 	}
 	
-	public void update()
-	{
+	private void registerControllers() {
+	}
+	
+	public void update() {
 	
 	}
 }

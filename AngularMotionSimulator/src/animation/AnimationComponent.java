@@ -21,6 +21,7 @@ public class AnimationComponent extends JComponent {
 	
 	public AnimationComponent(Animation animation) {
 		this.animation = animation;
+		this.setPreferredSize(new Dimension(1000,250));
 	}
 	
 	private void getVariables() {

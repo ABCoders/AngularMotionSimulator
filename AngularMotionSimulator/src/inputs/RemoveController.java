@@ -7,16 +7,15 @@ import javax.swing.*;
 public class RemoveController implements ActionListener{
 
 	private Input input;
+	private InputFieldPanel inputField;
 	private JButton delete;
 	
-	public RemoveController(Input input, JButton delete)
-	{
+	public RemoveController(Input input, InputFieldPanel inputField) {
 		this.input = input;
-		this.delete = delete;
+		this.inputField = inputField;
 	}
 	
-	public void actionPerformed(ActionEvent e)
-	{
-		
+	public void actionPerformed(ActionEvent e) {
+		System.out.println(e.getActionCommand());
 	}
 }

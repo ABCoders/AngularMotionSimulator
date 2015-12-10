@@ -7,26 +7,26 @@ import java.util.ArrayList;
 public class WantedFieldPanel extends JPanel{
 	
 	private Input input;
-	private JComboBox variablePicker;
+	private JLabel answerLabel;
+	private JComboBox<String> variablePicker;
 	
-	public WantedFieldPanel(Input input)
-	{
-		
+	public WantedFieldPanel(Input input) {
+		this.input = input;
+		this.createComponents();
+		this.createPanel();
 	}
 	
-	public void layoutView()
-	{
-	
+	private void createComponents() {
+		answerLabel = new JLabel("ANSWER = ");
+		variablePicker = new JComboBox<String>(Input.VARIABLES);
 	}
 	
-	public void registerControllers()
-	{
-		
+	private void createPanel() {
+		this.add(answerLabel);
+		this.add(variablePicker);
 	}
 	
-	public void update()
-	{
-	
+	public void update() {
+		//Stub
 	}
-
 }

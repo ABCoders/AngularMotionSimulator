@@ -1,5 +1,6 @@
 package animation;
 
+import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -20,5 +21,9 @@ public class ScaleSliderController implements ChangeListener {
 	
 	@Override
 	public void stateChanged(ChangeEvent e) {
+		JSlider source = (JSlider)e.getSource();
+		if (!animation.getState()) {
+			animation.setScale(source.getValue());
+		}
 	}
 }
