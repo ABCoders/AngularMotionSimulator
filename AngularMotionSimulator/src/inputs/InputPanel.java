@@ -25,6 +25,7 @@ public class InputPanel extends JPanel{
 	
 	private void createPanel() {
 		this.setLayout(new GridLayout(field.size(), 1));
+		this.setPreferredSize(new Dimension(500, 200));
 		for (int i=0; i<field.size(); i++) {
 			this.add(field.get(i));
 		}
@@ -40,13 +41,23 @@ public class InputPanel extends JPanel{
 	public void update() {
 		System.out.println(input.getNumberFields() + " " + field.size());
 		if (input.getNumberFields()>field.size()) {
+			System.out.println("Adding a Field");
 			field.add(new InputFieldPanel(input, field.size()));
 			this.add(field.get(field.size()-1));
 		}
 		else if (input.getNumberFields()<field.size()) {
-			field.remove(field.size()-1);
+			System.out.println("Removing Field" + " " + input.getRemovedField());
+			field.remove(input.getRemovedField());
 			this.remove(input.getRemovedField());
 		}
-		this.setLayout(new GridLayout(field.size(), 1));
+		
+		if (field.size() > 3) {
+			this.setLayout(new GridLayout (3, 2));
+		}
+		else {
+			this.setLayout(new GridLayout(field.size(), 1));
+		}
+		this.revalidate();
+		this.validate();
 	}
 }

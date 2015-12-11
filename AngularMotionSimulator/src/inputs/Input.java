@@ -2,7 +2,6 @@ package inputs;
 
 import animation.Animation;
 import calculation.Calculations;
-import main.AngularMotionSimulatorPanel;
 import options.Options;
 
 public class Input extends Object{
