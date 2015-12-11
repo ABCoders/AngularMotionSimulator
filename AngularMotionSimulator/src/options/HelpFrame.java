@@ -7,11 +7,12 @@ import java.util.*;
 import javax.swing.*;
 
 public class HelpFrame extends JFrame{
-	//
+	//Use text document or this?
+	//Make text look more appealing
 	private JTextArea text;
 	
 	public HelpFrame() {
-		super();
+		super("HELP");
 		this.createComponents();
 		this.createFrame();
 	}
@@ -19,8 +20,8 @@ public class HelpFrame extends JFrame{
 	private void createComponents() {
 		text = new JTextArea("Angular Motion Simulator - By Amritpal Aujla, Bryan Kristiono, Cindy Zhao - abcCoders\n\n"
 				+ "Program Features:\n\n "
-				+ "The Angular Motion Simulator program is meant to demonstrate Angular Motion using an animated circle and values for various variables that the user inputs. It can also calculate for a specific variable the user wants and output the process work for the calculations.\n\n"
-				+ "The circle itself spins according to the angular velocity, sizes itself according to the radius, and moves along the window according to the linear velocity. The animation can be controlled, to a degree, by the sliders provided above the animation and the variable values that the user chooses to input - like angular velocity or radius.\n\n"
+				+ "The Angular Motion Simulator program is meant to demonstrate Angular Motion using an animated circle and values for various variables that the user inputs. It can also calculate for a specific variable the user wants and output the process work for the calculations."
+				+ "\n\nThe circle itself spins according to the angular velocity, sizes itself according to the radius, and moves along the window according to the linear velocity. The animation can be controlled, to a degree, by the sliders provided above the animation and the variable values that the user chooses to input - like angular velocity or radius.\n\n"
 				+ "The inputs have a button to calculate using the current values given inside them, which output the process work inside another window."
 				+ "\n\n\tThere is an options menu bar at the top of the program to adjust the circle appearance, save. load, or ask for help."
 				+ "\n\nProgram GUI and Instructions:"
@@ -38,17 +39,23 @@ public class HelpFrame extends JFrame{
 				+ "\n\nCalculation Process Work:"
 				+ "\nThe process work window contains the process work for the calculations used to get the variable value that the user wants. It has three lines and a button. The first line is the equation used to get the result. The second line is the same equation, only with the variable types replaced by the actual values the user inputs. The last line is the answer, the result of the calculations and the value of the user’s wanted variable."
 				+ "\nThe button, saying ‘Save’, is used to save the calculation to a text file where it can be viewed again on the user’s leisure.");
+		text.setLineWrap(true);
+		text.setWrapStyleWord(true);
+		text.setEditable(false);
 	}
 	
 	private void createFrame() {
-		JPanel panel = new JPanel();
-		panel.add(new JScrollPane(text));
-		panel.add(text);
+		JPanel panel = new JPanel(new BorderLayout());
+		JScrollPane scroller = new JScrollPane(text);
+		scroller.setVerticalScrollBarPolicy(
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		panel.setPreferredSize(new Dimension(500, 500));
+		panel.add(scroller, BorderLayout.CENTER);
 		this.setContentPane(panel);
 		this.setVisible(true);
 		this.setAlwaysOnTop(true);
 		this.setLocation(400, 50);
-		this.setSize(new Dimension(500, 600));
+		this.pack();
 	}
 	
 	public void update(){
