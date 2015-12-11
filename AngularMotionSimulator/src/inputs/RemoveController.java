@@ -16,6 +16,6 @@ public class RemoveController implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		System.out.println(e.getActionCommand());
+		input.removeField(inputField.getPosition());
 	}
 }

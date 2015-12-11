@@ -10,6 +10,7 @@ public class InputPanel extends JPanel{
 	
 	public InputPanel(Input input) {
 		this.input = input;
+		input.setGUI(this);
 		this.createComponents();
 		this.createPanel();
 		this.registerControllers();
@@ -18,7 +19,7 @@ public class InputPanel extends JPanel{
 	private void createComponents() {
 		field = new ArrayList<InputFieldPanel>();
 		for (int i=0; i<input.getNumberFields(); i++) {
-			field.add(new InputFieldPanel(input));
+			field.add(new InputFieldPanel(input, i));
 		}
 	}
 	
@@ -33,6 +34,15 @@ public class InputPanel extends JPanel{
 	}
 	
 	public void update() {
-	
+		System.out.println(input.getNumberFields() + " " + field.size());
+		if (input.getNumberFields()>field.size()) {
+			field.add(new InputFieldPanel(input, field.size()));
+			this.add(field.get(field.size()-1));
+		}
+		else if (input.getNumberFields()<field.size()) {
+			field.remove(field.size()-1);
+			this.remove(input.getRemovedField());
+		}
+		this.setLayout(new GridLayout(field.size(), 1));
 	}
 }

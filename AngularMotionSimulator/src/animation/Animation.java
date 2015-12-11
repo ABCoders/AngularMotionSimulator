@@ -151,7 +151,7 @@ public class Animation implements Runnable {
 		}
 	}
 	
-	private void update() {
+	public void update() {
 		animationPanel.update();
 	}
 }

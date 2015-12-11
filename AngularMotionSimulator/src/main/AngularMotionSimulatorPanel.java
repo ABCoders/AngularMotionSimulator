@@ -35,7 +35,7 @@ public class AngularMotionSimulatorPanel extends JPanel {
 		createPanel();
 	}
 	
-	public void createComponents() {
+	private void createComponents() {
 		animationPanel = new AnimationPanel(animation);
 		answerPanel = new AnswerMachinePanel(input);
 		menuBar = new OptionsMenuBar(options);
@@ -43,7 +43,7 @@ public class AngularMotionSimulatorPanel extends JPanel {
 		answerPanel = new AnswerMachinePanel(input);
 	}
 	
-	public void createPanel() {
+	private void createPanel() {
 		this.setLayout(new BorderLayout());
 		
 		animationPanel.setBorder(BorderFactory.createTitledBorder("Animation"));
@@ -51,5 +51,10 @@ public class AngularMotionSimulatorPanel extends JPanel {
 		this.add(menuBar, BorderLayout.NORTH);
 		answerPanel.setBorder(BorderFactory.createTitledBorder("Answer Machine"));
 		this.add(answerPanel, BorderLayout.SOUTH);
+	}
+	
+	public void update() {
+		animationPanel.update();
+		answerPanel.update();
 	}
 }

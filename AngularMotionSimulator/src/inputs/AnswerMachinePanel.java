@@ -46,6 +46,6 @@ public class AnswerMachinePanel extends JPanel{
 	}
 	
 	public void update() {
-	
+		inputPanel.update();
 	}
 }

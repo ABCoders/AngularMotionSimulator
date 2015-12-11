@@ -2,6 +2,7 @@ package inputs;
 
 import animation.Animation;
 import calculation.Calculations;
+import main.AngularMotionSimulatorPanel;
 import options.Options;
 
 public class Input extends Object{
@@ -21,6 +22,7 @@ public class Input extends Object{
 	public static final int MAX_FIELDS = 5;
 	
 	private int numberFields;
+	private int removedField;
 	
 	private String wantedVariable;
 	private double radius;
@@ -42,19 +44,19 @@ public class Input extends Object{
 		this.inputPanel = inputPanel;
 	}
 	
-	public void updateView()
-	{
-	
+	public void addField() {
+		if (numberFields<MAX_FIELDS) {
+			numberFields++;
+			this.updateView();
+		}
 	}
 	
-	public void addField()
-	{
-		
-	}
-	
-	public void removeField(InputFieldPanel panel)
-	{
-		
+	public void removeField(int position) {
+		if (numberFields>MIN_FIELDS) {
+			numberFields--;
+			this.removedField = position;
+			this.updateView();
+		}
 	}
 	
 	public void setWantedVariable(String wantedVariable)
@@ -95,6 +97,10 @@ public class Input extends Object{
 	public int getNumberFields()
 	{
 		return this.numberFields;
+	}
+	
+	public int getRemovedField() {
+		return removedField;
 	}
 	
 	public String getWantedVariable()
@@ -145,5 +151,14 @@ public class Input extends Object{
 	public double getAngle()
 	{
 		return this.angle;
+	}
+	
+	public void updateView() {
+		inputPanel.update();
+	}
+	
+	public void updateModels() {
+		animation.update();
+		calculations.update();
 	}
 }

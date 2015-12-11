@@ -87,6 +87,10 @@ public class Calculations extends Object{
 	public String getResult(){
 		return this.result;
 	}
+
+	public void update() {
+		
+	}
 	
 
 }
