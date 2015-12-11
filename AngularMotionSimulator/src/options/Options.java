@@ -1,8 +1,8 @@
 package options;
 
-import java.awt.Color;
-import java.io.File;
-import java.util.Scanner;
+import java.awt.*;
+import java.io.*;
+import java.util.*;
 
 import javax.swing.*;
 import javax.swing.filechooser.*;
@@ -15,23 +15,29 @@ public class Options {
 	
 	private File file;
 	
+	private Color color;
+	
 	public Options(Input input) {
 		this.input = input;
 		fileChooser = new JFileChooser();
+		file = null;
 	}
 	
 	public void save() {
-		fileChooser.showSaveDialog(null);
-		this.sendVariables();
+		int fileSelected = fileChooser.showSaveDialog(null);
+		if (fileSelected == JFileChooser.APPROVE_OPTION) {
+			file = fileChooser.getSelectedFile();
+			this.saveVariables();
+		}
 	}
 	
 	public void load() {
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("*.txt", "txt");
 		fileChooser.setFileFilter(filter);
-		int returnVal = fileChooser.showOpenDialog(null);
-		if(returnVal == JFileChooser.APPROVE_OPTION) {
-			System.out.println("You chose to open this file: " +
-					fileChooser.getSelectedFile().getName());
+		int fileSelected = fileChooser.showOpenDialog(null);
+		if(fileSelected == JFileChooser.APPROVE_OPTION) {
+			file = fileChooser.getSelectedFile();
+			this.loadVariables();
 		}
 	}
 	
@@ -43,13 +49,23 @@ public class Options {
 		frame.setContentPane(panel);
 		frame.setVisible(true);
 		frame.pack();
-		Color color = colorChooser.getColor();
+		color = colorChooser.getColor();
 	}
 	
-	private void sendVariables() {
+	private void saveVariables() {
+		try {
+			PrintWriter out = new PrintWriter(file);
+			out.println();
+			out.close();
+		} catch (FileNotFoundException e) {}
+	}
+	
+	private void loadVariables() {
 		try {
 			Scanner in = new Scanner(file);
-			input.setRadius(in.nextInt());
+			while (in.hasNextInt()) {
+				input.setRadius(in.nextInt());
+			}
 			in.close();
 		} catch (Exception e) {
 		}

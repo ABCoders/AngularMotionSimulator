@@ -2,7 +2,6 @@ package inputs;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class InputFieldPanel extends JPanel{
 	
@@ -24,7 +23,7 @@ public class InputFieldPanel extends JPanel{
 	
 	private void createComponent() {
 		variablePicker = new JComboBox<String>(Input.VARIABLES);
-		variablePicker.setSelectedIndex(0);
+		variablePicker.setSelectedIndex(position);
 		valueSpinner = new JSpinner(new SpinnerNumberModel(1.0, 0.0, 99999.0, 0.5));
 		deleteButton = new JButton("X");
 	}
@@ -46,6 +45,14 @@ public class InputFieldPanel extends JPanel{
 	
 	public int getPosition() {
 		return position;
+	}
+	
+	public String getSelectedVariable() {
+		return (String)variablePicker.getSelectedItem();
+	}
+	
+	public double getValue() {
+		return (double)valueSpinner.getValue();
 	}
 	
 	public void update() {

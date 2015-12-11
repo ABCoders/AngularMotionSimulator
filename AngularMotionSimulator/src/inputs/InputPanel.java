@@ -33,6 +33,10 @@ public class InputPanel extends JPanel{
 	private void registerControllers() {
 	}
 	
+	public ArrayList<InputFieldPanel> getFields() {
+		return field;
+	}
+	
 	public void update() {
 		System.out.println(input.getNumberFields() + " " + field.size());
 		if (input.getNumberFields()>field.size()) {

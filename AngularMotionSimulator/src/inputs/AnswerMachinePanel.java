@@ -2,8 +2,6 @@ package inputs;
 
 import javax.swing.*;
 
-import calculation.Calculations;
-
 import java.awt.*;
 
 public class AnswerMachinePanel extends JPanel{
@@ -42,7 +40,7 @@ public class AnswerMachinePanel extends JPanel{
 		
 	private void registerControllers() {
 		addButton.addActionListener(new AddFieldController(input));
-		calculateButton.addActionListener(new CalculateController(input));
+		calculateButton.addActionListener(new CalculateController(input, inputPanel.getFields()));
 	}
 	
 	public void update() {
