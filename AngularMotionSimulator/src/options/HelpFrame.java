@@ -41,8 +41,4 @@ public class HelpFrame extends JFrame{
 		this.setLocation(400, 50);
 		this.pack();
 	}
-	
-	public void update(){
-		
-	}
 }

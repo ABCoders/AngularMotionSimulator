@@ -16,7 +16,7 @@ public class AnimationComponent extends JComponent {
 	
 	/*  Attributes for drawing the circle  */
 	private int diameter;			//The diameter of the circle
-	private double distance;			//The distance between the circle and the drawn point
+	private double distance;		//The distance between the circle and the drawn point
 	private double pointAngle;		//The angle between the drawn point and the circle
 	private double scale;			//The scale of the animation
 	private int radius;				//The radius of the circle

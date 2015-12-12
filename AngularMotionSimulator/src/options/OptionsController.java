@@ -13,7 +13,6 @@ public class OptionsController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println(e.getActionCommand());
 		if (e.getActionCommand().equalsIgnoreCase("help")) {
 			if (help!=null) {
 				help.dispose();
@@ -22,7 +21,6 @@ public class OptionsController implements ActionListener {
 			help = new HelpFrame();
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("change color")) {
-			System.out.println("Choosing color");
 			options.changeColor();
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("save as")) {

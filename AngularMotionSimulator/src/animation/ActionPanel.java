@@ -63,8 +63,7 @@ public class ActionPanel extends JPanel {
 	}
 	
 	/**
-	 * Creates the panel
-	 * Add all the components to the panel
+	 * Set up the components in the panel layout
 	 */
 	private void createPanel() {
 		this.add(scaleLabel);

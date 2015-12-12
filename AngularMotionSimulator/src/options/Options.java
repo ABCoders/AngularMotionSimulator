@@ -10,6 +10,7 @@ import javax.swing.filechooser.*;
 import inputs.Input;
 
 public class Options {
+	private OptionsMenuBar menuBar;
 	private JFileChooser fileChooser;
 	private Input input;
 	
@@ -21,6 +22,10 @@ public class Options {
 		this.input = input;
 		fileChooser = new JFileChooser();
 		file = null;
+	}
+	
+	public void setGUI(OptionsMenuBar menuBar) {
+		this.menuBar = menuBar;
 	}
 	
 	public void save() {
@@ -42,14 +47,16 @@ public class Options {
 	}
 	
 	public void changeColor() {
-		JFrame frame = new JFrame();
+		JDialog dialog = new JDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), "Color Chooser");
+		System.out.println("Dialog opened");
 		JPanel panel = new JPanel();
 		JColorChooser colorChooser = new JColorChooser();
 		panel.add(colorChooser);
-		frame.setContentPane(panel);
-		frame.setVisible(true);
-		frame.pack();
-		color = colorChooser.getColor();
+		dialog.setContentPane(panel);
+//		frame.setContentPane(panel);
+//		dialog.setVisible(true);
+//		frame.pack();
+//		color = colorChooser.getColor();
 	}
 	
 	private void saveVariables() {

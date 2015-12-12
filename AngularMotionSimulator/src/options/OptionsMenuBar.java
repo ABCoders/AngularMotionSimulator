@@ -14,6 +14,7 @@ public class OptionsMenuBar extends JMenuBar {
 	public OptionsMenuBar(Options options) {
 		super();
 		this.options = options;
+		options.setGUI(this);
 		createComponents();
 		createMenuBar();
 		registerControllers();
