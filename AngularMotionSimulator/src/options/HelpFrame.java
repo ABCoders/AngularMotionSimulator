@@ -61,8 +61,4 @@ public class HelpFrame extends JFrame{
 	public void update(){
 		
 	}
-	
-public static void main(String[]args) {
-	new HelpFrame();
-}
 }

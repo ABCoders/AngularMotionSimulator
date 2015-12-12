@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class AnswerMachinePanel extends JPanel{
-	
+	//Determine Minimum size of panel
 	private Input input;
 	private InputPanel inputPanel;
 	private JButton calculateButton;

@@ -32,9 +32,9 @@ public class Input extends Object{
 	private double angle;
 	
 	public Input() {
-		this.animation = new Animation(this);
 		this.options = new Options(this);
 		this.calculations = new Calculations(this);
+		this.animation = new Animation(calculations);
 		
 		this.numberFields = 2;
 	}
@@ -156,7 +156,7 @@ public class Input extends Object{
 		inputPanel.update();
 	}
 	
-	public void updateModels() {
+	public void update() {
 		animation.update();
 		calculations.update();
 	}

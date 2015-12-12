@@ -22,7 +22,6 @@ public class AngularMotionSimulator {
 		
 		frame.setVisible(true);
 		frame.pack();
-//		frame.setSize(new Dimension(1000,500));
 		frame.setLocation(100,10);
 	}
 } 

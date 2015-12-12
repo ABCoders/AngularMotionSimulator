@@ -23,7 +23,7 @@ public class ScaleSliderController implements ChangeListener {
 	public void stateChanged(ChangeEvent e) {
 		JSlider source = (JSlider)e.getSource();
 		if (!animation.getState()) {
-			animation.setScale(source.getValue());
+			animation.setScale(source.getValue()/100.0);
 		}
 	}
 }

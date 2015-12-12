@@ -2,9 +2,11 @@ package animation;
 
 import java.awt.*;
 
+import calculation.Calculations;
 import inputs.Input;
 
-/**Animation
+/**
+ * Animation
  * The model of the animation
  * Contains all variables needed to create and configure the animation
  * @author BRYAN KRISTIONO
@@ -14,27 +16,39 @@ public class Animation implements Runnable {
 	//Make time appropriately relative to linear velocity
 	//xCoord is dependent on time
 	//Make pixels to meters (25 pixels to 0.25m)
-	//Make slider change values of component
-	private AnimationPanel animationPanel;
-	private AnimationComponent component;
-	private Input input;
+	//Make animation smoother
 	
-	private double radius;
-	private double xCoord;
-	private double linearVelocity;
-	private double angularVelocity;
-	private double angle;
+	/*  Class Object created for program  */
+	private AnimationPanel animationPanel;	//The view of the animation
+	private AnimationComponent component;	//The component drawing the animation
+	private Calculations calculations;		//The model that has the needed values for variables
+	
+	/*  Attributes for drawing the circle  */
+	private double radius;				//The radius of the circle
+	private double xCoord;				//The x-Coordinate of the circle
+	private double linearVelocity;		//The linear velocity of the circle
+	private double angularVelocity;		//Angular velocity of the circle
+	private double angle;				//The angle of the line that indicates the movement of the circle
 
-	private Point drawPoint;
-	private double pointAngle;
-	private int distance;
+	/*  Attributes for drawing a point  */
+	private Point drawPoint;		//The location of the point that the user clicks
+	private double pointAngle;		//The angle of the drawn point from the circle
+	private double distance;			//The distance between the drawn point and the center of the circle
 	
-	private int scale;
-	private double time;
-	private boolean state = false;
+	/*  Attributes affected through buttons and sliders  */
+	private double scale;			//The scale of the animation
+	private double time;			//The time the animation starts on
+	private boolean state = false;	//The state of the animation
 	
-	public Animation(Input input) {
-		this.input = input;
+	private Color color;			//The color of the circle
+	
+	/**
+	 * Main Constructor
+	 * Initialize variables with default values
+	 * @param input - The model animation will get its values from
+	 */
+	public Animation(Calculations calculations) {
+		this.calculations = calculations;
 		this.radius = 100;
 		this.xCoord = 0;
 		this.linearVelocity = 1;
@@ -43,15 +57,25 @@ public class Animation implements Runnable {
 		this.pointAngle = 0;
 		this.distance = 0;
 		this.time = 0;
-		this.scale = 30;
+		this.scale = 1;
+		this.color = Color.YELLOW;
 	}
 	
+	/**
+	 * Sets the view that Animation will update after calculating
+	 * Starts a new Thread that redraws the animation
+	 * @param animationPanel - The view that is updating
+	 */
 	public void setGUI(AnimationPanel animationPanel) {
 		this.animationPanel = animationPanel;
 		this.component = animationPanel.getAnimationComponent();
 		new Thread(this).start();
 	}
 	
+	/**
+	 * A Runnable method that calculates new values for attributes of the circle
+	 * Redraws the circle to create an animation
+	 */
 	@Override
 	public void run() {
 		while(true) {
@@ -61,9 +85,9 @@ public class Animation implements Runnable {
 				this.pointAngle -= angularVelocity;
 				this.time +=0.1;
 				try {
-					Thread.sleep(10);
+					Thread.sleep(5);
 				} catch (Exception e) {}
-				if (this.xCoord > component.getWidth()) {
+				if (this.xCoord*scale > component.getWidth()) {
 					this.xCoord = 0;
 				}
 				update();
@@ -74,10 +98,12 @@ public class Animation implements Runnable {
 			update();
 		}
 	}
-	public void getVariables() {
-		
-	}
 
+	/*
+	 * Getter Queries
+	 */
+	
+	
 	public double getRadius() {
 		return radius;
 	}
@@ -94,11 +120,11 @@ public class Animation implements Runnable {
 		return pointAngle;
 	}
 
-	public int getDistance() {
+	public double getDistance() {
 		return distance;
 	}
 
-	public int getScale() {
+	public double getScale() {
 		return scale;
 	}
 	
@@ -118,40 +144,96 @@ public class Animation implements Runnable {
 		return linearVelocity;
 	}
 	
+	public Color getColor() {
+		return color;
+	}
+	
+	/*
+	 * Setter Methods
+	 */
+	
+	/**
+	 * Sets the location of the drawn point and calculates the distance between it and the circle
+	 * @param drawX - The x-Coordinate of the drawn point
+	 * @param drawY - The y-Coordinate of the drawn point
+	 */
 	public void setDrawPoints(int drawX, int drawY) {
 		drawPoint = new Point(drawX, drawY);
 		this.calculateDistance();
 	}
 	
-	public void setScale(int scale) {
+	/**
+	 * Sets the scale of the animation
+	 * @param scale - The new scale for the animation
+	 */
+	public void setScale(double scale) {
 		this.scale = scale;
 	}
 	
+	/**
+	 * Sets the time of the animation
+	 * @param time - The time animation is on
+	 */
 	public void setTime(int time) {
 		this.time = time;
 	}
 	
+	/**
+	 * Sets the state of the animation
+	 * @param newState - The new state of the animation
+	 */
 	public void setState(boolean newState) {
 		this.state = newState;
 	}
 	
+	/**
+	 * Sets the color of the circle
+	 * @param color
+	 */
+	public void setColor(Color color) {
+		this.color = color;
+	}
+	
+	
+	/*
+	 * Methods
+	 */
+	
+	/**
+	 * Resets the drawn point location
+	 */
 	public void clear() {
 		distance = 0;
 	}
 	
+	/**
+	 * Calculates the distance and angle between the drawn point and the circle
+	 * Uses Pythagorean theorem to find distance
+	 * Uses Trigonometry to find angle
+	 */
 	private void calculateDistance() {
-		int dBetweenX = (int)(xCoord + radius - drawPoint.x);
-		int dBetweenY = (int)(component.getHeight() - radius - drawPoint.y);
-		distance = (int) Math.sqrt(Math.pow(dBetweenX, 2) + Math.pow(dBetweenY, 2));
+		double dBetweenX = ((xCoord + radius)*scale - drawPoint.x);
+		double dBetweenY = ((component.getHeight() - radius*scale) - drawPoint.y);
+		distance = Math.sqrt(Math.pow(dBetweenX, 2) + Math.pow(dBetweenY, 2));
 		pointAngle = Math.atan((double) dBetweenY / (double) dBetweenX);
-		if (drawPoint.x < xCoord + radius) {
+		
+		//Due to the difference between how Java calculates angles and how Java draws angle
+		//This determines which side of the circle it should be drawn on
+		if (drawPoint.x < (xCoord + radius)*scale) {
 			pointAngle = -pointAngle - 0.5 * Math.PI;
 		} else {
 			pointAngle = -pointAngle + 0.5 * Math.PI;
 		}
 	}
 	
+	private void getVariables() {
+	}
+	
+	/**
+	 * Updates the View
+	 */
 	public void update() {
+		this.getVariables();
 		animationPanel.update();
 	}
 }
