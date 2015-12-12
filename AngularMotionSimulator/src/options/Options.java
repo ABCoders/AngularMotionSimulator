@@ -47,7 +47,7 @@ public class Options {
 	}
 	
 	public void changeColor() {
-		new ColorChooser((JFrame)SwingUtilities.getWindowAncestor(menuBar), input.getAnimation());
+		new ColorChooserDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), input.getAnimation());
 	}
 	
 	private void saveVariables() {

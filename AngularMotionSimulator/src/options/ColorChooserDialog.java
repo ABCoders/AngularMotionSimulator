@@ -11,12 +11,12 @@ import animation.Animation;
  * @author BRYAN KRISTIONO
  *
  */
-public class ColorChooser extends JDialog {
+public class ColorChooserDialog extends JDialog {
 	private Animation animation;
 	private JPanel panel;
 	private JColorChooser colorChooser;
 	
-	public ColorChooser(JFrame frame, Animation animation) {
+	public ColorChooserDialog(JFrame frame, Animation animation) {
 		super(frame, "Color Chooser", true);
 		this.animation = animation;
 		this.createComponents();

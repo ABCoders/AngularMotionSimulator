@@ -24,7 +24,6 @@ public class ColorController implements ChangeListener {
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		System.out.println("TEST");
 		animation.setColor(colorChooser.getColor());
 	}
 }
