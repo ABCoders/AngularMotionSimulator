@@ -18,14 +18,18 @@ public class HelpFrame extends JFrame{
 	}
 	
 	private void createComponents() {
-		try{
 		text = new JEditorPane();
-		text.setPage("files\\help.html");
-		}
-		catch(IOException ex){
-			System.err.println("It didnt work");
-		}
 		text.setEditable(false);
+		java.net.URL url = HelpFrame.class.getResource("help.html");
+		if (url != null) {
+            try {
+                text.setPage(url);
+            } catch (IOException e) {
+                System.err.println("Attempted to read a bad URL: " + url);
+            }
+        } else {
+            System.err.println("Couldn't find file: help.html");
+        }
 	}
 	
 	private void createFrame() {
