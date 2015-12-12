@@ -37,7 +37,7 @@ public class HelpFrame extends JFrame{
 		JScrollPane scroller = new JScrollPane(text);
 		scroller.setVerticalScrollBarPolicy(
                 JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		panel.setPreferredSize(new Dimension(500, 500));
+		panel.setPreferredSize(new Dimension(1000, 500));
 		panel.add(scroller, BorderLayout.CENTER);
 		this.setContentPane(panel);
 		this.setVisible(true);
