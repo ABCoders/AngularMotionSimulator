@@ -47,16 +47,7 @@ public class Options {
 	}
 	
 	public void changeColor() {
-		JDialog dialog = new JDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), "Color Chooser");
-		System.out.println("Dialog opened");
-		JPanel panel = new JPanel();
-		JColorChooser colorChooser = new JColorChooser();
-		panel.add(colorChooser);
-		dialog.setContentPane(panel);
-//		frame.setContentPane(panel);
-//		dialog.setVisible(true);
-//		frame.pack();
-//		color = colorChooser.getColor();
+		new ColorChooser((JFrame)SwingUtilities.getWindowAncestor(menuBar), input.getAnimation());
 	}
 	
 	private void saveVariables() {
@@ -76,5 +67,10 @@ public class Options {
 			in.close();
 		} catch (Exception e) {
 		}
+	}
+	
+	public void updateModels() {
+		input.updateView();
+		input.updateCalculations();
 	}
 }
