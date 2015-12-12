@@ -156,8 +156,7 @@ public class Input extends Object{
 		inputPanel.update();
 	}
 	
-	public void update() {
-		animation.update();
+	public void updateCalculations() {
 		calculations.update();
 	}
 }

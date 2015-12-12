@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 public class OptionsController implements ActionListener {
 	private Options options;
+	private HelpFrame help;
 	
 	public OptionsController(Options options) {
 		this.options = options;
@@ -14,7 +15,11 @@ public class OptionsController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		System.out.println(e.getActionCommand());
 		if (e.getActionCommand().equalsIgnoreCase("help")) {
-			new HelpFrame();
+			if (help!=null) {
+				help.dispose();
+				help = null;
+			}
+			help = new HelpFrame();
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("change color")) {
 			System.out.println("Choosing color");
