@@ -31,15 +31,14 @@ public class InputPanel extends JPanel{
 		}
 	}
 	
-	private void registerControllers() {
-	}
-	
 	public ArrayList<InputFieldPanel> getFields() {
 		return field;
 	}
 	
 	public void update() {
+		System.out.println(input.getNumberFields() + " " + field.size());
 		if (input.getNumberFields()>field.size()) {
+			System.out.println("Adding a Field");
 			field.add(new InputFieldPanel(input, field.size()));
 			this.add(field.get(field.size()-1));
 		}
@@ -47,11 +46,7 @@ public class InputPanel extends JPanel{
 			System.out.println("Removing Field" + " " + input.getRemovedField());
 			field.remove(input.getRemovedField());
 			this.remove(input.getRemovedField());
-			for (int i= input.getRemovedField(); i<field.size(); i++) {
-				field.get(i).setPosition(i);
-			}
 		}
-			
 		
 		if (field.size() > 3) {
 			this.setLayout(new GridLayout (3, 2));
