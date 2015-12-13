@@ -39,9 +39,7 @@ public class InputPanel extends JPanel{
 	}
 	
 	public void update() {
-		System.out.println(input.getNumberFields() + " " + field.size());
 		if (input.getNumberFields()>field.size()) {
-			System.out.println("Adding a Field");
 			field.add(new InputFieldPanel(input, field.size()));
 			this.add(field.get(field.size()-1));
 		}
@@ -49,8 +47,9 @@ public class InputPanel extends JPanel{
 			System.out.println("Removing Field" + " " + input.getRemovedField());
 			field.remove(input.getRemovedField());
 			this.remove(input.getRemovedField());
-			
-			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(this), "Too much commitment");
+			for (int i= input.getRemovedField(); i<field.size(); i++) {
+				field.get(i).setPosition(i);
+			}
 		}
 			
 		

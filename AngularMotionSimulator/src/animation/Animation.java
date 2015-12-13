@@ -248,6 +248,10 @@ public class Animation implements Runnable {
 		this.xCoord = 0;
 	}
 	
+	public void updateModel() {
+		this.getVariables();
+	}
+	
 	/**
 	 * Updates the View
 	 */
