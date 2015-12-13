@@ -15,6 +15,7 @@ public class ProcessFrame extends JFrame{
 		this.calculations = calculations;
 	    this.createComponents();
 	    this.createFrame();
+	    this.registerControllers();
 	}
 	
 	private void createFrame(){

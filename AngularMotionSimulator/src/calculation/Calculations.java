@@ -18,19 +18,19 @@ public class Calculations extends Object{
 	private double time;
 	private double arcLength;
 	private String wantedVariable;
-	
+
 	private String equation;
 	private String valueEquation;
 	private String result;
-	
+
 	public Calculations(Input input){
 		this.input = input;
 	}
-	
+
 	public void setGUI(ProcessFrame frame){
 		this.processFrame = frame;
 	}
-	
+
 	private void setVariables(){
 		this.angularVelocity = input.getAngularVelocity();
 		this.linearVelocity = input.getLinearVelocity();
@@ -39,75 +39,73 @@ public class Calculations extends Object{
 		this.time = input.getTime();
 		this.arcLength = input.getArcLength();
 	}
-	
+
 	public boolean calculate(){
 		return true;
 	}
-	
+
 	private String decideEquation(){
 		String equation = null;
 		return equation;
 	}
-	
+
 	private String decideValueEquation(){
 		String valueEquation = null;
 		return valueEquation;
 	}
-	
+
 	private String decideResult(){
 		String result = null;
 		return result;
 	}
-	
+
 	private double findAngularVelocity(){
 		double angularVelocity = 0;
 		return angularVelocity;
 	}
-	
+
 	private double findLinearVelocity(){
 		double linearVelocity = 0;
 		return linearVelocity;
 	}
-	
+
 	private double findRadius(){
 		double radius = 0;
 		return radius;
 	}
-	
+
 	private double findArcLength(){
 		double arcLength = 0;
 		return arcLength;
 	}
-	
+
 	private double findTime(){
 		double time = 0;
 		return time;
 	}
-	
+
 	private double findAngle(){
 		double angle = 0;
 		return angle;
 	}
-	
+
 	public void saveProcess(){
 		JFileChooser fileChooser = new JFileChooser();
-		int working;
-		do{
-			working = fileChooser.showSaveDialog(processFrame);
-		}while(working != JFileChooser.APPROVE_OPTION);
-		
-		PrintWriter output = null;
-		try{
-		output = new PrintWriter(fileChooser.getSelectedFile());
+		int working = fileChooser.showSaveDialog(processFrame);
+		if(working != JFileChooser.APPROVE_OPTION){
+			PrintWriter output = null;
+			try{
+				output = new PrintWriter(fileChooser.getSelectedFile());
+				output.println("Calculations for " + this.wantedVariable);
+				output.println(this.wantedVariable + " = " + this.equation);
+				output.println(this.wantedVariable + " = " + this.valueEquation);
+				output.println(this.wantedVariable + " = " + this.result);
+				output.close();
+			}
+			catch(FileNotFoundException ex){}
 		}
-		catch(FileNotFoundException ex){}
-		output.println("Calculations for " + this.wantedVariable);
-		output.println(this.wantedVariable + " = " + this.equation);
-		output.println(this.wantedVariable + " = " + this.valueEquation);
-		output.println(this.wantedVariable + " = " + this.result);
-		output.close();
 	}
-	
+
 	public String getEquation(){
 		return this.equation;
 	}
@@ -115,18 +113,18 @@ public class Calculations extends Object{
 	public String getValueEquation() {
 		return valueEquation;
 	}
-	
+
 	public String getResult(){
 		return this.result;
 	}
-	
+
 	/**
 	 * @return the wantedVariable
 	 */
 	public String getWantedVariable() {
 		return wantedVariable;
 	}
-	
+
 	/**
 	 * @return the angularVelocity
 	 */
