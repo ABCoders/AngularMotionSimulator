@@ -33,7 +33,7 @@ public class Calculations extends Object{
 	}
 	
 	public boolean calculate(){
-		return false;
+		return true;
 	}
 	
 	private String decideEquation(){
