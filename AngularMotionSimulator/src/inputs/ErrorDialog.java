@@ -23,13 +23,13 @@ public class ErrorDialog extends JDialog {
 	}
 	
 	private void createComponents() {
-		panel = new JPanel();
+		panel = new JPanel(new BorderLayout());
 		panel.setPreferredSize(new Dimension(300, 100));
-		label = new JLabel(message);
+		label = new JLabel(message, SwingConstants.CENTER);
 	}
 	
 	private void createDialog() {
-		panel.add(label);
+		panel.add(label, BorderLayout.CENTER);
 		this.setContentPane(panel);
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		this.setLocation(400, 50);
