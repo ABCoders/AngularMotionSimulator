@@ -53,6 +53,9 @@ public class AnimationPanel extends JPanel {
 	}
 	
 	public void update() {
+		angularVelocity.setText("Angular Velocity = " + animation.getAngularVelocity());
+		linearVelocity.setText("Linear Velocity = " + animation.getLinearVelocity());
+		radius.setText("Radius = " + animation.getRadius());
 		animationComponent.repaint();
 		actionPanel.update();
 	}

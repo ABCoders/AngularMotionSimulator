@@ -252,7 +252,6 @@ public class Animation implements Runnable {
 	 * Updates the View
 	 */
 	public void update() {
-		this.getVariables();
 		animationPanel.update();
 	}
 }
