@@ -108,7 +108,6 @@ public class Calculations extends Object{
 		return valueEquation;
 	}
 	
-	
 	public String getResult(){
 		return this.result;
 	}
@@ -164,6 +163,7 @@ public class Calculations extends Object{
 
 	public void update() {
 		if(this.calculate()){
+			this.processFrame = new ProcessFrame(this);
 		}
 		else{
 			ErrorDialog dialog = new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(processFrame), "Cannot Calculate Cthulhu");
