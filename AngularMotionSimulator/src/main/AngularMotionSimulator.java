@@ -6,6 +6,8 @@
 
 package main;
 
+import java.awt.Image;
+
 import javax.swing.*;
 
 import inputs.Input;
@@ -18,6 +20,8 @@ public class AngularMotionSimulator {
 		AngularMotionSimulatorPanel contentPane = new AngularMotionSimulatorPanel(input);
 		frame.setContentPane(contentPane);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+//		frame.setIconImage(new ImageIcon(frame.getClass().getClassLoader().getResource("Logo.jpeg")).getImage());
 		
 		frame.setVisible(true);
 		frame.pack();

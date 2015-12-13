@@ -16,6 +16,7 @@ public class CalculateController implements ActionListener {
 		this.inputFields = inputFields;
 		this.wantedField = wantedField;
 	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		ArrayList<String> variables = new ArrayList<String>();
