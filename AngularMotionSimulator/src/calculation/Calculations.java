@@ -1,7 +1,10 @@
 package calculation;
 
+import java.io.*;
+
 import javax.swing.*;
 
+import inputs.ErrorDialog;
 import inputs.Input;
 import main.AngularMotionSimulatorPanel;
 
@@ -29,8 +32,8 @@ public class Calculations extends Object{
 		
 	}
 	
-	public void calculate(){
-		
+	public boolean calculate(){
+		return false;
 	}
 	
 	private String decideEquation(){
@@ -48,38 +51,53 @@ public class Calculations extends Object{
 		return result;
 	}
 	
-	private double findAngularVelocity(double angle, double time, double radius, double linearVelocity){
+	private double findAngularVelocity(){
 		double angularVelocity = 0;
 		return angularVelocity;
 	}
 	
-	private double findLinearVelocity(double angularVelocity, double radius, double arcLength, double time){
+	private double findLinearVelocity(){
 		double linearVelocity = 0;
 		return linearVelocity;
 	}
 	
-	private double findRadius(double angularVelocity, double linearVelocity, double arcLength, double angle){
+	private double findRadius(){
 		double radius = 0;
 		return radius;
 	}
 	
-	private double findArcLength(double time, double linearVelocity, double angle, double radius){
+	private double findArcLength(){
 		double arcLength = 0;
 		return arcLength;
 	}
 	
-	private double findTime(double angularVelocity, double linearVelocity, double angle, double arcLength){
+	private double findTime(){
 		double time = 0;
 		return time;
 	}
 	
-	private double findAngle(double angularVelocity, double time, double arcLength, double radius){
+	private double findAngle(){
 		double angle = 0;
 		return angle;
 	}
 	
-	public void saveProcess(String saveString){
+	public void saveProcess(){
+		JFileChooser fileChooser = new JFileChooser();
+		int working;
+		do{
+			working = fileChooser.showSaveDialog(processFrame);
+		}while(working != JFileChooser.APPROVE_OPTION);
 		
+		PrintWriter output = null;
+		try{
+		output = new PrintWriter(fileChooser.getSelectedFile());
+		}
+		catch(FileNotFoundException ex){}
+		output.println("Calculations for " + this.wantedVariable);
+		output.println(this.wantedVariable + " = " + this.equation);
+		output.println(this.wantedVariable + " = " + this.valueEquation);
+		output.println(this.wantedVariable + " = " + this.result);
+		output.close();
 	}
 	
 	public String getEquation(){
@@ -145,8 +163,11 @@ public class Calculations extends Object{
 	}
 
 	public void update() {
-		
+		if(this.calculate()){
+		}
+		else{
+			ErrorDialog dialog = new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(processFrame), "Cannot Calculate Cthulhu");
+		}
 	}
-	
 
 }
