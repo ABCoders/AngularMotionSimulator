@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class ProcessFrame extends JFrame{
 	private Calculations calculations;
+	private JPanel mainPanel;
 	private GivensPanel givensPanel;
 	private CalculationsPanel calcPanel;
 	private JButton save;
@@ -12,29 +13,32 @@ public class ProcessFrame extends JFrame{
 	public ProcessFrame(Calculations calculations){
 		super();
 		this.calculations = calculations;
+	    this.createComponents();
+	    this.createFrame();
+	}
+	
+	private void createFrame(){
 		this.setVisible(true);
 	    this.setSize(500,250);
-	    this.setContentPane(this.createFrame());
-	}
-	
-	public void update(){
-		
-	}
-	
-	private JPanel createFrame(){
-		JPanel main = new JPanel();
-	    main.setLayout(new GridLayout(3, 1));
-		GivensPanel givensPanel = new GivensPanel(this.calculations);
-	    CalculationsPanel calculationsPanel = new CalculationsPanel(this.calculations);
-	    main.add(givensPanel);
-	    main.add(calculationsPanel);
 	    
-	    JButton saveButton = new JButton("Save");
-	    this.add(saveButton);
-	    return main;
+	    this.mainPanel.setLayout(new GridLayout(3, 1));
+	    this.mainPanel.add(givensPanel);
+	    this.mainPanel.add(calcPanel);
+	    this.mainPanel.add(save);
+	    
+	    this.setContentPane(this.mainPanel);
+	}
+	
+	private void createComponents(){
+		this.mainPanel = new JPanel();
+		this.givensPanel = new GivensPanel(this.calculations);
+	    this.calcPanel = new CalculationsPanel(this.calculations);
+	    this.save = new JButton("Save");
 	}
 	
 	private void registerControllers(){
-		
+		ProcessSaveController processSaveController = new ProcessSaveController(this.calculations);
+		this.save.addActionListener(processSaveController);
 	}
+	
 }
