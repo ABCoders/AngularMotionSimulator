@@ -6,8 +6,6 @@ import inputs.Input;
 import main.AngularMotionSimulatorPanel;
 
 public class Calculations extends Object{
-	
-	private AngularMotionSimulatorPanel amsPanel;
 	private ProcessFrame processFrame;
 	private Input input;
 

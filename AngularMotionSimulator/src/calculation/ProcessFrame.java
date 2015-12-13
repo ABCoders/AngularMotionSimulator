@@ -33,7 +33,7 @@ public class ProcessFrame extends JFrame{
 	    main.add(givensPanel);
 	    main.add(calculationPanel);
 	    
-	    givensPanel.add(new JLabel("Angular Velocity: null rad/s"));
+	    givensPanel.add(new JLabel("Angular Velocity: " + this.calculations.getAngularVelocity() + " rad/s"));
 	    givensPanel.add(new JLabel("Linear Velocity: null m/s"));
 	    givensPanel.add(new JLabel("Angle: 1 rad"));
 	    givensPanel.add(new JLabel("Radius: 1 m"));
