@@ -44,7 +44,7 @@ public class ProcessFrame extends JFrame{
 	    calculationPanel.add(new JLabel("w = 1 / 1"));
 	    calculationPanel.add(new JLabel("w = 1 rad/s"));
 	    
-	    JButton saveButton = new JButton("Save Process");
+	    JButton saveButton = new JButton("Save");
 	    calculationPanel.add(saveButton);
 	    
 	    return main;

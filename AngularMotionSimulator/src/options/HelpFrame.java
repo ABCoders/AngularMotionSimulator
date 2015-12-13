@@ -21,15 +21,11 @@ public class HelpFrame extends JFrame{
 		text = new JEditorPane();
 		text.setEditable(false);
 		java.net.URL url = HelpFrame.class.getResource("help.html");
-		if (url != null) {
             try {
                 text.setPage(url);
-            } catch (IOException e) {
-                System.err.println("Attempted to read a bad URL: " + url);
+            } 
+            catch (IOException e) {
             }
-        } else {
-            System.err.println("Couldn't find file: help.html");
-        }
 	}
 	
 	private void createFrame() {
@@ -37,7 +33,7 @@ public class HelpFrame extends JFrame{
 		JScrollPane scroller = new JScrollPane(text);
 		scroller.setVerticalScrollBarPolicy(
                 JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		panel.setPreferredSize(new Dimension(1000, 500));
+		panel.setPreferredSize(new Dimension(500, 500));
 		panel.add(scroller, BorderLayout.CENTER);
 		this.setContentPane(panel);
 		this.setVisible(true);
