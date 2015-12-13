@@ -1,12 +1,12 @@
 package options;
 
-import java.awt.*;
 import java.io.*;
 import java.util.*;
 
 import javax.swing.*;
 import javax.swing.filechooser.*;
 
+import inputs.ErrorDialog;
 import inputs.Input;
 
 public class Options {
@@ -15,8 +15,6 @@ public class Options {
 	private Input input;
 	
 	private File file;
-	
-	private Color color;
 	
 	public Options(Input input) {
 		this.input = input;
@@ -59,13 +57,24 @@ public class Options {
 	}
 	
 	private void loadVariables() {
+		/* radius
+		 * angularVelocity
+		 * linearVelocity
+		 * arcLength
+		 * time
+		 * angle
+		 */
 		try {
 			Scanner in = new Scanner(file);
-			while (in.hasNextInt()) {
-				input.setRadius(in.nextInt());
-			}
+			input.setRadius(in.nextDouble());
+			input.setAngularVelocity(in.nextDouble());
+			input.setLinearVelocity(in.nextDouble());
+			input.setArclength(in.nextDouble());
+			input.setTime(in.nextDouble());
+			input.setAngle(in.nextDouble());
 			in.close();
 		} catch (Exception e) {
+			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), "File cannot be recognized");
 		}
 	}
 	

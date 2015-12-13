@@ -3,12 +3,9 @@ package main;
 import java.awt.*;
 import javax.swing.*;
 
-import animation.Animation;
 import animation.AnimationPanel;
-import calculation.ProcessFrame;
 import inputs.AnswerMachinePanel;
 import inputs.Input;
-import options.Options;
 import options.OptionsMenuBar;
 
 /**AngularMotionSimulatorPanel

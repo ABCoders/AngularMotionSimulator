@@ -3,7 +3,6 @@ package animation;
 import java.awt.*;
 
 import calculation.Calculations;
-import inputs.Input;
 
 /**
  * Animation
@@ -242,14 +241,15 @@ public class Animation implements Runnable {
 		this.angularVelocity = calculations.getAngularVelocity();
 		this.linearVelocity = calculations.getLinearVelocity();
 		this.radius = calculations.getRadius();
-		
-		//Resets animation
-		this.state = false;
-		this.xCoord = 0;
 	}
 	
 	public void updateModel() {
 		this.getVariables();
+		
+		//Resets animation
+		this.time = 0;
+		this.state = false;
+		this.xCoord = 0;
 	}
 	
 	/**

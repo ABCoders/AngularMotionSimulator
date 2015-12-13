@@ -6,7 +6,6 @@
 
 package main;
 
-import java.awt.*;
 import javax.swing.*;
 
 import inputs.Input;
