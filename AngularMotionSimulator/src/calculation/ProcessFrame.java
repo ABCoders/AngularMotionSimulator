@@ -19,7 +19,7 @@ public class ProcessFrame extends JFrame{
 	
 	private void createFrame(){
 		this.setVisible(true);
-	    this.setSize(500,250);
+	    this.setSize(600,300);
 	    
 	    this.mainPanel.setLayout(new GridLayout(3, 1));
 	    this.mainPanel.add(givensPanel);
