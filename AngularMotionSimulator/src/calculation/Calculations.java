@@ -10,6 +10,13 @@ public class Calculations extends Object{
 	private AngularMotionSimulatorPanel amsPanel;
 	private ProcessFrame processFrame;
 	private Input input;
+
+	private double angularVelocity;
+	private double linearVelocity;
+	private double radius;
+	private double angle;
+	private double time;
+	private double arcLength;
 	
 	private String equation;
 	private String valueEquation;
@@ -79,13 +86,56 @@ public class Calculations extends Object{
 	public String getEquation(){
 		return this.equation;
 	}
-	
-	public String getValuesEquation(){
-		return this.valueEquation;
+
+	public String getValueEquation() {
+		return valueEquation;
 	}
+	
 	
 	public String getResult(){
 		return this.result;
+	}
+	
+	/**
+	 * @return the angularVelocity
+	 */
+	public double getAngularVelocity() {
+		return angularVelocity;
+	}
+
+	/**
+	 * @return the linearVelocity
+	 */
+	public double getLinearVelocity() {
+		return linearVelocity;
+	}
+
+	/**
+	 * @return the radius
+	 */
+	public double getRadius() {
+		return radius;
+	}
+
+	/**
+	 * @return the angle
+	 */
+	public double getAngle() {
+		return angle;
+	}
+
+	/**
+	 * @return the time
+	 */
+	public double getTime() {
+		return time;
+	}
+
+	/**
+	 * @return the arcLength
+	 */
+	public double getArcLength() {
+		return arcLength;
 	}
 
 	public void update() {
