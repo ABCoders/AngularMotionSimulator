@@ -95,6 +95,9 @@ public class Animation implements Runnable {
 			try {
 				Thread.sleep(0);
 			} catch (Exception e) {}
+			if (this.xCoord*scale > component.getWidth()) {
+				this.xCoord = 0;
+			}
 			update();
 		}
 	}
