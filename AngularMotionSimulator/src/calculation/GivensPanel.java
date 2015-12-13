@@ -21,12 +21,12 @@ public class GivensPanel extends JPanel{
 	}
 	
 	private void createComponents(){
-		angularVelocity = new JLabel("Angular Velocity: " + this.calculations.getAngularVelocity() + " rad/s");
-		linearVelocity = new JLabel("Linear Velocity: " + this.calculations.getLinearVelocity() + " m/s");
-		radius = new JLabel("Angle: " + this.calculations.getAngle() + " rad");
-		time = new JLabel("Radius: " + this.calculations.getRadius() + " m");
-		angle = new JLabel("Time: " + this.calculations.getTime() + " s");
-		arcLength = new JLabel("Arc Length: " + this.calculations.getArcLength() + " m");
+		angularVelocity = new JLabel("Angular Velocity: " + GivensPanel.changeIfZero(this.calculations.getAngularVelocity()) + " rad/s");
+		linearVelocity = new JLabel("Linear Velocity: " + GivensPanel.changeIfZero(this.calculations.getLinearVelocity()) + " m/s");
+		radius = new JLabel("Angle: " + GivensPanel.changeIfZero(this.calculations.getAngle()) + " rad");
+		time = new JLabel("Radius: " + GivensPanel.changeIfZero(this.calculations.getRadius()) + " m");
+		angle = new JLabel("Time: " + GivensPanel.changeIfZero(this.calculations.getTime()) + " s");
+		arcLength = new JLabel("Arc Length: " + GivensPanel.changeIfZero(this.calculations.getArcLength()) + " m");
 	}
 	
 	private void createPanel(){
@@ -39,6 +39,13 @@ public class GivensPanel extends JPanel{
 		this.add(this.time);
 		this.add(this.angle);
 		this.add(this.arcLength);
+	}
+	
+	private static String changeIfZero(double num){
+		if(num == 0.0)
+			return "---";
+		else
+			return Double.toString(num);
 	}
 
 }
