@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import javax.swing.*;
 
 public class GivensPanel extends JPanel{
+	private static final long serialVersionUID = 1L;
 	private Calculations calculations;
 	private JLabel angularVelocity;
 	private JLabel linearVelocity;
