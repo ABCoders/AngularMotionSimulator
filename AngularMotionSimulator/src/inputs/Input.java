@@ -28,7 +28,7 @@ public class Input extends Object{
 	private double time;
 	private double angularVelocity;
 	private double linearVelocity;
-	private double arclength;
+	private double arcLength;
 	private double angle;
 	
 	public Input() {
@@ -83,7 +83,7 @@ public class Input extends Object{
 		
 	}
 	
-	public void setArclength(double arclength)
+	public void setArcLength(double arclength)
 	{
 		
 	}
@@ -144,7 +144,7 @@ public class Input extends Object{
 	
 	public double getArclength()
 	{
-		return this.arclength;
+		return this.arcLength;
 	}
 	
 	public double getAngle()

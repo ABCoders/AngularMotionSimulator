@@ -39,16 +39,22 @@ public class CalculateController implements ActionListener {
 			for(int variableAmount = 0; variableAmount < variables.size(); variableAmount++){
 				switch(variables.get(variableAmount)){
 					case("Angular Velocity"):
+						this.input.setAngularVelocity(values.get(variableAmount));
 						break;
 					case("Linear Velocity"):
+						this.input.setLinearVelocity(values.get(variableAmount));
 						break;
 					case("Radius"):
+						this.input.setRadius(values.get(variableAmount));
 						break;
 					case("Time"):
+						this.input.setTime(values.get(variableAmount));
 						break;
 					case("Angle"):
+						this.input.setAngle(values.get(variableAmount));
 						break;
 					case("Arc Length"):
+						this.input.setArcLength(values.get(variableAmount));
 						break;
 				}
 			}

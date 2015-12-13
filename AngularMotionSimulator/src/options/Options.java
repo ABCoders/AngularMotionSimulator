@@ -69,7 +69,7 @@ public class Options {
 			input.setRadius(in.nextDouble());
 			input.setAngularVelocity(in.nextDouble());
 			input.setLinearVelocity(in.nextDouble());
-			input.setArclength(in.nextDouble());
+			input.setArcLength(in.nextDouble());
 			input.setTime(in.nextDouble());
 			input.setAngle(in.nextDouble());
 			in.close();
