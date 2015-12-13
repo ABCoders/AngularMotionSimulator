@@ -23,30 +23,14 @@ public class ProcessFrame extends JFrame{
 	
 	private JPanel createFrame(){
 		JPanel main = new JPanel();
-	    main.setLayout(new GridLayout(2, 1));
-	    JPanel givensPanel = new JPanel();
-	    JPanel calculationPanel = new JPanel();
-	    givensPanel.setBorder(BorderFactory.createTitledBorder("Givens"));
-	    givensPanel.setLayout(new GridLayout(3, 3));
-	    calculationPanel.setBorder(BorderFactory.createTitledBorder("Calculation Process"));
-	    calculationPanel.setLayout(new GridLayout(4, 1));
+	    main.setLayout(new GridLayout(3, 1));
+		GivensPanel givensPanel = new GivensPanel(this.calculations);
+	    CalculationsPanel calculationsPanel = new CalculationsPanel(this.calculations);
 	    main.add(givensPanel);
-	    main.add(calculationPanel);
-	    
-	    givensPanel.add(new JLabel("Angular Velocity: " + this.calculations.getAngularVelocity() + " rad/s"));
-	    givensPanel.add(new JLabel("Linear Velocity: " + this.calculations.getLinearVelocity() + " m/s"));
-	    givensPanel.add(new JLabel("Angle: " + this.calculations.getAngle() + " rad"));
-	    givensPanel.add(new JLabel("Radius: " + this.calculations.getRadius() + " m"));
-	    givensPanel.add(new JLabel("Time: " + this.calculations.getTime() + " s"));
-	    givensPanel.add(new JLabel("Arc Length: " + this.calculations.getArcLength() + " m"));
-	    
-	    calculationPanel.add(new JLabel(this.calculations.getWantedVariable() + " = " + this.calculations.getEquation()));
-	    calculationPanel.add(new JLabel(this.calculations.getWantedVariable() + " = " + this.calculations.getValueEquation()));
-	    calculationPanel.add(new JLabel(this.calculations.getWantedVariable() + " = " + this.calculations.getResult()));
+	    main.add(calculationsPanel);
 	    
 	    JButton saveButton = new JButton("Save");
-	    calculationPanel.add(saveButton);
-	    
+	    this.add(saveButton);
 	    return main;
 	}
 	
