@@ -13,7 +13,6 @@ public class InputPanel extends JPanel{
 		input.setGUI(this);
 		this.createComponents();
 		this.createPanel();
-		this.registerControllers();
 	}
 	
 	private void createComponents() {
