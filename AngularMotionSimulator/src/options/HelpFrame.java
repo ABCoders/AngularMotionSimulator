@@ -12,7 +12,7 @@ public class HelpFrame extends JFrame{
 	private JEditorPane text;
 	
 	public HelpFrame() {
-		super("HELP");
+		super("Help - Angular Motion Simulator");
 		this.createComponents();
 		this.createFrame();
 	}
