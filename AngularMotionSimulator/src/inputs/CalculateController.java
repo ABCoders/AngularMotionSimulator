@@ -70,7 +70,7 @@ public class CalculateController implements ActionListener {
 		}
 	}
 
-	private boolean isDoubleVariables(ArrayList<String> variables, String wantedVariable){
+	private boolean isDoubleVariables(ArrayList<String> variables, String wantedVariable) {
 		boolean canCalculate = false;
 		for (int i=0;i<variables.size();i++) {
 			String variable = variables.get(i);

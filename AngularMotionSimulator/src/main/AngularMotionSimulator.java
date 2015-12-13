@@ -1,17 +1,14 @@
+package main;
+
+import java.awt.Image;
+import javax.swing.*;
+import inputs.Input;
+
 /**AngularMotionSimulator
  * A Main project software that creates an animation of a spinning circle
  * With user-inputted variables that could change the circle's properties
  * 
  */
-
-package main;
-
-import java.awt.Image;
-
-import javax.swing.*;
-
-import inputs.Input;
-
 public class AngularMotionSimulator {
 
 	public static void main(String[] args) {
