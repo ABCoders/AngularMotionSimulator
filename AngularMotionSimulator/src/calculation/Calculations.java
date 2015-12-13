@@ -6,7 +6,6 @@ import javax.swing.*;
 
 import inputs.ErrorDialog;
 import inputs.Input;
-import main.AngularMotionSimulatorPanel;
 
 public class Calculations extends Object{
 	private ProcessFrame processFrame;
@@ -173,6 +172,7 @@ public class Calculations extends Object{
 	public void update() {
 		if(this.calculate()){
 			this.setVariables();
+			this.input.getAnimation().updateModel();
 			this.processFrame = new ProcessFrame(this);
 		}
 		else{
