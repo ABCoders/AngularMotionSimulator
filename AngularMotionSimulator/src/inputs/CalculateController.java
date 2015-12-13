@@ -3,6 +3,7 @@ package inputs;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
+import javax.swing.*;
 
 public class CalculateController implements ActionListener {
 
@@ -34,6 +35,10 @@ public class CalculateController implements ActionListener {
 					canCalculate = false;
 				}
 			}
+		}
+		if(!canCalculate) {
+			InputFieldPanel input = inputFields.get(0);
+			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(input), "Cannot Calculate");
 		}
 		System.out.println(Arrays.toString(variables.toArray()));
 		System.out.println(Arrays.toString(values.toArray()));

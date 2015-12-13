@@ -14,20 +14,20 @@ public class ErrorDialog extends JDialog {
 	private JPanel panel;
 	private String message;
 	private JLabel label;
-	
-	public ErrorDialog(JFrame frame, String errorMessage) {
-		super(frame, "Error", true);
+
+	public ErrorDialog(JFrame jFrame, String errorMessage) {
+		super(jFrame, "Error", true);
 		this.message = errorMessage;
 		this.createComponents();
 		this.createDialog();
 	}
-	
+
 	private void createComponents() {
 		panel = new JPanel(new BorderLayout());
 		panel.setPreferredSize(new Dimension(300, 100));
 		label = new JLabel(message, SwingConstants.CENTER);
 	}
-	
+
 	private void createDialog() {
 		panel.add(label, BorderLayout.CENTER);
 		this.setContentPane(panel);
