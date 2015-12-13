@@ -240,6 +240,7 @@ public class Animation implements Runnable {
 		//Gets variable values from calculations
 		this.angularVelocity = calculations.getAngularVelocity();
 		this.linearVelocity = calculations.getLinearVelocity();
+		System.out.println(calculations.getRadius());
 		this.radius = calculations.getRadius();
 	}
 	
