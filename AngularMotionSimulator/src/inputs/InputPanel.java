@@ -45,6 +45,9 @@ public class InputPanel extends JPanel{
 			System.out.println("Removing Field" + " " + input.getRemovedField());
 			field.remove(input.getRemovedField());
 			this.remove(input.getRemovedField());
+			for(int i=input.getRemovedField(); i<field.size(); i++) {
+				field.get(i).setPosition(i);
+			}
 		}
 		
 		if (field.size() > 3) {
@@ -53,6 +56,7 @@ public class InputPanel extends JPanel{
 		else {
 			this.setLayout(new GridLayout(field.size(), 1));
 		}
+		this.repaint();
 		this.revalidate();
 		this.validate();
 	}
