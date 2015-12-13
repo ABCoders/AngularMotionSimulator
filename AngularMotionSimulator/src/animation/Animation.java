@@ -220,6 +220,12 @@ public class Animation implements Runnable {
 		distance = Math.sqrt(Math.pow(dBetweenX, 2) + Math.pow(dBetweenY, 2));
 		pointAngle = Math.atan((double) dBetweenY / (double) dBetweenX);
 		
+		System.out.println("Before: " + Math.toDegrees(pointAngle));
+		//Fixes 90 degree bug
+		if(Math.abs(Math.toDegrees(pointAngle))==90) {
+			pointAngle = -pointAngle;
+		}
+				
 		//Due to the difference between how Java calculates angles and how Java draws angle
 		//This determines which side of the circle it should be drawn on
 		if (drawPoint.x < (xCoord + radius)*scale) {
@@ -227,6 +233,8 @@ public class Animation implements Runnable {
 		} else {
 			pointAngle = -pointAngle + 0.5 * Math.PI;
 		}
+		System.out.println("After: " + Math.toDegrees(pointAngle));
+		
 	}
 	
 	private void getVariables() {

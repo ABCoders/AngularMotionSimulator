@@ -32,7 +32,7 @@ public class ErrorDialog extends JDialog {
 		panel.add(label, BorderLayout.CENTER);
 		this.setContentPane(panel);
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		this.setLocation(400, 50);
+		this.setLocation(450, 200);
 		this.pack();
 		this.setResizable(false);
 		this.setVisible(true);
