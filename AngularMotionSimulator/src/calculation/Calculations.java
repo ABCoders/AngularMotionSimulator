@@ -27,8 +27,8 @@ public class Calculations extends Object{
 		this.input = input;
 	}
 	
-	public void setGUI(JPanel panel){
-		
+	public void setGUI(ProcessFrame frame){
+		this.processFrame = frame;
 	}
 	
 	private void setVariables(){
