@@ -4,6 +4,7 @@
 package inputs;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author BRYAN KRISTIONO
@@ -23,6 +24,7 @@ public class ErrorDialog extends JDialog {
 	
 	private void createComponents() {
 		panel = new JPanel();
+		panel.setPreferredSize(new Dimension(300, 100));
 		label = new JLabel(message);
 	}
 	
