@@ -35,6 +35,7 @@ public class ColorChooserDialog extends JDialog {
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		this.setLocation(400, 50);
 		this.pack();
+		this.setResizable(false);
 		this.setVisible(true);
 	}
 	

@@ -49,7 +49,10 @@ public class InputPanel extends JPanel{
 			System.out.println("Removing Field" + " " + input.getRemovedField());
 			field.remove(input.getRemovedField());
 			this.remove(input.getRemovedField());
+			
+			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(this), "Too much commitment");
 		}
+			
 		
 		if (field.size() > 3) {
 			this.setLayout(new GridLayout (3, 2));
