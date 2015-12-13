@@ -238,6 +238,14 @@ public class Animation implements Runnable {
 	}
 	
 	private void getVariables() {
+		//Gets variable values from calculations
+		this.angularVelocity = calculations.getAngularVelocity();
+		this.linearVelocity = calculations.getLinearVelocity();
+		this.radius = calculations.getRadius();
+		
+		//Resets animation
+		this.state = false;
+		this.xCoord = 0;
 	}
 	
 	/**
