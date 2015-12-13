@@ -14,14 +14,14 @@ public class ProcessFrame extends JFrame{
 		this.calculations = calculations;
 		this.setVisible(true);
 	    this.setSize(500,250);
-	    this.setContentPane(this.layoutView());
+	    this.setContentPane(this.createFrame());
 	}
 	
 	public void update(){
 		
 	}
 	
-	private JPanel layoutView(){
+	private JPanel createFrame(){
 		JPanel main = new JPanel();
 	    main.setLayout(new GridLayout(2, 1));
 	    JPanel givensPanel = new JPanel();
@@ -34,15 +34,15 @@ public class ProcessFrame extends JFrame{
 	    main.add(calculationPanel);
 	    
 	    givensPanel.add(new JLabel("Angular Velocity: " + this.calculations.getAngularVelocity() + " rad/s"));
-	    givensPanel.add(new JLabel("Linear Velocity: null m/s"));
-	    givensPanel.add(new JLabel("Angle: 1 rad"));
-	    givensPanel.add(new JLabel("Radius: 1 m"));
-	    givensPanel.add(new JLabel("Time: 1 s"));
-	    givensPanel.add(new JLabel("Arc Length: null m"));
+	    givensPanel.add(new JLabel("Linear Velocity: " + this.calculations.getLinearVelocity() + " m/s"));
+	    givensPanel.add(new JLabel("Angle: " + this.calculations.getAngle() + " rad"));
+	    givensPanel.add(new JLabel("Radius: " + this.calculations.getRadius() + " m"));
+	    givensPanel.add(new JLabel("Time: " + this.calculations.getTime() + " s"));
+	    givensPanel.add(new JLabel("Arc Length: " + this.calculations.getArcLength() + " m"));
 	    
-	    calculationPanel.add(new JLabel("w = angle / time"));
-	    calculationPanel.add(new JLabel("w = 1 / 1"));
-	    calculationPanel.add(new JLabel("w = 1 rad/s"));
+	    calculationPanel.add(new JLabel(this.calculations.getWantedVariable() + " = " + this.calculations.getEquation()));
+	    calculationPanel.add(new JLabel(this.calculations.getWantedVariable() + " = " + this.calculations.getValueEquation()));
+	    calculationPanel.add(new JLabel(this.calculations.getWantedVariable() + " = " + this.calculations.getResult()));
 	    
 	    JButton saveButton = new JButton("Save");
 	    calculationPanel.add(saveButton);

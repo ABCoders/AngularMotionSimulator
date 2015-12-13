@@ -15,6 +15,7 @@ public class Calculations extends Object{
 	private double angle;
 	private double time;
 	private double arcLength;
+	private String wantedVariable;
 	
 	private String equation;
 	private String valueEquation;
@@ -92,6 +93,13 @@ public class Calculations extends Object{
 	
 	public String getResult(){
 		return this.result;
+	}
+	
+	/**
+	 * @return the wantedVariable
+	 */
+	public String getWantedVariable() {
+		return wantedVariable;
 	}
 	
 	/**
