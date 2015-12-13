@@ -58,41 +58,55 @@ public class Input extends Object{
 		}
 	}
 	
-	public void setWantedVariable(String wantedVariable)
-	{
-		
+	/**
+	 * @param arcLength the arcLength to set
+	 */
+	public void setArcLength(double arcLength) {
+		this.arcLength = arcLength;
 	}
-	
-	public void setRadius(double radius)
-	{
-		
+
+	/**
+	 * @param wantedVariable the wantedVariable to set
+	 */
+	public void setWantedVariable(String wantedVariable) {
+		this.wantedVariable = wantedVariable;
 	}
-	
-	public void setTime(double time)
-	{
-		
+
+	/**
+	 * @param radius the radius to set
+	 */
+	public void setRadius(double radius) {
+		this.radius = radius;
 	}
-	
-	public void setAngularVelocity(double angularVelocity)
-	{
-		
+
+	/**
+	 * @param time the time to set
+	 */
+	public void setTime(double time) {
+		this.time = time;
 	}
-	
-	public void setLinearVelocity(double linearVelocity)
-	{
-		
+
+	/**
+	 * @param angularVelocity the angularVelocity to set
+	 */
+	public void setAngularVelocity(double angularVelocity) {
+		this.angularVelocity = angularVelocity;
 	}
-	
-	public void setArcLength(double arclength)
-	{
-		
+
+	/**
+	 * @param linearVelocity the linearVelocity to set
+	 */
+	public void setLinearVelocity(double linearVelocity) {
+		this.linearVelocity = linearVelocity;
 	}
-	
-	public void setAngle(double angle)
-	{
-		
+
+	/**
+	 * @param angle the angle to set
+	 */
+	public void setAngle(double angle) {
+		this.angle = angle;
 	}
-	
+
 	public int getNumberFields()
 	{
 		return this.numberFields;
@@ -142,7 +156,7 @@ public class Input extends Object{
 		return this.linearVelocity;
 	}
 	
-	public double getArclength()
+	public double getArcLength()
 	{
 		return this.arcLength;
 	}

@@ -32,6 +32,15 @@ public class Calculations extends Object{
 		
 	}
 	
+	private void setVariables(){
+		this.angularVelocity = input.getAngularVelocity();
+		this.linearVelocity = input.getLinearVelocity();
+		this.radius = input.getRadius();
+		this.angle = input.getAngle();
+		this.time = input.getTime();
+		this.arcLength = input.getArcLength();
+	}
+	
 	public boolean calculate(){
 		return true;
 	}
@@ -163,6 +172,7 @@ public class Calculations extends Object{
 
 	public void update() {
 		if(this.calculate()){
+			this.setVariables();
 			this.processFrame = new ProcessFrame(this);
 		}
 		else{
