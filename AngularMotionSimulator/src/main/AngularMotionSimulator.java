@@ -18,9 +18,8 @@ public class AngularMotionSimulator {
 		frame.setContentPane(contentPane);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		ImageIcon icon = new ImageIcon(AngularMotionSimulator.class.getResource("LogoMain.png"));
-		Image image = icon.getImage();
-		frame.setIconImage(image);
+		ImageIcon icon = new ImageIcon(AngularMotionSimulator.class.getResource("LogoRounded.png"));
+		frame.setIconImage(icon.getImage());
 		
 		frame.setVisible(true);
 		frame.pack();
