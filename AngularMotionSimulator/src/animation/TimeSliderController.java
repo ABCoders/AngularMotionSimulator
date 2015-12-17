@@ -23,7 +23,7 @@ public class TimeSliderController implements ChangeListener {
 	public void stateChanged(ChangeEvent e) {
 		JSlider source = (JSlider)e.getSource();
 		if (!animation.getState()) {
-			animation.setTime(source.getValue()/10);
+			animation.setTime(source.getValue()/10.0);
 		}
 	}
 }

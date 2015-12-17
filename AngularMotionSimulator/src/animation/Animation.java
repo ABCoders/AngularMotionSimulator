@@ -38,6 +38,7 @@ public class Animation implements Runnable {
 	
 	/*  Attributes affected through buttons and sliders  */
 	private double scale;			//The scale of the animation
+	private double drawTime;		//The time of the drawpoint
 	private double time;			//The time the animation starts on
 	private boolean state = false;	//The state of the animation
 	
@@ -86,8 +87,9 @@ public class Animation implements Runnable {
 			while(state) {
 				this.xCoord = linearVelocity*time*100;
 				this.angle = angularVelocity*-time;
-				this.pointAngle = drawAngle + angularVelocity*-time;
-				this.time +=0.001;
+				this.pointAngle = drawAngle + angularVelocity* -drawTime;
+				this.time +=0.001;  
+				this.drawTime +=0.001;
 				try {
 					Thread.sleep(1);
 				} catch (Exception e) {}
@@ -100,7 +102,7 @@ public class Animation implements Runnable {
 			}
 			this.xCoord = linearVelocity*time*100;
 			this.angle = angularVelocity*-time;
-			this.pointAngle = drawAngle + angularVelocity*-time;
+			this.pointAngle = drawAngle + angularVelocity*-drawTime;
 			try {
 				Thread.sleep(0);
 			} catch (Exception e) {}
@@ -141,8 +143,8 @@ public class Animation implements Runnable {
 		return scale;
 	}
 	
-	public int getTime() {
-		return (int)Math.round(time);
+	public double getTime() {
+		return time;
 	}
 
 	public boolean getState() {
@@ -191,7 +193,7 @@ public class Animation implements Runnable {
 	 * Sets the time of the animation
 	 * @param time - The time animation is on
 	 */
-	public void setTime(int time) {
+	public void setTime(double time) {
 		this.time = time;
 	}
 	
@@ -233,6 +235,7 @@ public class Animation implements Runnable {
 		double dBetweenY = ((component.getHeight() - radius*scale) - drawPoint.y);
 		distance = Math.sqrt(Math.pow(dBetweenX, 2) + Math.pow(dBetweenY, 2));
 		drawAngle = Math.atan((double) dBetweenY / (double) dBetweenX);
+		drawTime = 0;
 		
 		System.out.println("Before: " + Math.toDegrees(drawAngle));
 		//Fixes 90 degree bug

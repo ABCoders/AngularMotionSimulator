@@ -29,8 +29,8 @@ public class AnimationPanel extends JPanel {
 	}
 	
 	private void createComponents() {
-		actionPanel = new ActionPanel(animation);
 		animationComponent = new AnimationComponent(animation);
+		actionPanel = new ActionPanel(animation);
 		angularVelocity = new JLabel("Angular Velocity = " + animation.getAngularVelocity() + "rad/s");
 		linearVelocity = new JLabel("Linear Velocity = " + animation.getLinearVelocity() + "m/s");
 		radius = new JLabel("Radius = " + animation.getRadius()/100 + "m");

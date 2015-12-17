@@ -31,6 +31,7 @@ public class ActionPanel extends JPanel {
 		this.createPanel();
 		this.animation.setGUI(this);
 		this.registerControllers();
+		this.update();
 	}
 	
 	/**
@@ -96,7 +97,7 @@ public class ActionPanel extends JPanel {
 		if (animation.getState()) {
 			playButton.setEnabled(false);
 			pauseButton.setEnabled(true);
-			timeSlider.setValue(animation.getTime()*10);
+			timeSlider.setValue((int)Math.round(animation.getTime()*10));
 			scaleSlider.setValue((int)(animation.getScale()*100));
 		}
 		else {
