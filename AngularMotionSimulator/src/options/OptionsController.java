@@ -26,6 +26,8 @@ public class OptionsController implements ActionListener {
 		this.input = input;
 		this.menuBar = menuBar;
 		fileChooser = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("*.txt", "txt");
+		fileChooser.setFileFilter(filter);
 	}
 
 	@Override
@@ -48,8 +50,6 @@ public class OptionsController implements ActionListener {
 			}
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("load")) {
-			FileNameExtensionFilter filter = new FileNameExtensionFilter("*.txt", "txt");
-			fileChooser.setFileFilter(filter);
 			int fileSelected = fileChooser.showOpenDialog(null);
 			if(fileSelected == JFileChooser.APPROVE_OPTION) {
 				file = fileChooser.getSelectedFile();
@@ -69,7 +69,9 @@ public class OptionsController implements ActionListener {
 			out.println(input.getTime());
 			out.println(input.getAngle());
 			out.close();
-		} catch (FileNotFoundException e) {}
+		} catch (FileNotFoundException e) {
+			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), "File cannot be recognized");
+		}
 	}
 	
 	private void loadVariables() {
@@ -83,7 +85,7 @@ public class OptionsController implements ActionListener {
 			input.setTime(in.nextDouble());
 			input.setAngle(in.nextDouble());
 			in.close();
-		} catch (Exception e) {
+		} catch (FileNotFoundException e) {
 			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), "File cannot be recognized");
 		}
 	}
