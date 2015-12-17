@@ -27,21 +27,11 @@ public class Options {
 	}
 	
 	public void save() {
-		int fileSelected = fileChooser.showSaveDialog(null);
-		if (fileSelected == JFileChooser.APPROVE_OPTION) {
-			file = fileChooser.getSelectedFile();
-			this.saveVariables();
-		}
+		
 	}
 	
 	public void load() {
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("*.txt", "txt");
-		fileChooser.setFileFilter(filter);
-		int fileSelected = fileChooser.showOpenDialog(null);
-		if(fileSelected == JFileChooser.APPROVE_OPTION) {
-			file = fileChooser.getSelectedFile();
-			this.loadVariables();
-		}
+		
 	}
 	
 	public void changeColor() {

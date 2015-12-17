@@ -3,12 +3,20 @@ package options;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import inputs.Input;
+
 public class OptionsController implements ActionListener {
-	private Options options;
+	private Input input;
 	private HelpFrame help;
+	private JFileChooser fileChooser;
 	
-	public OptionsController(Options options) {
-		this.options = options;
+	public OptionsController(Input input) {
+		this.input = input;
 	}
 
 	@Override
@@ -21,13 +29,23 @@ public class OptionsController implements ActionListener {
 			help = new HelpFrame();
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("change color")) {
-			options.changeColor();
+			new ColorChooserDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), input.getAnimation());
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("save as")) {
-			options.save();
+			int fileSelected = fileChooser.showSaveDialog(null);
+			if (fileSelected == JFileChooser.APPROVE_OPTION) {
+				file = fileChooser.getSelectedFile();
+				this.saveVariables();
+			}
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("load")) {
-			options.load();
+			FileNameExtensionFilter filter = new FileNameExtensionFilter("*.txt", "txt");
+			fileChooser.setFileFilter(filter);
+			int fileSelected = fileChooser.showOpenDialog(null);
+			if(fileSelected == JFileChooser.APPROVE_OPTION) {
+				file = fileChooser.getSelectedFile();
+				this.loadVariables();
+			}
 		}
 	}
 }
