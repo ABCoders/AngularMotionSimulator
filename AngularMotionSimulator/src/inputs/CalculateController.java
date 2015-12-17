@@ -43,6 +43,8 @@ public class CalculateController implements ActionListener {
 			this.input.setTime(0);
 			this.input.setAngle(0);
 			this.input.setArcLength(0);
+			
+			this.input.setWantedVariable(wantedVariable);
 
 			for(int variableAmount = 0; variableAmount < variables.size(); variableAmount++){
 				switch(variables.get(variableAmount)){

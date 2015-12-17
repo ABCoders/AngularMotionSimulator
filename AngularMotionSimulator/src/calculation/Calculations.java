@@ -32,6 +32,7 @@ public class Calculations extends Object{
 	}
 
 	private void setVariables(){
+		this.wantedVariable = input.getWantedVariable();
 		this.angularVelocity = input.getAngularVelocity();
 		this.linearVelocity = input.getLinearVelocity();
 		this.radius = input.getRadius();
@@ -92,7 +93,7 @@ public class Calculations extends Object{
 	public void saveProcess(){
 		JFileChooser fileChooser = new JFileChooser();
 		int working = fileChooser.showSaveDialog(processFrame);
-		if(working != JFileChooser.APPROVE_OPTION){
+		if(working == JFileChooser.APPROVE_OPTION){
 			PrintWriter output = null;
 			try{
 				output = new PrintWriter(fileChooser.getSelectedFile());
@@ -103,6 +104,12 @@ public class Calculations extends Object{
 				output.close();
 			}
 			catch(FileNotFoundException ex){}
+		}
+		else if(working == JFileChooser.CANCEL_OPTION){
+			
+		}
+		else if(working == JFileChooser.ERROR_OPTION){
+			
 		}
 	}
 
