@@ -44,6 +44,7 @@ public class OptionsController implements ActionListener {
 			int fileSelected = fileChooser.showSaveDialog(null);
 			if (fileSelected == JFileChooser.APPROVE_OPTION) {
 				file = fileChooser.getSelectedFile();
+				saveVariables();
 			}
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("load")) {
@@ -52,6 +53,7 @@ public class OptionsController implements ActionListener {
 			int fileSelected = fileChooser.showOpenDialog(null);
 			if(fileSelected == JFileChooser.APPROVE_OPTION) {
 				file = fileChooser.getSelectedFile();
+				loadVariables();
 			}
 		}
 	}
@@ -59,7 +61,13 @@ public class OptionsController implements ActionListener {
 	private void saveVariables() {
 		try {
 			PrintWriter out = new PrintWriter(file);
-			out.println();
+			out.println(input.getWantedVariable());
+			out.println(input.getRadius());
+			out.println(input.getAngularVelocity());
+			out.println(input.getLinearVelocity());
+			out.println(input.getArcLength());
+			out.println(input.getTime());
+			out.println(input.getAngle());
 			out.close();
 		} catch (FileNotFoundException e) {}
 	}
@@ -67,6 +75,7 @@ public class OptionsController implements ActionListener {
 	private void loadVariables() {
 		try {
 			Scanner in = new Scanner(file);
+			input.setWantedVariable(in.nextLine());
 			input.setRadius(in.nextDouble());
 			input.setAngularVelocity(in.nextDouble());
 			input.setLinearVelocity(in.nextDouble());
