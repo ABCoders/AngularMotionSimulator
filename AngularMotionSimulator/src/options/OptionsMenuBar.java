@@ -2,8 +2,10 @@ package options;
 
 import javax.swing.*;
 
+import inputs.Input;
+
 public class OptionsMenuBar extends JMenuBar {
-	private Options options;
+	private Input input;
 	private JMenu file;
 	private JMenu other;
 	private JMenuItem saveItem;
@@ -11,10 +13,9 @@ public class OptionsMenuBar extends JMenuBar {
 	private JMenuItem helpItem;
 	private JMenuItem colorItem;
 	
-	public OptionsMenuBar(Options options) {
+	public OptionsMenuBar(Input input) {
 		super();
-		this.options = options;
-		options.setGUI(this);
+		this.input = input;
 		createComponents();
 		createMenuBar();
 		registerControllers();
@@ -39,9 +40,9 @@ public class OptionsMenuBar extends JMenuBar {
 	}
 	
 	private void registerControllers() {
-		saveItem.addActionListener(new OptionsController(options));
-		loadItem.addActionListener(new OptionsController(options));
-		helpItem.addActionListener(new OptionsController(options));
-		colorItem.addActionListener(new OptionsController(options));
+		saveItem.addActionListener(new OptionsController(input, this));
+		loadItem.addActionListener(new OptionsController(input, this));
+		helpItem.addActionListener(new OptionsController(input, this));
+		colorItem.addActionListener(new OptionsController(input, this));
 	}
 }

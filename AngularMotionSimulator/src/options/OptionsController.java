@@ -2,21 +2,29 @@ package options;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import inputs.ErrorDialog;
 import inputs.Input;
 
 public class OptionsController implements ActionListener {
 	private Input input;
 	private HelpFrame help;
 	private JFileChooser fileChooser;
+	private OptionsMenuBar menuBar;
+	private File file;
 	
-	public OptionsController(Input input) {
+	public OptionsController(Input input, OptionsMenuBar menuBar) {
 		this.input = input;
+		this.menuBar = menuBar;
 	}
 
 	@Override
@@ -35,7 +43,6 @@ public class OptionsController implements ActionListener {
 			int fileSelected = fileChooser.showSaveDialog(null);
 			if (fileSelected == JFileChooser.APPROVE_OPTION) {
 				file = fileChooser.getSelectedFile();
-				this.saveVariables();
 			}
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("load")) {
@@ -44,8 +51,30 @@ public class OptionsController implements ActionListener {
 			int fileSelected = fileChooser.showOpenDialog(null);
 			if(fileSelected == JFileChooser.APPROVE_OPTION) {
 				file = fileChooser.getSelectedFile();
-				this.loadVariables();
 			}
+		}
+	}
+	
+	private void saveVariables() {
+		try {
+			PrintWriter out = new PrintWriter(file);
+			out.println();
+			out.close();
+		} catch (FileNotFoundException e) {}
+	}
+	
+	private void loadVariables() {
+		try {
+			Scanner in = new Scanner(file);
+			input.setRadius(in.nextDouble());
+			input.setAngularVelocity(in.nextDouble());
+			input.setLinearVelocity(in.nextDouble());
+			input.setArcLength(in.nextDouble());
+			input.setTime(in.nextDouble());
+			input.setAngle(in.nextDouble());
+			in.close();
+		} catch (Exception e) {
+			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), "File cannot be recognized");
 		}
 	}
 }

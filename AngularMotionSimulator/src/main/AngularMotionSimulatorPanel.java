@@ -30,7 +30,7 @@ public class AngularMotionSimulatorPanel extends JPanel {
 	private void createComponents() {
 		animationPanel = new AnimationPanel(input.getAnimation());
 		answerPanel = new AnswerMachinePanel(input);
-		menuBar = new OptionsMenuBar(input.getOptions());
+		menuBar = new OptionsMenuBar(input);
 		answerPanel = new AnswerMachinePanel(input);
 	}
 	

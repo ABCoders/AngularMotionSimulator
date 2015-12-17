@@ -2,7 +2,6 @@ package inputs;
 
 import animation.Animation;
 import calculation.Calculations;
-import options.Options;
 
 public class Input extends Object{
 	public static final String[] VARIABLES = {"Angular Velocity",
@@ -13,7 +12,6 @@ public class Input extends Object{
 			"Angle"};
 	
 	private Animation animation;
-	private Options options;
 	private Calculations calculations;
 	private InputPanel inputPanel;
 	
@@ -32,7 +30,6 @@ public class Input extends Object{
 	private double angle;
 	
 	public Input() {
-		this.options = new Options(this);
 		this.calculations = new Calculations(this);
 		this.animation = new Animation(calculations);
 		
@@ -129,11 +126,6 @@ public class Input extends Object{
 	public Calculations getCalculations()
 	{
 		return this.calculations;
-	}
-	
-	public Options getOptions()
-	{
-		return this.options;
 	}
 	
 	public double getRadius()
