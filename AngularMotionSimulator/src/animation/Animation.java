@@ -19,7 +19,7 @@ public class Animation implements Runnable {
 	
 	
 	/*  Class Object created for program  */
-	private AnimationPanel animationPanel;	//The view of the animation
+	private ActionPanel actionPanel;	//The view of the animation
 	private AnimationComponent component;	//The component drawing the animation
 	private Calculations calculations;		//The model that has the needed values for variables
 	
@@ -32,6 +32,7 @@ public class Animation implements Runnable {
 
 	/*  Attributes for drawing a point  */
 	private Point drawPoint;		//The location of the point that the user clicks
+	private double drawAngle;		//The original angle of the draw point
 	private double pointAngle;		//The angle of the drawn point from the circle
 	private double distance;			//The distance between the drawn point and the center of the circle
 	
@@ -66,10 +67,13 @@ public class Animation implements Runnable {
 	 * Starts a new Thread that redraws the animation
 	 * @param animationPanel - The view that is updating
 	 */
-	public void setGUI(AnimationPanel animationPanel) {
-		this.animationPanel = animationPanel;
-		this.component = animationPanel.getAnimationComponent();
+	public void setGUI(AnimationComponent component) {
+		this.component = component;
 		new Thread(this).start();
+	}
+	
+	public void setGUI(ActionPanel actionPanel) {
+		this.actionPanel = actionPanel;
 	}
 	
 	/**
@@ -82,26 +86,29 @@ public class Animation implements Runnable {
 			while(state) {
 				this.xCoord = linearVelocity*time*100;
 				this.angle = angularVelocity*-time;
-				this.pointAngle = angularVelocity*-time;
+				this.pointAngle = drawAngle + angularVelocity*-time;
 				this.time +=0.001;
 				try {
 					Thread.sleep(1);
 				} catch (Exception e) {}
 				if (this.xCoord*scale > component.getWidth()) {
 					this.xCoord = 0;
+					this.time = 0;
 				}
-				update();
+				updateActions();
+				updateComponent();
 			}
 			this.xCoord = linearVelocity*time*100;
 			this.angle = angularVelocity*-time;
-			this.pointAngle = angularVelocity*-time;
+			this.pointAngle = drawAngle + angularVelocity*-time;
 			try {
 				Thread.sleep(0);
 			} catch (Exception e) {}
 			if (this.xCoord*scale > component.getWidth()) {
 				this.xCoord = 0;
+				this.time = 0;
 			}
-			update();
+			updateComponent();
 		}
 	}
 
@@ -152,6 +159,10 @@ public class Animation implements Runnable {
 	
 	public Color getColor() {
 		return color;
+	}
+	
+	public double getWidth() {
+		return this.component.getWidth();
 	}
 	
 	/*
@@ -221,22 +232,22 @@ public class Animation implements Runnable {
 		double dBetweenX = ((xCoord + radius)*scale - drawPoint.x);
 		double dBetweenY = ((component.getHeight() - radius*scale) - drawPoint.y);
 		distance = Math.sqrt(Math.pow(dBetweenX, 2) + Math.pow(dBetweenY, 2));
-		pointAngle = Math.atan((double) dBetweenY / (double) dBetweenX);
+		drawAngle = Math.atan((double) dBetweenY / (double) dBetweenX);
 		
-		System.out.println("Before: " + Math.toDegrees(pointAngle));
+		System.out.println("Before: " + Math.toDegrees(drawAngle));
 		//Fixes 90 degree bug
-		if(Math.abs(Math.toDegrees(pointAngle))==90) {
-			pointAngle = -pointAngle;
+		if(Math.abs(Math.toDegrees(drawAngle))==90) {
+			drawAngle = -drawAngle;
 		}
 				
 		//Due to the difference between how Java calculates angles and how Java draws angle
 		//This determines which side of the circle it should be drawn on
 		if (drawPoint.x < (xCoord + radius)*scale) {
-			pointAngle = -pointAngle - 0.5 * Math.PI;
+			drawAngle = -drawAngle - 0.5 * Math.PI;
 		} else {
-			pointAngle = -pointAngle + 0.5 * Math.PI;
+			drawAngle = -drawAngle + 0.5 * Math.PI;
 		}
-		System.out.println("After: " + Math.toDegrees(pointAngle));
+		System.out.println("After: " + Math.toDegrees(drawAngle));
 		
 	}
 	
@@ -262,8 +273,12 @@ public class Animation implements Runnable {
 	/**
 	 * Updates the View
 	 */
-	public void update() {
-		animationPanel.update();
+	public void updateActions() {
+		actionPanel.update();
+	}
+	
+	public void updateComponent() {
+		component.repaint();
 	}
 }
  
