@@ -258,7 +258,7 @@ public class Animation implements Runnable {
 		if(calculations.getLinearVelocity()!=0)
 			this.linearVelocity = calculations.getLinearVelocity();
 		if(calculations.getRadius()!=0)
-			this.radius = calculations.getRadius();
+			this.radius = calculations.getRadius()*100;
 	}
 	
 	public void updateModel() {
