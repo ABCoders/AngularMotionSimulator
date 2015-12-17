@@ -80,18 +80,21 @@ public class Animation implements Runnable {
 	public void run() {
 		while(true) {
 			while(state) {
-				this.xCoord += linearVelocity;
-				this.angle -= angularVelocity;
-				this.pointAngle -= angularVelocity;
-				this.time +=0.1;
+				this.xCoord = linearVelocity*time*100;
+				this.angle = angularVelocity*-time;
+				this.pointAngle = angularVelocity*-time;
+				this.time +=0.001;
 				try {
-					Thread.sleep(5);
+					Thread.sleep(1);
 				} catch (Exception e) {}
 				if (this.xCoord*scale > component.getWidth()) {
 					this.xCoord = 0;
 				}
 				update();
 			}
+			this.xCoord = linearVelocity*time*100;
+			this.angle = angularVelocity*-time;
+			this.pointAngle = angularVelocity*-time;
 			try {
 				Thread.sleep(0);
 			} catch (Exception e) {}
@@ -239,10 +242,12 @@ public class Animation implements Runnable {
 	
 	private void getVariables() {
 		//Gets variable values from calculations
-		this.angularVelocity = calculations.getAngularVelocity();
-		this.linearVelocity = calculations.getLinearVelocity();
-		System.out.println(calculations.getRadius());
-		this.radius = calculations.getRadius();
+		if(calculations.getAngularVelocity()!=0)
+			this.angularVelocity = calculations.getAngularVelocity();
+		if(calculations.getLinearVelocity()!=0)
+			this.linearVelocity = calculations.getLinearVelocity();
+		if(calculations.getRadius()!=0)
+			this.radius = calculations.getRadius();
 	}
 	
 	public void updateModel() {
