@@ -104,8 +104,7 @@ public class Input extends Object{
 		this.angle = angle;
 	}
 
-	public int getNumberFields()
-	{
+	public int getNumberFields() {
 		return this.numberFields;
 	}
 	
@@ -113,48 +112,39 @@ public class Input extends Object{
 		return removedField;
 	}
 	
-	public String getWantedVariable()
-	{
+	public String getWantedVariable() {
 		return this.wantedVariable;
 	}
 	
-	public Animation getAnimation()
-	{
+	public Animation getAnimation() {
 		return this.animation;
 	}
 	
-	public Calculations getCalculations()
-	{
+	public Calculations getCalculations() {
 		return this.calculations;
 	}
 	
-	public double getRadius()
-	{
+	public double getRadius() {
 		return this.radius;
 	}
 	
-	public double getTime()
-	{
+	public double getTime() {
 		return this.time;
 	}
 	
-	public double getAngularVelocity()
-	{
+	public double getAngularVelocity() {
 		return this.angularVelocity;
 	}
 	
-	public double getLinearVelocity()
-	{
+	public double getLinearVelocity() {
 		return this.linearVelocity;
 	}
 	
-	public double getArcLength()
-	{
+	public double getArcLength() {
 		return this.arcLength;
 	}
 	
-	public double getAngle()
-	{
+	public double getAngle() {
 		return this.angle;
 	}
 	

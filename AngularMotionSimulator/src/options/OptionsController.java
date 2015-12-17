@@ -25,6 +25,7 @@ public class OptionsController implements ActionListener {
 	public OptionsController(Input input, OptionsMenuBar menuBar) {
 		this.input = input;
 		this.menuBar = menuBar;
+		fileChooser = new JFileChooser();
 	}
 
 	@Override
