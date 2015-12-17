@@ -48,7 +48,7 @@ public class ActionPanel extends JPanel {
 		scaleLabel.setLabelFor(scaleSlider);
 		
 		//Time Slider
-		timeSlider = new JSlider(JSlider.HORIZONTAL, 60);
+		timeSlider = new JSlider(JSlider.HORIZONTAL, 0, 100, 0);
 		timeSlider.setMajorTickSpacing(10);
 		timeSlider.setMinorTickSpacing(2);
 		timeSlider.setPaintTicks(true);

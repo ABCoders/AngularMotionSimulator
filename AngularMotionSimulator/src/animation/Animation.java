@@ -17,6 +17,7 @@ public class Animation implements Runnable {
 	//Make pixels to meters (25 pixels to 0.25m)
 	//Make animation smoother
 	
+	
 	/*  Class Object created for program  */
 	private AnimationPanel animationPanel;	//The view of the animation
 	private AnimationComponent component;	//The component drawing the animation
@@ -50,8 +51,8 @@ public class Animation implements Runnable {
 		this.calculations = calculations;
 		this.radius = 100;
 		this.xCoord = 0;
-		this.linearVelocity = 1;
-		this.angularVelocity = (double) linearVelocity / radius;
+		this.linearVelocity = 1.0;
+		this.angularVelocity = (double) linearVelocity / (radius/100);
 		this.angle = 0;
 		this.pointAngle = 0;
 		this.distance = 0;
