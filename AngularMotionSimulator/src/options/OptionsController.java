@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
@@ -77,13 +78,41 @@ public class OptionsController implements ActionListener {
 	private void loadVariables() {
 		try {
 			Scanner in = new Scanner(file);
-			input.setWantedVariable(in.nextLine());
-			input.setRadius(in.nextDouble());
-			input.setAngularVelocity(in.nextDouble());
-			input.setLinearVelocity(in.nextDouble());
-			input.setArcLength(in.nextDouble());
-			input.setTime(in.nextDouble());
-			input.setAngle(in.nextDouble());
+			ArrayList<String> variables = new ArrayList<String>();
+			ArrayList<Double> values = new ArrayList<Double>();
+			String wantedVariable = in.next();
+			for(int x = 0; x < 6; x++){
+				Double value = in.nextDouble();
+				if(value != null){
+				switch(x){
+					case 0:
+						variables.add("Radius");
+						values.add(value);
+						break;
+					case 1:
+						variables.add("Angular Velocity");
+						values.add(value);
+						break;
+					case 2:
+						variables.add("Linear Velocity");
+						values.add(value);
+						break;
+					case 3:
+						variables.add("Arc Length");
+						values.add(value);
+						break;
+					case 4:
+						variables.add("Time");
+						values.add(value);
+						break;
+					case 5:
+						variables.add("Angle");
+						values.add(value);
+						break;
+					}
+				}
+			}
+			this.input.getInputPanel().updateFields(variables, values);
 			in.close();
 		} catch (FileNotFoundException e) {
 			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), "File cannot be recognized");

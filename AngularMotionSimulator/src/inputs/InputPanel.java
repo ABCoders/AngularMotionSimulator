@@ -60,4 +60,27 @@ public class InputPanel extends JPanel{
 		this.revalidate();
 		this.validate();
 	}
+	
+	public void updateFields(ArrayList<String> variables, ArrayList<Double> values){
+		int numFieldsNeeded = this.field.size() - variables.size();
+		int fieldsAdded;
+		if(numFieldsNeeded < 0){
+			for(int x = 0; x < numFieldsNeeded; x++){
+				this.input.addField();
+			}
+		}
+		else if(numFieldsNeeded > 0){
+			for(int x = 0; x < numFieldsNeeded; x++){
+				this.input.removeField(0);
+			}
+		}
+		else{
+		}
+		
+		for(int y = 0; y < variables.size(); y++){
+			this.field.get(y).update(variables.get(y), values.get(y));
+		}
+		
+	}
+	
 }

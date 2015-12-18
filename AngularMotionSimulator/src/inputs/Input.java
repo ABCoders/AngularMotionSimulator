@@ -155,6 +155,10 @@ public class Input extends Object{
 		return this.angle;
 	}
 	
+	public InputPanel getInputPanel(){
+		return inputPanel;
+	}
+	
 	public void updateView() {
 		inputPanel.update();
 	}
