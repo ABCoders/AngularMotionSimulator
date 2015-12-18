@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -54,8 +56,8 @@ public class OptionsController implements ActionListener {
 		else if (e.getActionCommand().equalsIgnoreCase("save as")) {
 			int fileSelected = fileChooser.showSaveDialog(null);
 			if (fileSelected == JFileChooser.APPROVE_OPTION) {
-				file = fileChooser.getSelectedFile();
-				saveVariables();
+				file = new File(fileChooser.getSelectedFile().getAbsolutePath() + ".txt");
+				saveVariables(file);
 			}
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("load")) {
@@ -67,7 +69,7 @@ public class OptionsController implements ActionListener {
 		}
 	}
 	
-	private void saveVariables() {
+	private void saveVariables(File file) {
 		try {
 			PrintWriter out = new PrintWriter(file);
 			System.out.println(wantedField.getSelectedVariable());
