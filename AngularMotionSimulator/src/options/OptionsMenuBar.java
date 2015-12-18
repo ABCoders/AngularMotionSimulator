@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import inputs.AnswerMachinePanel;
 import inputs.Input;
 import inputs.InputFieldPanel;
 import inputs.WantedFieldPanel;
 
 public class OptionsMenuBar extends JMenuBar {
 	private Input input;
+	private AnswerMachinePanel answerMachinePanel;
 	private JMenu file;
 	private JMenu other;
 	private JMenuItem saveItem;
@@ -17,11 +19,12 @@ public class OptionsMenuBar extends JMenuBar {
 	private JMenuItem helpItem;
 	private JMenuItem colorItem;
 	
-	public OptionsMenuBar(Input input) {
+	public OptionsMenuBar(Input input, AnswerMachinePanel answerMachinePanel) {
 		super();
 		this.input = input;
 		createComponents();
 		createMenuBar();
+		this.answerMachinePanel = answerMachinePanel;
 		registerControllers();
 	}
 	
@@ -44,8 +47,8 @@ public class OptionsMenuBar extends JMenuBar {
 	}
 	
 	private void registerControllers() {
-		WantedFieldPanel wantedField = input.getView().getWantedFieldPanel();
-		ArrayList<InputFieldPanel> inputFields = input.getView().getInputPanel().getFields();
+		WantedFieldPanel wantedField = answerMachinePanel.getWantedFieldPanel();
+		ArrayList<InputFieldPanel> inputFields = answerMachinePanel.getInputPanel().getFields();
 		OptionsController controller = new OptionsController(input, this, inputFields, wantedField);
 		saveItem.addActionListener(controller);
 		loadItem.addActionListener(controller);
