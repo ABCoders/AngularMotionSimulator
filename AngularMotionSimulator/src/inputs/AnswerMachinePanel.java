@@ -42,6 +42,7 @@ public class AnswerMachinePanel extends JPanel{
 	private void registerControllers() {
 		addButton.addActionListener(new AddFieldController(input));
 		calculateButton.addActionListener(new CalculateController(input, inputPanel.getFields(), wantedFieldPanel));
+		System.out.println("AP" + inputPanel.getFields() + ", " + wantedFieldPanel);
 	}
 	
 	public void update() {

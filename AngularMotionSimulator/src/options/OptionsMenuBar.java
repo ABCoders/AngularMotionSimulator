@@ -49,6 +49,7 @@ public class OptionsMenuBar extends JMenuBar {
 	private void registerControllers() {
 		WantedFieldPanel wantedField = answerMachinePanel.getWantedFieldPanel();
 		ArrayList<InputFieldPanel> inputFields = answerMachinePanel.getInputPanel().getFields();
+		System.out.println("MB" + inputFields + "/" + wantedField);
 		OptionsController controller = new OptionsController(input, this, inputFields, wantedField);
 		saveItem.addActionListener(controller);
 		loadItem.addActionListener(controller);

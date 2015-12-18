@@ -4,10 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
@@ -57,7 +56,7 @@ public class OptionsController implements ActionListener {
 			int fileSelected = fileChooser.showSaveDialog(null);
 			if (fileSelected == JFileChooser.APPROVE_OPTION) {
 				file = new File(fileChooser.getSelectedFile().getAbsolutePath() + ".txt");
-				saveVariables(file);
+				saveVariables();
 			}
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("load")) {
@@ -69,11 +68,23 @@ public class OptionsController implements ActionListener {
 		}
 	}
 	
-	private void saveVariables(File file) {
+	private void saveVariables() {
 		try {
 			PrintWriter out = new PrintWriter(file);
-			System.out.println(wantedField.getSelectedVariable());
-			input.setWantedVariable(wantedField.getSelectedVariable());
+			ArrayList<String> variables = new ArrayList<String>();
+			ArrayList<Double> values = new ArrayList<Double>();
+			String wantedVariable;
+
+			//Gets values and variables from input
+			wantedVariable = wantedField.getSelectedVariable();
+			for (InputFieldPanel field: inputFields) {
+				variables.add(field.getSelectedVariable());
+				values.add(field.getValue());
+			}
+			System.out.println(wantedVariable);
+			System.out.println(Arrays.toString(variables.toArray()));
+			System.out.println(Arrays.toString(values.toArray()));
+			
 			for (InputFieldPanel field: inputFields) {
 				if (field.getSelectedVariable().equals(Input.VARIABLES[0])) {
 					input.setAngularVelocity(field.getValue());
