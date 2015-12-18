@@ -17,6 +17,7 @@ public class AnswerMachinePanel extends JPanel{
 		this.createComponents();
 		this.createPanel();
 		this.registerControllers();
+		this.input.setGUI(this);
 	}
 	
 	private void createComponents() {
@@ -44,6 +45,15 @@ public class AnswerMachinePanel extends JPanel{
 	}
 	
 	public void update() {
+		wantedFieldPanel.update();
 		inputPanel.update();
+	}
+	
+	public InputPanel getInputPanel() {
+		return inputPanel;
+	}
+	
+	public WantedFieldPanel getWantedFieldPanel() {
+		return wantedFieldPanel;
 	}
 }

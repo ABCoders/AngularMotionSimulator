@@ -55,7 +55,14 @@ public class InputFieldPanel extends JPanel{
 		return (double)valueSpinner.getValue();
 	}
 	
+	public void setSelectedVariable(int index) {
+		variablePicker.setSelectedIndex(index);
+	}
+	
+	public void setValue(double value) {
+		valueSpinner.setValue(value);
+	}
+	
 	public void update() {
-		
 	}
 }
