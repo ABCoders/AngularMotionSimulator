@@ -15,6 +15,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import inputs.ErrorDialog;
 import inputs.Input;
+import inputs.InputFieldPanel;
+import inputs.WantedFieldPanel;
 
 public class OptionsController implements ActionListener {
 	private Input input;
@@ -23,12 +25,18 @@ public class OptionsController implements ActionListener {
 	private OptionsMenuBar menuBar;
 	private File file;
 	
-	public OptionsController(Input input, OptionsMenuBar menuBar) {
+	private ArrayList<InputFieldPanel> inputFields;
+	private WantedFieldPanel wantedField;
+	
+	public OptionsController(Input input, OptionsMenuBar menuBar, ArrayList<InputFieldPanel> inputFields, WantedFieldPanel wantedField) {
 		this.input = input;
 		this.menuBar = menuBar;
 		fileChooser = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("*.txt", "txt");
 		fileChooser.setFileFilter(filter);
+		
+		this.inputFields = inputFields;
+		this.wantedField = wantedField;
 	}
 
 	@Override
@@ -62,6 +70,22 @@ public class OptionsController implements ActionListener {
 	private void saveVariables() {
 		try {
 			PrintWriter out = new PrintWriter(file);
+			input.setWantedVariable(wantedField.getSelectedVariable());
+			for (InputFieldPanel field: inputFields) {
+				if (field.getSelectedVariable().equals(Input.VARIABLES[0])) {
+					input.setAngularVelocity(field.getValue());
+				} else if (field.getSelectedVariable().equals(Input.VARIABLES[1])) {
+					input.setLinearVelocity(field.getValue());
+				} else if (field.getSelectedVariable().equals(Input.VARIABLES[2])) {
+					input.setRadius(field.getValue());
+				} else if (field.getSelectedVariable().equals(Input.VARIABLES[3])) {
+					input.setArcLength(field.getValue());
+				} else if (field.getSelectedVariable().equals(Input.VARIABLES[4])) {
+					input.setTime(field.getValue());
+				} else if (field.getSelectedVariable().equals(Input.VARIABLES[5])) {
+					input.setAngle(field.getValue());
+				}
+			}
 			out.println(input.getWantedVariable());
 			out.println(input.getRadius());
 			out.println(input.getAngularVelocity());
@@ -78,44 +102,23 @@ public class OptionsController implements ActionListener {
 	private void loadVariables() {
 		try {
 			Scanner in = new Scanner(file);
-			ArrayList<String> variables = new ArrayList<String>();
-			ArrayList<Double> values = new ArrayList<Double>();
-			String wantedVariable = in.next();
-			for(int x = 0; x < 6; x++){
-				Double value = in.nextDouble();
-				if(value != null){
-				switch(x){
-					case 0:
-						variables.add("Radius");
-						values.add(value);
-						break;
-					case 1:
-						variables.add("Angular Velocity");
-						values.add(value);
-						break;
-					case 2:
-						variables.add("Linear Velocity");
-						values.add(value);
-						break;
-					case 3:
-						variables.add("Arc Length");
-						values.add(value);
-						break;
-					case 4:
-						variables.add("Time");
-						values.add(value);
-						break;
-					case 5:
-						variables.add("Angle");
-						values.add(value);
-						break;
-					}
-				}
-			}
-			this.input.getInputPanel().updateFields(variables, values);
+			input.setWantedVariable(in.nextLine());
+			input.setRadius(in.nextDouble());
+			input.setAngularVelocity(in.nextDouble());
+			input.setLinearVelocity(in.nextDouble());
+			input.setArcLength(in.nextDouble());
+			input.setTime(in.nextDouble());
+			input.setAngle(in.nextDouble());
+			if(!input.updateModel())
+				new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), "Incorrect File Layout");
 			in.close();
 		} catch (FileNotFoundException e) {
 			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), "File cannot be recognized");
 		}
 	}
+	
+	
+	
+	
+
 }
