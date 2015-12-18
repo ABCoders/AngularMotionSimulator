@@ -13,7 +13,8 @@ public class Input extends Object{
 	
 	private Animation animation;
 	private Calculations calculations;
-	private InputPanel inputPanel;
+//	private InputPanel inputPanel;
+	private AnswerMachinePanel answerMachinePanel;
 	
 	public static final int MIN_FIELDS = 2;
 	public static final int MAX_FIELDS = 5;
@@ -33,18 +34,22 @@ public class Input extends Object{
 		this.calculations = new Calculations(this);
 		this.animation = new Animation(calculations);
 		
-		radius = -1;
-		time = -1;
-		angularVelocity = -1;
-		linearVelocity = -1;
-		arcLength = -1;
-		angle = -1;
+//		radius = -1;
+//		time = -1;
+//		angularVelocity = -1;
+//		linearVelocity = -1;
+//		arcLength = -1;
+//		angle = -1;
 		
 		this.numberFields = 2;
 	}
 	
-	public void setGUI(InputPanel inputPanel) {
-		this.inputPanel = inputPanel;
+//	public void setGUI(InputPanel inputPanel) {
+//		this.inputPanel = inputPanel;
+//	}
+	
+	public void setGUI(AnswerMachinePanel answerMachinePanel) {
+		this.answerMachinePanel = answerMachinePanel;
 	}
 	
 	public void addField() {
@@ -131,6 +136,24 @@ public class Input extends Object{
 		return this.calculations;
 	}
 	
+	public double getVariableValue(int index) {
+		switch(index) {
+		case 0:
+			return this.angularVelocity;
+		case 1:
+			return this.linearVelocity;
+		case 2:
+			return this.radius;
+		case 3:
+			return this.arcLength;
+		case 4:
+			return this.time;
+		case 5:
+			return this.angle;
+		}
+		return 0;		
+	}
+	
 	public double getRadius() {
 		return this.radius;
 	}
@@ -155,12 +178,34 @@ public class Input extends Object{
 		return this.angle;
 	}
 	
-	public InputPanel getInputPanel(){
-		return inputPanel;
+	public AnswerMachinePanel getView() {
+		return answerMachinePanel;
 	}
 	
 	public void updateView() {
-		inputPanel.update();
+		answerMachinePanel.update();
+	}
+	
+	public boolean updateModel() {
+		int numVar = 0;
+		if(radius!=0)
+			numVar++;
+		if(time!=0)
+			numVar++;
+		if(angularVelocity!=0)
+			numVar++;
+		if(linearVelocity!=0)
+			numVar++;
+		if(arcLength!=0)
+			numVar++;
+		if(angle!=0)
+			numVar++;
+		if(numVar>1) {
+			this.numberFields = numVar;
+			this.updateView();
+			return true;
+		}
+		return false;
 	}
 	
 	public void updateCalculations() {
