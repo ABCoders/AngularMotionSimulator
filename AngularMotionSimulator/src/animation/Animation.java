@@ -33,12 +33,13 @@ public class Animation implements Runnable {
 	/*  Attributes for drawing a point  */
 	private Point drawPoint;		//The location of the point that the user clicks
 	private double drawAngle;		//The original angle of the draw point
+	private double difference;
 	private double pointAngle;		//The angle of the drawn point from the circle
 	private double distance;			//The distance between the drawn point and the center of the circle
 	
 	/*  Attributes affected through buttons and sliders  */
 	private double scale;			//The scale of the animation
-	private double drawTime;		//The time of the drawpoint
+//	private double drawTime;		//The time of the drawpoint
 	private double time;			//The time the animation starts on
 	private boolean state = false;	//The state of the animation
 	
@@ -87,9 +88,9 @@ public class Animation implements Runnable {
 			while(state) {
 				this.xCoord = linearVelocity*time*100;
 				this.angle = angularVelocity*-time;
-				this.pointAngle = drawAngle + angularVelocity* -drawTime;
+				this.pointAngle = drawAngle + -angularVelocity*(time-difference);
 				this.time +=0.001;  
-				this.drawTime +=0.001;
+//				this.drawTime +=0.001;
 				try {
 					Thread.sleep(1);
 				} catch (Exception e) {}
@@ -102,7 +103,7 @@ public class Animation implements Runnable {
 			}
 			this.xCoord = linearVelocity*time*100;
 			this.angle = angularVelocity*-time;
-			this.pointAngle = drawAngle + angularVelocity*-drawTime;
+			this.pointAngle = drawAngle + -angularVelocity*(time-difference);
 			try {
 				Thread.sleep(0);
 			} catch (Exception e) {}
@@ -235,7 +236,8 @@ public class Animation implements Runnable {
 		double dBetweenY = ((component.getHeight() - radius*scale) - drawPoint.y);
 		distance = Math.sqrt(Math.pow(dBetweenX, 2) + Math.pow(dBetweenY, 2));
 		drawAngle = Math.atan((double) dBetweenY / (double) dBetweenX);
-		drawTime = 0;
+//		drawTime = 0;
+		difference = time;
 		
 		System.out.println("Before: " + Math.toDegrees(drawAngle));
 		//Fixes 90 degree bug

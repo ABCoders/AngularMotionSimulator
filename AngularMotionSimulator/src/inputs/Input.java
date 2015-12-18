@@ -34,6 +34,7 @@ public class Input extends Object{
 		this.calculations = new Calculations(this);
 		this.animation = new Animation(calculations);
 		
+		this.wantedVariable = VARIABLES[0];
 //		radius = -1;
 //		time = -1;
 //		angularVelocity = -1;

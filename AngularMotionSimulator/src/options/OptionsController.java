@@ -70,6 +70,7 @@ public class OptionsController implements ActionListener {
 	private void saveVariables() {
 		try {
 			PrintWriter out = new PrintWriter(file);
+			System.out.println(wantedField.getSelectedVariable());
 			input.setWantedVariable(wantedField.getSelectedVariable());
 			for (InputFieldPanel field: inputFields) {
 				if (field.getSelectedVariable().equals(Input.VARIABLES[0])) {
