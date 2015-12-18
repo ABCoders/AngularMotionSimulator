@@ -32,6 +32,6 @@ public class WantedFieldPanel extends JPanel{
 	}
 	
 	public void update() {
-		//Stub
+		variablePicker.setSelectedItem(input.getWantedVariable());
 	}
 }
