@@ -192,7 +192,7 @@ public class Input extends Object{
 		return answerMachinePanel;
 	}
 	
-	public void updateView() {
+	private void updateView() {
 		answerMachinePanel.update();
 	}
 	
