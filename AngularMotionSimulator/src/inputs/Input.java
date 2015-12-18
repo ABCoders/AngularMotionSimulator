@@ -34,12 +34,12 @@ public class Input extends Object{
 		this.calculations = new Calculations(this);
 		this.animation = new Animation(calculations);
 		
-		radius = -1;
-		time = -1;
-		angularVelocity = -1;
-		linearVelocity = -1;
-		arcLength = -1;
-		angle = -1;
+//		radius = -1;
+//		time = -1;
+//		angularVelocity = -1;
+//		linearVelocity = -1;
+//		arcLength = -1;
+//		angle = -1;
 		
 		this.numberFields = 2;
 	}
