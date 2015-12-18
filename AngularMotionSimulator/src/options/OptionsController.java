@@ -71,21 +71,23 @@ public class OptionsController implements ActionListener {
 	private void saveVariables() {
 		try {
 			PrintWriter out = new PrintWriter(file);
-			ArrayList<String> variables = new ArrayList<String>();
-			ArrayList<Double> values = new ArrayList<Double>();
-			String wantedVariable;
-
-			//Gets values and variables from input
-			wantedVariable = wantedField.getSelectedVariable();
+//			ArrayList<String> variables = new ArrayList<String>();
+//			ArrayList<Double> values = new ArrayList<Double>();
+//			String wantedVariable;
+//
+//			//Gets values and variables from input
+//			wantedVariable = wantedField.getSelectedVariable();
+//			for (InputFieldPanel field: inputFields) {
+//				variables.add(field.getSelectedVariable());
+//				values.add(field.getValue());
+//			}
+//			System.out.println(wantedVariable);
+//			System.out.println(Arrays.toString(variables.toArray()));
+//			System.out.println(Arrays.toString(values.toArray()));
+			input.resetVariables();
+			input.setWantedVariable(wantedField.getSelectedVariable());
 			for (InputFieldPanel field: inputFields) {
-				variables.add(field.getSelectedVariable());
-				values.add(field.getValue());
-			}
-			System.out.println(wantedVariable);
-			System.out.println(Arrays.toString(variables.toArray()));
-			System.out.println(Arrays.toString(values.toArray()));
-			
-			for (InputFieldPanel field: inputFields) {
+//				System.out.println(field.getSelectedVariable() + " = " + field.getValue());
 				if (field.getSelectedVariable().equals(Input.VARIABLES[0])) {
 					input.setAngularVelocity(field.getValue());
 				} else if (field.getSelectedVariable().equals(Input.VARIABLES[1])) {
@@ -100,6 +102,14 @@ public class OptionsController implements ActionListener {
 					input.setAngle(field.getValue());
 				}
 			}
+			System.out.println(input.getWantedVariable());
+			System.out.println(input.getRadius());
+			System.out.println(input.getAngularVelocity());
+			System.out.println(input.getLinearVelocity());
+			System.out.println(input.getArcLength());
+			System.out.println(input.getTime());
+			System.out.println(input.getAngle());
+			
 			out.println(input.getWantedVariable());
 			out.println(input.getRadius());
 			out.println(input.getAngularVelocity());

@@ -44,7 +44,7 @@ public class AngularMotionSimulatorPanel extends JPanel {
 	}
 	
 	public void update() {
-//		animationPanel.update();
-//		answerPanel.update();
+		animationPanel.update();
+		answerPanel.update();
 	}
 }

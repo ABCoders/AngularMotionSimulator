@@ -155,6 +155,15 @@ public class Input extends Object{
 		return 0;		
 	}
 	
+	public void resetVariables() {
+		this.angularVelocity = 0;
+		this.linearVelocity = 0;
+		this.radius = 0;
+		this.arcLength = 0;
+		this.time = 0;
+		this.angle = 0;
+	}
+	
 	public double getRadius() {
 		return this.radius;
 	}
