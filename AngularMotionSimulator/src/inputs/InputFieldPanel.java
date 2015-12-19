@@ -64,5 +64,9 @@ public class InputFieldPanel extends JPanel{
 	}
 	
 	public void update() {
+		try {	
+			valueSpinner.commitEdit();
+		} catch (Exception e) {
+		}
 	}
 }

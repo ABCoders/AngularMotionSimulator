@@ -71,23 +71,10 @@ public class OptionsController implements ActionListener {
 	private void saveVariables() {
 		try {
 			PrintWriter out = new PrintWriter(file);
-//			ArrayList<String> variables = new ArrayList<String>();
-//			ArrayList<Double> values = new ArrayList<Double>();
-//			String wantedVariable;
-//
-//			//Gets values and variables from input
-//			wantedVariable = wantedField.getSelectedVariable();
-//			for (InputFieldPanel field: inputFields) {
-//				variables.add(field.getSelectedVariable());
-//				values.add(field.getValue());
-//			}
-//			System.out.println(wantedVariable);
-//			System.out.println(Arrays.toString(variables.toArray()));
-//			System.out.println(Arrays.toString(values.toArray()));
 			input.resetVariables();
 			input.setWantedVariable(wantedField.getSelectedVariable());
 			for (InputFieldPanel field: inputFields) {
-//				System.out.println(field.getSelectedVariable() + " = " + field.getValue());
+				field.update();
 				if (field.getSelectedVariable().equals(Input.VARIABLES[0])) {
 					input.setAngularVelocity(field.getValue());
 				} else if (field.getSelectedVariable().equals(Input.VARIABLES[1])) {
