@@ -22,6 +22,7 @@ public class AnimationPanel extends JPanel {
 		createComponents();
 		createPanel();
 		registerControllers();
+		this.animation.setGUI(this);
 	}
 	
 	public AnimationComponent getAnimationComponent() {
@@ -38,8 +39,8 @@ public class AnimationPanel extends JPanel {
 	
 	private void createPanel() {
 		this.setLayout(new BorderLayout());
-		this.add(actionPanel, BorderLayout.NORTH);
 		this.add(animationComponent, BorderLayout.CENTER);
+		this.add(actionPanel, BorderLayout.NORTH);
 		JPanel labels = new JPanel();
 		labels.add(radius);
 		labels.add(linearVelocity);

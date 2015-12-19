@@ -14,8 +14,6 @@ import javax.swing.*;
 public class AnimationComponent extends JComponent {
 	private Animation animation;	//The model with all the information it needs
 	
-	private static final double CONVERT = 50;
-	
 	/*  Attributes for drawing the circle  */
 	private int diameter;			//The diameter of the circle
 	private double distance;		//The distance between the circle and the drawn point

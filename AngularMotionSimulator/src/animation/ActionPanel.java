@@ -31,7 +31,6 @@ public class ActionPanel extends JPanel {
 		this.createPanel();
 		this.animation.setGUI(this);
 		this.registerControllers();
-		this.update();
 	}
 	
 	/**
@@ -50,7 +49,7 @@ public class ActionPanel extends JPanel {
 		scaleLabel.setLabelFor(scaleSlider);
 		
 		//Time Slider
-		timeSlider = new JSlider(JSlider.HORIZONTAL, 0, 60, 0);
+		timeSlider = new JSlider(JSlider.HORIZONTAL, 0, 100, 0);
 		timeSlider.setMajorTickSpacing(20);
 		timeSlider.setMinorTickSpacing(5);
 		timeSlider.setPaintTicks(true);
@@ -92,7 +91,7 @@ public class ActionPanel extends JPanel {
 	/**
 	 * Updates the panel
 	 */
-	public void update() {                     
+	public void update() {
 		timeSlider.setMaximum((int) (animation.getWidth()/10/animation.getLinearVelocity()));
 		if (animation.getState()) {
 			playButton.setEnabled(false);

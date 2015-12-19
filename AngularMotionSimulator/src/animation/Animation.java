@@ -12,14 +12,13 @@ import calculation.Calculations;
  * @since 7/12/2015
  */
 public class Animation implements Runnable {
-	//Make time appropriately relative to linear velocity
-	//xCoord is dependent on time
-	//Make pixels to meters (25 pixels to 0.25m)
-	//Make animation smoother
+	//Have Time slider change depending on scale
+	//Have animation end after the screen instead of before the end of the screen
 	
 	
 	/*  Class Object created for program  */
-	private ActionPanel actionPanel;	//The view of the animation
+	private AnimationPanel animationPanel;	//The view of all Animation
+	private ActionPanel actionPanel;		//The view of the animation actions
 	private AnimationComponent component;	//The component drawing the animation
 	private Calculations calculations;		//The model that has the needed values for variables
 	
@@ -69,9 +68,13 @@ public class Animation implements Runnable {
 	 * Starts a new Thread that redraws the animation
 	 * @param animationPanel - The view that is updating
 	 */
+	public void setGUI(AnimationPanel animationPanel) {
+		this.animationPanel = animationPanel;
+		new Thread(this).start();
+	}
+	
 	public void setGUI(AnimationComponent component) {
 		this.component = component;
-		new Thread(this).start();
 	}
 	
 	public void setGUI(ActionPanel actionPanel) {
@@ -98,8 +101,8 @@ public class Animation implements Runnable {
 					this.xCoord = 0;
 					this.time = 0;
 				}
-				updateActions();
 				updateComponent();
+				updateActions();
 			}
 			this.xCoord = linearVelocity*time*100;
 			this.angle = angularVelocity*-time;
@@ -165,6 +168,7 @@ public class Animation implements Runnable {
 	}
 	
 	public double getWidth() {
+//		System.out.println("Getting width");
 		return this.component.getWidth();
 	}
 	
@@ -239,7 +243,7 @@ public class Animation implements Runnable {
 //		drawTime = 0;
 		difference = time;
 		
-		System.out.println("Before: " + Math.toDegrees(drawAngle));
+//		System.out.println("Before: " + Math.toDegrees(drawAngle));
 		//Fixes 90 degree bug
 		if(Math.abs(Math.toDegrees(drawAngle))==90) {
 			drawAngle = -drawAngle;
@@ -252,7 +256,7 @@ public class Animation implements Runnable {
 		} else {
 			drawAngle = -drawAngle + 0.5 * Math.PI;
 		}
-		System.out.println("After: " + Math.toDegrees(drawAngle));
+//		System.out.println("After: " + Math.toDegrees(drawAngle));
 		
 	}
 	
@@ -273,17 +277,23 @@ public class Animation implements Runnable {
 		this.time = 0;
 		this.state = false;
 		this.xCoord = 0;
+		this.updateView();
 	}
 	
 	/**
 	 * Updates the View
 	 */
-	public void updateActions() {
+	private void updateActions() {
 		actionPanel.update();
 	}
 	
-	public void updateComponent() {
+	private void updateComponent() {
 		component.repaint();
 	}
+	
+	private void updateView() {
+		animationPanel.update();
+	}
+	
 }
  
