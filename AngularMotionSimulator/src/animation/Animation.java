@@ -95,15 +95,15 @@ public class Animation implements Runnable {
 				this.xCoord = linearVelocity*time*100;
 				this.angle = timeAngle + -angularVelocity*time;
 				this.pointAngle = pointTimeAngle + drawAngle + -angularVelocity*(time-difference);
-				this.time +=0.001;  
-//				this.drawTime +=0.001;
+				this.time +=0.001;
 				try {
 					Thread.sleep(1);
 				} catch (Exception e) {}
 				if (this.xCoord*scale > component.getWidth()) {
 					this.time = 0;
 					this.timeAngle = this.angle;
-					this.pointTimeAngle = this.pointAngle;
+					this.drawAngle = this.pointAngle;
+					this.difference = 0;
 				}
 				updateComponent();
 				updateActions();
@@ -117,7 +117,8 @@ public class Animation implements Runnable {
 			if (this.xCoord*scale > component.getWidth()) {
 				this.time = 0;
 				this.timeAngle = this.angle;
-				this.pointTimeAngle = this.pointAngle;
+				this.drawAngle = this.pointAngle;
+				this.difference = 0;
 			}
 			updateComponent();
 		}
