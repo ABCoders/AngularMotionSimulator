@@ -32,7 +32,7 @@ public class ProcessFrame extends JFrame{
 	
 	private void createComponents(){
 		this.mainPanel = new JPanel();
-		this.givensPanel = new GivensPanel(this.calculations);
+		this.givensPanel = new GivensPanel(this.calculations.getInput());
 	    this.calcPanel = new CalculationsPanel(this.calculations);
 	    this.save = new JButton("Save");
 	}

@@ -47,12 +47,11 @@ public class Calculations extends Object{
 		if(this.radius == 0)
 			this.radius = this.findRadius();
 	}
-
+	
 	public boolean calculate(){
 		double solution = 0;
-		System.out.println(this.wantedVariable);
 		switch(this.wantedVariable){
-			case("Angular Motion"):
+			case("Angular Velocity"):
 				solution = this.angularVelocity;
 				break;
 			case("Linear Velocity"):
@@ -94,6 +93,18 @@ public class Calculations extends Object{
 
 	private double findAngularVelocity(){
 		double angularVelocity = 0;
+		if(this.angle != 0 && this.time != 0){
+			angularVelocity = this.angle/this.time;
+			this.equation = "Angle / Time";
+			this.valueEquation = this.angle + " / " + this.time;
+			this.result = "" + angularVelocity;
+		}
+		else if(this.angle == 0 && this.time != 0){
+			
+		}
+		else if(this.angle != 0 && this.time == 0){
+			
+		}
 		return angularVelocity;
 	}
 
@@ -209,14 +220,23 @@ public class Calculations extends Object{
 	public void update() {
 		this.setVariables();
 		if(this.calculate()){
-			this.input.getAnimation().updateModel();
+			try{
+				this.processFrame.dispose();
+			}
+			catch(NullPointerException ex){
+			}
 			this.processFrame = new ProcessFrame(this, true);
+			this.input.getAnimation().updateModel();
 		}
 		else{
-			processFrame = new ProcessFrame(this, false);
+			this.processFrame = new ProcessFrame(this, false);
 			this.processFrame.setVisible(false);
 			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(processFrame), "Cannot calculate using current givens");
 		}
+	}
+
+	public Input getInput(){
+		return this.input;
 	}
 
 }

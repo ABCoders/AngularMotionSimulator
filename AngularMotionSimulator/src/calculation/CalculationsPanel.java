@@ -1,5 +1,6 @@
 package calculation;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.*;
