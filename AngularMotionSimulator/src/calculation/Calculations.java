@@ -39,9 +39,41 @@ public class Calculations extends Object{
 		this.angle = input.getAngle();
 		this.time = input.getTime();
 		this.arcLength = input.getArcLength();
+
+		if(this.angularVelocity == 0)
+			this.angularVelocity = this.findAngularVelocity();
+		if(this.linearVelocity == 0)
+			this.linearVelocity = this.findLinearVelocity();
+		if(this.radius == 0)
+			this.radius = this.findRadius();
 	}
 
 	public boolean calculate(){
+		double solution = 0;
+		System.out.println(this.wantedVariable);
+		switch(this.wantedVariable){
+			case("Angular Motion"):
+				solution = this.angularVelocity;
+				break;
+			case("Linear Velocity"):
+				solution = this.linearVelocity;
+				break;
+			case("Radius"):
+				solution = this.radius;
+				break;
+			case("Time"):
+				solution = this.findTime();
+				break;
+			case("Arc Length"):
+				solution = this.findArcLength();
+				break;
+			case("Angle"):
+				solution = this.findAngle();
+				break;
+		}
+		if(solution == 0){
+			return false;
+		}
 		return true;
 	}
 
@@ -175,13 +207,15 @@ public class Calculations extends Object{
 	}
 
 	public void update() {
+		this.setVariables();
 		if(this.calculate()){
-			this.setVariables();
 			this.input.getAnimation().updateModel();
-			this.processFrame = new ProcessFrame(this);
+			this.processFrame = new ProcessFrame(this, true);
 		}
 		else{
-			ErrorDialog dialog = new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(processFrame), "Cannot Calculate Cthulhu");
+			processFrame = new ProcessFrame(this, false);
+			this.processFrame.setVisible(false);
+			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(processFrame), "Cannot calculate using current givens");
 		}
 	}
 

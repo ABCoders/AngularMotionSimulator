@@ -9,17 +9,17 @@ public class ProcessFrame extends JFrame{
 	private GivensPanel givensPanel;
 	private CalculationsPanel calcPanel;
 	private JButton save;
-	
-	public ProcessFrame(Calculations calculations){
+
+	public ProcessFrame(Calculations calculations, boolean visible) {
 		super();
 		this.calculations = calculations;
 	    this.createComponents();
-	    this.createFrame();
+	    this.createFrame(visible);
 	    this.registerControllers();
 	}
-	
-	private void createFrame(){
-		this.setVisible(true);
+
+	private void createFrame(boolean visible){
+		this.setVisible(visible);
 	    this.setSize(600,300);
 	    
 	    this.mainPanel.setLayout(new GridLayout(3, 1));
