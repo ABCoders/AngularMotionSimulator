@@ -39,6 +39,7 @@ public class Animation implements Runnable {
 	/*  Attributes affected through buttons and sliders  */
 	private double scale;			//The scale of the animation
 	private double timeAngle;		//The angle of the black line after animation ends
+	private double pointTimeAngle;	//The angle of the red line after animation ends
 	private double time;			//The time the animation starts on
 	private boolean state = false;	//The state of the animation
 	
@@ -60,6 +61,7 @@ public class Animation implements Runnable {
 		this.distance = 0;
 		this.time = 0;
 		this.timeAngle = 0;
+		this.pointTimeAngle = 0;
 		this.scale = 1;
 		this.color = Color.YELLOW;
 	}
@@ -92,7 +94,7 @@ public class Animation implements Runnable {
 			while(state) {
 				this.xCoord = linearVelocity*time*100;
 				this.angle = timeAngle + -angularVelocity*time;
-				this.pointAngle = timeAngle + drawAngle + -angularVelocity*(time-difference);
+				this.pointAngle = pointTimeAngle + drawAngle + -angularVelocity*(time-difference);
 				this.time +=0.001;  
 //				this.drawTime +=0.001;
 				try {
@@ -101,19 +103,21 @@ public class Animation implements Runnable {
 				if (this.xCoord*scale > component.getWidth()) {
 					this.time = 0;
 					this.timeAngle = this.angle;
+					this.pointTimeAngle = this.pointAngle;
 				}
 				updateComponent();
 				updateActions();
 			}
 			this.xCoord = linearVelocity*time*100;
 			this.angle = timeAngle + -angularVelocity*time;
-			this.pointAngle = timeAngle + drawAngle + -angularVelocity*(time-difference);
+			this.pointAngle = pointTimeAngle + drawAngle + -angularVelocity*(time-difference);
 			try {
 				Thread.sleep(0);
 			} catch (Exception e) {}
 			if (this.xCoord*scale > component.getWidth()) {
 				this.time = 0;
 				this.timeAngle = this.angle;
+				this.pointTimeAngle = this.pointAngle;
 			}
 			updateComponent();
 		}
@@ -241,8 +245,8 @@ public class Animation implements Runnable {
 		double dBetweenY = ((component.getHeight() - radius*scale) - drawPoint.y);
 		distance = Math.sqrt(Math.pow(dBetweenX, 2) + Math.pow(dBetweenY, 2));
 		drawAngle = Math.atan((double) dBetweenY / (double) dBetweenX);
-//		drawTime = 0;
-		difference = time;
+		this.pointTimeAngle = 0;
+		this.difference = time;
 		
 //		System.out.println("Before: " + Math.toDegrees(drawAngle));
 		//Fixes 90 degree bug
