@@ -92,7 +92,7 @@ public class Calculations extends Object{
 	}
 
 	private double findAngularVelocity(){
-		double angularVelocity = 0;
+		double angularVelocity = this.angularVelocity;
 		if(this.angle != 0 && this.time != 0){
 			angularVelocity = this.angle/this.time;
 			this.equation = "Angle / Time";
@@ -109,27 +109,87 @@ public class Calculations extends Object{
 	}
 
 	private double findLinearVelocity(){
-		double linearVelocity = 0;
+		double linearVelocity = this.linearVelocity;
+		if(this.angularVelocity != 0 && this.radius != 0){
+			linearVelocity = this.angularVelocity * this.radius;
+			this.equation = "Angular Velocity x Radius";
+			this.valueEquation = this.angularVelocity + " x " + this.radius;
+			this.result = "" + linearVelocity;
+		}
+		else if(this.angularVelocity == 0 && this.radius != 0){
+			
+		}
+		else if(this.angularVelocity != 0 && this.radius == 0){
+			
+		}
 		return linearVelocity;
 	}
 
 	private double findRadius(){
-		double radius = 0;
+		double radius = this.radius;
+		if(this.angularVelocity != 0 && this.linearVelocity != 0){
+			radius = this.angularVelocity/this.linearVelocity;
+			this.equation = "Anglular Velocity / Linear Velocity";
+			this.valueEquation = this.angularVelocity + " / " + this.linearVelocity;
+			this.result = "" + radius;
+		}
+		else if(this.angularVelocity == 0 && this.linearVelocity != 0){
+			
+		}
+		else if(this.angularVelocity != 0 && this.linearVelocity == 0){
+			
+		}
 		return radius;
 	}
 
 	private double findArcLength(){
-		double arcLength = 0;
+		double arcLength = this.arcLength;
+		if(this.angle != 0 && this.radius != 0){
+			arcLength = this.angle * this.radius;
+			this.equation = "Angle x Radius";
+			this.valueEquation = this.angle + " x " + this.radius;
+			this.result = "" + arcLength;
+		}
+		else if(this.angle == 0 && this.radius != 0){
+			
+		}
+		else if(this.angle != 0 && this.radius == 0){
+			
+		}
 		return arcLength;
 	}
 
 	private double findTime(){
-		double time = 0;
+		double time = this.time;
+		if(this.angularVelocity != 0 && this.angle != 0){
+			time = this.angularVelocity/this.angle;
+			this.equation = "Anglular Velocity / Angle";
+			this.valueEquation = this.angularVelocity + " / " + this.angle;
+			this.result = "" + time;
+		}
+		else if(this.angularVelocity == 0 && this.angle != 0){
+			
+		}
+		else if(this.angularVelocity != 0 && this.angle == 0){
+			
+		}
 		return time;
 	}
 
 	private double findAngle(){
-		double angle = 0;
+		double angle = this.angle;
+		if(this.angularVelocity != 0 && this.time != 0){
+			angle = this.angularVelocity * this.time;
+			this.equation = "Angular Velocity x Time";
+			this.valueEquation = this.angularVelocity + " x " + this.time;
+			this.result = "" + angle;
+		}
+		else if(this.angularVelocity == 0 && this.time != 0){
+			
+		}
+		else if(this.angularVelocity != 0 && this.time == 0){
+			
+		}
 		return angle;
 	}
 
@@ -139,7 +199,13 @@ public class Calculations extends Object{
 		if(working == JFileChooser.APPROVE_OPTION){
 			PrintWriter output = null;
 			try{
-				output = new PrintWriter(fileChooser.getSelectedFile());
+				String path = fileChooser.getSelectedFile().getAbsolutePath();
+				if(path.substring(path.length() - 4).equals(".txt")){
+					path = fileChooser.getSelectedFile().getAbsolutePath();
+				}
+				else
+					path = fileChooser.getSelectedFile().getAbsolutePath() + ".txt";
+				output = new PrintWriter(new File(path));
 				output.println("Calculations for " + this.wantedVariable);
 				output.println(this.wantedVariable + " = " + this.equation);
 				output.println(this.wantedVariable + " = " + this.valueEquation);
