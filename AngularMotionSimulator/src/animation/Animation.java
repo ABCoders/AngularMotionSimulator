@@ -12,9 +12,6 @@ import calculation.Calculations;
  * @since 7/12/2015
  */
 public class Animation implements Runnable {
-	//Have Time slider change depending on scale
-	//Have animation end after the screen instead of before the end of the screen
-	
 	
 	/*  Class Object created for program  */
 	private AnimationPanel animationPanel;	//The view of all Animation
