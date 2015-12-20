@@ -139,7 +139,13 @@ public class Calculations extends Object{
 		if(working == JFileChooser.APPROVE_OPTION){
 			PrintWriter output = null;
 			try{
-				output = new PrintWriter(new File(fileChooser.getSelectedFile().getAbsolutePath() + ".txt"));
+				String path = fileChooser.getSelectedFile().getAbsolutePath();
+				if(path.substring(path.length() - 4).equals(".txt")){
+					path = fileChooser.getSelectedFile().getAbsolutePath();
+				}
+				else
+					path = fileChooser.getSelectedFile().getAbsolutePath() + ".txt";
+				output = new PrintWriter(new File(path));
 				output.println("Calculations for " + this.wantedVariable);
 				output.println(this.wantedVariable + " = " + this.equation);
 				output.println(this.wantedVariable + " = " + this.valueEquation);

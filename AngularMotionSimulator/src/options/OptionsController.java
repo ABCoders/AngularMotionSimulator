@@ -55,14 +55,26 @@ public class OptionsController implements ActionListener {
 		else if (e.getActionCommand().equalsIgnoreCase("save as")) {
 			int fileSelected = fileChooser.showSaveDialog(null);
 			if (fileSelected == JFileChooser.APPROVE_OPTION) {
-				file = new File(fileChooser.getSelectedFile().getAbsolutePath() + ".txt");
+				String path = fileChooser.getSelectedFile().getAbsolutePath();
+				if(path.substring(path.length() - 4).equals(".txt")){
+					path = fileChooser.getSelectedFile().getAbsolutePath();
+				}
+				else
+					path = fileChooser.getSelectedFile().getAbsolutePath() + ".txt";
+				file = new File(path);
 				saveVariables();
 			}
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("load")) {
 			int fileSelected = fileChooser.showOpenDialog(null);
 			if(fileSelected == JFileChooser.APPROVE_OPTION) {
-				file = fileChooser.getSelectedFile();
+				String path = fileChooser.getSelectedFile().getAbsolutePath();
+				if(path.substring(path.length() - 4).equals(".txt")){
+					path = fileChooser.getSelectedFile().getAbsolutePath();
+				}
+				else
+					path = fileChooser.getSelectedFile().getAbsolutePath() + ".txt";
+				file = new File(path);
 				loadVariables();
 			}
 		}
