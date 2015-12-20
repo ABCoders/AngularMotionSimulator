@@ -38,7 +38,7 @@ public class Animation implements Runnable {
 	
 	/*  Attributes affected through buttons and sliders  */
 	private double scale;			//The scale of the animation
-//	private double drawTime;		//The time of the drawpoint
+	private double timeAngle;		//The angle of the black line after animation ends
 	private double time;			//The time the animation starts on
 	private boolean state = false;	//The state of the animation
 	
@@ -59,6 +59,7 @@ public class Animation implements Runnable {
 		this.pointAngle = 0;
 		this.distance = 0;
 		this.time = 0;
+		this.timeAngle = 0;
 		this.scale = 1;
 		this.color = Color.YELLOW;
 	}
@@ -90,29 +91,29 @@ public class Animation implements Runnable {
 		while(true) {
 			while(state) {
 				this.xCoord = linearVelocity*time*100;
-				this.angle = angularVelocity*-time;
-				this.pointAngle = drawAngle + -angularVelocity*(time-difference);
+				this.angle = timeAngle + -angularVelocity*time;
+				this.pointAngle = timeAngle + drawAngle + -angularVelocity*(time-difference);
 				this.time +=0.001;  
 //				this.drawTime +=0.001;
 				try {
 					Thread.sleep(1);
 				} catch (Exception e) {}
 				if (this.xCoord*scale > component.getWidth()) {
-					this.xCoord = 0;
 					this.time = 0;
+					this.timeAngle = this.angle;
 				}
 				updateComponent();
 				updateActions();
 			}
 			this.xCoord = linearVelocity*time*100;
-			this.angle = angularVelocity*-time;
-			this.pointAngle = drawAngle + -angularVelocity*(time-difference);
+			this.angle = timeAngle + -angularVelocity*time;
+			this.pointAngle = timeAngle + drawAngle + -angularVelocity*(time-difference);
 			try {
 				Thread.sleep(0);
 			} catch (Exception e) {}
 			if (this.xCoord*scale > component.getWidth()) {
-				this.xCoord = 0;
 				this.time = 0;
+				this.timeAngle = this.angle;
 			}
 			updateComponent();
 		}
