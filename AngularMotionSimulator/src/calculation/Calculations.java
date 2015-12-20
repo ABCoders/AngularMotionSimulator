@@ -105,6 +105,19 @@ public class Calculations extends Object{
 		else if(this.angle != 0 && this.time == 0){
 			
 		}
+		
+		else if(this.linearVelocity != 0 && this.radius != 0){
+			angularVelocity = this.linearVelocity/this.radius;
+			this.equation = "Linear Velocity / Radius";
+			this.valueEquation = this.linearVelocity + " / " + this.radius;
+			this.result = "" + angularVelocity;
+		}
+		else if(this.linearVelocity == 0 && this.radius != 0){
+			
+		}
+		else if(this.linearVelocity != 0 && this.radius == 0){
+			
+		}
 		return angularVelocity;
 	}
 
@@ -120,6 +133,19 @@ public class Calculations extends Object{
 			
 		}
 		else if(this.angularVelocity != 0 && this.radius == 0){
+			
+		}
+		
+		else if(this.arcLength != 0 && this.time != 0){
+			linearVelocity = this.arcLength/this.time;
+			this.equation = "Arc Length / Time";
+			this.valueEquation = this.arcLength + " / " + this.time;
+			this.result = "" + linearVelocity;
+		}
+		else if(this.arcLength == 0 && this.time != 0){
+			
+		}
+		else if(this.arcLength != 0 && this.time == 0){
 			
 		}
 		return linearVelocity;
@@ -139,6 +165,19 @@ public class Calculations extends Object{
 		else if(this.angularVelocity != 0 && this.linearVelocity == 0){
 			
 		}
+		
+		else if(this.arcLength != 0 && this.angle != 0){
+			radius = this.arcLength/this.angle;
+			this.equation = "Arc Length / Angle";
+			this.valueEquation = this.arcLength + " / " + this.angle;
+			this.result = "" + radius;
+		}
+		else if(this.arcLength == 0 && this.angle != 0){
+			
+		}
+		else if(this.arcLength != 0 && this.angle == 0){
+			
+		}
 		return radius;
 	}
 
@@ -154,6 +193,19 @@ public class Calculations extends Object{
 			
 		}
 		else if(this.angle != 0 && this.radius == 0){
+			
+		}
+		
+		else if(this.linearVelocity != 0 && this.time != 0){
+			arcLength = this.linearVelocity * this.time;
+			this.equation = "Linear Velocity x Time";
+			this.valueEquation = this.linearVelocity + " x " + this.time;
+			this.result = "" + arcLength;
+		}
+		else if(this.linearVelocity == 0 && this.time != 0){
+			
+		}
+		else if(this.linearVelocity != 0 && this.time == 0){
 			
 		}
 		return arcLength;
@@ -173,6 +225,19 @@ public class Calculations extends Object{
 		else if(this.angularVelocity != 0 && this.angle == 0){
 			
 		}
+		
+		else if(this.arcLength != 0 && this.linearVelocity != 0){
+			time = this.arcLength/this.linearVelocity;
+			this.equation = "Arc Length / Linear Velocity";
+			this.valueEquation = this.arcLength + " / " + this.linearVelocity;
+			this.result = "" + time;
+		}
+		else if(this.arcLength == 0 && this.linearVelocity != 0){
+			
+		}
+		else if(this.arcLength != 0 && this.linearVelocity == 0){
+			
+		}
 		return time;
 	}
 
@@ -188,6 +253,19 @@ public class Calculations extends Object{
 			
 		}
 		else if(this.angularVelocity != 0 && this.time == 0){
+			
+		}
+		
+		else if(this.arcLength != 0 && this.radius != 0){
+			angle = this.arcLength/this.radius;
+			this.equation = "Arc Length / Radius";
+			this.valueEquation = this.arcLength + " / " + this.radius;
+			this.result = "" + angle;
+		}
+		else if(this.arcLength == 0 && this.radius != 0){
+			
+		}
+		else if(this.arcLength != 0 && this.radius == 0){
 			
 		}
 		return angle;
