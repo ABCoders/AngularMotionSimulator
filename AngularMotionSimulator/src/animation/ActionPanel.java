@@ -98,7 +98,15 @@ public class ActionPanel extends JPanel {
 			timeSlider.setMaximum(max);
 			
 			timeSlider.setLabelTable(null);
-			if(timeSlider.getMaximum()<=50) {
+			if(timeSlider.getMaximum()<=10) {
+				timeSlider.setMajorTickSpacing(2);
+				timeSlider.setMinorTickSpacing(1);
+			} 
+			else if(timeSlider.getMaximum()<=25) {
+				timeSlider.setMajorTickSpacing(5);
+				timeSlider.setMinorTickSpacing(1);
+			} 
+			else if(timeSlider.getMaximum()<=50) {
 				timeSlider.setMajorTickSpacing(10);
 				timeSlider.setMinorTickSpacing(2);
 			} 
