@@ -19,6 +19,7 @@ public class ActionPanel extends JPanel {
 	private JSlider timeSlider;		//The slider that changes the time of the animation
 	private JSlider scaleSlider;	//The slider that changes the scale of the animation
 	
+	private int max;
 	/**
 	 * The main constructor
 	 * Creates the look and feel of the animation view
@@ -92,7 +93,33 @@ public class ActionPanel extends JPanel {
 	 * Updates the panel
 	 */
 	public void update() {
-		timeSlider.setMaximum((int) (animation.getWidth()/10/animation.getLinearVelocity()));
+		if(max!=(int) (animation.getWidth()/10/animation.getLinearVelocity()/animation.getScale())) {
+			max = (int) (animation.getWidth()/10/animation.getLinearVelocity()/animation.getScale());
+			timeSlider.setMaximum(max);
+			
+			timeSlider.setLabelTable(null);
+			if(timeSlider.getMaximum()<=50) {
+				timeSlider.setMajorTickSpacing(10);
+				timeSlider.setMinorTickSpacing(2);
+			} 
+			else if(timeSlider.getMaximum()<=100) {
+				timeSlider.setMajorTickSpacing(20);
+				timeSlider.setMinorTickSpacing(5);
+			} 
+			else if(timeSlider.getMaximum()<=200) {
+				timeSlider.setMajorTickSpacing(50);
+				timeSlider.setMinorTickSpacing(20);
+			} 
+			else if(timeSlider.getMaximum()<=300) {
+				timeSlider.setMajorTickSpacing(100);
+				timeSlider.setMinorTickSpacing(25);
+			} 
+			else {
+				timeSlider.setMajorTickSpacing(200);
+				timeSlider.setMinorTickSpacing(50);
+			}
+		}
+		
 		if (animation.getState()) {
 			playButton.setEnabled(false);
 			pauseButton.setEnabled(true);

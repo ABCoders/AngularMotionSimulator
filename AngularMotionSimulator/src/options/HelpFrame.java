@@ -37,8 +37,8 @@ public class HelpFrame extends JFrame{
 		this.setContentPane(panel);
 		this.setVisible(true);
 		this.setAlwaysOnTop(true);
-		this.setLocation(400, 50);
 		this.pack();
+		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
 }

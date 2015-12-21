@@ -53,9 +53,9 @@ public class AnimationPanel extends JPanel {
 	}
 	
 	public void update() {
-		angularVelocity = new JLabel("Angular Velocity = " + animation.getAngularVelocity() + "rad/s");
-		linearVelocity = new JLabel("Linear Velocity = " + animation.getLinearVelocity() + "m/s");
-		radius = new JLabel("Radius = " + animation.getRadius()/100 + "m");
+		angularVelocity.setText("Angular Velocity = " + animation.getAngularVelocity() + "rad/s");
+		linearVelocity.setText("Linear Velocity = " + animation.getLinearVelocity() + "m/s");
+		radius.setText("Radius = " + animation.getRadius()/100 + "m");
 		animationComponent.repaint();
 		actionPanel.update();
 	}
