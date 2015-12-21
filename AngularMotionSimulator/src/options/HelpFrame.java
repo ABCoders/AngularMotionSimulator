@@ -39,5 +39,6 @@ public class HelpFrame extends JFrame{
 		this.setAlwaysOnTop(true);
 		this.setLocation(400, 50);
 		this.pack();
+		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
 }

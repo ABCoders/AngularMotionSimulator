@@ -11,12 +11,14 @@ import java.awt.*;
  *
  */
 public class ErrorDialog extends JDialog {
+	private JFrame frame;
 	private JPanel panel;
 	private String message;
 	private JLabel label;
 
 	public ErrorDialog(JFrame jFrame, String errorMessage) {
 		super(jFrame, "Error", true);
+		this.frame = jFrame;
 		this.message = errorMessage;
 		this.createComponents();
 		this.createDialog();
@@ -32,8 +34,8 @@ public class ErrorDialog extends JDialog {
 		panel.add(label, BorderLayout.CENTER);
 		this.setContentPane(panel);
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		this.setLocation(450, 200);
 		this.pack();
+		this.setLocationRelativeTo(frame);
 		this.setResizable(false);
 		this.setVisible(true);
 	}
