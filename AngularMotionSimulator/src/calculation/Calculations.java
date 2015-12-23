@@ -100,10 +100,24 @@ public class Calculations extends Object{
 			this.result = "" + angularVelocity;
 		}
 		else if(this.angle == 0 && this.time != 0){
-			
+			double angle = this.findAngle();
+			if(angle != 0){
+				this.angle = angle;
+				angularVelocity = this.angle/this.time;
+				this.equation = "Angle / Time";
+				this.valueEquation = this.angle + " / " + this.time;
+				this.result = "" + angularVelocity;
+			}
 		}
 		else if(this.angle != 0 && this.time == 0){
-			
+			double time = this.findTime();
+			if(time != 0){
+				this.time = time;
+				angularVelocity = this.angle/this.time;
+				this.equation = "Angle / Time";
+				this.valueEquation = this.angle + " / " + this.time;
+				this.result = "" + angularVelocity;
+			}
 		}
 		
 		else if(this.linearVelocity != 0 && this.radius != 0){
@@ -113,10 +127,24 @@ public class Calculations extends Object{
 			this.result = "" + angularVelocity;
 		}
 		else if(this.linearVelocity == 0 && this.radius != 0){
-			
+			double linearVelocity = this.findLinearVelocity();
+			if(linearVelocity != 0){
+				this.linearVelocity = linearVelocity;
+				angularVelocity = this.linearVelocity/this.radius;
+				this.equation = "Linear Velocity / Radius";
+				this.valueEquation = this.linearVelocity + " / " + this.radius;
+				this.result = "" + angularVelocity;
+			}
 		}
 		else if(this.linearVelocity != 0 && this.radius == 0){
-			
+			double radius = this.findRadius();
+			if(radius != 0){
+				this.radius = radius;
+				angularVelocity = this.linearVelocity/this.radius;
+				this.equation = "Linear Velocity / Radius";
+				this.valueEquation = this.linearVelocity + " / " + this.radius;
+				this.result = "" + angularVelocity;
+			}
 		}
 		return angularVelocity;
 	}
@@ -220,7 +248,8 @@ public class Calculations extends Object{
 			this.result = "" + time;
 		}
 		else if(this.angularVelocity == 0 && this.angle != 0){
-			
+			//NOOOO I'M STUCK NOW
+			double angularVelocity = this.findAngularVelocity();
 		}
 		else if(this.angularVelocity != 0 && this.angle == 0){
 			
