@@ -153,16 +153,16 @@ public class Calculations extends Object{
 
 	private double findRadius(){
 		double radius = this.radius;
-		if(this.angularVelocity != 0 && this.linearVelocity != 0){
-			radius = this.angularVelocity/this.linearVelocity;
-			this.equation = "Anglular Velocity / Linear Velocity";
-			this.valueEquation = this.angularVelocity + " / " + this.linearVelocity;
+		if(this.linearVelocity != 0 && this.angularVelocity != 0){
+			radius = this.linearVelocity/this.angularVelocity;
+			this.equation = "Linear Velocity / Angular Velocity";
+			this.valueEquation = this.linearVelocity + " / " + this.angularVelocity;
 			this.result = "" + radius;
 		}
-		else if(this.angularVelocity == 0 && this.linearVelocity != 0){
+		else if(this.linearVelocity == 0 && this.angularVelocity != 0){
 			
 		}
-		else if(this.angularVelocity != 0 && this.linearVelocity == 0){
+		else if(this.linearVelocity != 0 && this.angularVelocity == 0){
 			
 		}
 		
