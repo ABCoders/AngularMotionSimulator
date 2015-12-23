@@ -12,6 +12,7 @@ import calculation.Calculations;
  * @since 7/12/2015
  */
 public class Animation implements Runnable {
+	//Have time slider gui update when scale slider changes
 	
 	/*  Class Object created for program  */
 	private AnimationPanel animationPanel;	//The view of all Animation
