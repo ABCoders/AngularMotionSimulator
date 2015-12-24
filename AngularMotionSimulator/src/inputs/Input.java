@@ -178,8 +178,8 @@ public class Input extends Object{
 	}
 	
 	public boolean updateModel() {
-		System.out.println(variables.keySet());
-		System.out.println(variables.values());
+//		System.out.println(variables.keySet());
+//		System.out.println(variables.values());
 		int numVar = 0;
 		for(int i=0; i<VARIABLES.length; i++) {
 			if(variables.get(VARIABLES[i])!=0) {
@@ -195,8 +195,8 @@ public class Input extends Object{
 	}
 	
 	public void updateCalculations() {
-		System.out.println(variables.keySet());
-		System.out.println(variables.values());
+//		System.out.println(variables.keySet());
+//		System.out.println(variables.values());
 		calculations.update();
 	}
 }

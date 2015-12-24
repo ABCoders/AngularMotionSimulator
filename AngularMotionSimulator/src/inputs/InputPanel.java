@@ -50,12 +50,14 @@ public class InputPanel extends JPanel{
 			}
 		}
 		
+		int variable = 0;
 		for(int i=0; i<field.size(); i++) {
-			double value = input.getVariableValue(i);
-			if(value!=0) {
-				field.get(i).setSelectedVariable(i);
-				field.get(i).setValue(value);
-//				field.get(i).update();
+			for(int k = variable; k<Input.VARIABLES.length; k++) {
+				double value = input.getVariableValue(variable);
+				if(value!=0) {
+					field.get(i).setSelectedVariable(variable);
+					field.get(i).setValue(value);
+				}
 			}
 		}
 		
