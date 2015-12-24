@@ -45,11 +45,11 @@ public class Calculations extends Object{
 		this.arcLength = input.getArcLength();
 
 		if(this.angularVelocity == 0)
-			this.angularVelocity = this.findAngularVelocity(null);
+			this.angularVelocity = this.findAngularVelocity("");
 		if(this.linearVelocity == 0)
-			this.linearVelocity = this.findLinearVelocity(null);
+			this.linearVelocity = this.findLinearVelocity("");
 		if(this.radius == 0)
-			this.radius = this.findRadius(null);
+			this.radius = this.findRadius("");
 	}
 	
 	private void makeEquations(String variable1, String operation, String variable2, double result){
@@ -115,13 +115,13 @@ public class Calculations extends Object{
 				solution = this.radius;
 				break;
 			case("Time"):
-				solution = this.findTime(null);
+				solution = this.findTime("");
 				break;
 			case("Arc Length"):
-				solution = this.findArcLength(null);
+				solution = this.findArcLength("");
 				break;
 			case("Angle"):
-				solution = this.findAngle(null);
+				solution = this.findAngle("");
 				break;
 		}
 		if(solution == 0){
