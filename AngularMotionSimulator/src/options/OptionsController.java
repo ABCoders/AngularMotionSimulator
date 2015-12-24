@@ -112,7 +112,7 @@ public class OptionsController implements ActionListener {
 			Scanner in = new Scanner(file);
 			input.setWantedVariable(in.nextLine());
 			for(int i=0; i<Input.VARIABLES.length; i++) {
-				System.err.println(Input.VARIABLES[i]);
+//				System.err.println(Input.VARIABLES[i]);
 				input.setVariableValue(i, in.nextDouble());
 			}
 			if(!input.updateModel())
