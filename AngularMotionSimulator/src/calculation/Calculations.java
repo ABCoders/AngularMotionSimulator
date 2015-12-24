@@ -1,10 +1,8 @@
 package calculation;
 
 import java.io.*;
-import java.util.ArrayList;
-
+import java.util.*;
 import javax.swing.*;
-
 import inputs.ErrorDialog;
 import inputs.Input;
 
@@ -12,6 +10,7 @@ public class Calculations extends Object{
 	private ProcessFrame processFrame;
 	private Input input;
 
+	private TreeMap<String, Double> variables;
 	private double angularVelocity;
 	private double linearVelocity;
 	private double radius;
@@ -33,28 +32,21 @@ public class Calculations extends Object{
 	}
 
 	private void setVariables(){
+		this.variables = new TreeMap<String, Double>();
+		variables.put("Angular Velocity", input.getVariableValue(0));
+		variables.put("Linear Velocity", input.getVariableValue(1));
+		variables.put("Radius", input.getVariableValue(2));
+		variables.put("Arc Length", input.getVariableValue(3));
+		variables.put("Time", input.getVariableValue(4));
+		variables.put("Angle", input.getVariableValue(5));
 		this.wantedVariable = input.getWantedVariable();
-		this.angularVelocity = input.getAngularVelocity();
-		this.linearVelocity = input.getLinearVelocity();
-		this.radius = input.getRadius();
-		this.angle = input.getAngle();
-		this.time = input.getTime();
-		this.arcLength = input.getArcLength();
-		
-		System.out.println("CALC");
-		System.out.println(wantedVariable);
-		System.out.println(angularVelocity);
-		System.out.println(linearVelocity);
-		System.out.println(radius);
-		System.out.println(angle);
-		System.out.println(arcLength);
 
-		if(this.angularVelocity == 0)
-			this.angularVelocity = this.findAngularVelocity();
-		if(this.linearVelocity == 0)
-			this.linearVelocity = this.findLinearVelocity();
-		if(this.radius == 0)
-			this.radius = this.findRadius();
+		if(this.variables.get("Angular Velocity") == 0)
+			this.variables.put("Angular Velocity", this.findAngularVelocity());
+		if(this.variables.get("Linear Velocity") == 0)
+			this.variables.put("Linear Velocity", this.findLinearVelocity());
+		if(this.variables.get("Radius") == 0)
+			this.variables.put("Radius", this.findRadius());
 	}
 	
 	private void decideEquation(String variable1, String operation1, String variable2, String operation2, String variable3, double result){
@@ -68,22 +60,22 @@ public class Calculations extends Object{
 		
 		switch(variable1){
 			case("Angular Velocity"):
-				valueEquation = valueEquation + this.angularVelocity;
+				valueEquation = valueEquation + this.variables.get("Angular Velocity");
 				break;
 			case("Linear Velocity"):
-				valueEquation = valueEquation + this.linearVelocity;
+				valueEquation = valueEquation + this.variables.get("Linear Velocity");
 				break;
 			case("Radius"):
-				valueEquation = valueEquation + this.radius;
+				valueEquation = valueEquation + this.variables.get("Radius");
 				break;
 			case("Arc Length"):
-				valueEquation = valueEquation + this.arcLength;
+				valueEquation = valueEquation + this.variables.get("Arc Length");
 				break;
 			case("Time"):
-				valueEquation = valueEquation + this.time;
+				valueEquation = valueEquation + this.variables.get("Time");
 				break;
 			case("Angle"):
-				valueEquation = valueEquation + this.angle;
+				valueEquation = valueEquation + this.variables.get("Angle");
 				break;
 		}
 		
@@ -99,22 +91,22 @@ public class Calculations extends Object{
 		
 		switch(variable2){
 			case("Angular Velocity"):
-				valueEquation = valueEquation + this.angularVelocity;
+				valueEquation = valueEquation + this.variables.get("Angular Velocity");
 				break;
 			case("Linear Velocity"):
-				valueEquation = valueEquation + this.linearVelocity;
+				valueEquation = valueEquation + this.variables.get("Linear Velocity");
 				break;
 			case("Radius"):
-				valueEquation = valueEquation + this.radius;
+				valueEquation = valueEquation + this.variables.get("Radius");
 				break;
 			case("Arc Length"):
-				valueEquation = valueEquation + this.arcLength;
+				valueEquation = valueEquation + this.variables.get("Arc Length");
 				break;
 			case("Time"):
-				valueEquation = valueEquation + this.time;
+				valueEquation = valueEquation + this.variables.get("Time");
 				break;
 			case("Angle"):
-				valueEquation = valueEquation + this.angle;
+				valueEquation = valueEquation + this.variables.get("Angle");
 				break;
 		}
 		
@@ -125,22 +117,22 @@ public class Calculations extends Object{
 		
 		switch(variable3){
 			case("Angular Velocity"):
-				valueEquation = valueEquation + this.angularVelocity;
+				valueEquation = valueEquation + this.variables.get("Angular Velocity");
 				break;
 			case("Linear Velocity"):
-				valueEquation = valueEquation + this.linearVelocity;
+				valueEquation = valueEquation + this.variables.get("Linear Velocity");
 				break;
 			case("Radius"):
-				valueEquation = valueEquation + this.radius;
+				valueEquation = valueEquation + this.variables.get("Radius");
 				break;
 			case("Arc Length"):
-				valueEquation = valueEquation + this.arcLength;
+				valueEquation = valueEquation + this.variables.get("Arc Length");
 				break;
 			case("Time"):
-				valueEquation = valueEquation + this.time;
+				valueEquation = valueEquation + this.variables.get("Time");
 				break;
 			case("Angle"):
-				valueEquation = valueEquation + this.angle;
+				valueEquation = valueEquation + this.variables.get("Angle");
 				break;
 		}
 		this.valueEquation = valueEquation;
@@ -151,13 +143,13 @@ public class Calculations extends Object{
 		double solution = 0;
 		switch(this.wantedVariable){
 			case("Angular Velocity"):
-				solution = this.angularVelocity;
+				solution = this.variables.get("Angular Velocity");
 				break;
 			case("Linear Velocity"):
-				solution = this.linearVelocity;
+				solution = this.variables.get("Linear Velocity");
 				break;
 			case("Radius"):
-				solution = this.radius;
+				solution = this.variables.get("Radius");
 				break;
 			case("Time"):
 				solution = this.findTime();
@@ -176,126 +168,126 @@ public class Calculations extends Object{
 	}
 
 	private double findAngularVelocity(){
-		double angularVelocity = this.angularVelocity;
-			if(this.angle != 0 && this.time != 0){
-				angularVelocity = this.angle/this.time;
+		double angularVelocity = this.variables.get("Angular Velocity");
+			if(this.variables.get("Angle") != 0 && this.variables.get("Time") != 0){
+				angularVelocity = this.variables.get("Angle")/this.variables.get("Time");
 				this.decideEquation("Angle", "/", "Time", "", "", angularVelocity);
 			}
-			else if(this.linearVelocity != 0 && this.radius != 0){
-				angularVelocity = this.linearVelocity/this.radius;
+			else if(this.variables.get("Linear Velocity") != 0 && this.variables.get("Radius") != 0){
+				angularVelocity = this.variables.get("Linear Velocity")/this.variables.get("Radius");
 				this.decideEquation("Linear Velocity", "/", "Radius", "", "", angularVelocity);
 			}
-			else if(this.arcLength != 0 && this.time != 0 && this.radius!= 0){
-					angularVelocity = (this.arcLength/this.radius)/this.time;
+			else if(this.variables.get("Arc Length") != 0 && this.variables.get("Time") != 0 && this.variables.get("Radius")!= 0){
+					angularVelocity = (this.variables.get("Arc Length")/this.variables.get("Radius"))/this.variables.get("Time");
 					this.decideEquation("(Arc Length", "/", "Radius)", "/", "Time", angularVelocity);
 			}
-			else if(this.angle != 0 && this.arcLength != 0 && this.linearVelocity != 0){
-					angularVelocity = this.angle/(this.arcLength/this.linearVelocity);
+			else if(this.variables.get("Angle") != 0 && this.variables.get("Arc Length") != 0 && this.variables.get("Linear Velocity") != 0){
+					angularVelocity = this.variables.get("Angle")/(this.variables.get("Arc Length")/this.variables.get("Linear Velocity"));
 					this.decideEquation("Angle", "/", "(Arc Length", "/", "Linear Velocity)", angularVelocity);
 			}
 		return angularVelocity;
 	}
 
 	private double findLinearVelocity(){
-		double linearVelocity = this.linearVelocity;
-			if(this.angularVelocity != 0 && this.radius != 0){
-				linearVelocity = this.angularVelocity * this.radius;
+		double linearVelocity = this.variables.get("Linear Velocity");
+			if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Radius") != 0){
+				linearVelocity = this.variables.get("Angular Velocity") * this.variables.get("Radius");
 				this.decideEquation("Angular Velocity", "x", "Radius", "", "", linearVelocity);
 			}
-			else if(this.arcLength != 0 && this.time != 0){
-				linearVelocity = this.arcLength/this.time;
+			else if(this.variables.get("Arc Length") != 0 && this.variables.get("Time") != 0){
+				linearVelocity = this.variables.get("Arc Length")/this.variables.get("Time");
 				this.decideEquation("Arc Length", "/", "Time", "", "", linearVelocity);
 			}
-			else if(this.angularVelocity != 0 && this.arcLength != 0 && this.angle != 0){
-					linearVelocity = this.angularVelocity * (this.radius / this.angle);
+			else if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Arc Length") != 0 && this.variables.get("Angle") != 0){
+					linearVelocity = this.variables.get("Angular Velocity") * (this.variables.get("Radius") / this.variables.get("Angle"));
 					this.decideEquation("Angular Velocity", "x", "(Radius", "/", "Angle)", linearVelocity);
 			}
-			else if(this.angle != 0 && this.radius == 0 && this.time != 0){
-					linearVelocity = (this.angle / this.time) * this.radius;
+			else if(this.variables.get("Angle") != 0 && this.variables.get("Radius") == 0 && this.variables.get("Time") != 0){
+					linearVelocity = (this.variables.get("Angle") / this.variables.get("Time")) * this.variables.get("Radius");
 					this.decideEquation("(Angle", "/", "Time)", "x", "Radius", linearVelocity);
 			}
 		return linearVelocity;
 	}
 
 	private double findRadius(){
-		double radius = this.radius;
-			if(this.linearVelocity != 0 && this.angularVelocity != 0){
-				radius = this.linearVelocity/this.angularVelocity;
+		double radius = this.variables.get("Radius");
+			if(this.variables.get("Linear Velocity") != 0 && this.variables.get("Angular Velocity") != 0){
+				radius = this.variables.get("Linear Velocity")/this.variables.get("Angular Velocity");
 				this.decideEquation("Linear Velocity", "/", "Angular Velocity", "", "", radius);
 			}
-			else if(this.arcLength != 0 && this.angle != 0){
-				radius = this.arcLength/this.angle;
+			else if(this.variables.get("Arc Length") != 0 && this.variables.get("Angle") != 0){
+				radius = this.variables.get("Arc Length")/this.variables.get("Angle");
 				this.decideEquation("Arc Length", "/", "Angle", "", "", radius);
 			}
-			else if(this.arcLength != 0 && this.angularVelocity != 0 && this.time != 0){
-					radius = (this.arcLength / this.time)/this.angularVelocity;
+			else if(this.variables.get("Arc Length") != 0 && this.variables.get("Angular Velocity") != 0 && this.variables.get("Time") != 0){
+					radius = (this.variables.get("Arc Length") / this.variables.get("Time"))/this.variables.get("Angular Velocity");
 					this.decideEquation("(Arc Length", "/", "Time)", "/", "Angular Velocity", radius);
 			}
-			else if(this.linearVelocity != 0 && this.time != 0 && this.angle != 0){
-					radius = this.linearVelocity/(this.angle / this.time);
+			else if(this.variables.get("Linear Velocity") != 0 && this.variables.get("Time") != 0 && this.variables.get("Angle") != 0){
+					radius = this.variables.get("Linear Velocity")/(this.variables.get("Angle") / this.variables.get("Time"));
 					this.decideEquation("Linear Velocity", "/", "(Angle", "/", "Time)", radius);
 			}
 		return radius;
 	}
 
 	private double findArcLength(){
-		double arcLength = this.arcLength;
-			if(this.angle != 0 && this.radius != 0){
-				arcLength = this.angle * this.radius;
+		double arcLength = this.variables.get("Arc Length");
+			if(this.variables.get("Angle") != 0 && this.variables.get("Radius") != 0){
+				arcLength = this.variables.get("Angle") * this.variables.get("Radius");
 				this.decideEquation("Angle", "x", "Radius", "", "", arcLength);
 			}
-			else if(this.linearVelocity != 0 && this.time != 0){
-				arcLength = this.linearVelocity * this.time;
+			else if(this.variables.get("Linear Velocity") != 0 && this.variables.get("Time") != 0){
+				arcLength = this.variables.get("Linear Velocity") * this.variables.get("Time");
 				this.decideEquation("Linear Velocity", "x", "Time", "", "", arcLength);
 			}
-			else if(this.angularVelocity != 0 && this.radius != 0 && this.time != 0){
-					arcLength = this.angularVelocity * this.time * this.radius;
+			else if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Radius") != 0 && this.variables.get("Time") != 0){
+					arcLength = this.variables.get("Angular Velocity") * this.variables.get("Time") * this.variables.get("Radius");
 					this.decideEquation("Anglular Velocity", "x", "Time", "x", "Radius", arcLength);
 			}
-			else if(this.angle != 0 && this.linearVelocity != 0 && this.angularVelocity != 0){
-					arcLength = this.linearVelocity * (this.angle / this.angularVelocity);
+			else if(this.variables.get("Angle") != 0 && this.variables.get("Linear Velocity") != 0 && this.variables.get("Angular Velocity") != 0){
+					arcLength = this.variables.get("Linear Velocity") * (this.variables.get("Angle") / this.variables.get("Angular Velocity"));
 					this.decideEquation("Linear Velocity", "x", "(Angle", "/", "Angular Velocity)", arcLength);
 			}
 		return arcLength;
 	}
 
 	private double findTime(){
-		double time = this.time;
-			if(this.angularVelocity != 0 && this.angle != 0){
-				time = this.angularVelocity/this.angle;
+		double time = this.variables.get("Time");
+			if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Angle") != 0){
+				time = this.variables.get("Angular Velocity")/this.variables.get("Angle");
 				this.decideEquation("Anglular Velocity", "/", "Angle", "", "", time);
 			}
-			else if(this.arcLength != 0 && this.linearVelocity != 0){
-				time = this.arcLength/this.linearVelocity;
+			else if(this.variables.get("Arc Length") != 0 && this.variables.get("Linear Velocity") != 0){
+				time = this.variables.get("Arc Length")/this.variables.get("Linear Velocity");
 				this.decideEquation("Arc Length", "/", "Linear Velocity", "", "", time);
 			}
-			else if(this.linearVelocity != 0 && this.angle != 0 && radius != 0){
-					time = this.angle/(this.linearVelocity/this.radius);
+			else if(this.variables.get("Linear Velocity") != 0 && this.variables.get("Angle") != 0 && radius != 0){
+					time = this.variables.get("Angle")/(this.variables.get("Linear Velocity")/this.variables.get("Radius"));
 					this.decideEquation("Angle", "/", "(Linear Velocity", "/", "Radius)", time);
 			}
-			else if(this.angularVelocity != 0 && this.radius != 0 && this.arcLength != 0){
-					time = (this.arcLength / this.radius) / this.angularVelocity;
+			else if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Radius") != 0 && this.variables.get("Arc Length") != 0){
+					time = (this.variables.get("Arc Length") / this.variables.get("Radius")) / this.variables.get("Angular Velocity");
 					this.decideEquation("(Arc Length", "/", "Radius)", "/", "Angular Velocity", time);
 			}
 		return time;
 	}
 
 	private double findAngle(){
-		double angle = this.angle;
-			if(this.angularVelocity != 0 && this.time != 0){
-				angle = this.angularVelocity * this.time;
+		double angle = this.variables.get("Angle");
+			if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Time") != 0){
+				angle = this.variables.get("Angular Velocity") * this.variables.get("Time");
 				this.decideEquation("Angular Velocity", "x", "Time", "", "", angle);
 			}
-			else if(this.arcLength != 0 && this.radius != 0){
-				angle = this.arcLength/this.radius;
+			else if(this.variables.get("Arc Length") != 0 && this.variables.get("Radius") != 0){
+				angle = this.variables.get("Arc Length")/this.variables.get("Radius");
 				this.decideEquation("Arc Length", "/", "Radius", "", "", angle);
 			}
-			else if(this.linearVelocity != 0 && this.time != 0 && this.radius != 0){
-					angle = (this.linearVelocity / this.radius) * this.time;
+			else if(this.variables.get("Linear Velocity") != 0 && this.variables.get("Time") != 0 && this.variables.get("Radius") != 0){
+					angle = (this.variables.get("Linear Velocity") / this.variables.get("Radius")) * this.variables.get("Time");
 					this.decideEquation("(Linear Velocity", "/", "Radius)", "x", "Time", angle);
 			}
-			else if(this.angularVelocity != 0 && this.arcLength != 0 && this.linearVelocity != 0){
-					angle = this.angularVelocity * (this.arcLength / this.linearVelocity);
+			else if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Arc Length") != 0 && this.variables.get("Linear Velocity") != 0){
+					angle = this.variables.get("Angular Velocity") * (this.variables.get("Arc Length") / this.variables.get("Linear Velocity"));
 					this.decideEquation("Angular Velocity", "x", "(Arc Length", "/", "Linear Velocity)", angle);
 			}
 		return angle;
