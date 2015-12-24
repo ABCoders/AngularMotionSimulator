@@ -266,12 +266,12 @@ public class Animation implements Runnable {
 	
 	private void getVariables() {
 		//Gets variable values from calculations
-		if(calculations.getAngularVelocity()!=0)
-			this.angularVelocity = calculations.getAngularVelocity();
-		if(calculations.getLinearVelocity()!=0)
-			this.linearVelocity = calculations.getLinearVelocity();
-		if(calculations.getRadius()!=0)
-			this.radius = calculations.getRadius()*100;
+		if(calculations.getVariables().get(0)!=0)
+			this.angularVelocity = calculations.getVariables().get(0);
+		if(calculations.getVariables().get(1)!=0)
+			this.linearVelocity = calculations.getVariables().get(1);
+		if(calculations.getVariables().get(2)!=0)
+			this.radius = calculations.getVariables().get(2)*100;
 	}
 	
 	public void updateModel() {

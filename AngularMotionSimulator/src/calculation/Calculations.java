@@ -1,8 +1,10 @@
 package calculation;
 
 import java.io.*;
-import java.util.*;
+import java.util.TreeMap;
+
 import javax.swing.*;
+
 import inputs.ErrorDialog;
 import inputs.Input;
 
