@@ -86,17 +86,17 @@ public class OptionsController implements ActionListener {
 			input.setWantedVariable(wantedField.getSelectedVariable());
 			for (InputFieldPanel field: inputFields) {
 				field.update();
-				if (field.getSelectedVariable().equals(Input.VARIABLES[0])) {
+				if (field.getSelectedVariable().equals("Angular Velocity")) {
 					input.setAngularVelocity(field.getValue());
-				} else if (field.getSelectedVariable().equals(Input.VARIABLES[1])) {
+				} else if (field.getSelectedVariable().equals("Linear Velocity")) {
 					input.setLinearVelocity(field.getValue());
-				} else if (field.getSelectedVariable().equals(Input.VARIABLES[2])) {
+				} else if (field.getSelectedVariable().equals("Radius")) {
 					input.setRadius(field.getValue());
-				} else if (field.getSelectedVariable().equals(Input.VARIABLES[3])) {
+				} else if (field.getSelectedVariable().equals("Arc Length")) {
 					input.setArcLength(field.getValue());
-				} else if (field.getSelectedVariable().equals(Input.VARIABLES[4])) {
+				} else if (field.getSelectedVariable().equals("Time")) {
 					input.setTime(field.getValue());
-				} else if (field.getSelectedVariable().equals(Input.VARIABLES[5])) {
+				} else if (field.getSelectedVariable().equals("Angle")) {
 					input.setAngle(field.getValue());
 				}
 			}
