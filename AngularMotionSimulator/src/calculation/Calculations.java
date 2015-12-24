@@ -566,7 +566,6 @@ public class Calculations extends Object{
 		}
 		else{
 			this.processFrame = new ProcessFrame(this, false);
-			this.processFrame.setVisible(false);
 			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(processFrame), "Cannot calculate using current givens");
 		}
 	}
