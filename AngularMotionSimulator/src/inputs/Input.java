@@ -1,15 +1,11 @@
 package inputs;
 
+import java.util.TreeMap;
 import animation.Animation;
 import calculation.Calculations;
 
 public class Input extends Object{
-	public static final String[] VARIABLES = {"Angular Velocity",
-			"Linear Velocity", 
-			"Radius", 
-			"Arc Length",
-			"Time", 
-			"Angle"};
+	public TreeMap<String, Double> variables;
 	
 	private Animation animation;
 	private Calculations calculations;
@@ -23,25 +19,15 @@ public class Input extends Object{
 	private int removedField;
 	
 	private String wantedVariable;
-	private double radius;
-	private double time;
-	private double angularVelocity;
-	private double linearVelocity;
-	private double arcLength;
-	private double angle;
 	
 	public Input() {
 		this.calculations = new Calculations(this);
 		this.animation = new Animation(calculations);
+		this.variables = new TreeMap<String, Double>();
 		
-		this.wantedVariable = VARIABLES[0];
-//		radius = -1;
-//		time = -1;
-//		angularVelocity = -1;
-//		linearVelocity = -1;
-//		arcLength = -1;
-//		angle = -1;
+		this.resetVariables();
 		
+		this.wantedVariable = "Angular Velocity";
 		this.numberFields = 2;
 	}
 	
@@ -72,7 +58,7 @@ public class Input extends Object{
 	 * @param arcLength the arcLength to set
 	 */
 	public void setArcLength(double arcLength) {
-		this.arcLength = arcLength;
+		this.variables.put("Arc Length", arcLength);
 	}
 
 	/**
@@ -86,35 +72,35 @@ public class Input extends Object{
 	 * @param radius the radius to set
 	 */
 	public void setRadius(double radius) {
-		this.radius = radius;
-	}
+		this.variables.put("Radius", radius);	
+		}
 
 	/**
 	 * @param time the time to set
 	 */
 	public void setTime(double time) {
-		this.time = time;
+		this.variables.put("Time", time);
 	}
 
 	/**
 	 * @param angularVelocity the angularVelocity to set
 	 */
 	public void setAngularVelocity(double angularVelocity) {
-		this.angularVelocity = angularVelocity;
+		this.variables.put("Angular Velocity", angularVelocity);
 	}
 
 	/**
 	 * @param linearVelocity the linearVelocity to set
 	 */
 	public void setLinearVelocity(double linearVelocity) {
-		this.linearVelocity = linearVelocity;
+		this.variables.put("Linear Velocity", linearVelocity);
 	}
 
 	/**
 	 * @param angle the angle to set
 	 */
 	public void setAngle(double angle) {
-		this.angle = angle;
+		this.variables.put("Angle", angle);
 	}
 
 	public int getNumberFields() {
@@ -140,52 +126,52 @@ public class Input extends Object{
 	public double getVariableValue(int index) {
 		switch(index) {
 		case 0:
-			return this.angularVelocity;
+			return this.variables.get("Angular Velocity");
 		case 1:
-			return this.linearVelocity;
+			return this.variables.get("Linear Velocity");
 		case 2:
-			return this.radius;
+			return this.variables.get("Radius");
 		case 3:
-			return this.arcLength;
+			return this.variables.get("Arc Length");
 		case 4:
-			return this.time;
+			return this.variables.get("Time");
 		case 5:
-			return this.angle;
+			return this.variables.get("Angle");
 		}
 		return 0;		
 	}
 	
 	public void resetVariables() {
-		this.angularVelocity = 0;
-		this.linearVelocity = 0;
-		this.radius = 0;
-		this.arcLength = 0;
-		this.time = 0;
-		this.angle = 0;
+		this.variables.put("Angular Velocity", 0.0);
+		this.variables.put("Linear Velocity", 0.0);
+		this.variables.put("Radius", 0.0);
+		this.variables.put("Arc Length", 0.0);
+		this.variables.put("Time", 0.0);
+		this.variables.put("Angle", 0.0);
 	}
 	
 	public double getRadius() {
-		return this.radius;
+		return this.variables.get("Radius");
 	}
 	
 	public double getTime() {
-		return this.time;
+		return this.variables.get("Time");
 	}
 	
 	public double getAngularVelocity() {
-		return this.angularVelocity;
+		return this.variables.get("Angular Velocity");
 	}
 	
 	public double getLinearVelocity() {
-		return this.linearVelocity;
+		return this.variables.get("Linear Velocity");
 	}
 	
 	public double getArcLength() {
-		return this.arcLength;
+		return this.variables.get("Linear Velocity");
 	}
 	
 	public double getAngle() {
-		return this.angle;
+		return this.variables.get("Angle");
 	}
 	
 	public AnswerMachinePanel getView() {
