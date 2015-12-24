@@ -5,11 +5,16 @@ import animation.Animation;
 import calculation.Calculations;
 
 public class Input extends Object{
-	public TreeMap<String, Double> variables;
+	public static final String[] VARIABLES = new String[] {"Angular Velocity",
+															"Linear Velocity",
+															"Radius",
+															"Arc Length",
+															"Time",
+															"Angle"};
+	private TreeMap<String, Double> variables;
 	
 	private Animation animation;
 	private Calculations calculations;
-//	private InputPanel inputPanel;
 	private AnswerMachinePanel answerMachinePanel;
 	
 	public static final int MIN_FIELDS = 2;
@@ -27,13 +32,9 @@ public class Input extends Object{
 		
 		this.resetVariables();
 		
-		this.wantedVariable = "Angular Velocity";
+		this.wantedVariable = VARIABLES[0];
 		this.numberFields = 2;
 	}
-	
-//	public void setGUI(InputPanel inputPanel) {
-//		this.inputPanel = inputPanel;
-//	}
 	
 	public void setGUI(AnswerMachinePanel answerMachinePanel) {
 		this.answerMachinePanel = answerMachinePanel;
@@ -123,31 +124,25 @@ public class Input extends Object{
 		return this.calculations;
 	}
 	
-	public double getVariableValue(int index) {
-		switch(index) {
-		case 0:
-			return this.variables.get("Angular Velocity");
-		case 1:
-			return this.variables.get("Linear Velocity");
-		case 2:
-			return this.variables.get("Radius");
-		case 3:
-			return this.variables.get("Arc Length");
-		case 4:
-			return this.variables.get("Time");
-		case 5:
-			return this.variables.get("Angle");
+	public boolean setVariableValue(int index,  double value) {
+		if(index > -1 && index < VARIABLES.length) {
+			variables.put(VARIABLES[index], value);
+			return true;
 		}
-		return 0;		
+		return false;
+	}
+	
+	public double getVariableValue(int index) {
+		if(index > -1 && index < VARIABLES.length) {
+			return variables.get(VARIABLES[index]);
+		}
+		return 0;
 	}
 	
 	public void resetVariables() {
-		this.variables.put("Angular Velocity", 0.0);
-		this.variables.put("Linear Velocity", 0.0);
-		this.variables.put("Radius", 0.0);
-		this.variables.put("Arc Length", 0.0);
-		this.variables.put("Time", 0.0);
-		this.variables.put("Angle", 0.0);
+		for(int i=0; i<VARIABLES.length; i++) {
+			this.variables.put(VARIABLES[i], 0.0);
+		}
 	}
 	
 	public double getRadius() {
@@ -184,18 +179,11 @@ public class Input extends Object{
 	
 	public boolean updateModel() {
 		int numVar = 0;
-		if(this.variables.get("Radius")!=0)
-			numVar++;
-		if(this.variables.get("Time")!=0)
-			numVar++;
-		if(this.variables.get("Angular Velocity")!=0)
-			numVar++;
-		if(this.variables.get("Linear Velocity")!=0)
-			numVar++;
-		if(this.variables.get("Arc Length")!=0)
-			numVar++;
-		if(this.variables.get("Angle")!=0)
-			numVar++;
+		for(int i=0; i<VARIABLES.length; i++) {
+			if(variables.get(VARIABLES[i])!=0) {
+				numVar++;
+			}
+		}
 		if(numVar>1) {
 			this.numberFields = numVar;
 			this.updateView();

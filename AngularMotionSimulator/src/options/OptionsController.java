@@ -32,8 +32,7 @@ public class OptionsController implements ActionListener {
 		this.input = input;
 		this.menuBar = menuBar;
 		fileChooser = new JFileChooser();
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("*.txt", "txt");
-		fileChooser.setFileFilter(filter);
+		fileChooser.setFileFilter(new FileNameExtensionFilter("*.txt", "txt"));
 		
 		this.inputFields = inputFields;
 		this.wantedField = wantedField;
@@ -41,6 +40,7 @@ public class OptionsController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//Choosing the help button
 		if (e.getActionCommand().equalsIgnoreCase("help")) {
 			if (help!=null) {
 				help.dispose();
@@ -48,9 +48,11 @@ public class OptionsController implements ActionListener {
 			}
 			help = new HelpFrame();
 		}
+		//Choosing to change color
 		else if (e.getActionCommand().equalsIgnoreCase("change color")) {
 			new ColorChooserDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), input.getAnimation());
 		}
+		//Choosing to save inputs
 		else if (e.getActionCommand().equalsIgnoreCase("save as")) {
 			int fileSelected = fileChooser.showSaveDialog(null);
 			if (fileSelected == JFileChooser.APPROVE_OPTION) {
@@ -64,6 +66,7 @@ public class OptionsController implements ActionListener {
 				saveVariables();
 			}
 		}
+		//Choosing to load inputs
 		else if (e.getActionCommand().equalsIgnoreCase("load")) {
 			int fileSelected = fileChooser.showOpenDialog(null);
 			if(fileSelected == JFileChooser.APPROVE_OPTION) {
@@ -86,28 +89,18 @@ public class OptionsController implements ActionListener {
 			input.setWantedVariable(wantedField.getSelectedVariable());
 			for (InputFieldPanel field: inputFields) {
 				field.update();
-				if (field.getSelectedVariable().equals("Angular Velocity")) {
-					input.setAngularVelocity(field.getValue());
-				} else if (field.getSelectedVariable().equals("Linear Velocity")) {
-					input.setLinearVelocity(field.getValue());
-				} else if (field.getSelectedVariable().equals("Radius")) {
-					input.setRadius(field.getValue());
-				} else if (field.getSelectedVariable().equals("Arc Length")) {
-					input.setArcLength(field.getValue());
-				} else if (field.getSelectedVariable().equals("Time")) {
-					input.setTime(field.getValue());
-				} else if (field.getSelectedVariable().equals("Angle")) {
-					input.setAngle(field.getValue());
+				for(int i=0; i<Input.VARIABLES.length; i++) {
+					if (field.getSelectedVariable().equals(Input.VARIABLES[i])) {
+						input.setVariableValue(i, field.getValue());
+						break;
+					}
 				}
 			}
 			
 			out.println(input.getWantedVariable());
-			out.println(input.getRadius());
-			out.println(input.getAngularVelocity());
-			out.println(input.getLinearVelocity());
-			out.println(input.getArcLength());
-			out.println(input.getTime());
-			out.println(input.getAngle());
+			for(int i=0; i<Input.VARIABLES.length; i++) {
+				out.println(input.getVariableValue(i));
+			}
 			out.close();
 		} catch (FileNotFoundException e) {
 			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), "File cannot be recognized");
@@ -118,12 +111,10 @@ public class OptionsController implements ActionListener {
 		try {
 			Scanner in = new Scanner(file);
 			input.setWantedVariable(in.nextLine());
-			input.setRadius(in.nextDouble());
-			input.setAngularVelocity(in.nextDouble());
-			input.setLinearVelocity(in.nextDouble());
-			input.setArcLength(in.nextDouble());
-			input.setTime(in.nextDouble());
-			input.setAngle(in.nextDouble());
+			for(int i=0; i<Input.VARIABLES.length; i++) {
+				System.err.println(Input.VARIABLES[i]);
+				input.setVariableValue(i, in.nextDouble());
+			}
 			if(!input.updateModel())
 				new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), "Incorrect File Layout");
 			in.close();

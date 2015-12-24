@@ -18,7 +18,7 @@ public class WantedFieldPanel extends JPanel{
 	
 	private void createComponents() {
 		answerLabel = new JLabel("ANSWER = ");
-		variablePicker = new JComboBox<String>(this.input.variables.keySet().toArray(new String[this.input.variables.keySet().size()]));
+		variablePicker = new JComboBox<String>(Input.VARIABLES);
 		variablePicker.setSelectedIndex(0);
 	}
 	

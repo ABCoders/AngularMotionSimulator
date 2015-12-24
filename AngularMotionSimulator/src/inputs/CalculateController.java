@@ -33,32 +33,32 @@ public class CalculateController implements ActionListener {
 		if(isDoubleVariables(variables, wantedVariable)) {
 			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(inputFields.get(0)), "Double Variables");
 		}
-		else{
+		else {
 			System.out.println(Arrays.toString(variables.toArray()));
 			System.out.println(Arrays.toString(values.toArray()));
 
 			this.input.resetVariables();
 			this.input.setWantedVariable(wantedVariable);
 
-			for(int variableAmount = 0; variableAmount < variables.size(); variableAmount++){
-				switch(variables.get(variableAmount)){
+			for(int i = 0; i < variables.size(); i++){
+				switch(variables.get(i)){
 					case("Angular Velocity"):
-						this.input.setAngularVelocity(values.get(variableAmount));
+						this.input.setAngularVelocity(values.get(i));
 						break;
 					case("Linear Velocity"):
-						this.input.setLinearVelocity(values.get(variableAmount));
+						this.input.setLinearVelocity(values.get(i));
 						break;
 					case("Radius"):
-						this.input.setRadius(values.get(variableAmount));
+						this.input.setRadius(values.get(i));
 						break;
 					case("Time"):
-						this.input.setTime(values.get(variableAmount));
+						this.input.setTime(values.get(i));
 						break;
 					case("Angle"):
-						this.input.setAngle(values.get(variableAmount));
+						this.input.setAngle(values.get(i));
 						break;
 					case("Arc Length"):
-						this.input.setArcLength(values.get(variableAmount));
+						this.input.setArcLength(values.get(i));
 						break;
 				}
 			}
