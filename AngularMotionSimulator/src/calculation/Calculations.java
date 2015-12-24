@@ -11,12 +11,6 @@ public class Calculations extends Object{
 	private Input input;
 
 	private TreeMap<String, Double> variables;
-	private double angularVelocity;
-	private double linearVelocity;
-	private double radius;
-	private double angle;
-	private double time;
-	private double arcLength;
 	private String wantedVariable;
 
 	private String equation;
@@ -261,7 +255,7 @@ public class Calculations extends Object{
 				time = this.variables.get("Arc Length")/this.variables.get("Linear Velocity");
 				this.decideEquation("Arc Length", "/", "Linear Velocity", "", "", time);
 			}
-			else if(this.variables.get("Linear Velocity") != 0 && this.variables.get("Angle") != 0 && radius != 0){
+			else if(this.variables.get("Linear Velocity") != 0 && this.variables.get("Angle") != 0 && this.variables.get("Radius") != 0){
 					time = this.variables.get("Angle")/(this.variables.get("Linear Velocity")/this.variables.get("Radius"));
 					this.decideEquation("Angle", "/", "(Linear Velocity", "/", "Radius)", time);
 			}
@@ -336,56 +330,14 @@ public class Calculations extends Object{
 	}
 
 	/**
-	 * @return the angularVelocity
+	 * @return the variables treemap of all the measurements
 	 */
-	public double getAngularVelocity() {
-		return angularVelocity;
-	}
-
-	/**
-	 * @return the linearVelocity
-	 */
-	public double getLinearVelocity() {
-		return linearVelocity;
-	}
-
-	/**
-	 * @return the radius
-	 */
-	public double getRadius() {
-		return radius;
-	}
-
-	/**
-	 * @return the angle
-	 */
-	public double getAngle() {
-		return angle;
-	}
-
-	/**
-	 * @return the time
-	 */
-	public double getTime() {
-		return time;
-	}
-
-	/**
-	 * @return the arcLength
-	 */
-	public double getArcLength() {
-		return arcLength;
+	public TreeMap<String, Double> getVariables(){
+		return this.variables;
 	}
 
 	public void update() {
 		this.setVariables();
-		System.out.println("CALC");
-		System.out.println(wantedVariable);
-		System.out.println(angularVelocity);
-		System.out.println(linearVelocity);
-		System.out.println(radius);
-		System.out.println(angle);
-		System.out.println(arcLength);
 
 		if(this.calculate()){
 			try{
