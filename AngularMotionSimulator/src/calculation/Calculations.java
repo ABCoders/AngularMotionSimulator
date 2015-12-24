@@ -45,11 +45,11 @@ public class Calculations extends Object{
 		this.arcLength = input.getArcLength();
 
 		if(this.angularVelocity == 0)
-			this.angularVelocity = this.findAngularVelocity(true);
+			this.angularVelocity = this.findAngularVelocity(null);
 		if(this.linearVelocity == 0)
-			this.linearVelocity = this.findLinearVelocity(true);
+			this.linearVelocity = this.findLinearVelocity(null);
 		if(this.radius == 0)
-			this.radius = this.findRadius(true);
+			this.radius = this.findRadius(null);
 	}
 	
 	private void makeEquations(String variable1, String operation, String variable2, double result){
@@ -115,13 +115,13 @@ public class Calculations extends Object{
 				solution = this.radius;
 				break;
 			case("Time"):
-				solution = this.findTime(true);
+				solution = this.findTime(null);
 				break;
 			case("Arc Length"):
-				solution = this.findArcLength(true);
+				solution = this.findArcLength(null);
 				break;
 			case("Angle"):
-				solution = this.findAngle(true);
+				solution = this.findAngle(null);
 				break;
 		}
 		if(solution == 0){
@@ -130,333 +130,320 @@ public class Calculations extends Object{
 		return true;
 	}
 
-	private double findAngularVelocity(boolean yetToCheck){
+	private double findAngularVelocity(String yetToCheck){
 		double angularVelocity = this.angularVelocity;
-		if(yetToCheck){
 			if(this.angle != 0 && this.time != 0){
 				angularVelocity = this.angle/this.time;
 				this.makeEquations("Angle", "/", "Time", angularVelocity);
-				yetToCheck = false;
 			}
 			else if(this.linearVelocity != 0 && this.radius != 0){
 				angularVelocity = this.linearVelocity/this.radius;
 				this.makeEquations("Linear Velocity", "/", "Radius", angularVelocity);
-				yetToCheck = false;
 			}
 		
-			else if(this.angle == 0 && this.time != 0){
-				double angle = this.findAngle(yetToCheck);
+			else if(this.angle == 0 && this.time != 0 && !yetToCheck.equals("Angle")){
+				double angle = this.findAngle("Angular Velocity");
 				if(angle != 0){
 					this.angle = angle;
 					angularVelocity = this.angle/this.time;
 					this.makeEquations("Angle", "/", "Time", angularVelocity);
-					yetToCheck = false;
 				}
 			}
-			else if(this.angle != 0 && this.time == 0){
-				double time = this.findTime(yetToCheck);
+			else if(this.angle != 0 && this.time == 0 && !yetToCheck.equals("Time")){
+				double time = this.findTime("Angular Velocity");
 				if(time != 0){
 					this.time = time;
 					angularVelocity = this.angle/this.time;
 					this.makeEquations("Angle", "/", "Time", angularVelocity);
-					yetToCheck = false;
 				}
 			}
 			
-			else if(this.linearVelocity == 0 && this.radius != 0){
-				double linearVelocity = this.findLinearVelocity(yetToCheck);
+			else if(this.linearVelocity == 0 && this.radius != 0 && !yetToCheck.equals("Linear Velocity")){
+				double linearVelocity = this.findLinearVelocity("Angular Velocity");
 				if(linearVelocity != 0){
 					this.linearVelocity = linearVelocity;
 					angularVelocity = this.linearVelocity/this.radius;
 					this.makeEquations("Linear Velocity", "/", "Radius", angularVelocity);
-					yetToCheck = false;
 				}
 			}
-			else if(this.linearVelocity != 0 && this.radius == 0){
-				double radius = this.findRadius(yetToCheck);
+			else if(this.linearVelocity != 0 && this.radius == 0 && !yetToCheck.equals("Radius")){
+				double radius = this.findRadius("Angular Velocity");
 				if(radius != 0){
 					this.radius = radius;
 					angularVelocity = this.linearVelocity/this.radius;
 					this.makeEquations("Linear Velocity", "/", "Radius", angularVelocity);
-					yetToCheck = false;
 				}
 			}
-		}
 		return angularVelocity;
 	}
 
-	private double findLinearVelocity(boolean yetToCheck){
+	private double findLinearVelocity(String yetToCheck){
 		double linearVelocity = this.linearVelocity;
-		if(yetToCheck){
+		
 			if(this.angularVelocity != 0 && this.radius != 0){
 				linearVelocity = this.angularVelocity * this.radius;
 				this.makeEquations("Angular Velocity", "x", "Radius", linearVelocity);
-				yetToCheck = false;
+				
 			}
 			else if(this.arcLength != 0 && this.time != 0){
 				linearVelocity = this.arcLength/this.time;
 				this.makeEquations("Arc Length", "/", "Time", linearVelocity);
-				yetToCheck = false;
+				
 			}
 			
-			else if(this.angularVelocity == 0 && this.radius != 0){
-				double angularVelocity = this.findAngularVelocity(yetToCheck);
+			else if(this.angularVelocity == 0 && this.radius != 0 && !yetToCheck.equals("Angular Velocity")){
+				double angularVelocity = this.findAngularVelocity("Linear Velocity");
 				if(angularVelocity != 0){
 					this.angularVelocity = angularVelocity;
 					linearVelocity = this.angularVelocity * this.radius;
 					this.makeEquations("Angular Velocity", "x", "Radius", linearVelocity);
-					yetToCheck = false;
+					
 				}
 			}
-			else if(this.angularVelocity != 0 && this.radius == 0){
-				double radius = this.findRadius(yetToCheck);
+			else if(this.angularVelocity != 0 && this.radius == 0 && !yetToCheck.equals("Radius")){
+				double radius = this.findRadius("Linear Velocity");
 				if(radius != 0){
 					this.radius = radius;
 					linearVelocity = this.angularVelocity * this.radius;
 					this.makeEquations("Angular Velocity", "x", "Radius", linearVelocity);
-					yetToCheck = false;
+					
 				}
 			}
 			
-			else if(this.arcLength == 0 && this.time != 0){
-				double arcLength = this.findArcLength(yetToCheck);
+			else if(this.arcLength == 0 && this.time != 0 && !yetToCheck.equals("Arc Length")){
+				double arcLength = this.findArcLength("Linear Velocity");
 				if(arcLength != 0){
 					this.arcLength = arcLength;
 					linearVelocity = this.arcLength/this.time;
 					this.makeEquations("Arc Length", "/", "Time", linearVelocity);
-					yetToCheck = false;
+					
 				}
 			}
-			else if(this.arcLength != 0 && this.time == 0){
-				double time = this.findTime(yetToCheck);
+			else if(this.arcLength != 0 && this.time == 0 && !yetToCheck.equals("Time")){
+				double time = this.findTime("Linear Velocity");
 				if(time != 0){
 					this.time = time;
 					linearVelocity = this.arcLength/this.time;
 					this.makeEquations("Arc Length", "/", "Time", linearVelocity);
-					yetToCheck = false;
+					
 				}
 			}
-		}
 		return linearVelocity;
 	}
 
-	private double findRadius(boolean yetToCheck){
+	private double findRadius(String yetToCheck){
 		double radius = this.radius;
-		if(yetToCheck){
+		
 			if(this.linearVelocity != 0 && this.angularVelocity != 0){
 				radius = this.linearVelocity/this.angularVelocity;
 				this.makeEquations("Linear Velocity", "/", "Angular Velocity", radius);
-				yetToCheck = false;
+				
 			}
 			else if(this.arcLength != 0 && this.angle != 0){
 				radius = this.arcLength/this.angle;
 				this.makeEquations("Arc Length", "/", "Angle", radius);
-				yetToCheck = false;
+				
 			}
 			
-			else if(this.linearVelocity == 0 && this.angularVelocity != 0){
-				double linearVelocity = this.findLinearVelocity(yetToCheck);
+			else if(this.linearVelocity == 0 && this.angularVelocity != 0 && !yetToCheck.equals("Linear Velocity")){
+				double linearVelocity = this.findLinearVelocity("Radius");
 				if(linearVelocity != 0){
 					this.linearVelocity = linearVelocity;
 					radius = this.linearVelocity/this.angularVelocity;
 					this.makeEquations("Linear Velocity", "/", "Angular Velocity", radius);
-					yetToCheck = false;
+					
 				}
 			}
-			else if(this.linearVelocity != 0 && this.angularVelocity == 0){
-				double angularVelocity = this.findAngularVelocity(yetToCheck);
+			else if(this.linearVelocity != 0 && this.angularVelocity == 0 && !yetToCheck.equals("Angular Velocity")){
+				double angularVelocity = this.findAngularVelocity("Radius");
 				if(angularVelocity != 0){
 					this.angularVelocity = angularVelocity;
 					radius = this.linearVelocity/this.angularVelocity;
 					this.makeEquations("Linear Velocity", "/", "Angular Velocity", radius);
-					yetToCheck = false;
+					
 				}
 			}
 			
-			else if(this.arcLength == 0 && this.angle != 0){
-				double arcLength = this.findArcLength(yetToCheck);
+			else if(this.arcLength == 0 && this.angle != 0 && !yetToCheck.equals("Arc Length")){
+				double arcLength = this.findArcLength("Radius");
 				if(arcLength != 0){
 					this.arcLength = arcLength;
 					radius = this.arcLength/this.angle;
 					this.makeEquations("Arc Length", "/", "Angle", radius);
-					yetToCheck = false;
+					
 				}
 			}
-			else if(this.arcLength != 0 && this.angle == 0){
-				double angle = this.findAngle(yetToCheck);
+			else if(this.arcLength != 0 && this.angle == 0 && !yetToCheck.equals("Angle")){
+				double angle = this.findAngle("Radius");
 				if(angle != 0){
 					this.angle = angle;
 					radius = this.arcLength/this.angle;
 					this.makeEquations("Arc Length", "/", "Angle", radius);
-					yetToCheck = false;
+					
 				}
 			}
-		}
 		return radius;
 	}
 
-	private double findArcLength(boolean yetToCheck){
+	private double findArcLength(String yetToCheck){
 		double arcLength = this.arcLength;
-		if(yetToCheck){
+		
 			if(this.angle != 0 && this.radius != 0){
 				arcLength = this.angle * this.radius;
 				this.makeEquations("Angle", "x", "Radius", arcLength);
-				yetToCheck = false;
+				
 			}
 			else if(this.linearVelocity != 0 && this.time != 0){
 				arcLength = this.linearVelocity * this.time;
 				this.makeEquations("Linear Velocity", "x", "Time", arcLength);
-				yetToCheck = false;
+				
 			}
 			
-			else if(this.angle == 0 && this.radius != 0){
-				double angle = this.findAngle(yetToCheck);
+			else if(this.angle == 0 && this.radius != 0 && !yetToCheck.equals("Angle")){
+				double angle = this.findAngle("Arc Length");
 				if(angle != 0){
 					this.angle = angle;
 					arcLength = this.angle * this.radius;
 					this.makeEquations("Angle", "x", "Radius", arcLength);
-					yetToCheck = false;
+					
 				}
 			}
-			else if(this.angle != 0 && this.radius == 0){
-				double radius = this.findRadius(yetToCheck);
+			else if(this.angle != 0 && this.radius == 0 && !yetToCheck.equals("Radius")){
+				double radius = this.findRadius("Arc Length");
 				if(radius != 0){
 					this.radius = radius;
 					arcLength = this.angle * this.radius;
 					this.makeEquations("Angle", "x", "Radius", arcLength);
-					yetToCheck = false;
+					
 				}
 			}
 			
-			else if(this.linearVelocity == 0 && this.time != 0){
-				double linearVelocity = this.findLinearVelocity(yetToCheck);
+			else if(this.linearVelocity == 0 && this.time != 0 && !yetToCheck.equals("Linear Velocity")){
+				double linearVelocity = this.findLinearVelocity("Arc Length");
 				if(linearVelocity != 0){
 					this.linearVelocity = linearVelocity;
 					arcLength = this.linearVelocity * this.time;
 					this.makeEquations("Linear Velocity", "x", "Time", arcLength);
-					yetToCheck = false;
+					
 				}
 			}
-			else if(this.linearVelocity != 0 && this.time == 0){
-				double time = this.findTime(yetToCheck);
+			else if(this.linearVelocity != 0 && this.time == 0 && !yetToCheck.equals("Time")){
+				double time = this.findTime("Arc Length");
 				if(time != 0){
 					this.time = time;
 					arcLength = this.linearVelocity * this.time;
 					this.makeEquations("Linear Velocity", "x", "Time", arcLength);
-					yetToCheck = false;
+					
 				}
 			}
-		}
 		return arcLength;
 	}
 
-	private double findTime(boolean yetToCheck){
+	private double findTime(String yetToCheck){
 		double time = this.time;
-		if(yetToCheck){
+		
 			if(this.angularVelocity != 0 && this.angle != 0){
 				time = this.angularVelocity/this.angle;
 				this.makeEquations("Anglular Velocity", "/", "Angle", time);
-				yetToCheck = false;
+				
 			}
 			else if(this.arcLength != 0 && this.linearVelocity != 0){
 				time = this.arcLength/this.linearVelocity;
 				this.makeEquations("Arc Length", "/", "Linear Velocity", time);
-				yetToCheck = false;
+				
 			}
 			
-			else if(this.angularVelocity == 0 && this.angle != 0){
-				double angularVelocity = this.findAngularVelocity(yetToCheck);
+			else if(this.angularVelocity == 0 && this.angle != 0 && !yetToCheck.equals("Angular Velocity")){
+				double angularVelocity = this.findAngularVelocity("Time");
 				if(angularVelocity != 0){
 					this.angularVelocity = angularVelocity;
 					time = this.angularVelocity/this.angle;
 					this.makeEquations("Anglular Velocity", "/", "Angle", time);
-					yetToCheck = false;
+					
 				}
 			}
-			else if(this.angularVelocity != 0 && this.angle == 0){
-				double angle = this.findAngle(yetToCheck);
+			else if(this.angularVelocity != 0 && this.angle == 0 && !yetToCheck.equals("Angle")){
+				double angle = this.findAngle("Time");
 				if(angle != 0){
 					this.angle = angle;
 					time = this.angularVelocity/this.angle;
 					this.makeEquations("Anglular Velocity", "/", "Angle", time);
-					yetToCheck = false;
+					
 				}
 			}
 			
-			else if(this.arcLength == 0 && this.linearVelocity != 0){
-				double arcLength = this.findArcLength(yetToCheck);
+			else if(this.arcLength == 0 && this.linearVelocity != 0 && !yetToCheck.equals("Arc Length")){
+				double arcLength = this.findArcLength("Time");
 				if(arcLength != 0){
 					this.arcLength = arcLength;
 					time = this.angularVelocity/this.angle;
 					this.makeEquations("Arc Length", "/", "Linear Velocity", time);
-					yetToCheck = false;
+					
 				}
 			}
-			else if(this.arcLength != 0 && this.linearVelocity == 0){
-				double linearVelocity = this.findLinearVelocity(yetToCheck);
+			else if(this.arcLength != 0 && this.linearVelocity == 0 && !yetToCheck.equals("Linear Velocity")){
+				double linearVelocity = this.findLinearVelocity("Time");
 				if(linearVelocity != 0){
 					this.linearVelocity = linearVelocity;
 					time = this.angularVelocity/this.angle;
 					this.makeEquations("Arc Length", "/", "Linear Velocity", time);
-					yetToCheck = false;
+					
 				}
 			}
-		}
 		return time;
 	}
 
-	private double findAngle(boolean yetToCheck){
+	private double findAngle(String yetToCheck){
 		double angle = this.angle;
-		if(yetToCheck){
+		
 			if(this.angularVelocity != 0 && this.time != 0){
 				angle = this.angularVelocity * this.time;
 				this.makeEquations("Angular Velocity", "x", "Time", angle);
-				yetToCheck = false;
+				
 			}
 			else if(this.arcLength != 0 && this.radius != 0){
 				angle = this.arcLength/this.radius;
 				this.makeEquations("Arc Length", "/", "Radius", angle);
-				yetToCheck = false;
+				
 			}
 			
-			else if(this.angularVelocity == 0 && this.time != 0){
-				double angularVelocity = this.findAngularVelocity(yetToCheck);
+			else if(this.angularVelocity == 0 && this.time != 0 && !yetToCheck.equals("Angular Velocity")){
+				double angularVelocity = this.findAngularVelocity("Angle");
 				if(angularVelocity != 0){
 					this.angularVelocity = angularVelocity;
 					angle = this.angularVelocity * this.time;
 					this.makeEquations("Angular Velocity", "x", "Time", angle);
-					yetToCheck = false;
+					
 				}
 			}
-			else if(this.angularVelocity != 0 && this.time == 0){
-				double time = this.findTime(yetToCheck);
+			else if(this.angularVelocity != 0 && this.time == 0 && !yetToCheck.equals("Time")){
+				double time = this.findTime("Angle");
 				if(time != 0){
 					this.time = time;
 					angle = this.angularVelocity * this.time;
 					this.makeEquations("Angular Velocity", "x", "Time", angle);
-					yetToCheck = false;
+					
 				}
 			}
 			
-			else if(this.arcLength == 0 && this.radius != 0){
-				double arcLength = this.findArcLength(yetToCheck);
+			else if(this.arcLength == 0 && this.radius != 0 && !yetToCheck.equals("Arc Length")){
+				double arcLength = this.findArcLength("Angle");
 				if(arcLength != 0){
 					this.arcLength = arcLength;
 					angle = this.arcLength/this.radius;
 					this.makeEquations("Arc Length", "/", "Radius", angle);
-					yetToCheck = false;
+					
 				}
 			}
-			else if(this.arcLength != 0 && this.radius == 0){
-				double radius = this.findRadius(yetToCheck);
+			else if(this.arcLength != 0 && this.radius == 0 && !yetToCheck.equals("Radius")){
+				double radius = this.findRadius("Angle");
 				if(radius != 0){
 					this.radius = radius;
 					angle = this.arcLength/this.radius;
 					this.makeEquations("Arc Length", "/", "Radius", angle);
-					yetToCheck = false;
+					
 				}
 			}
-		}
 		return angle;
 	}
 
