@@ -184,17 +184,17 @@ public class Input extends Object{
 	
 	public boolean updateModel() {
 		int numVar = 0;
-		if(radius!=0)
+		if(this.variables.get("Radius")!=0)
 			numVar++;
-		if(time!=0)
+		if(this.variables.get("Time")!=0)
 			numVar++;
-		if(angularVelocity!=0)
+		if(this.variables.get("Angular Velocity")!=0)
 			numVar++;
-		if(linearVelocity!=0)
+		if(this.variables.get("Linear Velocity")!=0)
 			numVar++;
-		if(arcLength!=0)
+		if(this.variables.get("Arc Length")!=0)
 			numVar++;
-		if(angle!=0)
+		if(this.variables.get("Angle")!=0)
 			numVar++;
 		if(numVar>1) {
 			this.numberFields = numVar;
