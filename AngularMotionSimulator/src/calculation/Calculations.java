@@ -40,6 +40,14 @@ public class Calculations extends Object{
 		this.angle = input.getAngle();
 		this.time = input.getTime();
 		this.arcLength = input.getArcLength();
+		
+		System.out.println("CALC");
+		System.out.println(wantedVariable);
+		System.out.println(angularVelocity);
+		System.out.println(linearVelocity);
+		System.out.println(radius);
+		System.out.println(angle);
+		System.out.println(arcLength);
 
 		if(this.angularVelocity == 0)
 			this.angularVelocity = this.findAngularVelocity();
@@ -379,6 +387,14 @@ public class Calculations extends Object{
 
 	public void update() {
 		this.setVariables();
+		System.out.println("CALC");
+		System.out.println(wantedVariable);
+		System.out.println(angularVelocity);
+		System.out.println(linearVelocity);
+		System.out.println(radius);
+		System.out.println(angle);
+		System.out.println(arcLength);
+
 		if(this.calculate()){
 			try{
 				this.processFrame.dispose();
