@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
@@ -101,13 +100,6 @@ public class OptionsController implements ActionListener {
 					input.setAngle(field.getValue());
 				}
 			}
-			System.out.println(input.getWantedVariable());
-			System.out.println(input.getRadius());
-			System.out.println(input.getAngularVelocity());
-			System.out.println(input.getLinearVelocity());
-			System.out.println(input.getArcLength());
-			System.out.println(input.getTime());
-			System.out.println(input.getAngle());
 			
 			out.println(input.getWantedVariable());
 			out.println(input.getRadius());
@@ -139,9 +131,4 @@ public class OptionsController implements ActionListener {
 			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), "File cannot be recognized");
 		}
 	}
-	
-	
-	
-	
-
 }
