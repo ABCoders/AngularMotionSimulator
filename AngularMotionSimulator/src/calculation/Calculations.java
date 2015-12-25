@@ -48,6 +48,8 @@ public class Calculations extends Object{
 	}
 	
 	private void decideEquation(String variable1, String operation1, String variable2, String operation2, String variable3, double result){
+		boolean addBracketAfter = false;
+		
 		this.equation = variable1 + " " + operation1 + " " + variable2 + " " + operation2 + " " + variable3;
 		
 		String valueEquation = "";
@@ -83,7 +85,7 @@ public class Calculations extends Object{
 			variable2 = variable2.replace("(", "");
 		}
 		else if(variable2.indexOf(")") > -1){
-			valueEquation = valueEquation + ")";
+			addBracketAfter = true;
 			variable2 = variable2.replace(")", "");
 		}
 		
@@ -107,6 +109,8 @@ public class Calculations extends Object{
 				valueEquation = valueEquation + this.variables.get("Angle");
 				break;
 		}
+		if(addBracketAfter)
+			valueEquation = valueEquation + ")";
 		
 		if(variable3.indexOf(")") > -1){
 			valueEquation = valueEquation + ")";
