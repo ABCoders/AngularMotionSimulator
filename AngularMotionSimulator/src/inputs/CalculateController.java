@@ -67,16 +67,17 @@ public class CalculateController implements ActionListener {
 	}
 
 	private boolean isDoubleVariables(ArrayList<String> variables, String wantedVariable) {
-		boolean canCalculate = false;
 		for (int i=0;i<variables.size();i++) {
 			String variable = variables.get(i);
+			if (variable.equals(wantedVariable))
+				return true;
 			for (int k=i+1;k<variables.size();k++) {
-				if (variable.equals(variables.get(k)) || variable.equals(wantedVariable)) {
-					canCalculate = true;
+				if (variable.equals(variables.get(k))) {
+					return true;
 				}
 			}
 		}
-		return canCalculate;
+		return false;
 	}
 
 }
