@@ -3,6 +3,7 @@ package animation;
 import java.awt.*;
 
 import calculation.Calculations;
+import inputs.Input;
 
 /**
  * Animation
@@ -266,12 +267,12 @@ public class Animation implements Runnable {
 	
 	private void getVariables() {
 		//Gets variable values from calculations
-		if(calculations.getVariables().get(0)!=0)
-			this.angularVelocity = calculations.getVariables().get(0);
-		if(calculations.getVariables().get(1)!=0)
-			this.linearVelocity = calculations.getVariables().get(1);
-		if(calculations.getVariables().get(2)!=0)
-			this.radius = calculations.getVariables().get(2)*100;
+		if(calculations.getVariables().get(Input.VARIABLES[0])!=0)
+			this.angularVelocity = calculations.getVariables().get(Input.VARIABLES[0]);
+		if(calculations.getVariables().get(Input.VARIABLES[1])!=0)
+			this.linearVelocity = calculations.getVariables().get(Input.VARIABLES[1]);
+		if(calculations.getVariables().get(Input.VARIABLES[2])!=0)
+			this.radius = calculations.getVariables().get(Input.VARIABLES[2])*100;
 	}
 	
 	public void updateModel() {
