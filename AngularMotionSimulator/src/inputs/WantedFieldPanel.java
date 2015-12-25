@@ -28,7 +28,6 @@ public class WantedFieldPanel extends JPanel{
 	}
 	
 	public String getSelectedVariable() {
-//		System.err.println(variablePicker.getSelectedItem());
 		return (String)variablePicker.getSelectedItem();
 	}
 	

@@ -174,12 +174,14 @@ public class Input extends Object{
 	}
 	
 	private void updateView() {
-		answerMachinePanel.update();
+		answerMachinePanel.getInputPanel().update();
+	}
+	
+	private void updateWantedFieldPanel() {
+		answerMachinePanel.getWantedFieldPanel().update();
 	}
 	
 	public boolean updateModel() {
-//		System.out.println(variables.keySet());
-//		System.out.println(variables.values());
 		int numVar = 0;
 		for(int i=0; i<VARIABLES.length; i++) {
 			if(variables.get(VARIABLES[i])!=0) {
@@ -189,14 +191,13 @@ public class Input extends Object{
 		if(numVar>1) {
 			this.numberFields = numVar;
 			this.updateView();
+			this.updateWantedFieldPanel();
 			return true;
 		}
 		return false;
 	}
 	
 	public void updateCalculations() {
-//		System.out.println(variables.keySet());
-//		System.out.println(variables.values());
 		calculations.update();
 	}
 }
