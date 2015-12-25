@@ -120,6 +120,7 @@ public class Animation implements Runnable {
 				this.difference = 0;
 			}
 			updateComponent();
+			updateActions();
 		}
 	}
 
