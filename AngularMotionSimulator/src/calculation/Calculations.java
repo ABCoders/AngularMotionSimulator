@@ -55,7 +55,7 @@ public class Calculations extends Object{
 		String valueEquation = "";
 		if(variable1.indexOf("(") > -1){
 			valueEquation = "(";
-			variable1 = variable1.replace("(", "");
+			variable1 = variable1.replaceFirst("(", "");
 		}
 		
 		switch(variable1){
@@ -82,11 +82,11 @@ public class Calculations extends Object{
 		valueEquation = valueEquation + operation1;
 		if(variable2.indexOf("(") > -1){
 			valueEquation = valueEquation + "(";
-			variable2 = variable2.replace("(", "");
+			variable2 = variable2.replaceFirst("(", "");
 		}
 		else if(variable2.indexOf(")") > -1){
 			addBracketAfter = true;
-			variable2 = variable2.replace(")", "");
+			variable2 = variable2.replaceFirst(")", "");
 		}
 		
 		switch(variable2){
@@ -114,7 +114,7 @@ public class Calculations extends Object{
 		
 		if(variable3.indexOf(")") > -1){
 			valueEquation = valueEquation + ")";
-			variable3 = variable3.replace(")", "");
+			variable3 = variable3.replaceFirst(")", "");
 		}
 		
 		switch(variable3){
