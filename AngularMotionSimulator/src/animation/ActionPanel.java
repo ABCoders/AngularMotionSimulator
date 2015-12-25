@@ -60,6 +60,7 @@ public class ActionPanel extends JPanel {
 		scaleSlider = new JSlider(JSlider.HORIZONTAL, 0, 200, 100);
 		scaleSlider.setMajorTickSpacing(50);
 		scaleSlider.setMinorTickSpacing(10);
+		scaleSlider.setExtent(1);
 		scaleSlider.setPaintTicks(true);
 		scaleSlider.setPaintLabels(true);
 	}
@@ -126,9 +127,17 @@ public class ActionPanel extends JPanel {
 				timeSlider.setMajorTickSpacing(200);
 				timeSlider.setMinorTickSpacing(50);
 			} 
-			else {
+			else if(timeSlider.getMaximum()<=2500) {
 				timeSlider.setMajorTickSpacing(500);
 				timeSlider.setMinorTickSpacing(100);
+			} 
+			else if(timeSlider.getMaximum()<=5000) {
+				timeSlider.setMajorTickSpacing(1000);
+				timeSlider.setMinorTickSpacing(500);
+			} 
+			else {
+				timeSlider.setMajorTickSpacing(2500);
+				timeSlider.setMinorTickSpacing(1000);
 			}
 		}
 		
