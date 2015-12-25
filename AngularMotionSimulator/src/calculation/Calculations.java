@@ -53,9 +53,9 @@ public class Calculations extends Object{
 		this.equation = variable1 + " " + operation1 + " " + variable2 + " " + operation2 + " " + variable3;
 		
 		String valueEquation = "";
-		if(variable1.indexOf("(") > -1){
+		if(variable1.contains("(")){
 			valueEquation = "(";
-			variable1 = variable1.replaceFirst("(", "");
+			variable1 = variable1.replace("(", "");
 		}
 		
 		switch(variable1){
@@ -78,15 +78,15 @@ public class Calculations extends Object{
 				valueEquation = valueEquation + this.variables.get("Angle");
 				break;
 		}
-		
 		valueEquation = valueEquation + operation1;
-		if(variable2.indexOf("(") > -1){
+		
+		if(variable2.contains("(")){
 			valueEquation = valueEquation + "(";
-			variable2 = variable2.replaceFirst("(", "");
+			variable2 = variable2.replace("(", "");
 		}
-		else if(variable2.indexOf(")") > -1){
+		else if(variable2.contains(")")){
 			addBracketAfter = true;
-			variable2 = variable2.replaceFirst(")", "");
+			variable2 = variable2.replace(")", "");
 		}
 		
 		switch(variable2){
@@ -109,12 +109,14 @@ public class Calculations extends Object{
 				valueEquation = valueEquation + this.variables.get("Angle");
 				break;
 		}
-		if(addBracketAfter)
+		if(addBracketAfter){
 			valueEquation = valueEquation + ")";
-		
-		if(variable3.indexOf(")") > -1){
-			valueEquation = valueEquation + ")";
-			variable3 = variable3.replaceFirst(")", "");
+			addBracketAfter = false;
+		}
+		valueEquation = valueEquation + operation2;
+		if(variable3.contains(")")){
+			addBracketAfter = true;
+			variable3 = variable3.replace(")", "");
 		}
 		
 		switch(variable3){
@@ -137,6 +139,9 @@ public class Calculations extends Object{
 				valueEquation = valueEquation + this.variables.get("Angle");
 				break;
 		}
+		if(addBracketAfter)
+			valueEquation = valueEquation + ")";
+		
 		this.valueEquation = valueEquation;
 		this.result = "" + result;
 	}
@@ -245,7 +250,7 @@ public class Calculations extends Object{
 			}
 			else if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Radius") != 0 && this.variables.get("Time") != 0){
 					arcLength = this.variables.get("Angular Velocity") * this.variables.get("Time") * this.variables.get("Radius");
-					this.decideEquation("Anglular Velocity", "x", "Time", "x", "Radius", arcLength);
+					this.decideEquation("Angular Velocity", "x", "Time", "x", "Radius", arcLength);
 			}
 			else if(this.variables.get("Angle") != 0 && this.variables.get("Linear Velocity") != 0 && this.variables.get("Angular Velocity") != 0){
 					arcLength = this.variables.get("Linear Velocity") * (this.variables.get("Angle") / this.variables.get("Angular Velocity"));
@@ -258,7 +263,7 @@ public class Calculations extends Object{
 		double time = this.variables.get("Time");
 			if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Angle") != 0){
 				time = this.variables.get("Angular Velocity")/this.variables.get("Angle");
-				this.decideEquation("Anglular Velocity", "/", "Angle", "", "", time);
+				this.decideEquation("Angular Velocity", "/", "Angle", "", "", time);
 			}
 			else if(this.variables.get("Arc Length") != 0 && this.variables.get("Linear Velocity") != 0){
 				time = this.variables.get("Arc Length")/this.variables.get("Linear Velocity");
