@@ -36,7 +36,9 @@ public class Calculations extends Object{
 		variables.put("Time", input.getVariableValue(4));
 		variables.put("Angle", input.getVariableValue(5));
 		this.wantedVariable = input.getWantedVariable();
-
+	}
+	
+	private void setAnimationVariables(){
 		if(this.variables.get("Angular Velocity") == 0)
 			this.variables.put("Angular Velocity", this.findAngularVelocity());
 		if(this.variables.get("Linear Velocity") == 0)
@@ -139,13 +141,13 @@ public class Calculations extends Object{
 		double solution = 0;
 		switch(this.wantedVariable){
 			case("Angular Velocity"):
-				solution = this.variables.get("Angular Velocity");
+				solution = this.findAngularVelocity();
 				break;
 			case("Linear Velocity"):
-				solution = this.variables.get("Linear Velocity");
+				solution = this.findLinearVelocity();
 				break;
 			case("Radius"):
-				solution = this.variables.get("Radius");
+				solution = this.findRadius();
 				break;
 			case("Time"):
 				solution = this.findTime();
@@ -166,6 +168,7 @@ public class Calculations extends Object{
 	private double findAngularVelocity(){
 		double angularVelocity = this.variables.get("Angular Velocity");
 			if(this.variables.get("Angle") != 0 && this.variables.get("Time") != 0){
+				System.out.println("It got here");
 				angularVelocity = this.variables.get("Angle")/this.variables.get("Time");
 				this.decideEquation("Angle", "/", "Time", "", "", angularVelocity);
 			}
@@ -340,7 +343,6 @@ public class Calculations extends Object{
 
 	public void update() {
 		this.setVariables();
-
 		if(this.calculate()){
 			try{
 				this.processFrame.dispose();
@@ -348,6 +350,7 @@ public class Calculations extends Object{
 			catch(NullPointerException ex){
 			}
 			this.processFrame = new ProcessFrame(this, true);
+			this.setAnimationVariables();
 			this.input.getAnimation().updateModel();
 		}
 		else{
