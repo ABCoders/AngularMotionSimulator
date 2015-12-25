@@ -1,18 +1,23 @@
 package calculation;
 
 import javax.swing.*;
+
+import inputs.Input;
+
 import java.awt.*;
 
 public class ProcessFrame extends JFrame{
 	private Calculations calculations;
+	private Input input;
 	private JPanel mainPanel;
 	private GivensPanel givensPanel;
 	private CalculationsPanel calcPanel;
 	private JButton save;
 
-	public ProcessFrame(Calculations calculations, boolean visible) {
+	public ProcessFrame(Calculations calculations, Input input, boolean visible) {
 		super();
 		this.calculations = calculations;
+		this.input = input;
 	    this.createComponents();
 	    this.createFrame(visible);
 	    this.registerControllers();
@@ -32,13 +37,13 @@ public class ProcessFrame extends JFrame{
 	
 	private void createComponents(){
 		this.mainPanel = new JPanel();
-		this.givensPanel = new GivensPanel(this.calculations.getInput());
+		this.givensPanel = new GivensPanel(this.input);
 	    this.calcPanel = new CalculationsPanel(this.calculations);
 	    this.save = new JButton("Save");
 	}
 	
 	private void registerControllers(){
-		ProcessSaveController processSaveController = new ProcessSaveController(this.calculations);
+		ProcessSaveController processSaveController = new ProcessSaveController(this.calcPanel.getEquation(), this.calcPanel.getValueEquation(), this.calcPanel.getResult());
 		this.save.addActionListener(processSaveController);
 	}
 	

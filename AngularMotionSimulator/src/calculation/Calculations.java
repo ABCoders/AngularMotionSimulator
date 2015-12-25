@@ -1,5 +1,5 @@
+//package and imports
 package calculation;
-
 import java.io.*;
 import java.util.TreeMap;
 
@@ -8,25 +8,35 @@ import javax.swing.*;
 import inputs.ErrorDialog;
 import inputs.Input;
 
-public class Calculations extends Object{
-	private ProcessFrame processFrame;
-	private Input input;
+/* Calculations
+ * The model of the calculations - contains all variables from input, calculates for the wanted variable, and provides needed values for animation
+ * @author Amritpal Aujla
+ * @since 25/12/2015 */
+public class Calculations{
+	//Attributes
+	private ProcessFrame processFrame;                     //the view that shows the process for the calculation for the wanted variable
+	private Input input;                                   //the input model that the measurements are acquired from
 
-	private TreeMap<String, Double> variables;
-	private String wantedVariable;
+	private TreeMap<String, Double> variables;             //the collection of variable names (the keys) and their corresponding values (the values)
+	private String wantedVariable;                         //the variable the user wants to calculate
 
-	private String equation;
-	private String valueEquation;
-	private String result;
+	private String equation;                               //the equation for the wanted variable, made up of the variable names and operations
+	private String valueEquation;                          //the equation for the wanted variable, made up of the variable values and operations
+	private String result;                                 //the solution to the equation for the wanted variable
 
+	/* Default Constructor - initializes the input attribute
+	 * @param input - the input model with the measurements that Calculations needs */
 	public Calculations(Input input){
 		this.input = input;
 	}
-
+	
+	/* Sets the view for this model
+	 * @param frame - the ProcessFrame that is set as the view for this model */
 	public void setGUI(ProcessFrame frame){
 		this.processFrame = frame;
 	}
 
+	/* Gets the many measurements and variables from the input model and sets them to the collection in this Calculations */
 	private void setVariables(){
 		this.variables = new TreeMap<String, Double>();
 		variables.put("Angular Velocity", input.getVariableValue(0));
@@ -38,6 +48,7 @@ public class Calculations extends Object{
 		this.wantedVariable = input.getWantedVariable();
 	}
 	
+	/* Finds angular velocity, linear velocity, and radius for Animation to use to generate the animation */
 	private void setAnimationVariables(){
 		if(this.variables.get("Angular Velocity") == 0)
 			this.variables.put("Angular Velocity", this.findAngularVelocity());
@@ -47,6 +58,13 @@ public class Calculations extends Object{
 			this.variables.put("Radius", this.findRadius());
 	}
 	
+	/* decides the value for the equation, valueEquation, and result attributes
+	 * @param variable1 - the first variable in the equation
+	 * @param operation1 - the first operation character in the equation evaluating the first and second variable
+	 * @param variable2 - the second variable in the equation
+	 * @param operation2 - the second operation character in the equation evaluating the second and third variable
+	 * @param variable3 - the third variable in the equation
+	 * @param result - the solution to the equation */
 	private void decideEquation(String variable1, String operation1, String variable2, String operation2, String variable3, double result){
 		boolean addBracketAfter = false;
 		
@@ -146,6 +164,8 @@ public class Calculations extends Object{
 		this.result = "" + result;
 	}
 	
+	/* Calculates for the wanted variable and returns true after doing so, returning false if it is unable to calculate
+	 * @return whether the calculation has finished properly */
 	public boolean calculate(){
 		double solution = 0;
 		switch(this.wantedVariable){
@@ -174,6 +194,8 @@ public class Calculations extends Object{
 		return true;
 	}
 
+	/* finds angular velocity using various equations relating to Angular Motion
+	 * @return angularVelocity - the calculated angular velocity if the calculation has finished properly, and the current angular velocity if it has not */
 	private double findAngularVelocity(){
 		double angularVelocity = this.variables.get("Angular Velocity");
 			if(this.variables.get("Angle") != 0 && this.variables.get("Time") != 0){
@@ -196,6 +218,8 @@ public class Calculations extends Object{
 		return angularVelocity;
 	}
 
+	/* finds linear velocity using various equations relating to Angular Motion
+	 * @return linearVelocity - the calculated linear velocity if the calculation has finished properly, and the current linear velocity if it has not */
 	private double findLinearVelocity(){
 		double linearVelocity = this.variables.get("Linear Velocity");
 			if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Radius") != 0){
@@ -217,6 +241,8 @@ public class Calculations extends Object{
 		return linearVelocity;
 	}
 
+	/* finds radius using various equations relating to Angular Motion
+	 * @return radius - the calculated radius if the calculation has finished properly, and the current radius if it has not */
 	private double findRadius(){
 		double radius = this.variables.get("Radius");
 			if(this.variables.get("Linear Velocity") != 0 && this.variables.get("Angular Velocity") != 0){
@@ -238,6 +264,8 @@ public class Calculations extends Object{
 		return radius;
 	}
 
+	/* finds arc length using various equations relating to Angular Motion
+	 * @return arc length - the calculated arc length if the calculation has finished properly, and the current arc length if it has not */
 	private double findArcLength(){
 		double arcLength = this.variables.get("Arc Length");
 			if(this.variables.get("Angle") != 0 && this.variables.get("Radius") != 0){
@@ -259,6 +287,8 @@ public class Calculations extends Object{
 		return arcLength;
 	}
 
+	/* finds time using various equations relating to Angular Motion
+	 * @return time - the calculated time if the calculation has finished properly, and the current time if it has not */
 	private double findTime(){
 		double time = this.variables.get("Time");
 			if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Angle") != 0){
@@ -280,6 +310,8 @@ public class Calculations extends Object{
 		return time;
 	}
 
+	/* finds angle using various equations relating to Angular Motion
+	 * @return angle - the calculated angle if the calculation has finished properly, and the current angle if it has not */
 	private double findAngle(){
 		double angle = this.variables.get("Angle");
 			if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Time") != 0){
@@ -300,56 +332,38 @@ public class Calculations extends Object{
 			}
 		return angle;
 	}
-
-	public void saveProcess(){
-		JFileChooser fileChooser = new JFileChooser();
-		int working = fileChooser.showSaveDialog(processFrame);
-		if(working == JFileChooser.APPROVE_OPTION){
-			PrintWriter output = null;
-			try{
-			    String path = fileChooser.getSelectedFile().getAbsolutePath();
-			    if(path.substring(path.length() - 4).equals(".txt")){
-			     path = fileChooser.getSelectedFile().getAbsolutePath();
-			}
-			else
-			     path = fileChooser.getSelectedFile().getAbsolutePath() + ".txt";
-			    output = new PrintWriter(new File(path));
-			    output.println("Calculations for " + this.wantedVariable);
-			    output.println(this.wantedVariable + " = " + this.equation);
-			    output.println(this.wantedVariable + " = " + this.valueEquation);
-			    output.println(this.wantedVariable + " = " + this.result);
-			    output.close();
-			}
-			catch(FileNotFoundException ex){}
-		}
-	}
-
+	
+	/* Returns the equation attribute
+	 * @return the equation */
 	public String getEquation(){
 		return this.equation;
 	}
 
+	/* Returns the valueEquation attribute
+	 * @return the valueEquation - the equation with values instead of words */
 	public String getValueEquation() {
 		return valueEquation;
 	}
 
+	/* Returns the result attribute
+	 * @return the reult - the solution to the calculation */
 	public String getResult(){
 		return this.result;
 	}
 
-	/**
-	 * @return the wantedVariable
-	 */
+	/* Returns the wantedVariable attribute
+	 * @return the wantedVariable */
 	public String getWantedVariable() {
 		return wantedVariable;
 	}
 
-	/**
-	 * @return the variables treemap of all the measurements
-	 */
+	/* Returns the variables attribute
+	 * @return the variables - the TreeMap of all the measurements and their values */
 	public TreeMap<String, Double> getVariables(){
 		return this.variables;
 	}
 
+	/* Updates Calculations, setting variables, calculating for the wanted variable, making the view, etc. */
 	public void update() {
 		this.setVariables();
 		if(this.calculate()){
@@ -358,18 +372,13 @@ public class Calculations extends Object{
 			}
 			catch(NullPointerException ex){
 			}
-			this.processFrame = new ProcessFrame(this, true);
+			this.processFrame = new ProcessFrame(this, this.input, true);
 			this.setAnimationVariables();
 			this.input.getAnimation().updateModel();
 		}
 		else{
-			this.processFrame = new ProcessFrame(this, false);
+			this.processFrame = new ProcessFrame(this, this.input, false);
 			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(processFrame), "Cannot calculate using current givens");
 		}
 	}
-
-	public Input getInput(){
-		return this.input;
-	}
-
 }
