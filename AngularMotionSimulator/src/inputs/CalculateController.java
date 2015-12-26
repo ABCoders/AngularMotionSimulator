@@ -31,7 +31,7 @@ public class CalculateController implements ActionListener {
 		}
 
 		if(isDoubleVariables(variables, wantedVariable)) {
-			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(inputFields.get(0)), "Double Variables");
+			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(inputFields.get(0)), "Have only one type of variable in each input.");
 		}
 		else {
 			System.out.println(Arrays.toString(variables.toArray()));

@@ -42,9 +42,9 @@ public class ActionPanel extends JPanel {
 		clearButton = new JButton("CLEAR");
 		
 		//Labels
-		timeLabel = new JLabel("TIME");
+		timeLabel = new JLabel("TIME (ds)");
 		timeLabel.setLabelFor(timeSlider);
-		scaleLabel = new JLabel("SCALE");
+		scaleLabel = new JLabel("SCALE (%)");
 		scaleLabel.setLabelFor(scaleSlider);
 		
 		//Time Slider
