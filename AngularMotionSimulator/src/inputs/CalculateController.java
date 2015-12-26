@@ -27,32 +27,32 @@ public class CalculateController implements ActionListener{
 		this.wantedField = wantedField;
 	}
 	
-	/** 
+	/** Gets the values for the variables in the fields and puts them into input and calculations
 	 *  @param e - the event from the action listener that designates the calculate button being pressed
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ArrayList<String> variables = new ArrayList<String>();
-		ArrayList<Double> values = new ArrayList<Double>();
-		String wantedVariable;
+		ArrayList<String> variables = new ArrayList<String>();			//the collection of variable names
+		ArrayList<Double> values = new ArrayList<Double>();				//the collection of values for the variable names
+		String wantedVariable;											//the variable that the user wants to calculate for
 
-		//Gets values and variables from input
+		//Gets values and variables from the fields
 		wantedVariable = wantedField.getSelectedVariable();
 		for (InputFieldPanel field: inputFields) {
 			variables.add(field.getSelectedVariable());
 			values.add(field.getValue());
 		}
 
+		//checks if the user has entered more than one variable value of the same type and gives and error if it is true
 		if(isDoubleVariables(variables, wantedVariable)) {
 			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(inputFields.get(0)), "Have only one type of variable in each input.");
 		}
 		else {
-			System.out.println(Arrays.toString(variables.toArray()));
-			System.out.println(Arrays.toString(values.toArray()));
-
+			//erases all previous values for variables and sets the wanted variable
 			this.input.resetVariables();
 			this.input.setWantedVariable(wantedVariable);
 
+			//goes through the collection of variables and sets the respective variables into the proper spots in input
 			for(int i = 0; i < variables.size(); i++){
 				switch(variables.get(i)){
 					case("Angular Velocity"):
@@ -75,15 +75,25 @@ public class CalculateController implements ActionListener{
 						break;
 				}
 			}
+			//updates the calculations model from input to calcuate for the wanted variable
 			this.input.updateCalculations();
 		}
 	}
 
+	/** Checks if the input fields have more than one variable of the same type in them, returning true if yes and false if no
+	 *  @param variables - the collection of input fields containing the name of the variables the user inputs
+	 *  @param wantedVariable - the name of the wanted variable that the user wants to calculate for
+	 *  @return whether there are two variables of the same type
+	 */
 	private boolean isDoubleVariables(ArrayList<String> variables, String wantedVariable) {
+		//going through the entire list of variable names
 		for (int x = 0; x < variables.size(); x++) {
 			String variable = variables.get(x);
+			//checking against the wanted varible
 			if (variable.equals(wantedVariable))
 				return true;
+			
+			//going through every subsequent element in the collection and comparing it with them
 			for (int y = x+1; y < variables.size(); y++) {
 				if (variable.equals(variables.get(y))) {
 					return true;
