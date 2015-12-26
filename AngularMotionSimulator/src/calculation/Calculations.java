@@ -396,7 +396,7 @@ public class Calculations{
 			case("Arc Length"):
 				return "To calculate Arc Length you need either of these sets of measurements:<p></p> <p>Time and Linear Velocity <p>Angle and Radius <p>Radius, Time, and Angular Velocity <p>Angular Velocity, Angle, and Angular Velocity</p></p></p></p>";
 			case("Angle"):
-				return "To calculate Angle, you need either of these sets of measurements:<p></p> <p>Angular Velocity and Time <p>Linear Velocity and Arc Length <p>Arc Length, Angular Velocity, and Linear Velocity <p>Time, Radius, and Linear Velocity</p></p></p></p>";
+				return "To calculate Angle, you need either of these sets of measurements:<p></p> <p>Angular Velocity and Time <p>Radius and Arc Length <p>Arc Length, Angular Velocity, and Linear Velocity <p>Time, Radius, and Linear Velocity</p></p></p></p>";
 			default:
 				return "";
 		}
