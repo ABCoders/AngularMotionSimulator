@@ -19,7 +19,7 @@ public class ErrorDialog extends JDialog {
 	public ErrorDialog(JFrame jFrame, String errorMessage) {
 		super(jFrame, "Error", true);
 		this.frame = jFrame;
-		this.message = errorMessage;
+		this.message = "<html>" + errorMessage + "</html>";
 		this.createComponents();
 		this.createDialog();
 	}
