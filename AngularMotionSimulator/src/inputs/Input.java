@@ -34,6 +34,7 @@ public class Input extends Object{
 		this.resetVariables();
 		
 		this.wantedVariable = VARIABLES[0];
+		this.numberPanels = 1;
 		this.numberFields = 2;
 	}
 	

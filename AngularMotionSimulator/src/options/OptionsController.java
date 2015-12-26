@@ -81,10 +81,10 @@ public class OptionsController implements ActionListener {
 			}
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("one animation")) {
-			
+			input.setNumberPanel(1);
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("two animations")) {
-			
+			input.setNumberPanel(2);
 		}
 	}
 	
