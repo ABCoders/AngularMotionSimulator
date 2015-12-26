@@ -378,7 +378,7 @@ public class Calculations{
 		}
 		else{
 			this.processFrame = new ProcessFrame(this, this.input, false);
-			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(processFrame), "Cannot calculate using current givens");
+			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(processFrame), "Cannot calculate using current givens.Please enter givens that can actually be used to do the calculation.");
 		}
 	}
 }
