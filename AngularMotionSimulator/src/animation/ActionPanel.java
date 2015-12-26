@@ -144,7 +144,7 @@ public class ActionPanel extends JPanel {
 		}
 		
 		if (animation.getState()) {
-//			animationButton.setText("PAUSE");
+			animationButton.setText("PAUSE");
 			animationButton.setIcon(pauseIcon);
 			animationButton.setActionCommand("pause");
 			timeSlider.setValue((int)Math.round(animation.getTime()*10));
@@ -152,8 +152,8 @@ public class ActionPanel extends JPanel {
 		}
 		else {
 			animationButton.setIcon(playIcon);
+			animationButton.setText("PLAY   ");
 			animationButton.setActionCommand("play");
-//			animationButton.setText("PLAY   ");
 		}
 	}
 }
