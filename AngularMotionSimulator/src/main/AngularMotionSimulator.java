@@ -14,9 +14,14 @@ public class AngularMotionSimulator {
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Angular Motion Simulator");
-		Input input = new Input();
-		AngularMotionSimulatorPanel contentPane = new AngularMotionSimulatorPanel(input);
-		frame.setContentPane(contentPane);
+		Input input1 = new Input();
+		AngularMotionSimulatorPanel pane1 = new AngularMotionSimulatorPanel(input1);
+		Input input2 = new Input();
+		AngularMotionSimulatorPanel pane2 = new AngularMotionSimulatorPanel(input2);
+		JPanel mainPane = new JPanel(new BorderLayout());
+		mainPane.add(pane1, BorderLayout.EAST);
+		mainPane.add(pane2, BorderLayout.WEST);
+		frame.setContentPane(mainPane);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		ImageIcon icon = new ImageIcon(AngularMotionSimulator.class.getResource("LogoTriangle.png"));
