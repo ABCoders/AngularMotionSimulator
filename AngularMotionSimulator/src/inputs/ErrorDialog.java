@@ -4,6 +4,8 @@
 package inputs;
 
 import javax.swing.*;
+import javax.swing.text.*;
+
 import java.awt.*;
 
 /**
@@ -14,12 +16,12 @@ public class ErrorDialog extends JDialog {
 	private JFrame frame;
 	private JPanel panel;
 	private String message;
-	private JLabel label;
+	private JTextArea text;
 
 	public ErrorDialog(JFrame jFrame, String errorMessage) {
 		super(jFrame, "Error", true);
 		this.frame = jFrame;
-		this.message = "<html>" + errorMessage + "</html>";
+		this.message = "<html><ALIGN CENTER>" + errorMessage + "</ALIGN></html>";
 		this.createComponents();
 		this.createDialog();
 	}
@@ -27,11 +29,11 @@ public class ErrorDialog extends JDialog {
 	private void createComponents() {
 		panel = new JPanel(new BorderLayout());
 		panel.setPreferredSize(new Dimension(300, 100));
-		label = new JLabel(message, SwingConstants.CENTER);
+		text = new JTextArea(message);
 	}
 
 	private void createDialog() {
-		panel.add(label, BorderLayout.CENTER);
+		panel.add(text, BorderLayout.CENTER);
 		this.setContentPane(panel);
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		this.pack();

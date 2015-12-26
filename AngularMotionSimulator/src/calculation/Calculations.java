@@ -377,7 +377,28 @@ public class Calculations{
 		}
 		else{
 			this.processFrame = new ProcessFrame(this, this.input, false);
-			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(processFrame), "Cannot calculate using current givens. Please enter givens that can actually be used to do the calculation.");
+			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(processFrame), "Cannot calculate using current givens. " + this.giveRelevantError());
+		}
+	}
+	
+	/* Returns the variables attribute
+	 * @return the variables - the TreeMap of all the measurements and their values */
+	private String giveRelevantError(){
+		switch(this.wantedVariable){
+			case("Angular Velocity"):
+				return "To calculate Angular Velocity, you need either of these sets of measurements: \nAngle and Time \nLinear Velocity and Radius \nArc Length, Angle, and Linear Velocity \nTime, Radius, and Arc Length";
+			case("Linear Velocity"):
+				return "To calculate Linear Velocity, you need either of these sets of measurements: \nAngle and Time \nLinear Velocity and Radius \nArc Length, Angle, and Linear Velocity \nTime, Radius, and Arc Length";
+			case("Radius"):
+				return "To calculate Radius, you need either of these sets of measurements: \nAngle and Time \nLinear Velocity and Radius \nArc Length, Angle, and Linear Velocity \nTime, Radius, and Arc Length";
+			case("Time"):
+				return "To calculate Time, you need either of these sets of measurements: \nAngle and Time \nLinear Velocity and Radius \nArc Length, Angle, and Linear Velocity \nTime, Radius, and Arc Length";
+			case("Arc Length"):
+				return "To calculate Arc Length you need either of these sets of measurements: \nAngle and Time \nLinear Velocity and Radius \nArc Length, Angle, and Linear Velocity \nTime, Radius, and Arc Length";
+			case("Angle"):
+				return "To calculate Angle, you need either of these sets of measurements: \nAngle and Time \nLinear Velocity and Radius \nArc Length, Angle, and Linear Velocity \nTime, Radius, and Arc Length";
+			default:
+				return "";
 		}
 	}
 }
