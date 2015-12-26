@@ -1,22 +1,35 @@
+//packages and imports
 package inputs;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
-public class CalculateController implements ActionListener {
+/** CalculateController
+ *  The controller that sends the data from the AnswerMachinePanel to Input, Calculations, and then calculates for the wanted variable
+ *  @author Amritpal Aujla
+ *  @author Bryan Kristiono
+ *  @since 26/12/2015
+ */
+public class CalculateController implements ActionListener{
+	//attributes
+	private Input input;										//the input model to set the values in
+	private ArrayList<InputFieldPanel> inputFields;				//the array list of fields in the Answer Machine Panel that the input is gotten from
+	private WantedFieldPanel wantedField;						//the wanted field panel containing the name of the variable the user wants to calculate
 
-	private Input input;
-	private ArrayList<InputFieldPanel> inputFields;
-	private WantedFieldPanel wantedField;
-
+	/** The Default Constructor - initializes the input model, sets the values of the input fields and wanted field 
+	 *  @param input - the input model to give the input values to
+	 *  @param inputFields - the collection of input fields that contain the variable values
+	 *  @param wantedField - the field that has the name of the wanted variable
+	 */
 	public CalculateController(Input input, ArrayList<InputFieldPanel> inputFields, WantedFieldPanel wantedField) {
 		this.input = input;
 		this.inputFields = inputFields;
 		this.wantedField = wantedField;
 	}
 	
+	/** 
+	 *  @param e - the event from the action listener that designates the calculate button being pressed
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		ArrayList<String> variables = new ArrayList<String>();
@@ -67,12 +80,12 @@ public class CalculateController implements ActionListener {
 	}
 
 	private boolean isDoubleVariables(ArrayList<String> variables, String wantedVariable) {
-		for (int i=0;i<variables.size();i++) {
-			String variable = variables.get(i);
+		for (int x = 0; x < variables.size(); x++) {
+			String variable = variables.get(x);
 			if (variable.equals(wantedVariable))
 				return true;
-			for (int k=i+1;k<variables.size();k++) {
-				if (variable.equals(variables.get(k))) {
+			for (int y = x+1; y < variables.size(); y++) {
+				if (variable.equals(variables.get(y))) {
 					return true;
 				}
 			}
