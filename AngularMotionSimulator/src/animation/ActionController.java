@@ -28,7 +28,7 @@ public class ActionController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
-		if (command.equalsIgnoreCase("play   ")) {
+		if (command.equalsIgnoreCase("play")) {
 			animation.setState(true);
 		} else if(command.equalsIgnoreCase("pause")) {
 			animation.setState(false);

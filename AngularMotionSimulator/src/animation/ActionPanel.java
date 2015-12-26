@@ -2,6 +2,8 @@ package animation;
 
 import javax.swing.*;
 
+import main.AngularMotionSimulator;
+
 /**ActionPanel
  * A Container for All buttons and sliders that changes the animation
  * @author BRYAN KRISTIONO
@@ -18,6 +20,9 @@ public class ActionPanel extends JPanel {
 	private JSlider timeSlider;			//The slider that changes the time of the animation
 	private JSlider scaleSlider;		//The slider that changes the scale of the animation
 	
+	private ImageIcon playIcon;
+	private ImageIcon pauseIcon;
+	
 	private int max;
 	/**
 	 * The main constructor
@@ -26,6 +31,9 @@ public class ActionPanel extends JPanel {
 	 */
 	public ActionPanel(Animation animation) {
 		super();
+		playIcon = new ImageIcon(ActionPanel.class.getResource("playIcon.png"));
+		pauseIcon = new ImageIcon(ActionPanel.class.getResource("pauseIcon.png"));
+		
 		this.animation = animation;
 		this.createComponents();
 		this.createPanel();
@@ -38,7 +46,7 @@ public class ActionPanel extends JPanel {
 	 */
 	private void createComponents() {
 		//Buttons
-		animationButton = new JButton("PLAY");
+		animationButton = new JButton(playIcon);
 		clearButton = new JButton("CLEAR");
 		
 		//Labels
@@ -138,12 +146,16 @@ public class ActionPanel extends JPanel {
 		}
 		
 		if (animation.getState()) {
-			animationButton.setText("PAUSE");
+//			animationButton.setText("PAUSE");
+			animationButton.setIcon(pauseIcon);
+			animationButton.setActionCommand("pause");
 			timeSlider.setValue((int)Math.round(animation.getTime()*10));
 			scaleSlider.setValue((int)(animation.getScale()*100));
 		}
 		else {
-			animationButton.setText("PLAY   ");
+			animationButton.setIcon(playIcon);
+			animationButton.setActionCommand("play");
+//			animationButton.setText("PLAY   ");
 		}
 	}
 }
