@@ -20,6 +20,7 @@ public class Input extends Object{
 	public static final int MIN_FIELDS = 2;
 	public static final int MAX_FIELDS = 5;
 	
+	private int numberPanels;
 	private int numberFields;
 	private int removedField;
 	
@@ -40,10 +41,15 @@ public class Input extends Object{
 		this.answerMachinePanel = answerMachinePanel;
 	}
 	
+	public void setNumberPanel(int number) {
+		this.numberPanels = number;
+		this.updateView();
+	}
+	
 	public void addField() {
 		if (numberFields<MAX_FIELDS) {
 			numberFields++;
-			this.updateView();
+			this.updateInputPanel();
 		}
 	}
 	
@@ -51,7 +57,7 @@ public class Input extends Object{
 		if (numberFields>MIN_FIELDS) {
 			numberFields--;
 			this.removedField = position;
-			this.updateView();
+			this.updateInputPanel();
 		}
 	}
 	
@@ -104,6 +110,10 @@ public class Input extends Object{
 		this.variables.put("Angle", angle);
 	}
 
+	public int getNumberPanels() {
+		return this.numberPanels;
+	}
+	
 	public int getNumberFields() {
 		return this.numberFields;
 	}
@@ -174,6 +184,10 @@ public class Input extends Object{
 	}
 	
 	private void updateView() {
+		answerMachinePanel.update();
+	}
+	
+	private void updateInputPanel() {
 		answerMachinePanel.getInputPanel().update();
 	}
 	
@@ -190,7 +204,7 @@ public class Input extends Object{
 		}
 		if(numVar>1) {
 			this.numberFields = numVar;
-			this.updateView();
+			this.updateInputPanel();
 			this.updateWantedFieldPanel();
 			return true;
 		}

@@ -18,6 +18,8 @@ public class OptionsMenuBar extends JMenuBar {
 	private JMenuItem loadItem;
 	private JMenuItem helpItem;
 	private JMenuItem colorItem;
+	private JRadioButtonMenuItem oneCircleItem;
+	private JRadioButtonMenuItem twoCircleItem;
 	
 	public OptionsMenuBar(Input input, AnswerMachinePanel answerMachinePanel) {
 		super();
@@ -35,6 +37,8 @@ public class OptionsMenuBar extends JMenuBar {
 		loadItem = new JMenuItem("Load");
 		helpItem = new JMenuItem("Help");
 		colorItem = new JMenuItem("Change Color");
+		oneCircleItem = new JRadioButtonMenuItem("One Animation");
+		twoCircleItem = new JRadioButtonMenuItem("Two Animations");
 	}
 	
 	private void createMenuBar() {
@@ -42,6 +46,13 @@ public class OptionsMenuBar extends JMenuBar {
 		file.add(loadItem);
 		other.add(helpItem);
 		other.add(colorItem);
+		other.addSeparator();
+		oneCircleItem.setSelected(true);
+		ButtonGroup group = new ButtonGroup();
+		group.add(oneCircleItem);
+		group.add(twoCircleItem);
+		other.add(oneCircleItem);
+		other.add(twoCircleItem);
 		this.add(file);
 		this.add(other);
 	}
@@ -49,11 +60,12 @@ public class OptionsMenuBar extends JMenuBar {
 	private void registerControllers() {
 		WantedFieldPanel wantedField = answerMachinePanel.getWantedFieldPanel();
 		ArrayList<InputFieldPanel> inputFields = answerMachinePanel.getInputPanel().getFields();
-//		System.out.println("MB" + inputFields + "/" + wantedField);
 		OptionsController controller = new OptionsController(input, this, inputFields, wantedField);
 		saveItem.addActionListener(controller);
 		loadItem.addActionListener(controller);
 		helpItem.addActionListener(controller);
 		colorItem.addActionListener(controller);
+		oneCircleItem.addActionListener(controller);
+		twoCircleItem.addActionListener(controller);
 	}
 }

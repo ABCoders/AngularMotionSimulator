@@ -80,6 +80,12 @@ public class OptionsController implements ActionListener {
 				loadVariables();
 			}
 		}
+		else if (e.getActionCommand().equalsIgnoreCase("one animation")) {
+			
+		}
+		else if (e.getActionCommand().equalsIgnoreCase("two animations")) {
+			
+		}
 	}
 	
 	private void saveVariables() {
