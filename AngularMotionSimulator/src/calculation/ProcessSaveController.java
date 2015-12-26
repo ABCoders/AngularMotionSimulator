@@ -34,7 +34,7 @@ public class ProcessSaveController implements ActionListener {
 	}
 
 	/** Save the calculation process into a text file of the user's choice of name and location
-	 *  @param e - the event from the action listener that designates the save button being pressed
+	 *  @param e - the event from the save button
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {

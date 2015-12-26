@@ -28,7 +28,7 @@ public class CalculateController implements ActionListener{
 	}
 	
 	/** Gets the values for the variables in the fields and puts them into input and calculations
-	 *  @param e - the event from the action listener that designates the calculate button being pressed
+	 *  @param e - the event from the calculate button
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
