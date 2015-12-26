@@ -1,6 +1,5 @@
 //package and imports
 package calculation;
-import java.io.*;
 import java.util.TreeMap;
 
 import javax.swing.*;

@@ -2,8 +2,6 @@ package animation;
 
 import javax.swing.*;
 
-import main.AngularMotionSimulator;
-
 /**ActionPanel
  * A Container for All buttons and sliders that changes the animation
  * @author BRYAN KRISTIONO
