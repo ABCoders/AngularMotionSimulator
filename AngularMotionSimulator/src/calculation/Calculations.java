@@ -1,6 +1,6 @@
 //package and imports
 package calculation;
-import java.util.TreeMap;
+import java.util.*;
 
 import javax.swing.*;
 
@@ -44,11 +44,13 @@ public class Calculations{
 		variables.put("Arc Length", input.getVariableValue(3));
 		variables.put("Time", input.getVariableValue(4));
 		variables.put("Angle", input.getVariableValue(5));
+		
 		this.wantedVariable = input.getWantedVariable();
 	}
 	
 	/* Finds angular velocity, linear velocity, and radius for Animation to use to generate the animation */
 	private void setAnimationVariables(){
+		//if the variable's value is 0 (has not been input), then calculate it to give to animation
 		if(this.variables.get("Angular Velocity") == 0)
 			this.variables.put("Angular Velocity", this.findAngularVelocity());
 		if(this.variables.get("Linear Velocity") == 0)
@@ -65,16 +67,17 @@ public class Calculations{
 	 * @param variable3 - the third variable in the equation
 	 * @param result - the solution to the equation */
 	private void decideEquation(String variable1, String operation1, String variable2, String operation2, String variable3, double result){
-		boolean addBracketAfter = false;
-		
+		boolean addBracketAfter = false;                        //whether the equation should add a bracket after one of the variables
+		//making the word equation
 		this.equation = variable1 + " " + operation1 + " " + variable2 + " " + operation2 + " " + variable3;
 		
+		//making the equation with values replacing words
 		String valueEquation = "";
+		//for the first variable, removing the bracket from the word, and replacing the word with a value
 		if(variable1.contains("(")){
 			valueEquation = "(";
 			variable1 = variable1.replace("(", "");
 		}
-		
 		switch(variable1){
 			case("Angular Velocity"):
 				valueEquation = valueEquation + this.variables.get("Angular Velocity");
@@ -95,8 +98,10 @@ public class Calculations{
 				valueEquation = valueEquation + this.variables.get("Angle");
 				break;
 		}
+		//adding the operator
 		valueEquation = valueEquation + operation1;
 		
+		//replacing variable 2's brackets and replacing the words with values
 		if(variable2.contains("(")){
 			valueEquation = valueEquation + "(";
 			variable2 = variable2.replace("(", "");
@@ -126,10 +131,12 @@ public class Calculations{
 				valueEquation = valueEquation + this.variables.get("Angle");
 				break;
 		}
+		//adding brackets after the value if there is a need for it
 		if(addBracketAfter){
 			valueEquation = valueEquation + ")";
 			addBracketAfter = false;
 		}
+		//adding second operator and continuing the bracket-removing and word-replacing with variable 3
 		valueEquation = valueEquation + operation2;
 		if(variable3.contains(")")){
 			addBracketAfter = true;
@@ -156,9 +163,11 @@ public class Calculations{
 				valueEquation = valueEquation + this.variables.get("Angle");
 				break;
 		}
+		//adding bracket after variable 3 if there is a need for it
 		if(addBracketAfter)
 			valueEquation = valueEquation + ")";
 		
+		//setting the values for the valueEquation and result attributes
 		this.valueEquation = valueEquation;
 		this.result = "" + result;
 	}
@@ -166,6 +175,7 @@ public class Calculations{
 	/* Calculates for the wanted variable and returns true after doing so, returning false if it is unable to calculate
 	 * @return whether the calculation has finished properly */
 	public boolean calculate(){
+		//calculating for a certain wanted variable
 		double solution = 0;
 		switch(this.wantedVariable){
 			case("Angular Velocity"):
@@ -187,6 +197,7 @@ public class Calculations{
 				solution = this.findAngle();
 				break;
 		}
+		//if the solution could not be calculated
 		if(solution == 0){
 			return false;
 		}
@@ -196,24 +207,31 @@ public class Calculations{
 	/* finds angular velocity using various equations relating to Angular Motion
 	 * @return angularVelocity - the calculated angular velocity if the calculation has finished properly, and the current angular velocity if it has not */
 	private double findAngularVelocity(){
+		//gets the current angular velocity to return if a value cannot be calculated for
 		double angularVelocity = this.variables.get("Angular Velocity");
-			if(this.variables.get("Angle") != 0 && this.variables.get("Time") != 0){
-				System.out.println("It got here");
-				angularVelocity = this.variables.get("Angle")/this.variables.get("Time");
-				this.decideEquation("Angle", "/", "Time", "", "", angularVelocity);
-			}
-			else if(this.variables.get("Linear Velocity") != 0 && this.variables.get("Radius") != 0){
-				angularVelocity = this.variables.get("Linear Velocity")/this.variables.get("Radius");
-				this.decideEquation("Linear Velocity", "/", "Radius", "", "", angularVelocity);
-			}
-			else if(this.variables.get("Arc Length") != 0 && this.variables.get("Time") != 0 && this.variables.get("Radius")!= 0){
-					angularVelocity = (this.variables.get("Arc Length")/this.variables.get("Radius"))/this.variables.get("Time");
-					this.decideEquation("(Arc Length", "/", "Radius)", "/", "Time", angularVelocity);
-			}
-			else if(this.variables.get("Angle") != 0 && this.variables.get("Arc Length") != 0 && this.variables.get("Linear Velocity") != 0){
-					angularVelocity = this.variables.get("Angle")/(this.variables.get("Arc Length")/this.variables.get("Linear Velocity"));
-					this.decideEquation("Angle", "/", "(Arc Length", "/", "Linear Velocity)", angularVelocity);
-			}
+		
+		//if the user enters certain variables, the program is able to calculate angular velocity with them and then make their equations
+		//aV = angle / time if the user enters angle and time
+		if(this.variables.get("Angle") != 0 && this.variables.get("Time") != 0){
+			angularVelocity = this.variables.get("Angle")/this.variables.get("Time");
+			this.decideEquation("Angle", "/", "Time", "", "", angularVelocity);
+		}
+		//aV = linV / radius if the user enters linear velocity and radius
+		else if(this.variables.get("Linear Velocity") != 0 && this.variables.get("Radius") != 0){
+			angularVelocity = this.variables.get("Linear Velocity")/this.variables.get("Radius");
+			this.decideEquation("Linear Velocity", "/", "Radius", "", "", angularVelocity);
+		}
+		//aV = (arc length / radius) / linV if the user enters arc length, time, and radius
+		else if(this.variables.get("Arc Length") != 0 && this.variables.get("Time") != 0 && this.variables.get("Radius")!= 0){
+			angularVelocity = (this.variables.get("Arc Length")/this.variables.get("Radius"))/this.variables.get("Time");
+			this.decideEquation("(Arc Length", "/", "Radius)", "/", "Time", angularVelocity);
+		}
+		//aV = angle / (arc length / linV) if the user enters angle, arc length, and linear velocity
+		else if(this.variables.get("Angle") != 0 && this.variables.get("Arc Length") != 0 && this.variables.get("Linear Velocity") != 0){
+			angularVelocity = this.variables.get("Angle")/(this.variables.get("Arc Length")/this.variables.get("Linear Velocity"));
+			this.decideEquation("Angle", "/", "(Arc Length", "/", "Linear Velocity)", angularVelocity);
+		}
+		
 		return angularVelocity;
 	}
 
