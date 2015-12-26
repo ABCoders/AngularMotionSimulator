@@ -238,30 +238,41 @@ public class Calculations{
 	/* finds linear velocity using various equations relating to Angular Motion
 	 * @return linearVelocity - the calculated linear velocity if the calculation has finished properly, and the current linear velocity if it has not */
 	private double findLinearVelocity(){
+		//gets the current linear velocity to return if a value cannot be calculated for
 		double linearVelocity = this.variables.get("Linear Velocity");
-			if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Radius") != 0){
-				linearVelocity = this.variables.get("Angular Velocity") * this.variables.get("Radius");
-				this.decideEquation("Angular Velocity", "x", "Radius", "", "", linearVelocity);
-			}
-			else if(this.variables.get("Arc Length") != 0 && this.variables.get("Time") != 0){
-				linearVelocity = this.variables.get("Arc Length")/this.variables.get("Time");
-				this.decideEquation("Arc Length", "/", "Time", "", "", linearVelocity);
-			}
-			else if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Arc Length") != 0 && this.variables.get("Angle") != 0){
-					linearVelocity = this.variables.get("Angular Velocity") * (this.variables.get("Radius") / this.variables.get("Angle"));
-					this.decideEquation("Angular Velocity", "x", "(Radius", "/", "Angle)", linearVelocity);
-			}
-			else if(this.variables.get("Angle") != 0 && this.variables.get("Radius") == 0 && this.variables.get("Time") != 0){
-					linearVelocity = (this.variables.get("Angle") / this.variables.get("Time")) * this.variables.get("Radius");
-					this.decideEquation("(Angle", "/", "Time)", "x", "Radius", linearVelocity);
-			}
+		
+		//if the user enters certain variables, the program is able to calculate linear velocity with them and then make their equations
+		//linV = angular velocity x radius if the user enters angular velocity and radius
+		if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Radius") != 0){
+			linearVelocity = this.variables.get("Angular Velocity") * this.variables.get("Radius");
+			this.decideEquation("Angular Velocity", "x", "Radius", "", "", linearVelocity);
+		}
+		//linV = arc length / time if the user enters arc length and time
+		else if(this.variables.get("Arc Length") != 0 && this.variables.get("Time") != 0){
+			linearVelocity = this.variables.get("Arc Length")/this.variables.get("Time");
+			this.decideEquation("Arc Length", "/", "Time", "", "", linearVelocity);
+		}
+		//linV = angular velocity x (radius / angle) if the user enters angular velocity, arc length, and angle
+		else if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Arc Length") != 0 && this.variables.get("Angle") != 0){
+				linearVelocity = this.variables.get("Angular Velocity") * (this.variables.get("Arc Length") / this.variables.get("Angle"));
+				this.decideEquation("Angular Velocity", "x", "(Arc Length", "/", "Angle)", linearVelocity);
+		}
+		//linV = (angle / time) x radius if the user enters angle, radius, and time
+		else if(this.variables.get("Angle") != 0 && this.variables.get("Radius") == 0 && this.variables.get("Time") != 0){
+				linearVelocity = (this.variables.get("Angle") / this.variables.get("Time")) * this.variables.get("Radius");
+				this.decideEquation("(Angle", "/", "Time)", "x", "Radius", linearVelocity);
+		}
 		return linearVelocity;
 	}
 
 	/* finds radius using various equations relating to Angular Motion
 	 * @return radius - the calculated radius if the calculation has finished properly, and the current radius if it has not */
 	private double findRadius(){
+		//gets the current radius to return if a value cannot be calculated for
 		double radius = this.variables.get("Radius");
+		
+		//if the user enters certain variables, the program is able to calculate radius with them and then make their equations
+		//radius = linear velocity / angular velocity if the user enters linear velocity and angular velocity
 			if(this.variables.get("Linear Velocity") != 0 && this.variables.get("Angular Velocity") != 0){
 				radius = this.variables.get("Linear Velocity")/this.variables.get("Angular Velocity");
 				this.decideEquation("Linear Velocity", "/", "Angular Velocity", "", "", radius);
