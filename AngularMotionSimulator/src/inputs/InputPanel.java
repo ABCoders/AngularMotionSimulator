@@ -34,7 +34,7 @@ public class InputPanel extends JPanel{
 		return field;
 	}
 	
-	public void update() {
+	public void update(boolean state) {
 		System.out.println(input.getNumberFields() + " " + field.size());
 		while(input.getNumberFields()>field.size()) {
 			System.out.println("Adding a Field");
@@ -50,15 +50,17 @@ public class InputPanel extends JPanel{
 			}
 		}
 		
-		int variable = 0;
-		for(int i=0; i<field.size(); i++) {
-			for(int k = variable; k<Input.VARIABLES.length; k++) {
-				double value = input.getVariableValue(k);
-				if(value!=0) {
-					field.get(i).setSelectedVariable(k);
-					field.get(i).setValue(value);
-					variable = k+1;
-					break;
+		if (state) {
+			int variable = 0;
+			for(int i=0; i<field.size(); i++) {
+				for(int k = variable; k<Input.VARIABLES.length; k++) {
+					double value = input.getVariableValue(k);
+					if(value!=0) {
+						field.get(i).setSelectedVariable(k);
+						field.get(i).setValue(value);
+						variable = k+1;
+						break;
+					}
 				}
 			}
 		}

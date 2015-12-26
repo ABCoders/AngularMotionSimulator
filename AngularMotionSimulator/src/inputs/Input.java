@@ -50,7 +50,7 @@ public class Input extends Object{
 	public void addField() {
 		if (numberFields<MAX_FIELDS) {
 			numberFields++;
-			this.updateInputPanel();
+			this.updateInputPanel(false);
 		}
 	}
 	
@@ -58,7 +58,7 @@ public class Input extends Object{
 		if (numberFields>MIN_FIELDS) {
 			numberFields--;
 			this.removedField = position;
-			this.updateInputPanel();
+			this.updateInputPanel(false);
 		}
 	}
 	
@@ -188,8 +188,9 @@ public class Input extends Object{
 		answerMachinePanel.update();
 	}
 	
-	private void updateInputPanel() {
-		answerMachinePanel.getInputPanel().update();
+	private void updateInputPanel(boolean state) {
+		InputPanel input = answerMachinePanel.getInputPanel();
+		input.update(state);
 	}
 	
 	private void updateWantedFieldPanel() {
@@ -205,7 +206,7 @@ public class Input extends Object{
 		}
 		if(numVar>1) {
 			this.numberFields = numVar;
-			this.updateInputPanel();
+			this.updateInputPanel(true);
 			this.updateWantedFieldPanel();
 			return true;
 		}
