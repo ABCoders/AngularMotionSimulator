@@ -24,7 +24,7 @@ public class InputFieldPanel extends JPanel{
 	private void createComponent() {
 		variablePicker = new JComboBox<String>(Input.VARIABLES);
 		variablePicker.setSelectedIndex(position);
-		valueSpinner = new JSpinner(new SpinnerNumberModel(1.0, 0.0, 99999.0, 0.5));
+		valueSpinner = new JSpinner(new SpinnerNumberModel(1.0, 0.0001, 99999.0, 0.5));
 		deleteButton = new JButton("X");
 	}
 	

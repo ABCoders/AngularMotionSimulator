@@ -15,12 +15,12 @@ public class ErrorDialog extends JDialog {
 	private JFrame frame;
 	private JPanel panel;
 	private String message;
-	private JTextArea text;
+	private JLabel text;
 
 	public ErrorDialog(JFrame jFrame, String errorMessage) {
 		super(jFrame, "Error", true);
 		this.frame = jFrame;
-		this.message = "<html><ALIGN CENTER>" + errorMessage + "</ALIGN></html>";
+		this.message = "<html>" + errorMessage + "</ALIGN></html>";
 		this.createComponents();
 		this.createDialog();
 	}
@@ -28,7 +28,7 @@ public class ErrorDialog extends JDialog {
 	private void createComponents() {
 		panel = new JPanel(new BorderLayout());
 		panel.setPreferredSize(new Dimension(300, 100));
-		text = new JTextArea(message);
+		text = new JLabel(message, SwingConstants.CENTER);
 	}
 
 	private void createDialog() {
