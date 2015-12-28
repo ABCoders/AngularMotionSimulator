@@ -29,6 +29,10 @@ public class AnimationPanel extends JPanel {
 		return animationComponent;
 	}
 	
+	public ActionPanel getActionPanel() {
+		return actionPanel;
+	}
+	
 	private void createComponents() {
 		animationComponent = new AnimationComponent(animation);
 		actionPanel = new ActionPanel(animation);

@@ -11,10 +11,11 @@ import java.awt.event.ActionListener;
  * Created: 7/12/2015
  */
 public class ActionController implements ActionListener {
-	private Animation animation;		//The model
+	private Animation animation;		//The model used for calculation animation
 	
 	/**Main Constructor
-	 * @param animation - The model of the controller
+	 * Initializes the class
+	 * @param animation The model of the controller
 	 */
 	public ActionController (Animation animation) {
 		this.animation = animation;
