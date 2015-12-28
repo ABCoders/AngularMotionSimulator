@@ -24,8 +24,8 @@ public class ActionPanel extends JPanel {
 	private int max;					//The max value of the time slider
 	
 	/**
-	 * The main constructor
-	 * Creates the look and feel of the animation view
+	 * Main constructor
+	 * Creates the look and feel of the action view
 	 * @param animation The model of animation with information needed
 	 */
 	public ActionPanel(Animation animation) {
