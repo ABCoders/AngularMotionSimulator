@@ -12,9 +12,12 @@ import javax.swing.event.ChangeListener;
  * @since 7/12/2015
  */
 public class TimeSliderController implements ChangeListener {
-	
-	private Animation animation;
+	private Animation animation;		//The model used for calculation animation
 
+	/**Main Constructor
+	 * Initializes the class
+	 * @param animation The model of the controller
+	 */
 	public TimeSliderController(Animation animation) {
 		this.animation = animation;
 	}

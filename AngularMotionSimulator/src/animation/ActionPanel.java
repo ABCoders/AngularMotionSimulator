@@ -5,11 +5,11 @@ import javax.swing.*;
 /**ActionPanel
  * A Container for All buttons and sliders that changes the animation
  * @author BRYAN KRISTIONO
- * @since 12/12/2015
+ * @since 27/12/2015
  * Created: 7/12/2015
  */
 public class ActionPanel extends JPanel {
-	private Animation animation;	//The model of the animation
+	private Animation animation;		//The model of the animation
 	
 	private JButton animationButton;	//The button that starts and stops the animation
 	private JButton clearButton;		//The button that resets the drawn point
@@ -18,24 +18,25 @@ public class ActionPanel extends JPanel {
 	private JSlider timeSlider;			//The slider that changes the time of the animation
 	private JSlider scaleSlider;		//The slider that changes the scale of the animation
 	
-	private ImageIcon playIcon;
-	private ImageIcon pauseIcon;
+	private ImageIcon playIcon;			//The icon to indicate the play button
+	private ImageIcon pauseIcon;		//The icon to indicate the pause button
 	
-	private int max;
+	private int max;					//The max value of the time slider
+	
 	/**
 	 * The main constructor
 	 * Creates the look and feel of the animation view
-	 * @param animation
+	 * @param animation The model of animation with information needed
 	 */
 	public ActionPanel(Animation animation) {
 		super();
+		//Get icons from saved files
 		playIcon = new ImageIcon(ActionPanel.class.getResource("playIcon.png"));
 		pauseIcon = new ImageIcon(ActionPanel.class.getResource("pauseIcon.png"));
 		
 		this.animation = animation;
 		this.createComponents();
 		this.createPanel();
-		this.animation.setGUI(this);
 		this.registerControllers();
 	}
 	
@@ -85,9 +86,11 @@ public class ActionPanel extends JPanel {
 	 * Add Listeners to all components
 	 */
 	private void registerControllers() {
+		//Buttons
 		animationButton.addActionListener(new ActionController(animation));
 		clearButton.addActionListener(new ActionController(animation));
-			
+		
+		//Sliders
 		timeSlider.addChangeListener(new TimeSliderController(animation));
 		scaleSlider.addChangeListener(new ScaleSliderController(animation));
 	}
@@ -96,60 +99,67 @@ public class ActionPanel extends JPanel {
 	 * Updates the panel
 	 */
 	public void update() {
+		//Updates the timeSlider if need be changed
 		if(max!=(int) (animation.getWidth()/10/animation.getLinearVelocity()/animation.getScale())) {
 			max = (int) (animation.getWidth()/10/animation.getLinearVelocity()/animation.getScale());
 			timeSlider.setMaximum(max);
 			
+			//Configures the ticks on the slider based on size of slider
 			timeSlider.setLabelTable(null);
-			if(timeSlider.getMaximum()<=10) {
-				timeSlider.setMajorTickSpacing(2);
-				timeSlider.setMinorTickSpacing(1);
-			} 
-			else if(timeSlider.getMaximum()<=25) {
-				timeSlider.setMajorTickSpacing(5);
-				timeSlider.setMinorTickSpacing(1);
-			} 
-			else if(timeSlider.getMaximum()<=50) {
-				timeSlider.setMajorTickSpacing(10);
-				timeSlider.setMinorTickSpacing(2);
-			} 
-			else if(timeSlider.getMaximum()<=100) {
-				timeSlider.setMajorTickSpacing(20);
-				timeSlider.setMinorTickSpacing(5);
-			} 
-			else if(timeSlider.getMaximum()<=200) {
-				timeSlider.setMajorTickSpacing(50);
-				timeSlider.setMinorTickSpacing(20);
-			} 
-			else if(timeSlider.getMaximum()<=500) {
-				timeSlider.setMajorTickSpacing(100);
-				timeSlider.setMinorTickSpacing(25);
-			} 
-			else if(timeSlider.getMaximum()<=1000) {
-				timeSlider.setMajorTickSpacing(200);
-				timeSlider.setMinorTickSpacing(50);
-			} 
-			else if(timeSlider.getMaximum()<=2500) {
-				timeSlider.setMajorTickSpacing(500);
-				timeSlider.setMinorTickSpacing(100);
-			} 
-			else if(timeSlider.getMaximum()<=5000) {
-				timeSlider.setMajorTickSpacing(1000);
-				timeSlider.setMinorTickSpacing(500);
-			} 
-			else {
-				timeSlider.setMajorTickSpacing(2500);
-				timeSlider.setMinorTickSpacing(1000);
-			}
+			timeSlider.setMajorTickSpacing(Math.round(timeSlider.getMaximum()/5));
+			timeSlider.setMinorTickSpacing(Math.round(timeSlider.getMaximum()/20));
+//			if(timeSlider.getMaximum()<=10) {
+//				timeSlider.setMajorTickSpacing(2);
+//				timeSlider.setMinorTickSpacing(1);
+//			} 
+//			else if(timeSlider.getMaximum()<=25) {
+//				timeSlider.setMajorTickSpacing(5);
+//				timeSlider.setMinorTickSpacing(1);
+//			} 
+//			else if(timeSlider.getMaximum()<=50) {
+//				timeSlider.setMajorTickSpacing(10);
+//				timeSlider.setMinorTickSpacing(2);
+//			} 
+//			else if(timeSlider.getMaximum()<=100) {
+//				timeSlider.setMajorTickSpacing(20);
+//				timeSlider.setMinorTickSpacing(5);
+//			} 
+//			else if(timeSlider.getMaximum()<=200) {
+//				timeSlider.setMajorTickSpacing(50);
+//				timeSlider.setMinorTickSpacing(20);
+//			} 
+//			else if(timeSlider.getMaximum()<=500) {
+//				timeSlider.setMajorTickSpacing(100);
+//				timeSlider.setMinorTickSpacing(25);
+//			} 
+//			else if(timeSlider.getMaximum()<=1000) {
+//				timeSlider.setMajorTickSpacing(200);
+//				timeSlider.setMinorTickSpacing(50);
+//			} 
+//			else if(timeSlider.getMaximum()<=2500) {
+//				timeSlider.setMajorTickSpacing(500);
+//				timeSlider.setMinorTickSpacing(100);
+//			} 
+//			else if(timeSlider.getMaximum()<=5000) {
+//				timeSlider.setMajorTickSpacing(1000);
+//				timeSlider.setMinorTickSpacing(500);
+//			} 
+//			else {
+//				timeSlider.setMajorTickSpacing(2500);
+//				timeSlider.setMinorTickSpacing(1000);
+//			}
 		}
 		
+		//When the animation is running
 		if (animation.getState()) {
 			animationButton.setText("PAUSE");
 			animationButton.setIcon(pauseIcon);
 			animationButton.setActionCommand("pause");
+			
 			timeSlider.setValue((int)Math.round(animation.getTime()*10));
 			scaleSlider.setValue((int)(animation.getScale()*100));
 		}
+		//When the animation is not running
 		else {
 			animationButton.setIcon(playIcon);
 			animationButton.setText("PLAY   ");

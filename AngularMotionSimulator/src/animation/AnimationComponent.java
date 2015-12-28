@@ -34,7 +34,6 @@ public class AnimationComponent extends JComponent {
 		super();
 		this.animation = animation;
 		this.setPreferredSize(new Dimension(1000,250));
-		this.animation.setGUI(this);
 	}
 	
 	/**
