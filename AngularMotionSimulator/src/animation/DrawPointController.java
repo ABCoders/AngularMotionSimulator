@@ -3,7 +3,8 @@ package animation;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-/**DrawPointController
+/**
+ * DrawPointController
  * A Controller that draws a point on where the user clicks with a mouse
  * It only runs when the animation is paused
  * Sends information gained to animation model
@@ -13,7 +14,8 @@ import java.awt.event.MouseListener;
 public class DrawPointController implements MouseListener {
 	private Animation animation;		//The model used for calculation animation
 	
-	/**Main Constructor
+	/**
+	 * Main Constructor
 	 * Initializes the class
 	 * @param animation The model of the controller
 	 */

@@ -3,7 +3,8 @@ package animation;
 import java.awt.*;
 import javax.swing.*;
 
-/**AnimationPanel
+/**
+ * AnimationPanel
  * A Container for the ActionPanel and AnimationComponent
  * @author BRYAN KRISTIONO
  * @since 7/12/2015

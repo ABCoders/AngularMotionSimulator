@@ -2,7 +2,8 @@ package animation;
 
 import javax.swing.*;
 
-/**ActionPanel
+/**
+ * ActionPanel
  * A Container for All buttons and sliders that changes the animation
  * @author BRYAN KRISTIONO
  * @since 27/12/2015

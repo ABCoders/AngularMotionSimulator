@@ -8,23 +8,24 @@ import java.awt.event.ActionListener;
  * Sends the data to the Animation model
  * @author BRYAN KRISTIONO
  * @since 12/12/2015
- * Created: 7/12/2015
  */
 public class ActionController implements ActionListener {
 	private Animation animation;		//The model used for calculation animation
 	
-	/**Main Constructor
-	 * Initializes the class
-	 * @param animation The model of the controller
+	/**
+	 * Initializes a newly created listener for buttons in the ActionPanel
+	 * @param animation - The model of the controller
 	 */
 	public ActionController (Animation animation) {
 		this.animation = animation;
 	}
 	
 	/**
-	 * Sets values to the model after a button is clicked
-	 * Changes the state of the animation
-	 * Resets the drawn point in the animation 
+	 * Sets values to the model after a button is clicked.
+	 * It changes the state of the animation.
+	 * It also resets the drawn point in the animation 
+	 * @param e - The event from the button
+	 * @see ActionEvent, Animation
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {

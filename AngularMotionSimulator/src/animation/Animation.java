@@ -14,31 +14,6 @@ import inputs.Input;
  * @since 27/12/2015
  * Created: 7/12/2015
  */
-
-/**
- * @author CSC
- *
- */
-/**
- * @author CSC
- *
- */
-/**
- * @author CSC
- *
- */
-/**
- * @author CSC
- *
- */
-/**
- * @author CSC
- *
- */
-/**
- * @author CSC
- *
- */
 public class Animation implements Runnable {
 
 	/* Class Object created for program */
