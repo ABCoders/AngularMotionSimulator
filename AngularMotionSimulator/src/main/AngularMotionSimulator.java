@@ -6,7 +6,8 @@ import inputs.Input;
 /**AngularMotionSimulator
  * A Main project software that creates an animation of a spinning circle
  * With user-inputted variables that could change the circle's properties
- * 
+ * @author Bryan Kristiono
+ * @since 28/12/2015
  */
 public class AngularMotionSimulator {
 

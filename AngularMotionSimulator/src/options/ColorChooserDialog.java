@@ -18,8 +18,8 @@ public class ColorChooserDialog extends JDialog {
 	
 	/**
 	 * Initializes a new JDialog that contains a color chooser for the user to 
-	 * @param frame - The parent frame that the dialog is connected to
-	 * @param animation  - The model for animation
+	 * @param frame 	- The parent frame that the dialog is connected to
+	 * @param animation - The model for animation
 	 */
 	public ColorChooserDialog(JFrame frame, Animation animation) {
 		super(frame, "Color Chooser", true);
@@ -29,11 +29,17 @@ public class ColorChooserDialog extends JDialog {
 		this.createDialog();
 	}
 	
+	/**
+	 * Initialize and set values to all needed components
+	 */
 	private void createComponents() {
 		panel = new JPanel();
 		colorChooser = new JColorChooser(animation.getColor());
 	}
 	
+	/**
+	 * Set up the components in the panel layout
+	 */
 	private void createDialog() {
 		panel.add(colorChooser);
 		this.setContentPane(panel);
@@ -44,6 +50,9 @@ public class ColorChooserDialog extends JDialog {
 		this.setVisible(true);
 	}
 	
+	/**
+	 * Add Listeners to all components
+	 */
 	private void registerControllers() {
 		colorChooser.getSelectionModel().addChangeListener(new ColorController(colorChooser, animation));
 	}

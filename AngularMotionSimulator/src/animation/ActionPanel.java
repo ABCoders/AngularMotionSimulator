@@ -4,7 +4,8 @@ import javax.swing.*;
 
 /**
  * ActionPanel
- * A Container for All buttons and sliders that changes the animation
+ * <p>
+ * A Container for all buttons and sliders that changes the animation
  * @author BRYAN KRISTIONO
  * @since 27/12/2015
  * Created: 7/12/2015
@@ -25,7 +26,7 @@ public class ActionPanel extends JPanel {
 	private int max;					//The max value of the time slider
 	
 	/**
-	 * Main constructor
+	 * Main constructor - 
 	 * Creates the look and feel of the action view
 	 * @param animation The model of animation with information needed
 	 */

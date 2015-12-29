@@ -14,12 +14,16 @@ import options.OptionsMenuBar;
  * @since 7/12/2015
  */
 public class AngularMotionSimulatorPanel extends JPanel {
-	private AnimationPanel animationPanel;
+	private AnimationPanel animationPanel;		//The 
 	private AnswerMachinePanel answerPanel;
 	private OptionsMenuBar menuBar;
 	
 	private Input input;
 	
+	/**
+	 * Initializes a new AngularMotionSimulator
+	 * @param input
+	 */
 	public AngularMotionSimulatorPanel(Input input) {
 		super();
 		this.input = input;
@@ -27,12 +31,18 @@ public class AngularMotionSimulatorPanel extends JPanel {
 		createPanel();
 	}
 	
+	/**
+	 * Initialize and set values to all needed components
+	 */
 	private void createComponents() {
 		animationPanel = new AnimationPanel(input.getAnimation());
 		answerPanel = new AnswerMachinePanel(input);
 		menuBar = new OptionsMenuBar(input, answerPanel);
 	}
 	
+	/**
+	 * Set up the components in the panel layout
+	 */
 	private void createPanel() {
 		this.setLayout(new BorderLayout());
 		
@@ -43,6 +53,9 @@ public class AngularMotionSimulatorPanel extends JPanel {
 		this.add(answerPanel, BorderLayout.SOUTH);
 	}
 	
+	/**
+	 * Updates the panel
+	 */
 	public void update() {
 		animationPanel.update();
 		answerPanel.update();

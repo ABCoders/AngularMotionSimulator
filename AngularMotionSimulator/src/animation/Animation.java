@@ -83,7 +83,7 @@ public class Animation implements Runnable {
 	/**
 	 * A Runnable method that calculates new values for attributes of the circle
 	 * Redraws the circle to create an animation
-	 * Updates needed componenets
+	 * Updates needed components
 	 */
 	@Override
 	public void run() {

@@ -3,8 +3,10 @@ package animation;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**ActionController
- * A Controller that listens to the button events on ActionPanel
+/**
+ * ActionController
+ * <p>
+ * A Controller that listens to the button events on ActionPanel. 
  * Sends the data to the Animation model
  * @author BRYAN KRISTIONO
  * @since 12/12/2015
