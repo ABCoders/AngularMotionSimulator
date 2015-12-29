@@ -1,11 +1,15 @@
 package main;
 
 import java.awt.*;
+import java.io.*;
+import java.util.*;
+import java.net.*;
 import javax.swing.*;
 
 import animation.AnimationPanel;
 import inputs.AnswerMachinePanel;
 import inputs.Input;
+import options.HelpFrame;
 import options.OptionsMenuBar;
 
 /**AngularMotionSimulatorPanel
@@ -26,9 +30,61 @@ public class AngularMotionSimulatorPanel extends JPanel {
 	 */
 	public AngularMotionSimulatorPanel(Input input) {
 		super();
+		this.showSplashScreen();
 		this.input = input;
 		createComponents();
 		createPanel();
+		this.showHelpForFirstTime();
+	}
+	
+	/** Opens an instance of HelpFrame only when the user starts the program for the very first time
+	 */
+	private void showHelpForFirstTime() {
+		//getting input from the file
+		Scanner in = new Scanner("");
+		try{
+			in = new Scanner(new File(new URI((AngularMotionSimulatorPanel.class.getResource("ranYet.txt")).toString())));
+		}
+		catch(FileNotFoundException e){}
+		catch(URISyntaxException e){}
+		
+		//if file has a 1 in it
+		if(in.nextInt() != 0){
+			//showing the help
+			HelpFrame helpFrame = new HelpFrame();
+			
+			//changing the value to a 0
+			try{
+				PrintWriter out = new PrintWriter(new File("ranYet.txt"));
+				out.write("0");
+				out.close();
+			}
+			catch(IOException e){}
+		}
+	}
+
+	/** Shows a small splash screen image for a few seconds before the rest of the program opens
+	 */
+	private void showSplashScreen() {
+		//makes the window and panel for holding the image and adds the image to a JLabel
+		JWindow splashWindow = new JWindow();
+		JPanel splashPanel = new JPanel();
+		JLabel splashLabel = new JLabel();
+		splashLabel.setIcon(new ImageIcon(AngularMotionSimulatorPanel.class.getResource("splashLogo.png")));
+		
+		//adding image to panel, panel as content frame of window, and setting window properties
+		splashPanel.add(splashLabel);
+		splashWindow.setContentPane(splashPanel);
+		splashWindow.pack();
+		splashWindow.setLocationRelativeTo(null);
+		splashWindow.setVisible(true);
+		
+		//making the image splash for a while before disposing of it
+		try {
+			Thread.sleep(3000);
+		}
+		catch (InterruptedException e) {}
+		splashWindow.dispose();
 	}
 	
 	/**
