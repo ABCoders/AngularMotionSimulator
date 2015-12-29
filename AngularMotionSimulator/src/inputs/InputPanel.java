@@ -5,16 +5,22 @@ import java.util.ArrayList;
 
 public class InputPanel extends JPanel{
 	
-	private Input input;
-	private ArrayList<InputFieldPanel> field;
+	private Input input; //Input model
+	private ArrayList<InputFieldPanel> field; //Array list of panels for user input variables
 	
+	/**
+	 * Main constructor
+	 * @param input - input model of panel
+	 */
 	public InputPanel(Input input) {
 		this.input = input;
-//		input.setGUI(this);
 		this.createComponents();
 		this.createPanel();
 	}
 	
+	/**
+	 * Creates separate components of panel
+	 */
 	private void createComponents() {
 		field = new ArrayList<InputFieldPanel>();
 		for (int i=0; i<input.getNumberFields(); i++) {
@@ -22,6 +28,9 @@ public class InputPanel extends JPanel{
 		}
 	}
 	
+	/**
+	 * Lays out components in panel
+	 */
 	private void createPanel() {
 		this.setLayout(new GridLayout(field.size(), 1));
 		this.setPreferredSize(new Dimension(500, 200));
@@ -30,10 +39,16 @@ public class InputPanel extends JPanel{
 		}
 	}
 	
+	/**
+	 * @return array list of user input fields
+	 */
 	public ArrayList<InputFieldPanel> getFields() {
 		return field;
 	}
 	
+	/**
+	 * @param state - whether or not to update panel
+	 */
 	public void update(boolean state) {
 		System.out.println(input.getNumberFields() + " " + field.size());
 		while(input.getNumberFields()>field.size()) {

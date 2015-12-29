@@ -4,6 +4,14 @@ import java.util.TreeMap;
 import animation.Animation;
 import calculation.Calculations;
 
+/**
+ * Input
+ * Inputs information from user and sends to calculations model and updates input fields in answer machine
+ * @author Cindy Zhao
+ *
+ * @since
+ */
+
 public class Input extends Object{
 	public static final String[] VARIABLES = new String[] {"Angular Velocity", //A constant memory location for all variable names
 															"Linear Velocity",
@@ -27,7 +35,7 @@ public class Input extends Object{
 	private String wantedVariable; //The variable the user wants to solve for
 	
 	/**
-	 * Main Constructor
+	 * Main Constructor - initializes variables
 	 */
 	public Input() 
 	{
@@ -274,8 +282,8 @@ public class Input extends Object{
 	}
 	
 	/**
-	 * 
-	 * @param state
+	 * Updates input panel
+	 * @param state - whether or not to update field
 	 */
 	private void updateInputPanel(boolean state) {
 		InputPanel input = answerMachinePanel.getInputPanel();
@@ -283,7 +291,7 @@ public class Input extends Object{
 	}
 	
 	/**
-	 * 
+	 * Updates wanted variable combobox from text file
 	 */
 	private void updateWantedFieldPanel() {
 		answerMachinePanel.getWantedFieldPanel().update();
