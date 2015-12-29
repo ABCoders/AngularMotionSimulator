@@ -14,11 +14,11 @@ import options.OptionsMenuBar;
  * @since 7/12/2015
  */
 public class AngularMotionSimulatorPanel extends JPanel {
-	private AnimationPanel animationPanel;		//The 
-	private AnswerMachinePanel answerPanel;
-	private OptionsMenuBar menuBar;
+	private AnimationPanel animationPanel;		//The view that contains all animation related components
+	private AnswerMachinePanel answerPanel;		//The view that contains all answer machine related components
+	private OptionsMenuBar menuBar;				//The view that allows users to select various options
 	
-	private Input input;
+	private Input input;						//The main model containing needed information
 	
 	/**
 	 * Initializes a new AngularMotionSimulator

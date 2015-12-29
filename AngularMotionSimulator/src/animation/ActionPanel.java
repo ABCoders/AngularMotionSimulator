@@ -26,8 +26,7 @@ public class ActionPanel extends JPanel {
 	private int max;					//The max value of the time slider
 	
 	/**
-	 * Main constructor - 
-	 * Creates the look and feel of the action view
+	 * Initialize a new ActionPanel with configured components needed
 	 * @param animation The model of animation with information needed
 	 */
 	public ActionPanel(Animation animation) {
@@ -85,7 +84,7 @@ public class ActionPanel extends JPanel {
 	}
 	
 	/**
-	 * Add Listeners to all components
+	 * Add Listeners to needed components
 	 */
 	private void registerControllers() {
 		//Buttons
