@@ -6,13 +6,10 @@ import calculation.Calculations;
 import inputs.Input;
 
 /**
- * Animation
- * <p>
  * The model of the animation. It contains all variables needed to create and configure the animation.
  * It calculates the values for animating angular motion form varying speed, scale and user-inputted values.
  * @author BRYAN KRISTIONO
  * @since 27/12/2015
- * Created: 7/12/2015
  */
 public class Animation implements Runnable {
 
@@ -23,36 +20,31 @@ public class Animation implements Runnable {
 	private Calculations calculations;		//The model that has the needed values for variables
 
 	/* Attributes for drawing the circle */
-	private double radius; // The radius of the circle
-	private double xCoord; // The x-Coordinate of the circle
-	private double linearVelocity; // The linear velocity of the circle
-	private double angularVelocity; // Angular velocity of the circle
-	private double angle; // The angle of the line that indicates the movement
-							// of the circle
+	private double radius; 				// The radius of the circle
+	private double xCoord; 				// The x-Coordinate of the circle
+	private double linearVelocity; 		// The linear velocity of the circle
+	private double angularVelocity; 	// Angular velocity of the circle
+	private double angle; 			// The angle of the line that indicates the movement of the circle
 
 	/* Attributes for drawing a point */
-	private Point drawPoint; // The location of the point that the user clicks
-	private double drawAngle; // The original angle of the draw point
-	private double difference; // The time the user draws the location of the
-								// point
-	private double pointAngle; // The angle of the drawn point from the circle
-	private double distance; // The distance between the drawn point and the
-								// center of the circle
+	private Point drawPoint; 	// The location of the point that the user clicks
+	private double drawAngle; 	// The original angle of the draw point
+	private double difference; 	// The time the user draws the location of the point
+	private double pointAngle; 	// The angle of the drawn point from the circle
+	private double distance; 	// The distance between the drawn point and the center of the circle
 
 	/* Attributes affected through buttons and sliders */
-	private double scale; // The scale of the animation
-	private double timeAngle; // The angle of the black line after animation
-								// ends
-	private double pointTimeAngle; // The angle of the red line after animation
-									// ends
-	private double time; // The time the animation starts on
-	private boolean state = false; // The state of the animation
+	private double scale; 			// The scale of the animation
+	private double timeAngle; 		// The angle of the black line after animation ends
+	private double pointTimeAngle; 	// The angle of the red line after animation ends
+	private double time;			// The time the animation starts on
+	private boolean state = false; 	// The state of the animation
 
-	private Color color; // The color of the circle
+	private Color color; 			// The color of the circle
 
 	/**
-	 * Main Constructor - Initialize variables with default values
-	 * @param calculations  - The model animation will get its values from
+	 * Main Constructor Initialize variables with default values
+	 * @param calculations The model animation will get its values from
 	 */
 	public Animation(Calculations calculations) {
 		this.calculations = calculations;
@@ -70,8 +62,8 @@ public class Animation implements Runnable {
 
 	/**
 	 * Sets the views that Animation will update after calculating, then starts
-	 * a new thread that redraws the animation
-	 * @param animationPanel	- The main view for animation
+	 * a new thread that redraws the animation.
+	 * @param animationPanel The main view for animation
 	 */
 	public void setGUI(AnimationPanel animationPanel) {
 		this.animationPanel = animationPanel;
@@ -82,7 +74,7 @@ public class Animation implements Runnable {
 
 	/**
 	 * A Runnable method that calculates new values for attributes of the circle.
-	 * It updates needed views to display the animation and other attributes
+	 * It updates needed views to display the animation and other attributes.
 	 */
 	@Override
 	public void run() {
@@ -142,7 +134,7 @@ public class Animation implements Runnable {
 	
 	/**
 	 * Returns the Radius of the circle used in animation.
-	 * @return radius - The radius of the circle
+	 * @return The radius of the circle
 	 */
 	public double getRadius() {
 		return radius;
@@ -151,7 +143,7 @@ public class Animation implements Runnable {
 	
 	/**
 	 * Returns the left most x coordinate of the circle.
-	 * @return xCoord - The x coordinate of the circle,
+	 * @return The x coordinate of the circle,
 	 */
 	public double getXCoord() {
 		return xCoord;
@@ -159,7 +151,7 @@ public class Animation implements Runnable {
 
 	/**
 	 * Returns the angle of the line in the circle.
-	 * @return angle - The angle of the line in the circle.
+	 * @return The angle of the line in the circle.
 	 */
 	public double getAngle() {
 		return angle;
@@ -167,7 +159,7 @@ public class Animation implements Runnable {
 
 	/**
 	 * Returns the angle of the line connecting from the middle of the circle to the point that the user clicks on.
-	 * @return pointAngle - The angle of the line
+	 * @return The angle of the line
 	 */
 	public double getPointAngle() {
 		return pointAngle;
@@ -175,7 +167,7 @@ public class Animation implements Runnable {
 
 	/**
 	 * Returns the length of the line between the middle of the circle and the point the user clicks on.
-	 * @return distance - The length of the line
+	 * @return The length of the line
 	 */
 	public double getDistance() {
 		return distance;
@@ -183,7 +175,7 @@ public class Animation implements Runnable {
 
 	/**
 	 * Returns the scale of the animation.
-	 * @return scale - The scale of the animation
+	 * @return The scale of the animation
 	 */
 	public double getScale() {
 		return scale;
@@ -191,7 +183,7 @@ public class Animation implements Runnable {
 
 	/**
 	 * Returns the current time the animation is on.
-	 * @return time - The current time of the animation
+	 * @return The current time of the animation
 	 */
 	public double getTime() {
 		return time;
@@ -199,7 +191,7 @@ public class Animation implements Runnable {
 
 	/**
 	 * Returns whether the animation is running or not.
-	 * @return state - The state of the animation
+	 * @return The state of the animation
 	 */
 	public boolean getState() {
 		return state;
@@ -207,7 +199,7 @@ public class Animation implements Runnable {
 
 	/**
 	 * Returns the speed of the circle spinning.
-	 * @return angularVelocity - The spinning speed
+	 * @return The spinning speed
 	 */
 	public double getAngularVelocity() {
 		return angularVelocity;
@@ -215,7 +207,7 @@ public class Animation implements Runnable {
 
 	/**
 	 * Returns the speed of the circle moving across.
-	 * @return linearVelocity - The linear speed of the circle
+	 * @return The linear speed of the circle
 	 */
 	public double getLinearVelocity() {
 		return linearVelocity;
@@ -223,7 +215,7 @@ public class Animation implements Runnable {
 
 	/**
 	 * Returns the color of the circle.
-	 * @return color - The color of the circle
+	 * @return The color of the circle
 	 */
 	public Color getColor() {
 		return color;
@@ -231,7 +223,7 @@ public class Animation implements Runnable {
 
 	/**
 	 * Returns the width of the animation view.
-	 * @return this.component.getWidth() - The width of the animation view
+	 * @return The width of the animation view
 	 */
 	public double getWidth() {
 		return this.component.getWidth();
@@ -246,9 +238,9 @@ public class Animation implements Runnable {
 	 * it and the circle.
 	 * 
 	 * @param drawX
-	 *            - The x-Coordinate of the drawn point
+	 *            The x-Coordinate of the drawn point
 	 * @param drawY
-	 *            - The y-Coordinate of the drawn point
+	 *            The y-Coordinate of the drawn point
 	 */
 	public void setDrawPoints(int drawX, int drawY) {
 		drawPoint = new Point(drawX, drawY);
@@ -259,7 +251,7 @@ public class Animation implements Runnable {
 	 * Sets the scale of the animation.
 	 * 
 	 * @param scale
-	 *            - The new scale for the animation
+	 *            The new scale for the animation
 	 */
 	public void setScale(double scale) {
 		this.scale = scale;
@@ -269,7 +261,7 @@ public class Animation implements Runnable {
 	 * Sets the time of the animation.
 	 * 
 	 * @param time
-	 *            - The time animation is on
+	 *            The time animation is on
 	 */
 	public void setTime(double time) {
 		this.time = time;
@@ -279,7 +271,7 @@ public class Animation implements Runnable {
 	 * Sets the state of the animation.
 	 * 
 	 * @param newState
-	 *            - The new state of the animation
+	 *            The new state of the animation
 	 */
 	public void setState(boolean newState) {
 		this.state = newState;
@@ -288,7 +280,7 @@ public class Animation implements Runnable {
 	/**
 	 * Sets the color of the circle.
 	 * 
-	 * @param color
+	 * @param color The new color
 	 */
 	public void setColor(Color color) {
 		this.color = color;

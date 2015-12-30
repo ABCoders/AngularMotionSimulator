@@ -4,7 +4,6 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
- * AnimationComponent
  * A Component for the animation
  * Displays a circle moving and spinning across the screen
  * Gets data from Animation class to create the animation in a certain way
@@ -27,8 +26,8 @@ public class AnimationComponent extends JComponent {
 	
 	/**
 	 * Main Constructor
-	 * Sets the size of the component
-	 * @param animation
+	 * Sets the size of the component.
+	 * @param animation The model of animation with information needed
 	 */
 	public AnimationComponent(Animation animation) {
 		super();
@@ -37,7 +36,7 @@ public class AnimationComponent extends JComponent {
 	}
 	
 	/**
-	 * Gets values of variables needed from the model
+	 * Gets values of variables needed from the model.
 	 */
 	private void getVariables() {
 		this.scale = animation.getScale();
@@ -51,7 +50,7 @@ public class AnimationComponent extends JComponent {
 	}
 	
 	/**
-	 * Draws the component
+	 * Draws the component.
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);

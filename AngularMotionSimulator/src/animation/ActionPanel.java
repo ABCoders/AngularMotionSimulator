@@ -3,9 +3,7 @@ package animation;
 import javax.swing.*;
 
 /**
- * ActionPanel
- * <p>
- * A Container for all buttons and sliders that changes the animation
+ * A Container for all buttons and sliders that changes the animation.
  * @author BRYAN KRISTIONO
  * @since 27/12/2015
  * Created: 7/12/2015
@@ -26,7 +24,7 @@ public class ActionPanel extends JPanel {
 	private int max;					//The max value of the time slider
 	
 	/**
-	 * Initialize a new ActionPanel with configured components needed
+	 * Initialize a new ActionPanel with configured components needed.
 	 * @param animation The model of animation with information needed
 	 */
 	public ActionPanel(Animation animation) {
@@ -42,7 +40,7 @@ public class ActionPanel extends JPanel {
 	}
 	
 	/**
-	 * Initialize and set values to all needed components
+	 * Initialize and set values to all needed components.
 	 */
 	private void createComponents() {
 		//Buttons
@@ -72,7 +70,7 @@ public class ActionPanel extends JPanel {
 	}
 	
 	/**
-	 * Set up the components in the panel layout
+	 * Set up the components in the panel layout.
 	 */
 	private void createPanel() {
 		this.add(scaleLabel);
@@ -84,7 +82,7 @@ public class ActionPanel extends JPanel {
 	}
 	
 	/**
-	 * Add Listeners to needed components
+	 * Add Listeners to needed components.
 	 */
 	private void registerControllers() {
 		//Buttons
@@ -97,7 +95,7 @@ public class ActionPanel extends JPanel {
 	}
 	
 	/**
-	 * Updates the panel
+	 * Updates the panel.
 	 */
 	public void update() {
 		//Updates the timeSlider if need be changed

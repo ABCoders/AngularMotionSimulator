@@ -4,8 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
- * AnimationPanel
- * A Container for the ActionPanel and AnimationComponent
+ * A Container for the ActionPanel and AnimationComponent.
  * @author BRYAN KRISTIONO
  * @since 7/12/2015
  */
@@ -19,7 +18,7 @@ public class AnimationPanel extends JPanel {
 	
 	/**
 	 * Main constructor
-	 * Creates the look and feel of the animation view
+	 * Creates the look and feel of the animation view.
 	 * @param animation The model of animation with information needed
 	 */
 	public AnimationPanel(Animation animation) {
@@ -32,7 +31,7 @@ public class AnimationPanel extends JPanel {
 	}
 	
 	/**
-	 * Returns the Animation Component that contains the actual animation
+	 * Returns the Animation Component that contains the actual animation.
 	 * @return animationComponent The animation Component
 	 */
 	public AnimationComponent getAnimationComponent() {
@@ -40,7 +39,7 @@ public class AnimationPanel extends JPanel {
 	}
 	
 	/**
-	 * Returns the Action Panel that contains buttons and sliders
+	 * Returns the Action Panel that contains buttons and sliders.
 	 * @return actionPanel The Action Panel
 	 */
 	public ActionPanel getActionPanel() {
@@ -48,7 +47,7 @@ public class AnimationPanel extends JPanel {
 	}
 	
 	/**
-	 * Initialize and set values to all needed components
+	 * Initialize and set values to all needed components.
 	 */
 	private void createComponents() {
 		animationComponent = new AnimationComponent(animation);
@@ -61,7 +60,7 @@ public class AnimationPanel extends JPanel {
 	}
 	
 	/**
-	 * Set up the components in the panel layout
+	 * Set up the components in the panel layout.
 	 */
 	private void createPanel() {
 		this.setLayout(new BorderLayout());
@@ -77,14 +76,14 @@ public class AnimationPanel extends JPanel {
 	}
 	
 	/**
-	 * Register listeners to sub-components
+	 * Register listeners to sub-components.
 	 */
 	private void registerControllers() {
 		animationComponent.addMouseListener(new DrawPointController(animation));
 	}
 	
 	/**
-	 * Updates the sub-components as well as labels
+	 * Updates the sub-components as well as labels.
 	 */
 	public void update() {
 		angularVelocity.setText("Angular Velocity = " + animation.getAngularVelocity() + "rad/s");
