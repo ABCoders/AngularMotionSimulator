@@ -6,7 +6,6 @@ import javax.swing.*;
  * A Container for all buttons and sliders that changes the animation.
  * @author BRYAN KRISTIONO
  * @since 27/12/2015
- * Created: 7/12/2015
  */
 public class ActionPanel extends JPanel {
 	private Animation animation;		//The model of the animation

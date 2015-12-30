@@ -4,9 +4,9 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
- * A Component for the animation
- * Displays a circle moving and spinning across the screen
- * Gets data from Animation class to create the animation in a certain way
+ * A Component for the animation.
+ * Displays a circle moving and spinning across the screen.
+ * Gets data from Animation class to create the animation in a certain way.
  * @author BRYAN KRISTIONO
  * @since 7/12/2015
  */
@@ -25,7 +25,7 @@ public class AnimationComponent extends JComponent {
 	
 	
 	/**
-	 * Main Constructor
+	 * Initialize a new AnimationComponent.
 	 * Sets the size of the component.
 	 * @param animation The model of animation with information needed
 	 */

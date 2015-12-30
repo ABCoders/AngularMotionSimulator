@@ -20,30 +20,30 @@ public class Animation implements Runnable {
 	private Calculations calculations;		//The model that has the needed values for variables
 
 	/* Attributes for drawing the circle */
-	private double radius; 				// The radius of the circle
-	private double xCoord; 				// The x-Coordinate of the circle
-	private double linearVelocity; 		// The linear velocity of the circle
-	private double angularVelocity; 	// Angular velocity of the circle
-	private double angle; 			// The angle of the line that indicates the movement of the circle
+	private double radius; 			//The radius of the circle
+	private double xCoord; 			//The x-Coordinate of the circle
+	private double linearVelocity; 	//The linear velocity of the circle
+	private double angularVelocity; //Angular velocity of the circle
+	private double angle; 			//The angle of the line that indicates the movement of the circle
 
 	/* Attributes for drawing a point */
-	private Point drawPoint; 	// The location of the point that the user clicks
-	private double drawAngle; 	// The original angle of the draw point
-	private double difference; 	// The time the user draws the location of the point
-	private double pointAngle; 	// The angle of the drawn point from the circle
-	private double distance; 	// The distance between the drawn point and the center of the circle
+	private Point drawPoint; 	//The location of the point that the user clicks
+	private double drawAngle; 	//The original angle of the draw point
+	private double difference; 	//The time the user draws the location of the point
+	private double pointAngle; 	//The angle of the drawn point from the circle
+	private double distance; 	//The distance between the drawn point and the center of the circle
 
 	/* Attributes affected through buttons and sliders */
-	private double scale; 			// The scale of the animation
-	private double timeAngle; 		// The angle of the black line after animation ends
-	private double pointTimeAngle; 	// The angle of the red line after animation ends
-	private double time;			// The time the animation starts on
-	private boolean state = false; 	// The state of the animation
+	private double scale; 			//The scale of the animation
+	private double timeAngle; 		//The angle of the black line after animation ends
+	private double pointTimeAngle; 	//The angle of the red line after animation ends
+	private double time;			//The time the animation starts on
+	private boolean state = false; 	//The state of the animation
 
-	private Color color; 			// The color of the circle
+	private Color color; 			//The color of the circle
 
 	/**
-	 * Main Constructor Initialize variables with default values
+	 * Initialize variables with default values.
 	 * @param calculations The model animation will get its values from
 	 */
 	public Animation(Calculations calculations) {
@@ -142,8 +142,8 @@ public class Animation implements Runnable {
 
 	
 	/**
-	 * Returns the left most x coordinate of the circle.
-	 * @return The x coordinate of the circle,
+	 * Returns the left most x-coordinate of the circle.
+	 * @return The x-coordinate of the circle,
 	 */
 	public double getXCoord() {
 		return xCoord;
@@ -151,7 +151,7 @@ public class Animation implements Runnable {
 
 	/**
 	 * Returns the angle of the line in the circle.
-	 * @return The angle of the line in the circle.
+	 * @return The angle of the line in the circle
 	 */
 	public double getAngle() {
 		return angle;
@@ -379,5 +379,4 @@ public class Animation implements Runnable {
 	private void updateView() {
 		animationPanel.update();
 	}
-
 }

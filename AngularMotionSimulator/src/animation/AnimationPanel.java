@@ -17,7 +17,7 @@ public class AnimationPanel extends JPanel {
 	private JLabel radius;
 	
 	/**
-	 * Main constructor
+	 * Initialize a new AnimationPanel.
 	 * Creates the look and feel of the animation view.
 	 * @param animation The model of animation with information needed
 	 */
@@ -32,7 +32,7 @@ public class AnimationPanel extends JPanel {
 	
 	/**
 	 * Returns the Animation Component that contains the actual animation.
-	 * @return animationComponent The animation Component
+	 * @return The animation Component
 	 */
 	public AnimationComponent getAnimationComponent() {
 		return animationComponent;
@@ -40,7 +40,7 @@ public class AnimationPanel extends JPanel {
 	
 	/**
 	 * Returns the Action Panel that contains buttons and sliders.
-	 * @return actionPanel The Action Panel
+	 * @return The Action Panel
 	 */
 	public ActionPanel getActionPanel() {
 		return actionPanel;
