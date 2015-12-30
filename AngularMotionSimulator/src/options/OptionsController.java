@@ -19,13 +19,11 @@ import inputs.InputFieldPanel;
 import inputs.WantedFieldPanel;
 
 /**
- * OptionsController
- * <p>
  * A Controller that listens events created in the options menu bar. 
  * It can save information from the program to a text file, as well as load information to the
  * program from a text file.
  * <p>
- * It has other features like opening a help frame and changing the color of the animation
+ * It has other features like opening a help frame and changing the color of the animation.
  * @author BRYAN KRISTIONO
  * @since 12/12/2015
  */
@@ -41,10 +39,10 @@ public class OptionsController implements ActionListener {
 	
 	/**
 	 * Creates a new OptionsController.
-	 * @param input			- The model that contains information of the given variables
-	 * @param menuBar		- The view OptionsController is listening to
-	 * @param inputFields	- The list of all input fields
-	 * @param wantedField	- The view containing the wanted variable
+	 * @param input			The model that contains information of the given variables
+	 * @param menuBar		The view OptionsController is listening to
+	 * @param inputFields	The list of all input fields
+	 * @param wantedField	The view containing the wanted variable
 	 */
 	public OptionsController(Input input, OptionsMenuBar menuBar, ArrayList<InputFieldPanel> inputFields, WantedFieldPanel wantedField) {
 		this.input = input;
@@ -59,8 +57,7 @@ public class OptionsController implements ActionListener {
 	/**
 	 * Depending on the menu item selected, it can either show the help frame, change the color of the animation,
 	 * save the information from the program to a file, or load the information from a file to the program.
-	 * @param e - The event from when a menu item is selected
-	 * @see ActionEvent, Input
+	 * @param e The event from when a menu item is selected
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {

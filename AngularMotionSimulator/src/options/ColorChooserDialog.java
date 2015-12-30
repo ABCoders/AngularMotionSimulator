@@ -5,9 +5,8 @@ import javax.swing.*;
 import animation.Animation;
 
 /**
- * ColorChooserDialog
- * The dialog class for choosing the color of the circle in the animation
- * Sends the data to the Animation model
+ * The dialog class for choosing the color of the circle in the animation.
+ * Sends the data to the Animation model.
  * @author BRYAN KRISTIONO
  * @since 27/12/2015
  */
@@ -17,9 +16,9 @@ public class ColorChooserDialog extends JDialog {
 	private JColorChooser colorChooser;	//The component that allows color to be chosen
 	
 	/**
-	 * Initializes a new JDialog that contains a color chooser for the user to 
-	 * @param frame 	- The parent frame that the dialog is connected to
-	 * @param animation - The model for animation
+	 * Initializes a new JDialog that contains a color chooser for the user to.
+	 * @param frame		 The parent frame that the dialog is connected to
+	 * @param animation	 The model for animation
 	 */
 	public ColorChooserDialog(JFrame frame, Animation animation) {
 		super(frame, "Color Chooser", true);
@@ -30,7 +29,7 @@ public class ColorChooserDialog extends JDialog {
 	}
 	
 	/**
-	 * Initialize and set values to all needed components
+	 * Initialize and set values to all needed components.
 	 */
 	private void createComponents() {
 		panel = new JPanel();
@@ -38,7 +37,7 @@ public class ColorChooserDialog extends JDialog {
 	}
 	
 	/**
-	 * Set up the components in the panel layout
+	 * Set up the components in the panel layout.
 	 */
 	private void createDialog() {
 		panel.add(colorChooser);
@@ -51,7 +50,7 @@ public class ColorChooserDialog extends JDialog {
 	}
 	
 	/**
-	 * Add Listeners to all components
+	 * Add Listeners to all components.
 	 */
 	private void registerControllers() {
 		colorChooser.getSelectionModel().addChangeListener(new ColorController(colorChooser, animation));

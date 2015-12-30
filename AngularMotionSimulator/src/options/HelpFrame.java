@@ -6,7 +6,6 @@ import java.io.*;
 import javax.swing.*;
 
 /**
- * HelpFrame
  * @author BRYAN KRISTIONO, AMRITPAL AUJLA
  * @since 12/12/2015
  */
@@ -23,7 +22,7 @@ public class HelpFrame extends JFrame {
 	}	
 	
 	/**
-	 * Initialize and set values to all needed components
+	 * Initialize and set values to all needed components.
 	 */
 	private void createComponents() {
 		text = new JEditorPane();
@@ -36,7 +35,7 @@ public class HelpFrame extends JFrame {
 	}
 	
 	/**
-	 * Set up the components in the frame layout
+	 * Set up the components in the frame layout.
 	 */
 	private void createFrame() {
 		JPanel panel = new JPanel(new BorderLayout());

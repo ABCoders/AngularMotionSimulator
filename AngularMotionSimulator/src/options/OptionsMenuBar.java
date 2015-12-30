@@ -10,8 +10,6 @@ import inputs.InputFieldPanel;
 import inputs.WantedFieldPanel;
 
 /**
- * OptionsMenuBar
- * <p>
  * The Menu bar of the angular motion simulator program that allows the user to save, load, change the color
  * the animation, and get help.
  * @author BRYAN KRISTIONO
@@ -32,9 +30,9 @@ public class OptionsMenuBar extends JMenuBar {
 	private JRadioButtonMenuItem twoCircleItem;
 	
 	/**
-	 * Initializes a new OptionsMenuBar that sends data to Input from the information given from AnswerMachinePanel
-	 * @param input					- The model that contains information of the given variables
-	 * @param answerMachinePanel	- The view that contains all the components with user given variable values
+	 * Initializes a new OptionsMenuBar that sends data to Input from the information given from AnswerMachinePanel.
+	 * @param input					The model that contains information of the given variables
+	 * @param answerMachinePanel	The view that contains all the components with user given variable values
 	 */
 	public OptionsMenuBar(Input input, AnswerMachinePanel answerMachinePanel) {
 		super();
@@ -46,7 +44,7 @@ public class OptionsMenuBar extends JMenuBar {
 	}
 	
 	/**
-	 * Initialize and set values to all needed components
+	 * Initialize and set values to all needed components.
 	 */
 	private void createComponents() {
 		//JMenus
@@ -65,7 +63,7 @@ public class OptionsMenuBar extends JMenuBar {
 	}
 	
 	/**
-	 * Set up the components in the menu bar
+	 * Set up the components in the menu bar.
 	 */
 	private void createMenuBar() {
 		//Adding menu items to appropriate menus
@@ -89,7 +87,7 @@ public class OptionsMenuBar extends JMenuBar {
 	}
 	
 	/**
-	 * Add Listeners to all components
+	 * Add Listeners to all components.
 	 */
 	private void registerControllers() {
 		//Initializes the controller
