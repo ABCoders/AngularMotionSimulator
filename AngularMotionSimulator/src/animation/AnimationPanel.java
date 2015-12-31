@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
- * A Container for the ActionPanel and AnimationComponent.
+ * A Container that contains the ActionPanel and AnimationComponent. It is the main view for animation.
  * @author BRYAN KRISTIONO
  * @since 7/12/2015
  */

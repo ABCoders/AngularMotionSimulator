@@ -15,13 +15,18 @@ public class ScaleSliderController implements ChangeListener {
 	private Animation animation;		//The model used for calculation animation
 
 	/**
-	 * Initializes the class.
-	 * @param animation The model of the controller
+	 * Initializes the controller, connecting to the animation model.
+	 * @param animation The model calculating the animation
 	 */
 	public ScaleSliderController(Animation animation) {
 		this.animation = animation;
 	}
 	
+	/**
+	 * When the slider is changed while the animation is not running,
+	 * it changes the value of the scale in the animation.
+	 * @param e The event sent from the scale slider in the action panel
+	 */
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		JSlider source = (JSlider)e.getSource();

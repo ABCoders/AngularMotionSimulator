@@ -43,7 +43,7 @@ public class Animation implements Runnable {
 	private Color color; 			//The color of the circle
 
 	/**
-	 * Initialize variables with default values.
+	 * Initialize a new Animation with default values.
 	 * @param calculations The model animation will get its values from
 	 */
 	public Animation(Calculations calculations) {
@@ -143,7 +143,7 @@ public class Animation implements Runnable {
 	
 	/**
 	 * Returns the left most x-coordinate of the circle.
-	 * @return The x-coordinate of the circle,
+	 * @return The x-coordinate of the circle
 	 */
 	public double getXCoord() {
 		return xCoord;
@@ -236,11 +236,8 @@ public class Animation implements Runnable {
 	/**
 	 * Sets the location of the drawn point and calculates the distance between
 	 * it and the circle.
-	 * 
-	 * @param drawX
-	 *            The x-Coordinate of the drawn point
-	 * @param drawY
-	 *            The y-Coordinate of the drawn point
+	 * @param drawX The x-Coordinate of the drawn point
+	 * @param drawY The y-Coordinate of the drawn point
 	 */
 	public void setDrawPoints(int drawX, int drawY) {
 		drawPoint = new Point(drawX, drawY);
@@ -249,9 +246,7 @@ public class Animation implements Runnable {
 
 	/**
 	 * Sets the scale of the animation.
-	 * 
-	 * @param scale
-	 *            The new scale for the animation
+	 * @param scale The new scale for the animation
 	 */
 	public void setScale(double scale) {
 		this.scale = scale;
@@ -259,9 +254,7 @@ public class Animation implements Runnable {
 
 	/**
 	 * Sets the time of the animation.
-	 * 
-	 * @param time
-	 *            The time animation is on
+	 * @param time The new time of the animation
 	 */
 	public void setTime(double time) {
 		this.time = time;
@@ -269,9 +262,7 @@ public class Animation implements Runnable {
 
 	/**
 	 * Sets the state of the animation.
-	 * 
-	 * @param newState
-	 *            The new state of the animation
+	 * @param newState The new state of the animation
 	 */
 	public void setState(boolean newState) {
 		this.state = newState;

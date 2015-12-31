@@ -25,8 +25,7 @@ public class AnimationComponent extends JComponent {
 	
 	
 	/**
-	 * Initialize a new AnimationComponent.
-	 * Sets the size of the component.
+	 * Initialize a new AnimationComponent that connects to animation model.
 	 * @param animation The model of animation with information needed
 	 */
 	public AnimationComponent(Animation animation) {
@@ -50,7 +49,7 @@ public class AnimationComponent extends JComponent {
 	}
 	
 	/**
-	 * Draws the component.
+	 * Draws the component with the values given from the model.
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);

@@ -21,10 +21,18 @@ public class DrawPointController implements MouseListener {
 		this.animation = animation;
 	}
 	
+	/**
+	 * A Stub.
+	 * @param e The event sent from the mouse
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 	}
 
+	/**
+	 * Gets the coordinates of the mouse and sends it to the model.
+	 * @param e The event sent from the mouse when clicked on the animation component
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if (!animation.getState()) {
@@ -34,14 +42,26 @@ public class DrawPointController implements MouseListener {
 		}
 	}
 
+	/**
+	 * A Stub.
+	 * @param e The event sent from the mouse
+	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 	}
 
+	/**
+	 * A Stub.
+	 * @param e The event sent from the mouse
+	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
 	}
 
+	/**
+	 * A Stub.
+	 * @param e The event sent from the mouse
+	 */
 	@Override
 	public void mouseExited(MouseEvent e) {
 	}
