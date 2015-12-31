@@ -55,7 +55,7 @@ public class Calculations{
 	/** Finds angular velocity, linear velocity, and radius for Animation to use to generate the animation 
 	 */
 	private void setAnimationVariables(){
-		//calculating all the variables to give to animation
+		//calculating all the variables normally to give to animation
 		this.variables.put("Angular Velocity", this.findAngularVelocity());
 		this.variables.put("Linear Velocity", this.findLinearVelocity());
 		this.variables.put("Radius", this.findRadius());
