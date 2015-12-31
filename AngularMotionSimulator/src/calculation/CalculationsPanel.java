@@ -16,8 +16,8 @@ public class CalculationsPanel extends JPanel{
 	private JLabel valueEquation; 							//the label for the equation with values instead of words
 	private JLabel result;									//the label with the result of the calculation
 	
-	/** The Default Constructor - makes a CalculationsPanel, initializes calculations, creates all components and the panel
-	 *  @param calculations - the calculations model for the calculations process that the panel needs
+	/** The Default Constructor makes a CalculationsPanel, initializes calculations, creates all components and the panel
+	 *  @param calculations the calculations model for the calculations process that the panel needs
 	 */
 	public CalculationsPanel(Calculations calculations){
 		super();
@@ -48,21 +48,21 @@ public class CalculationsPanel extends JPanel{
 	}
 	
 	/** Returns the equation attribute
-	 *  @return the equation - word equation
+	 *  @return the word equation
 	 */
 	public JLabel getEquation() {
 		return equation;
 	}
 
 	/** Returns the valueEquation attribute
-	 *  @return the valueEquation - the equation with values instead of words
+	 *  @return the equation with values instead of words
 	 */
 	public JLabel getValueEquation() {
 		return valueEquation;
 	}
 
 	/** Returns the result attribute
-	 *  @return the result - the solution to the equation
+	 *  @return the solution to the equation
 	 */
 	public JLabel getResult() {
 		return result;

@@ -15,6 +15,7 @@ import options.OptionsMenuBar;
 /**AngularMotionSimulatorPanel
  * The main Container of the program
  * @author BRYAN KRISTIONO
+ * @author Amritpal Aujla
  * @since 7/12/2015
  */
 public class AngularMotionSimulatorPanel extends JPanel {
@@ -55,7 +56,7 @@ public class AngularMotionSimulatorPanel extends JPanel {
 			
 			//changing the value to a 0
 			try{
-				PrintWriter out = new PrintWriter(new File("ranYet.txt"));
+				PrintWriter out = new PrintWriter(new File("src/main/ranYet.txt"));
 				out.write("0");
 				out.close();
 			}

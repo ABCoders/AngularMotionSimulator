@@ -20,8 +20,8 @@ public class GivensPanel extends JPanel{
 	private JLabel angle;						//the label for the name and value for angle
 	private JLabel arcLength;					//the label for the name and value for arc length
 	
-	/** The Default Constructor - makes a GivensPanel, initializes input, creates all components and creates the panel
-	 *  @param input - the input model for the given variable values that the panel needs
+	/** The Default Constructor makes a GivensPanel, initializes input, creates all components and creates the panel
+	 *  @param input the input model for the given variable values that the panel needs
 	 */
 	public GivensPanel(Input input){
 		super();
@@ -58,8 +58,8 @@ public class GivensPanel extends JPanel{
 	}
 	
 	/** Checks if a number is 0, and returns a three dash line if it is; returns the number in string form if it is not 0
-	 *  @param num - the number to be checked
-	 *  @return string - either the number transformed into a string or a three dash line based on what the parameter is
+	 *  @param num the number to be checked
+	 *  @return either the number transformed into a string or a three dash line based on what the parameter is
 	 */
 	private static String changeIfZero(double num){
 		if(num == 0)

@@ -21,10 +21,10 @@ public class ProcessSaveController implements ActionListener {
 	private JLabel result;							//the label containing the result of the equation
 	private String wantedVariable;					//the variable the user wants to calculate for
 	
-	/** The Default Constructor - sets the values of the labels and wanted variable 
-	 *  @param equation - the word equation label from CalculationsPanel
-	 *  @param valueEquation - the equation label from CalcuationsPanel with values replacing the words
-	 *  @param result - the result label from CalculationsPanel with the solution to the equation
+	/** The Default Constructor sets the values of the labels and wanted variable 
+	 *  @param equation the word equation label from CalculationsPanel
+	 *  @param valueEquation the equation label from CalcuationsPanel with values replacing the words
+	 *  @param result the result label from CalculationsPanel with the solution to the equation
 	 */
 	public ProcessSaveController(JLabel equation, JLabel valueEquation, JLabel result) {
 		this.equation = equation;
@@ -34,7 +34,7 @@ public class ProcessSaveController implements ActionListener {
 	}
 
 	/** Save the calculation process into a text file of the user's choice of name and location
-	 *  @param e - the event from the save button
+	 *  @param e the event from the save button
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
