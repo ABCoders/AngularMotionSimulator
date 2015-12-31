@@ -4,14 +4,14 @@ import javax.swing.*;
 
 import java.awt.*;
 
-/** AddFieldController
- * Controller for button that adds a new input field
- * @author 
- * @since
+/** 
+ * GUI for answer machine
+ * @author Cindy Zhao
+ * @since 09/12/15
  */
 
 public class AnswerMachinePanel extends JPanel{
-	//attribtues
+	//attributes
 	private Input input; //Input model that gets information from panel
 	private InputPanel inputPanel; //Panel containing input fields
 	private JButton calculateButton; //Button to calculate

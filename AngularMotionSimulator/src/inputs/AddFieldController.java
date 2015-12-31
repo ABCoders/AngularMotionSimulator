@@ -3,10 +3,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /** 
- * AddFieldController
  * Controller for button that adds a new input field
- * @author 
- * @since 
+ * @author Cindy Zhao
+ * @since 09/12/14
  */
 
 public class AddFieldController implements ActionListener{
