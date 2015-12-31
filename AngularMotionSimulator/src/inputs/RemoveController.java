@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
  * @author Cindy Zhao
  * @since 12/12/15
  */
+
 import java.awt.event.ActionListener;
 
 public class RemoveController implements ActionListener{
