@@ -79,17 +79,16 @@ public class Calculations{
 		
 		//making the equation with values replacing words
 		String valueEquation = "";
-		//for the first variable, removing the bracket from the word, and replacing the word with a value
+		
+		//making brackets appear in front of the equation, replacing the word with the value and adding first operator
 		if(variable1.contains("(")){
 			valueEquation = "(";
 			variable1 = variable1.replace("(", "");
 		}
 		valueEquation = valueEquation + getRespectiveValue(variable1);
-		
-		//adding the operator
 		valueEquation = valueEquation + operation1;
 		
-		//replacing variable 2's brackets and replacing the words with values
+		//replacing variable 2's brackets, replacing the words with values and adding operator
 		if(variable2.contains("(")){
 			valueEquation = valueEquation + "(";
 			variable2 = variable2.replace("(", "");
@@ -99,24 +98,22 @@ public class Calculations{
 			variable2 = variable2.replace(")", "");
 		}
 		valueEquation = valueEquation + getRespectiveValue(variable2);
-		
-		//adding brackets after the value if there is a need for it
 		if(addBracketAfter){
 			valueEquation = valueEquation + ")";
 			addBracketAfter = false;
 		}
-		//adding second operator and continuing the bracket-removing and word-replacing with variable 3
 		valueEquation = valueEquation + operation2;
-		if(variable3.contains(")")){
-			addBracketAfter = true;
-			variable3 = variable3.replace(")", "");
-		}
-		valueEquation = valueEquation + getRespectiveValue(variable3);
-
-		//adding bracket after variable 3 if there is a need for it
-		if(addBracketAfter)
-			valueEquation = valueEquation + ")";
 		
+		//adding brackets after variable 3 and replacing variable 3 with value if variable3 is not nothing
+		if(!variable3.equals("")){
+			if(variable3.contains(")")){
+				addBracketAfter = true;
+				variable3 = variable3.replace(")", "");
+			}
+			valueEquation = valueEquation + getRespectiveValue(variable3);
+			if(addBracketAfter)
+				valueEquation = valueEquation + ")";
+		}
 		//setting the values for the valueEquation and result attributes
 		this.valueEquation = valueEquation;
 		this.result = "" + result;
