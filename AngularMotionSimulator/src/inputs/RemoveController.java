@@ -6,9 +6,9 @@ import java.awt.event.ActionListener;
 /**
  * Controller for button to remove field
  * @author Cindy Zhao
+ * @author Bryan Kristiono
  * @since 12/12/15
  */
-
 
 public class RemoveController implements ActionListener{
 

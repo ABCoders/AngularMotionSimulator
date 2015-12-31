@@ -82,7 +82,7 @@ public class Animation implements Runnable {
 			//Runs while animation is running
 			while (state) {
 				//Sets value based on time
-				this.xCoord = linearVelocity * time * 100;
+				this.xCoord = linearVelocity * 100 * time;
 				this.angle = timeAngle + -angularVelocity * time;
 				this.pointAngle = pointTimeAngle + drawAngle + -angularVelocity * (time - difference);
 				//Increase time
@@ -105,7 +105,7 @@ public class Animation implements Runnable {
 			}
 			
 			//When animation is not running
-			this.xCoord = linearVelocity * time * 100;
+			this.xCoord = linearVelocity * 100 * time;
 			this.angle = timeAngle + -angularVelocity * time;
 			this.pointAngle = pointTimeAngle + drawAngle + -angularVelocity * (time - difference);
 			try {
