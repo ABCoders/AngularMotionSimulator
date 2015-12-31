@@ -50,8 +50,7 @@ public class HelpFrame extends JFrame implements Runnable {
 	private void createFrame() {
 		JPanel panel = new JPanel(new BorderLayout());
 		JScrollPane scroller = new JScrollPane(text);
-		scroller.setVerticalScrollBarPolicy(
-                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		panel.setPreferredSize(new Dimension(500, 500));
 		panel.add(scroller, BorderLayout.CENTER);
 		this.setContentPane(panel);
