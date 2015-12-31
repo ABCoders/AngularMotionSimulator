@@ -22,6 +22,7 @@ public class AngularMotionSimulatorPanel extends JPanel {
 	private AnimationPanel animationPanel;		//The view that contains all animation related components
 	private AnswerMachinePanel answerPanel;		//The view that contains all answer machine related components
 	private OptionsMenuBar menuBar;				//The view that allows users to select various options
+	private HelpFrame helpFrame;				//The view that displays the description of how to use the program
 	
 	private Input input;						//The main model containing needed information
 	
@@ -46,19 +47,18 @@ public class AngularMotionSimulatorPanel extends JPanel {
 		try{
 			in = new Scanner(new File(new URI((AngularMotionSimulatorPanel.class.getResource("ranYet.txt")).toString())));
 		}
-		catch(FileNotFoundException e){}
-		catch(URISyntaxException e){}
+		catch(Exception e) {}
 		
 		//if file has a 1 in it
 		if(in.nextInt() != 0){
 			//showing the help
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e1) {}
-			new HelpFrame();
+			helpFrame = new HelpFrame();
+			Thread t = new Thread(helpFrame);
+			t.start();
 			
 			//changing the value to a 0
 			try{
+				in.close();
 				PrintWriter out = new PrintWriter(new File("src/main/ranYet.txt"));
 				out.write("0");
 				out.close();

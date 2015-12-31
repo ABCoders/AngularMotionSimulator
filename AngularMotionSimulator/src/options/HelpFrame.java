@@ -12,7 +12,7 @@ import javax.swing.*;
  * @author Amritpal Aujla
  * @since 12/12/2015
  */
-public class HelpFrame extends JFrame {
+public class HelpFrame extends JFrame implements Runnable {
 	private JEditorPane text;		//The component that handles styled text documents
 	
 	/**
@@ -22,7 +22,14 @@ public class HelpFrame extends JFrame {
 		super("Help - Angular Motion Simulator");
 		this.createComponents();
 		this.createFrame();
-	}	
+	}
+	
+	public void run() {
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {}
+		this.toFront();
+	}
 	
 	/**
 	 * Initialize and set values to all needed components.
