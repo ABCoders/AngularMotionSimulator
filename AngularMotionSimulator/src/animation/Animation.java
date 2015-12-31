@@ -270,7 +270,6 @@ public class Animation implements Runnable {
 
 	/**
 	 * Sets the color of the circle.
-	 * 
 	 * @param color The new color
 	 */
 	public void setColor(Color color) {
