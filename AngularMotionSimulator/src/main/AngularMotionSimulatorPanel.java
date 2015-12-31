@@ -56,7 +56,7 @@ public class AngularMotionSimulatorPanel extends JPanel {
 			
 			//changing the value to a 0
 			try{
-				PrintWriter out = new PrintWriter(new File("ranYet.txt"));
+				PrintWriter out = new PrintWriter(new File("src/main/ranYet.txt"));
 				out.write("0");
 				out.close();
 			}
