@@ -458,7 +458,13 @@ public class Calculations{
 			case("Angle"):
 				error = "To calculate Angle, you need either of these sets of measurements: <p>Angular Velocity and Time <p>Radius and Arc Length <p>Arc Length, Angular Velocity, and Linear Velocity <p>Time, Radius, and Linear Velocity</p></p></p></p>";
 		}
-		
+		switch(this.wantedVariable){
+			case("Angular Velocity"):
+				System.out.println("This is working right");
+				break;
+			case("Angle"):
+				System.out.println("Its not going to the right one");
+		}
 		return error;
 	}
 }
