@@ -442,7 +442,7 @@ public class Calculations{
 	 */
 	private String giveRelevantError(){
 		String error = "";                     	//the error message that the user gets after being changed into an appropriate one
-		
+		System.out.println(this.wantedVariable);
 		//sets the error message as which variables the user needs to calculate for the wanted variable that the user has input
 		switch(this.wantedVariable){
 			case("Angular Velocity"):
