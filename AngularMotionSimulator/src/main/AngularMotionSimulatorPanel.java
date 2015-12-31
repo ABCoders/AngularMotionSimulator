@@ -3,7 +3,6 @@ package main;
 import java.awt.*;
 import java.io.*;
 import java.util.*;
-import java.net.*;
 import javax.swing.*;
 
 import animation.AnimationPanel;
@@ -45,7 +44,7 @@ public class AngularMotionSimulatorPanel extends JPanel {
 		//getting input from the file
 		Scanner in = new Scanner("");
 		try{
-			in = new Scanner(new File(new URI((AngularMotionSimulatorPanel.class.getResource("ranYet.txt")).toString())));
+			in = new Scanner(new File("src/main/ranYet.txt"));
 		}
 		catch(Exception e) {}
 		
