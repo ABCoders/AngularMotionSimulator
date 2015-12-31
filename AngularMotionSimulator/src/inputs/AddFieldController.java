@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 /** 
  * Controller for button that adds a new input field
  * @author Cindy Zhao
+ * @author Bryan Kristiono
  * @since 09/12/14
  */
 

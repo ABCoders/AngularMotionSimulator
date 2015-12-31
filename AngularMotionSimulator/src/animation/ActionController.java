@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 /**
  * A Controller that listens to the button events on ActionPanel.
  * Sends the data to the Animation model. Either stopping, playing, or clearing the animation.
- * @author BRYAN KRISTIONO
+ * @author Bryan Kristiono
  * @since 12/12/2015
  */
 public class ActionController implements ActionListener {

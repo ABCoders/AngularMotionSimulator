@@ -5,6 +5,7 @@ import javax.swing.*;
 /**
  * GUI for user to select the variable they wish to solve for
  * @author Cindy Zhao
+ * @author Bryan Kristiono
  * @since 12/12/15
  */
 

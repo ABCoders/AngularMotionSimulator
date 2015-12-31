@@ -4,7 +4,7 @@ import javax.swing.*;
 
 /**
  * A Container for all buttons and sliders that changes the animation.
- * @author BRYAN KRISTIONO
+ * @author Bryan Kristiono
  * @since 27/12/2015
  */
 public class ActionPanel extends JPanel {
@@ -100,7 +100,6 @@ public class ActionPanel extends JPanel {
 		//Updates the timeSlider if need be changed
 		if(max!=(int) (Math.ceil(animation.getWidth()/10/animation.getLinearVelocity()/animation.getScale()))) {
 			max = (int) (Math.ceil(animation.getWidth()/10/animation.getLinearVelocity()/animation.getScale()));
-			System.out.println((int)(Math.ceil(animation.getWidth()/10/animation.getLinearVelocity()/animation.getScale())));
 			timeSlider.setMaximum(max);
 			
 			//Configures the ticks on the slider based on size of slider

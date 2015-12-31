@@ -7,6 +7,7 @@ import java.awt.*;
 /** 
  * GUI for answer machine
  * @author Cindy Zhao
+ * @author Bryan Kristiono
  * @since 09/12/15
  */
 

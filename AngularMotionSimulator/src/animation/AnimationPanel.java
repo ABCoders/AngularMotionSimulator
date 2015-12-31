@@ -5,7 +5,7 @@ import javax.swing.*;
 
 /**
  * A Container that contains the ActionPanel and AnimationComponent. It is the main view for animation.
- * @author BRYAN KRISTIONO
+ * @author Bryan Kristiono
  * @since 7/12/2015
  */
 public class AnimationPanel extends JPanel {

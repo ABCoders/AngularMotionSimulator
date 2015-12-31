@@ -7,7 +7,7 @@ import animation.Animation;
 /**
  * The dialog class for choosing the color of the circle in the animation.
  * Sends the data to the Animation model.
- * @author BRYAN KRISTIONO
+ * @author Bryan Kristiono
  * @since 27/12/2015
  */
 public class ColorChooserDialog extends JDialog {

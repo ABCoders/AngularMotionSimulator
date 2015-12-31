@@ -6,6 +6,7 @@ import java.util.ArrayList;
 /**
  * GUI for collection of user input fields
  * @author Cindy Zhao
+ * @author Bryan Kristiono
  * @since 09/12/15
  */
 

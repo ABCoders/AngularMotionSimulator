@@ -12,7 +12,7 @@ import animation.Animation;
 /**
  * A Controller that listens the color the user chooses in the color chooser.
  * Sends the data to the Animation model.
- * @author BRYAN KRISTIONO
+ * @author Bryan Kristiono
  * @since 27/12/2015
  */
 public class ColorController implements ChangeListener {

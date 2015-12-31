@@ -7,7 +7,7 @@ import javax.swing.*;
  * A Component for the animation.
  * Displays a circle moving and spinning across the screen.
  * Gets data from Animation class to create the animation in a certain way.
- * @author BRYAN KRISTIONO
+ * @author Bryan Kristiono
  * @since 7/12/2015
  */
 public class AnimationComponent extends JComponent {

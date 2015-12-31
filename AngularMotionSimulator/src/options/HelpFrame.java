@@ -6,7 +6,8 @@ import java.io.*;
 import javax.swing.*;
 
 /**
- * @author BRYAN KRISTIONO, AMRITPAL AUJLA
+ * @author Bryan Kristiono
+ * @author Amritpal Aujla
  * @since 12/12/2015
  */
 public class HelpFrame extends JFrame {

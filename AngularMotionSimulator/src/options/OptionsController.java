@@ -24,7 +24,7 @@ import inputs.WantedFieldPanel;
  * program from a text file.
  * <p>
  * It has other features like opening a help frame and changing the color of the animation.
- * @author BRYAN KRISTIONO
+ * @author Bryan Kristiono
  * @since 12/12/2015
  */
 public class OptionsController implements ActionListener {

@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
  * A Controller that draws a point on where the user clicks with a mouse.
  * It only runs when the animation is paused.
  * Sends information gained to animation model.
- * @author BRYAN KRISTIONO
+ * @author Bryan Kristiono
  * @since 7/12/2015
  */
 public class DrawPointController implements MouseListener {

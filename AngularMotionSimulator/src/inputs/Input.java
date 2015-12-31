@@ -7,6 +7,7 @@ import calculation.Calculations;
 /**
  * Inputs information from user and sends to calculations model and updates input fields in answer machine
  * @author Cindy Zhao
+ * @author Bryan Kristiono
  * @since 09/12/15
  */
 

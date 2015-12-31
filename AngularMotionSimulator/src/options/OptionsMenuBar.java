@@ -12,7 +12,7 @@ import inputs.WantedFieldPanel;
 /**
  * The Menu bar of the angular motion simulator program that allows the user to save, load, change the color
  * the animation, and get help.
- * @author BRYAN KRISTIONO
+ * @author Bryan Kristiono
  * @since 12/12/2015
  */
 public class OptionsMenuBar extends JMenuBar {

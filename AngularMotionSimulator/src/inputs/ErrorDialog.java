@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * @author BRYAN KRISTIONO
+ * @author Bryan Kristiono
  * @author Amritpal Aujla
  * @since 09/12/15
  */

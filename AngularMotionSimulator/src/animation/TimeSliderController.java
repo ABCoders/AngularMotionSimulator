@@ -8,7 +8,7 @@ import javax.swing.event.ChangeListener;
  * A Controller that gets information from the time slider.
  * Sends data to the animation model.
  * Changes the position of the animation.
- * @author BRYAN KRISTIONO
+ * @author Bryan Kristiono
  * @since 7/12/2015
  */
 public class TimeSliderController implements ChangeListener {
