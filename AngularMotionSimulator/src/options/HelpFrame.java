@@ -6,6 +6,8 @@ import java.io.*;
 import javax.swing.*;
 
 /**
+ * A Frame that displays the features and functions of the program in a neat and stylish manner.
+ * It acts like a JDialog as it
  * @author Bryan Kristiono
  * @author Amritpal Aujla
  * @since 12/12/2015
@@ -47,7 +49,6 @@ public class HelpFrame extends JFrame {
 		panel.add(scroller, BorderLayout.CENTER);
 		this.setContentPane(panel);
 		this.setVisible(true);
-		this.setAlwaysOnTop(true);
 		this.pack();
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
