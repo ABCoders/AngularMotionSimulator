@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
-/** CalculateController
+/** 
  *  The controller that sends the data from the AnswerMachinePanel to Input, Calculations, and then calculates for the wanted variable
  *  @author Amritpal Aujla
  *  @author Bryan Kristiono

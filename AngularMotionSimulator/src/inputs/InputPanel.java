@@ -3,6 +3,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * GUI for collection of user input fields
+ * @author Cindy Zhao
+ * @since 09/12/15
+ */
+
 public class InputPanel extends JPanel{
 	
 	private Input input; //Input model

@@ -7,8 +7,7 @@ import java.awt.*;
  * InputFieldPanel
  * Panel for one variable value to be input, can be deleted
  * @author Cindy Zhao
- * 
- * @since
+ * @since 09/12/15
  */
 public class InputFieldPanel extends JPanel{
 	
@@ -20,9 +19,9 @@ public class InputFieldPanel extends JPanel{
 	private JButton deleteButton; //Button to delete field
 	
 	/**
-	 * Main constructor - sets variables and creates panel
-	 * @param input - input model
-	 * @param index - position of panel
+	 * Main constructor to set variables and create panel
+	 * @param input input model
+	 * @param index position of panel
 	 */
 	public InputFieldPanel(Input input, int index) {
 		super();
@@ -62,7 +61,7 @@ public class InputFieldPanel extends JPanel{
 	
 	/**
 	 * Sets location of panel
-	 * @param index - position of panel
+	 * @param index position of panel
 	 */
 	public void setPosition(int index) {
 		this.position = index;
@@ -91,7 +90,7 @@ public class InputFieldPanel extends JPanel{
 	
 	/**
 	 * Sets which variable the field is inputting
-	 * @param index - index of variable in combobox
+	 * @param index index of variable in combobox
 	 */
 	public void setSelectedVariable(int index) {
 		variablePicker.setSelectedIndex(index);
@@ -99,12 +98,15 @@ public class InputFieldPanel extends JPanel{
 	
 	/**
 	 * Sets value of variable selected by user
-	 * @param value - value to be set
+	 * @param value value to be set
 	 */
 	public void setValue(double value) {
 		valueSpinner.setValue(value);
 	}
 	
+	/**
+	 * 
+	 */
 	public void update() {
 		try {	
 			valueSpinner.commitEdit();

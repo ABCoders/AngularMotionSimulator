@@ -5,11 +5,9 @@ import animation.Animation;
 import calculation.Calculations;
 
 /**
- * Input
  * Inputs information from user and sends to calculations model and updates input fields in answer machine
  * @author Cindy Zhao
- *
- * @since
+ * @since 09/12/15
  */
 
 public class Input extends Object{
@@ -35,7 +33,7 @@ public class Input extends Object{
 	private String wantedVariable; //The variable the user wants to solve for
 	
 	/**
-	 * Main Constructor - initializes variables
+	 * Main Constructor to initialize variables
 	 */
 	public Input() 
 	{
@@ -52,7 +50,7 @@ public class Input extends Object{
 	
 	/**
 	 * Sets GUI for Input
-	 * @param answerMachinePanel - GUI to set
+	 * @param answerMachinePanel GUI to set
 	 */
 	public void setGUI(AnswerMachinePanel answerMachinePanel) //Sets GUI
 	{
@@ -76,7 +74,7 @@ public class Input extends Object{
 	
 	/**
 	 * Removes an input field if number of fields is greater than 2
-	 * @param position - position of field to remove
+	 * @param position position of field to remove
 	 */
 	public void removeField(int position) {
 		if (numberFields>MIN_FIELDS) {
@@ -185,8 +183,8 @@ public class Input extends Object{
 	
 	/**
 	 * Sets value of specified variable
-	 * @param index - the variable to set
-	 * @param value - the value to set
+	 * @param index the variable to set
+	 * @param value the value to set
 	 * @return
 	 */
 	public boolean setVariableValue(int index,  double value) {
@@ -283,7 +281,7 @@ public class Input extends Object{
 	
 	/**
 	 * Updates input panel
-	 * @param state - whether or not to update field
+	 * @param state whether or not to update field
 	 */
 	private void updateInputPanel(boolean state) {
 		InputPanel input = answerMachinePanel.getInputPanel();
