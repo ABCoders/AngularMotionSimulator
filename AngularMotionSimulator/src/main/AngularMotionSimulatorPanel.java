@@ -52,6 +52,9 @@ public class AngularMotionSimulatorPanel extends JPanel {
 		//if file has a 1 in it
 		if(in.nextInt() != 0){
 			//showing the help
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e1) {}
 			new HelpFrame();
 			
 			//changing the value to a 0
