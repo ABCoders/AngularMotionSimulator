@@ -55,13 +55,26 @@ public class Calculations{
 	/** Finds angular velocity, linear velocity, and radius for Animation to use to generate the animation 
 	 */
 	private void setAnimationVariables(){
-		//if the variable's value is 0 (has not been input), then calculate it to give to animation
-		if(this.variables.get("Angular Velocity") == 0)
-			this.variables.put("Angular Velocity", this.findAngularVelocity());
-		if(this.variables.get("Linear Velocity") == 0)
-			this.variables.put("Linear Velocity", this.findLinearVelocity());
-		if(this.variables.get("Radius") == 0)
+		//calculating all the variables to give to animation
+		this.variables.put("Angular Velocity", this.findAngularVelocity());
+		this.variables.put("Linear Velocity", this.findLinearVelocity());
+		this.variables.put("Radius", this.findRadius());
+		
+		//setting the default variables if only angular velocity is given
+		if(this.variables.get("Linear Velocity") == 0 && this.variables.get("Radius") == 0 && this.variables.get("Angular Velocity") != 0){
+			this.variables.put("Linear Velocity", this.variables.get("Angular Velocity"));
 			this.variables.put("Radius", this.findRadius());
+		}
+		//setting the default variables if only linear velocity is given
+		if(this.variables.get("Radius") == 0 && this.variables.get("Angular Velocity") == 0 && this.variables.get("Linear Velocity") != 0){
+			this.variables.put("Angular Velocity", this.variables.get("Linear Velocity") / 1);
+			this.variables.put("Radius", this.findRadius());
+		}
+		//setting the default variables if only radius is given
+		if(this.variables.get("Linear Velocity") == 0 && this.variables.get("Angular Velocity") == 0 && this.variables.get("Radius") != 0){
+			this.variables.put("Angular Velocity", 1/this.variables.get("Radius"));
+			this.variables.put("Linear Velocity", this.findLinearVelocity());
+		}
 	}
 	
 	/** decides the value for the equation, valueEquation, and result attributes
