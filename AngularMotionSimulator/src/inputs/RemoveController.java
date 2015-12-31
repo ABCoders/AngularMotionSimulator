@@ -1,5 +1,7 @@
 package inputs;
+
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Controller for button to remove field
@@ -7,7 +9,6 @@ import java.awt.event.ActionEvent;
  * @since 12/12/15
  */
 
-import java.awt.event.ActionListener;
 
 public class RemoveController implements ActionListener{
 
