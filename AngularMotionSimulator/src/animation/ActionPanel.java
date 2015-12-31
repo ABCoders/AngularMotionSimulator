@@ -98,14 +98,20 @@ public class ActionPanel extends JPanel {
 	 */
 	public void update() {
 		//Updates the timeSlider if need be changed
-		if(max!=(int) (animation.getWidth()/10/animation.getLinearVelocity()/animation.getScale())) {
-			max = (int) (animation.getWidth()/10/animation.getLinearVelocity()/animation.getScale());
+		if(max!=(int) (Math.ceil(animation.getWidth()/10/animation.getLinearVelocity()/animation.getScale()))) {
+			max = (int) (Math.ceil(animation.getWidth()/10/animation.getLinearVelocity()/animation.getScale()));
+			System.out.println((int)(Math.ceil(animation.getWidth()/10/animation.getLinearVelocity()/animation.getScale())));
 			timeSlider.setMaximum(max);
 			
 			//Configures the ticks on the slider based on size of slider
 			timeSlider.setLabelTable(null);
-			timeSlider.setMajorTickSpacing(Math.round(timeSlider.getMaximum()/5));
-			timeSlider.setMinorTickSpacing(Math.round(timeSlider.getMaximum()/20));
+			if(max<5) {
+				timeSlider.setMajorTickSpacing(1);
+			}
+			else {
+				timeSlider.setMajorTickSpacing(Math.round(timeSlider.getMaximum()/5));
+				timeSlider.setMinorTickSpacing(Math.round(timeSlider.getMaximum()/20));
+			}
 //			if(timeSlider.getMaximum()<=10) {
 //				timeSlider.setMajorTickSpacing(2);
 //				timeSlider.setMinorTickSpacing(1);

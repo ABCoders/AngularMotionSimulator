@@ -82,7 +82,7 @@ public class AngularMotionSimulatorPanel extends JPanel {
 		
 		//making the image splash for a while before disposing of it
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(1500);
 		}
 		catch (InterruptedException e) {}
 		splashWindow.dispose();
