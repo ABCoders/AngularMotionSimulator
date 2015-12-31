@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
@@ -163,6 +164,9 @@ public class OptionsController implements ActionListener {
 		} catch (FileNotFoundException e) {
 			//If the file chosen cannot be found
 			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), "File cannot be recognized");
+		} catch (InputMismatchException ie) {
+			//If file is not in same format
+			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), "Incorrect File Layout");
 		}
 	}
 }
