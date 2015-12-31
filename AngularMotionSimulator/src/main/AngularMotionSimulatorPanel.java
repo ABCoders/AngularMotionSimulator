@@ -15,6 +15,7 @@ import options.OptionsMenuBar;
 /**AngularMotionSimulatorPanel
  * The main Container of the program
  * @author BRYAN KRISTIONO
+ * @author Amritpal Aujla
  * @since 7/12/2015
  */
 public class AngularMotionSimulatorPanel extends JPanel {

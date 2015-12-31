@@ -6,7 +6,7 @@ import java.awt.*;
 import inputs.Input;
 
 /** ProcessFrame
- *  The main view of the calculations - contains the individual panels showing givens/calculation process and the save button
+ *  The main view of the calculations contains the individual panels showing givens/calculation process and the save button
  *  @author Amritpal Aujla
  *  @since 26/12/2015 
  */
@@ -19,9 +19,9 @@ public class ProcessFrame extends JFrame{
 	private CalculationsPanel calcPanel;				//the calculations panel showing the calculation process for the wanted variable
 	private JButton save;								//the save button to save the process inside calculations panel
 
-	/** The Default Constructor - makes a ProcessFrame, initializes input and calculations, create all components, frame, and controllers
-	 *  @param calculations - the calculations model for the calculations process that the frame needs
-	 *  @param input - the input model with the givens that the frame needs
+	/** The Default Constructor makes a ProcessFrame, initializes input and calculations, create all components, frame, and controllers
+	 *  @param calculations the calculations model for the calculations process that the frame needs
+	 *  @param input the input model with the givens that the frame needs
 	 */
 	public ProcessFrame(Calculations calculations, Input input) {
 		super();

@@ -8,7 +8,7 @@ import inputs.ErrorDialog;
 import inputs.Input;
 
 /** Calculations
- *  The model of the calculations - contains all variables from input, calculates for the wanted variable, and provides needed values for animation
+ *  The model of the calculations contains all variables from input, calculates for the wanted variable, and provides needed values for animation
  *  @author Amritpal Aujla
  *  @since 26/12/2015
  */
@@ -24,15 +24,15 @@ public class Calculations{
 	private String valueEquation;                          //the equation for the wanted variable, made up of the variable values and operations
 	private String result;                                 //the solution to the equation for the wanted variable
 
-	/** Default Constructor - initializes the input attribute
-	 *  @param input - the input model with the measurements that Calculations needs 
+	/** Default Constructor initializes the input attribute
+	 *  @param input the input model with the measurements that Calculations needs 
 	 */
 	public Calculations(Input input){
 		this.input = input;
 	}
 	
 	/** Sets the view for Calculations
-	 *  @param frame - the ProcessFrame that is set as the view for this model 
+	 *  @param frame the ProcessFrame that is set as the view for this model 
 	 */
 	public void setGUI(ProcessFrame frame){
 		this.processFrame = frame;
@@ -65,12 +65,12 @@ public class Calculations{
 	}
 	
 	/** decides the value for the equation, valueEquation, and result attributes
-	 *  @param variable1 - the first variable in the equation
-	 *  @param operation1 - the first operation character in the equation evaluating the first and second variable
-	 *  @param variable2 - the second variable in the equation
-	 *  @param operation2 - the second operation character in the equation evaluating the second and third variable
-	 *  @param variable3 - the third variable in the equation
-	 *  @param result - the solution to the equation 
+	 *  @param variable1 the first variable in the equation
+	 *  @param operation1 the first operation character in the equation evaluating the first and second variable
+	 *  @param variable2 the second variable in the equation
+	 *  @param operation2 the second operation character in the equation evaluating the second and third variable
+	 *  @param variable3 the third variable in the equation
+	 *  @param result the solution to the equation 
 	 */
 	private void decideEquation(String variable1, String operation1, String variable2, String operation2, String variable3, double result){
 		boolean addBracketAfter = false;                        //whether the equation should add a bracket after one of the variables
@@ -123,8 +123,8 @@ public class Calculations{
 	}
 	
 	/** Returns the value that the variable name in the parameter has
-	 *  @param variable - the name of the variable that the value is to be retrieved for
-	 *  @return value - the value that is to be returned for a certain variable
+	 *  @param variable the name of the variable that the value is to be retrieved for
+	 *  @return the value that is to be returned for a certain variable
 	 */
 	private Double getRespectiveValue(String variable){
 		Double value = 0.0;					//the value to return after changing it into the respective value of the variable parameter
@@ -185,7 +185,7 @@ public class Calculations{
 	}
 
 	/** finds angular velocity using various equations relating to Angular Motion
-	 *  @return angularVelocity - the calculated angular velocity if the calculation has finished properly, and the current angular velocity if it has not 
+	 *  @return the calculated angular velocity if the calculation has finished properly, and the current angular velocity if it has not 
 	 */
 	private double findAngularVelocity(){
 		//gets the current angular velocity to return if a value cannot be calculated for
@@ -217,7 +217,7 @@ public class Calculations{
 	}
 
 	/** finds linear velocity using various equations relating to Angular Motion
-	 *  @return linearVelocity - the calculated linear velocity if the calculation has finished properly, and the current linear velocity if it has not 
+	 *  @return the calculated linear velocity if the calculation has finished properly, and the current linear velocity if it has not 
 	 */
 	private double findLinearVelocity(){
 		//gets the current linear velocity to return if a value cannot be calculated for
@@ -248,7 +248,7 @@ public class Calculations{
 	}
 
 	/** finds radius using various equations relating to Angular Motion
-	 *  @return radius - the calculated radius if the calculation has finished properly, and the current radius if it has not 
+	 *  @return the calculated radius if the calculation has finished properly, and the current radius if it has not 
 	 */
 	private double findRadius(){
 		//gets the current radius to return if a value cannot be calculated for
@@ -279,7 +279,7 @@ public class Calculations{
 	}
 
 	/** finds arc length using various equations relating to Angular Motion
-	 *  @return arc length - the calculated arc length if the calculation has finished properly, and the current arc length if it has not 
+	 *  @return the calculated arc length if the calculation has finished properly, and the current arc length if it has not 
 	 */
 	private double findArcLength(){
 		//gets the current arc length to return if a value cannot be calculated for
@@ -310,7 +310,7 @@ public class Calculations{
 	}
 
 	/** finds time using various equations relating to Angular Motion
-	 *  @return time - the calculated time if the calculation has finished properly, and the current time if it has not 
+	 *  @return the calculated time if the calculation has finished properly, and the current time if it has not 
 	 */
 	private double findTime(){
 		//gets the current time to return if a value cannot be calculated for
@@ -341,7 +341,7 @@ public class Calculations{
 	}
 
 	/** finds angle using various equations relating to Angular Motion
-	 *  @return angle - the calculated angle if the calculation has finished properly, and the current angle if it has not 
+	 *  @return the calculated angle if the calculation has finished properly, and the current angle if it has not 
 	 */
 	private double findAngle(){
 		//gets the current angle value to return if a value cannot be calculated for
@@ -379,14 +379,14 @@ public class Calculations{
 	}
 
 	/** Returns the valueEquation attribute
-	 *  @return the valueEquation - the equation with values instead of words 
+	 *  @return the equation with values instead of words 
 	 */
 	public String getValueEquation() {
 		return valueEquation;
 	}
 
 	/** Returns the result attribute
-	 *  @return the reult - the solution to the calculation 
+	 *  @return the solution to the calculation 
 	 */
 	public String getResult(){
 		return this.result;
@@ -400,7 +400,7 @@ public class Calculations{
 	}
 
 	/** Returns the variables attribute
-	 *  @return the variables - the TreeMap of all the measurements and their values 
+	 *  @return the TreeMap of all the measurements and their values 
 	 */
 	public TreeMap<String, Double> getVariables(){
 		return this.variables;
@@ -428,7 +428,7 @@ public class Calculations{
 	}
 	
 	/** Returns the appropriate error containing all the values the user needs to calculate for the wanted variable
-	 *  @return error - the error message that the user gets for their respective wanted variable 
+	 *  @return the error message that the user gets for their respective wanted variable 
 	 */
 	private String giveRelevantError(){
 		String error = "";                     	//the error message that the user gets after being changed into an appropriate one
