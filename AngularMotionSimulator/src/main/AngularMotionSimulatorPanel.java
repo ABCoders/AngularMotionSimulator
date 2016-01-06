@@ -76,7 +76,7 @@ public class AngularMotionSimulatorPanel extends JPanel {
 		JWindow splashWindow = new JWindow();
 		JPanel splashPanel = new JPanel();
 		JLabel splashLabel = new JLabel();
-		splashLabel.setIcon(new ImageIcon(AngularMotionSimulatorPanel.class.getResource("splashLogo.png")));
+		splashLabel.setIcon(new ImageIcon(AngularMotionSimulatorPanel.class.getResource("../files/splashLogo.png")));
 		
 		//adding image to panel, panel as content frame of window, and setting window properties
 		splashPanel.add(splashLabel);

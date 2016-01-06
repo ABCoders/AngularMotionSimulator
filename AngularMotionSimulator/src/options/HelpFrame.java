@@ -37,7 +37,7 @@ public class HelpFrame extends JFrame implements Runnable {
 	private void createComponents() {
 		text = new JEditorPane();
 		text.setEditable(false);
-		java.net.URL url = HelpFrame.class.getResource("help.html");
+		java.net.URL url = HelpFrame.class.getResource("../files/help.html");
 		try {
 			text.setPage(url);
 		} 
