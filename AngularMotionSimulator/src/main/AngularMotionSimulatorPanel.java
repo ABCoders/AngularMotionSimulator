@@ -35,7 +35,7 @@ public class AngularMotionSimulatorPanel extends JPanel {
 		this.input = input;
 		createComponents();
 		createPanel();
-//		this.showHelpForFirstTime();
+		this.showHelpForFirstTime();
 	}
 	
 	/** Opens an instance of HelpFrame only when the user starts the program for the very first time
@@ -43,12 +43,10 @@ public class AngularMotionSimulatorPanel extends JPanel {
 	private void showHelpForFirstTime() {
 		//getting input from the file
 		try {
-			ClassLoader cl = this.getClass().getClassLoader();
-			File file = new File(cl.getResource("main/ranYet.txt").getPath());
-//			File file = new File(AngularMotionSimulatorPanel.class.getResource("ranYet.txt"));
+			File file = new File(getClass().getResource("ranYet.txt").getPath());
 			Scanner in = new Scanner(file);
 			//if file has a 1 in it
-			if(in.nextInt() == 0){
+			if(in.nextInt() != 0){
 				//showing the help
 				HelpFrame helpFrame = new HelpFrame();
 				Thread t = new Thread(helpFrame);
@@ -58,7 +56,7 @@ public class AngularMotionSimulatorPanel extends JPanel {
 				try{
 					in.close();
 					PrintWriter out = new PrintWriter(file);
-					out.write("1");
+					out.write("0");
 					out.close();
 				}
 				catch(IOException e){}
