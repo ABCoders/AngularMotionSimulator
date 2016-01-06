@@ -95,6 +95,7 @@ public class OptionsController implements ActionListener {
 				String path = fileChooser.getSelectedFile().getAbsolutePath();
 				if(path.substring(path.length() - 4).equals(".txt")){
 					path = fileChooser.getSelectedFile().getAbsolutePath();
+					System.out.println(path);
 				}
 				else
 					path = fileChooser.getSelectedFile().getAbsolutePath() + ".txt";
