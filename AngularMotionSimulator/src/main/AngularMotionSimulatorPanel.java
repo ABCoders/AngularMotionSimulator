@@ -45,6 +45,7 @@ public class AngularMotionSimulatorPanel extends JPanel {
 		try {
 			ClassLoader cl = this.getClass().getClassLoader();
 			File file = new File(cl.getResource("main/ranYet.txt").getPath());
+//			File file = new File(AngularMotionSimulatorPanel.class.getResource("ranYet.txt"));
 			Scanner in = new Scanner(file);
 			//if file has a 1 in it
 			if(in.nextInt() == 0){
