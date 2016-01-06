@@ -35,7 +35,7 @@ public class AngularMotionSimulatorPanel extends JPanel {
 		this.input = input;
 		createComponents();
 		createPanel();
-		this.showHelpForFirstTime();
+//		this.showHelpForFirstTime();
 	}
 	
 	/** Opens an instance of HelpFrame only when the user starts the program for the very first time
