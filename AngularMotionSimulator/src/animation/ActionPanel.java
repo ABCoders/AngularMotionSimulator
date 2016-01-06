@@ -29,8 +29,8 @@ public class ActionPanel extends JPanel {
 	public ActionPanel(Animation animation) {
 		super();
 		//Get icons from saved files
-		playIcon = new ImageIcon(this.getClass().getResource("playIcon.png"));
-		pauseIcon = new ImageIcon(ActionPanel.class.getResource("pauseIcon.png"));
+		playIcon = new ImageIcon(this.getClass().getResource("../files/playIcon.png"));
+		pauseIcon = new ImageIcon(this.getClass().getResource("../files/pauseIcon.png"));
 
 		this.animation = animation;
 		this.createComponents();
