@@ -2,6 +2,7 @@ package animation;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.awt.geom.Ellipse2D;
 
 import javax.swing.*;
 
@@ -59,6 +60,9 @@ public class AnimationComponent extends JComponent {
 		super.paintComponent(g);
 		Graphics2D d = (Graphics2D) g;
 		
+		d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+	    d.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
+		
 		this.getVariables();
 		
 		//Determines the center of the circle
@@ -85,12 +89,14 @@ public class AnimationComponent extends JComponent {
 		for (DrawPoint drawPoint : drawPoints) {
 			d.drawLine(x, y, drawPoint.getLocation().x, drawPoint.getLocation().y);
 			d.fillOval(drawPoint.getLocation().x - 10, drawPoint.getLocation().y - 10, 20, 20);
-			d.drawOval((int)(x-drawPoint.getDistance()), (int)(y-drawPoint.getDistance()), (int)drawPoint.getDistance()*2, (int)drawPoint.getDistance()*2);
+			Ellipse2D.Double circle = new Ellipse2D.Double((x-drawPoint.getDistance()), (y-drawPoint.getDistance()), drawPoint.getDistance()*2, drawPoint.getDistance()*2);
+			d.draw(circle);
 			if (drawPoint.getLocation().getX() > this.getWidth()||x+drawPoint.getDistance() > this.getWidth())
 			{
 				d.drawLine(x - this.getWidth(), y, drawPoint.getLocation().x - this.getWidth(), drawPoint.getLocation().y);
 				d.fillOval(drawPoint.getLocation().x - 10 - this.getWidth(), drawPoint.getLocation().y - 10, 20, 20);
-				d.drawOval((int)(x-drawPoint.getDistance())-this.getWidth(), (int)(y-drawPoint.getDistance()), (int)drawPoint.getDistance()*2, (int)drawPoint.getDistance()*2);
+				Ellipse2D.Double circle2 = new Ellipse2D.Double((x-drawPoint.getDistance()) - this.getWidth(), (y-drawPoint.getDistance()), drawPoint.getDistance()*2, drawPoint.getDistance()*2);
+				d.draw(circle2);
 			}
 		}
 
