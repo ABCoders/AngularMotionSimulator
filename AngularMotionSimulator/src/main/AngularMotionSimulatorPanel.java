@@ -44,6 +44,7 @@ public class AngularMotionSimulatorPanel extends JPanel {
 		try {
 			File file = new File("ranYet.txt");
 			Scanner in = new Scanner(file);
+			
 			//if file has a 1 in it
 			if(in.nextInt() != 0){
 				//showing the help
