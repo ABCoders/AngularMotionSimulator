@@ -28,8 +28,8 @@ public class OptionsMenuBar extends JMenuBar {
 	private JMenuItem loadItem;						//The menu item for loading information
 	private JMenuItem helpItem;						//The menu item for showing the help frame
 	private JMenuItem colorItem;					//The menu item for choosing the color of the animation
-	private JMenuItem reverseItem;                  //The menu item for reversing the direction the animation is moving
-	private JMenuItem circleItem;     				//The menu item for choosing whether click the animation draws a circle or not
+	private JCheckBoxMenuItem reverseItem;          //The menu item for reversing the direction the animation is moving
+	private JCheckBoxMenuItem circleItem;     		//The menu item for choosing whether click the animation draws a circle or not
 	private JMenuItem undoItem;						//The menu item that undoes an action with the red dots in animation
 	
 	/**
@@ -60,8 +60,8 @@ public class OptionsMenuBar extends JMenuBar {
 		loadItem = new JMenuItem("Load");
 		helpItem = new JMenuItem("Help");
 		colorItem = new JMenuItem("Change Color");
-		this.reverseItem = new JMenuItem("Reverse Animation Direction");
-		this.circleItem = new JMenuItem("Draw/Not Draw Red Circle");
+		this.reverseItem = new JCheckBoxMenuItem("Reverse Animation Direction");
+		this.circleItem = new JCheckBoxMenuItem("Do Not Draw Red Circle");
 		this.undoItem = new JMenuItem("Undo");
 	}
 	

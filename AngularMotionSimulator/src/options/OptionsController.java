@@ -110,7 +110,7 @@ public class OptionsController implements ActionListener {
 		}
 		
 		//choosing to draw a circle with the red dots
-		else if (e.getActionCommand().equalsIgnoreCase("Draw/Not Draw Red Circle")) {
+		else if (e.getActionCommand().equalsIgnoreCase("Do Not Draw Red Circle")) {
 			this.input.getAnimation().setDrawCircle();
 		}
 		

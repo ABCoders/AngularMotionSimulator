@@ -1,8 +1,5 @@
-/**
- * 
- */
+//packages and imports
 package options;
-
 import java.awt.event.*;
 
 import animation.Animation;
