@@ -83,9 +83,21 @@ public class AnimationComponent extends JComponent {
 		//Draws each clicked point
 		d.setColor(Color.RED);
 		for (DrawPoint drawPoint : drawPoints) {
-			d.drawLine(x, y, drawPoint.getLocation().x, drawPoint.getLocation().y);
-			d.fillOval(drawPoint.getLocation().x - 10, drawPoint.getLocation().y - 10, 20, 20);
-			d.drawOval((int)(x-drawPoint.getDistance()), (int)(y-drawPoint.getDistance()), (int)drawPoint.getDistance()*2, (int)drawPoint.getDistance()*2);
+			if (drawPoint.getLocation().getX() > this.getWidth())
+			{
+				d.drawLine(x+this.getWidth(), y, drawPoint.getLocation().x, drawPoint.getLocation().y);
+				d.fillOval(drawPoint.getLocation().x - 10 - this.getWidth(), drawPoint.getLocation().y - 10, 20, 20);
+			}
+			else
+			{
+				d.drawLine(x, y, drawPoint.getLocation().x, drawPoint.getLocation().y);
+				d.fillOval(drawPoint.getLocation().x - 10, drawPoint.getLocation().y - 10, 20, 20);
+				d.drawOval((int)(x-drawPoint.getDistance()), (int)(y-drawPoint.getDistance()), (int)drawPoint.getDistance()*2, (int)drawPoint.getDistance()*2);
+			}
+			if (x+drawPoint.getDistance() > this.getWidth())
+			{
+				d.drawOval((int)(x-drawPoint.getDistance())-this.getWidth(), (int)(y-drawPoint.getDistance()), (int)drawPoint.getDistance()*2, (int)drawPoint.getDistance()*2);
+			}
 		}
 
 		d.setColor(Color.BLACK);
