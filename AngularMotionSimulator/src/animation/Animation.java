@@ -24,7 +24,7 @@ public class Animation implements Runnable {
 	private double radius; 			//The radius of the circle
 	private double xCoord; 			//The x-Coordinate of the circle
 	private double linearVelocity; 	//The linear velocity of the circle
-	private double angularVelocity; //Angular velocity of the circle
+	private double angularVelocity; //The angular velocity of the circle
 	private double angle; 			//The angle of the line that indicates the movement of the circle
 
 	/* Attributes for drawing a point */
