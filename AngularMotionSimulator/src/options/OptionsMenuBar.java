@@ -30,6 +30,7 @@ public class OptionsMenuBar extends JMenuBar {
 	private JMenuItem colorItem;					//The menu item for choosing the color of the animation
 	private JMenuItem reverseItem;                  //The menu item for reversing the direction the animation is moving
 	private JMenuItem circleItem;     				//The menu item for choosing whether click the animation draws a circle or not
+	private JMenuItem undoItem;						//The menu item that undoes an action with the red dots in animation
 	
 	/**
 	 * Initializes a new OptionsMenuBar that sends data to Input from the information given from AnswerMachinePanel.
@@ -61,6 +62,7 @@ public class OptionsMenuBar extends JMenuBar {
 		colorItem = new JMenuItem("Change Color");
 		this.reverseItem = new JMenuItem("Reverse Animation Direction");
 		this.circleItem = new JMenuItem("Draw/Not Draw Red Circle");
+		this.undoItem = new JMenuItem("Undo");
 	}
 	
 	/**
@@ -72,6 +74,7 @@ public class OptionsMenuBar extends JMenuBar {
 		file.add(loadItem);
 		this.animation.add(this.reverseItem);
 		this.animation.add(this.circleItem);
+		this.animation.add(this.undoItem);
 		other.add(helpItem);
 		other.add(colorItem);
 		
@@ -97,5 +100,6 @@ public class OptionsMenuBar extends JMenuBar {
 		colorItem.addActionListener(controller);
 		this.reverseItem.addActionListener(controller);
 		this.circleItem.addActionListener(controller);
+		this.undoItem.addActionListener(controller);
 	}
 }

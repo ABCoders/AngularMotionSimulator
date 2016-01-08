@@ -113,6 +113,11 @@ public class OptionsController implements ActionListener {
 		else if (e.getActionCommand().equalsIgnoreCase("Draw/Not Draw Red Circle")) {
 			this.input.getAnimation().setDrawCircle();
 		}
+		
+		//choosing to undo a red dot move
+		else if(e.getActionCommand().equalsIgnoreCase("Undo")){
+			this.input.getAnimation().undo();
+		}
 	}
 	
 	/**
