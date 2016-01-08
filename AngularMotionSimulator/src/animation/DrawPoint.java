@@ -32,9 +32,18 @@ public class DrawPoint {
 		
 	}
 	
+	//*************************************************************************
+	//								Setter Methods
+	//*************************************************************************
+	
 	public void setLocation(double xCoord, double radius, double height) {
 		this.location.x = (int) (xCoord + radius + distance * Math.sin(angle));
 		this.location.y = (int) (height - radius + distance * Math.cos(angle));
+	}
+	
+	public void setLocation(int xCoord, int yCoord) {
+		this.location.x = xCoord;
+		this.location.y = yCoord;
 	}
 	
 	public void setAngle(double angle) {
@@ -52,6 +61,10 @@ public class DrawPoint {
 	public void setWithCircle(boolean state) {
 		this.withCircle = state;
 	}
+	
+	//*************************************************************************
+	//								Getter Methods
+	//*************************************************************************
 	
 	public Point getLocation() {
 		return location;
@@ -80,6 +93,10 @@ public class DrawPoint {
 	public boolean getWithCircle() {
 		return withCircle;
 	}
+	
+	//*************************************************************************
+	//									Methods
+	//*************************************************************************
 	
 	/**
 	 * Calculates the distance and angle between the drawn point and the circle.

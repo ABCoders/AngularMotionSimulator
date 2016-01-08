@@ -16,6 +16,8 @@ import java.util.ArrayList;
 public class DrawPointController implements MouseListener, MouseMotionListener{
 	private Animation animation;		//The model used for calculation animation
 	private ArrayList<DrawPoint> drawPoints;
+	private boolean onPoint;
+	private DrawPoint dragPoint;
 	
 	/**
 	 * Initializes the class.
@@ -41,17 +43,21 @@ public class DrawPointController implements MouseListener, MouseMotionListener{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if (!animation.getState()) {
-			boolean onPoint = false;
+			onPoint = false;
 			Point location = new Point(e.getX(), e.getY());
 			
-			for(DrawPoint points: drawPoints) {
-				Point pointLocation = points.getLocation();
+			for(DrawPoint point: drawPoints) {
+				Point pointLocation = point.getLocation();
 				if(Math.abs(pointLocation.getX()-location.getX()) < 10 &&
-						Math.abs(pointLocation.getY()-location.getY()) < 10)
+						Math.abs(pointLocation.getY()-location.getY()) < 10) {
 					onPoint = true;
+					dragPoint = point;
+				}
 			}
-			if(!onPoint)
+			if(!onPoint) {
 				animation.addDrawPoint(location);
+				dragPoint = drawPoints.get(drawPoints.size()-1);
+			}
 		}
 	}
 
@@ -85,7 +91,8 @@ public class DrawPointController implements MouseListener, MouseMotionListener{
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		
+		dragPoint.setLocation(e.getX(), e.getY());
+		System.out.println(dragPoint.getLocation());
 	}
 
 	/**

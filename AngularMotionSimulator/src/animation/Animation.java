@@ -271,7 +271,7 @@ public class Animation implements Runnable {
 	}
 	
 	public void undo() {
-		this.drawPoints.remove(drawPoints.size());
+		this.drawPoints.remove(drawPoints.size()-1);
 	}
 
 	//**********************************************************************
