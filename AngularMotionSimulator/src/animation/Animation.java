@@ -93,7 +93,7 @@ public class Animation implements Runnable {
 					for(DrawPoint point: drawPoints) {
 						point.setAngle(point.getEndAngle()+point.getStartAngle()+ -angularVelocity * (time-point.getTime()));
 					}
-				} catch(NullPointerException e) {}
+				} catch(Exception e) {}
 //				this.pointAngle = pointTimeAngle + drawAngle + -angularVelocity * (time - difference);
 				//Increase time
 				this.time += 0.001;
@@ -110,7 +110,7 @@ public class Animation implements Runnable {
 							point.setStartAngle(point.getAngle());
 							point.setTime(0);
 						}
-					} catch(NullPointerException e) {}
+					} catch(Exception e) {}
 //					this.drawAngle = this.pointAngle;
 //					this.difference = 0;
 				}
@@ -127,7 +127,7 @@ public class Animation implements Runnable {
 				for(DrawPoint point: drawPoints) {
 					point.setAngle(point.getEndAngle()+point.getStartAngle()+ -angularVelocity * (time-point.getTime()));
 				}
-			} catch(NullPointerException e) {}
+			} catch(Exception e) {}
 //			this.pointAngle = pointTimeAngle + drawAngle + -angularVelocity * (time - difference);
 			try {
 				Thread.sleep(0);
@@ -142,7 +142,7 @@ public class Animation implements Runnable {
 						point.setStartAngle(point.getAngle());
 						point.setTime(0);
 					}
-				} catch(NullPointerException e) {}
+				} catch(Exception e) {}
 //				this.drawAngle = this.pointAngle;
 //				this.difference = 0;
 			}
