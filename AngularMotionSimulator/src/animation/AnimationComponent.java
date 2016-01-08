@@ -1,6 +1,8 @@
 package animation;
 
 import java.awt.*;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 /**
@@ -23,6 +25,7 @@ public class AnimationComponent extends JComponent {
 	private double angle;			//The angle of the line that indicates the movement of the circle
 	private Color color; 			//The color of the circle
 	
+	private ArrayList<DrawPoint> drawPoints;
 	
 	/**
 	 * Initialize a new AnimationComponent that connects to animation model.
@@ -43,8 +46,9 @@ public class AnimationComponent extends JComponent {
 		this.radius = (int)(animation.getRadius()*scale);
 		this.diameter = radius*2;
 		this.angle = animation.getAngle();
-		this.distance = animation.getDistance();
-		this.pointAngle = animation.getPointAngle();
+//		this.distance = animation.getDistance();
+//		this.pointAngle = animation.getPointAngle();
+		this.drawPoints = animation.getDrawPoints();
 		this.color = animation.getColor();
 	}
 	

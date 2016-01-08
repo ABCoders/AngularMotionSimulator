@@ -255,6 +255,10 @@ public class Animation implements Runnable {
 	public double getWidth() {
 		return this.component.getWidth();
 	}
+	
+	public ArrayList<DrawPoint> getDrawPoints() {
+		return drawPoints;
+	}
 
 	//*************************************************************************
 	//								Setter Methods
