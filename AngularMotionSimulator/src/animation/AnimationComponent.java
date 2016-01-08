@@ -81,6 +81,11 @@ public class AnimationComponent extends JComponent {
 		d.drawLine(x, y, circleX, circleY);
 		d.fillOval(circleX - 10, circleY - 10, 20, 20);
 		d.setColor(Color.BLACK);
+		
+		//Draw concentric circle at drawn point
+		d.setColor(Color.RED);
+		d.drawOval((int)(x-distance), (int)(y-distance), (int)distance*2, (int)distance*2);
+		d.setColor(Color.BLACK);
 
 		//Draws the circle and clicked point if the circle goes past the view
 		if ((xCoord + diameter) > this.getWidth()) {
