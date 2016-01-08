@@ -106,9 +106,9 @@ public class AnimationComponent extends JComponent {
 			d.drawLine(-this.getWidth() + x, y, -this.getWidth() + endX, endY);
 			d.setColor(Color.RED);
 			for (DrawPoint drawPoint : drawPoints) {
-				d.drawLine(x, y, drawPoint.getLocation().x, drawPoint.getLocation().y);
-				d.fillOval(drawPoint.getLocation().x - 10, drawPoint.getLocation().y - 10, 20, 20);
-				d.drawOval((int)(x-drawPoint.getDistance()), (int)(y-drawPoint.getDistance()), (int)drawPoint.getDistance()*2, (int)drawPoint.getDistance()*2);
+				d.drawLine(-this.getWidth() + x, y, -this.getWidth() + drawPoint.getLocation().x, drawPoint.getLocation().y);
+				d.fillOval(-this.getWidth() + drawPoint.getLocation().x - 10, drawPoint.getLocation().y - 10, 20, 20);
+				d.drawOval((int)(-this.getWidth() + x-drawPoint.getDistance()), (int)(y-drawPoint.getDistance()), (int)drawPoint.getDistance()*2, (int)drawPoint.getDistance()*2);
 			}
 //			d.drawLine(-this.getWidth() + x, y, -this.getWidth() + circleX, circleY);
 //			d.fillOval(-this.getWidth() + circleX - 10, circleY - 10, 20, 20);
