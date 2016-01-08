@@ -92,7 +92,6 @@ public class DrawPointController implements MouseListener, MouseMotionListener{
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		dragPoint.setLocation(e.getX(), e.getY());
-		System.out.println(dragPoint.getLocation());
 	}
 
 	/**
