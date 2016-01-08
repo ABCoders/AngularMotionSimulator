@@ -69,6 +69,7 @@ public class Animation implements Runnable {
 		this.xCoord = 0;
 
 		this.reverse = true;
+		this.drawCircle = true;
 
 		this.drawPoints = new ArrayList<DrawPoint>();
 		//		this.resetVariables();
@@ -330,7 +331,7 @@ public class Animation implements Runnable {
 	 */
 	public void addDrawPoint(int drawX, int drawY) {
 		Point point = new Point(drawX, drawY);
-		drawPoints.add(new DrawPoint(point, xCoord, radius, scale, this.component.getHeight(), time));
+		drawPoints.add(new DrawPoint(point, xCoord, radius, scale, this.component.getHeight(), time, drawCircle));
 		//		this.calculateDistance();
 	}
 
@@ -385,7 +386,7 @@ public class Animation implements Runnable {
 	}
 	
 	public void undo() {
-		
+		this.drawPoints.remove(drawPoints.size());
 	}
 
 	//**********************************************************************

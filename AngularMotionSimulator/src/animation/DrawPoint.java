@@ -16,10 +16,12 @@ public class DrawPoint {
 	private double endAngle;
 	private double distance;
 	private double time;
+	private boolean withCircle;
 	
 	
-	public DrawPoint(Point location, double xCoord, double radius, double scale, int height, double time) {
+	public DrawPoint(Point location, double xCoord, double radius, double scale, int height, double time, boolean withCircle) {
 		this.location = location;
+		this.withCircle = withCircle;
 		this.calculateDistance(xCoord, radius, scale, height, time);
 //		System.out.println("location: " + location);
 //		System.out.println("startAngle: " + startAngle);
@@ -46,6 +48,10 @@ public class DrawPoint {
 		this.time = time;
 	}
 	
+	public void setWithCircle(boolean state) {
+		this.withCircle = state;
+	}
+	
 	public Point getLocation() {
 		return location;
 	}
@@ -68,6 +74,10 @@ public class DrawPoint {
 	
 	public double getTime() {
 		return time;
+	}
+	
+	public boolean getWithCircle() {
+		return withCircle;
 	}
 	
 	/**
