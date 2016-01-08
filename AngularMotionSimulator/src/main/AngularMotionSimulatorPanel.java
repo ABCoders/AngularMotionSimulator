@@ -3,7 +3,6 @@ package main;
 import java.awt.*;
 import java.io.*;
 import java.util.*;
-import java.net.*;
 import javax.swing.*;
 
 import animation.AnimationPanel;
@@ -43,7 +42,7 @@ public class AngularMotionSimulatorPanel extends JPanel {
 	private void showHelpForFirstTime() {
 		//getting input from the file
 		try {
-			File file = new File(getClass().getResource("ranYet.txt").getPath());
+			File file = new File("ranYet.txt");
 			Scanner in = new Scanner(file);
 			//if file has a 1 in it
 			if(in.nextInt() != 0){
@@ -51,13 +50,12 @@ public class AngularMotionSimulatorPanel extends JPanel {
 				HelpFrame helpFrame = new HelpFrame();
 				Thread t = new Thread(helpFrame);
 				t.start();
-				
 				//changing the value to a 0
 				try{
-					in.close();
 					PrintWriter out = new PrintWriter(file);
 					out.write("0");
 					out.close();
+					in.close();
 				}
 				catch(IOException e){}
 			}
