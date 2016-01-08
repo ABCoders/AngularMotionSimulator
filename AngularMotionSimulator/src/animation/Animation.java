@@ -96,112 +96,21 @@ public class Animation implements Runnable {
 		while (true) {
 			//Runs while animation is running
 			while (state) {
-				//Sets value based on time
-				if(reverse) {
-					this.xCoord = linearVelocity * 100 * time;
-					this.angle = timeAngle + -angularVelocity * time;
-					try {
-						for(DrawPoint point: drawPoints) {
-							point.setAngle(point.getEndAngle()+point.getStartAngle()+ -angularVelocity * (time-point.getTime()));
-						}
-					} catch(Exception e) {}
-					//				this.pointAngle = pointTimeAngle + drawAngle + -angularVelocity * (time - difference);
-					
-					
-
-					//If circle location goes past animation frame
-					if (this.xCoord * scale > component.getWidth()) {
-						this.time = 0;
-						this.timeAngle = this.angle;
-						try {
-							for(DrawPoint point: drawPoints) {
-								point.setStartAngle(point.getAngle());
-								point.setTime(0);
-							}
-						} catch(Exception e) {}
-						//					this.drawAngle = this.pointAngle;
-						//					this.difference = 0;
-					}
-				}
-				else {
-					this.xCoord = this.component.getWidth() - (radius*scale*2) - linearVelocity * 100 * time;
-					this.angle = timeAngle + angularVelocity * time;
-					try {
-						for(DrawPoint point: drawPoints) {
-							point.setAngle(point.getEndAngle()+point.getStartAngle()+ angularVelocity * (time-point.getTime()));
-						}
-					} catch(Exception e) {}
-					if (this.xCoord * scale < 0) {
-						this.time = 0;
-						this.timeAngle = this.angle;
-						try {
-							for(DrawPoint point: drawPoints) {
-								point.setStartAngle(point.getAngle());
-								point.setTime(0);
-							}
-						} catch(Exception e) {}
-					}
-				}
+				this.runAnimation();
 				
 				//Increase time
 				this.time += 0.001;
 				try {
 					Thread.sleep(1);
 				} catch (Exception e) {}
+				
 				//Updates views
 				updateComponent();
 				updateActions();
 			}
 
 			//When animation is not running
-			if(reverse) {
-				this.xCoord = linearVelocity * 100 * time;
-				this.angle = timeAngle + -angularVelocity * time;
-				try {
-					for(DrawPoint point: drawPoints) {
-						point.setAngle(point.getEndAngle()+point.getStartAngle()+ -angularVelocity * (time-point.getTime()));
-					}
-				} catch(Exception e) {}
-				//			this.pointAngle = pointTimeAngle + drawAngle + -angularVelocity * (time - difference);
-
-				//If circle location goes past animation frame
-				if (this.xCoord * scale > component.getWidth()) {
-					this.time = 0;
-					this.timeAngle = this.angle;
-					try {
-						for(DrawPoint point: drawPoints) {
-							point.setStartAngle(point.getAngle());
-							point.setTime(0);
-						}
-					} catch(Exception e) {}
-					//				this.drawAngle = this.pointAngle;
-					//				this.difference = 0;
-				}
-			}
-			else {
-				this.xCoord = this.component.getWidth() - (radius*scale*2) - linearVelocity * 100 * time;
-				this.angle = timeAngle + angularVelocity * time;
-				try {
-					for(DrawPoint point: drawPoints) {
-						point.setAngle(point.getEndAngle()+point.getStartAngle()+ angularVelocity * (time-point.getTime()));
-					}
-				} catch(Exception e) {}
-				//			this.pointAngle = pointTimeAngle + drawAngle + -angularVelocity * (time - difference);
-
-				//If circle location goes past animation frame
-				if (this.xCoord * scale < 0) {
-					this.time = 0;
-					this.timeAngle = this.angle;
-					try {
-						for(DrawPoint point: drawPoints) {
-							point.setStartAngle(point.getAngle());
-							point.setTime(0);
-						}
-					} catch(Exception e) {}
-					//				this.drawAngle = this.pointAngle;
-					//				this.difference = 0;
-				}
-			}
+			this.runAnimation();
 			try {
 				Thread.sleep(0);
 			} catch (Exception e) {}
@@ -242,22 +151,6 @@ public class Animation implements Runnable {
 	public double getAngle() {
 		return angle;
 	}
-
-	/**
-	 * Returns the angle of the line connecting from the middle of the circle to the point that the user clicks on.
-	 * @return The angle of the line
-	 */
-	//	public double getPointAngle() {
-	//		return pointAngle;
-	//	}
-
-	/**
-	 * Returns the length of the line between the middle of the circle and the point the user clicks on.
-	 * @return The length of the line
-	 */
-	//	public double getDistance() {
-	//		return distance;
-	//	}
 
 	/**
 	 * Returns the scale of the animation.
@@ -332,7 +225,6 @@ public class Animation implements Runnable {
 	public void addDrawPoint(int drawX, int drawY) {
 		Point point = new Point(drawX, drawY);
 		drawPoints.add(new DrawPoint(point, xCoord, radius, scale, this.component.getHeight(), time, drawCircle));
-		//		this.calculateDistance();
 	}
 
 	/**
@@ -393,6 +285,48 @@ public class Animation implements Runnable {
 	//								Methods
 	//**********************************************************************
 
+	private void runAnimation() {
+		if(reverse) {
+			this.xCoord = linearVelocity * 100 * time;
+			this.angle = timeAngle + -angularVelocity * time;
+			try {
+				for(DrawPoint point: drawPoints) {
+					point.setAngle(point.getEndAngle()+point.getStartAngle()+ -angularVelocity * (time-point.getTime()));
+				}
+			} catch(Exception e) {}
+
+			//If circle location goes past animation frame
+			if (this.xCoord * scale > component.getWidth()) {
+				this.resetVariables();
+			}
+		}
+		//In reverse
+		else {
+			this.xCoord = this.component.getWidth() - (radius*scale*2) - linearVelocity * 100 * time;
+			this.angle = timeAngle + angularVelocity * time;
+			try {
+				for(DrawPoint point: drawPoints) {
+					point.setAngle(point.getEndAngle()+point.getStartAngle()+ angularVelocity * (time-point.getTime()));
+				}
+			} catch(Exception e) {}
+			//If circle location goes past animation frame
+			if ((xCoord+radius*2)*scale < 0) {
+				this.resetVariables();
+			}
+		}
+	}
+	
+	private void resetVariables() {
+		this.time = 0;
+		this.timeAngle = this.angle;
+		try {
+			for(DrawPoint point: drawPoints) {
+				point.setStartAngle(point.getAngle());
+				point.setTime(0);
+			}
+		} catch(Exception e) {}
+	}
+	
 	/**
 	 * Resets the drawn point location.
 	 */
@@ -400,34 +334,6 @@ public class Animation implements Runnable {
 		//		distance = 0;
 		this.drawPoints.clear();
 	}
-
-	/**
-	 * Calculates the distance and angle between the drawn point and the circle.
-	 * Uses Pythagorean theorem to find distance Uses Trigonometry to find angle.
-	 */
-	//	private void calculateDistance() {
-	//		double dBetweenX = ((xCoord + radius) * scale - drawPoint.x);
-	//		double dBetweenY = ((component.getHeight() - radius * scale) - drawPoint.y);
-	//		distance = Math.sqrt(Math.pow(dBetweenX, 2) + Math.pow(dBetweenY, 2));
-	//		drawAngle = Math.atan((double) dBetweenY / (double) dBetweenX);
-	//		this.pointTimeAngle = 0;
-	//		this.difference = time;
-	//
-	//		// System.out.println("Before: " + Math.toDegrees(drawAngle));
-	//		// Fixes 90 degree bug
-	//		if (Math.abs(Math.toDegrees(drawAngle)) == 90) {
-	//			drawAngle = -drawAngle;
-	//		}
-	//
-	//		// Due to the difference between how Java calculates angles and how Java
-	//		// draws angle
-	//		// This determines which side of the circle it should be drawn on
-	//		if (drawPoint.x < (xCoord + radius) * scale) {
-	//			drawAngle = -drawAngle - 0.5 * Math.PI;
-	//		} else {
-	//			drawAngle = -drawAngle + 0.5 * Math.PI;
-	//		}
-	//	}
 
 	/**
 	 * Gets the variable values needed for animation from Calculations.
@@ -441,16 +347,6 @@ public class Animation implements Runnable {
 		if (calculations.getVariables().get(Input.VARIABLES[2]) != 0)
 			this.radius = calculations.getVariables().get(Input.VARIABLES[2]) * 100;
 	}
-
-	/**
-	 * Resets the variable values.
-	 */
-	//	private void resetVariables() {
-	////		this.time = 0;
-	////		this.angle = 0;
-	////		this.state = false;
-	////		this.xCoord = 0;
-	//	}
 
 	/**
 	 * Updates the Animation Model.
