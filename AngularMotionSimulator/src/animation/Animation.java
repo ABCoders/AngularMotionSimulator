@@ -216,14 +216,7 @@ public class Animation implements Runnable {
 	//								Setter Methods
 	//*************************************************************************
 
-	/**
-	 * Sets the location of the drawn point and calculates the distance between
-	 * it and the circle.
-	 * @param drawX The x-Coordinate of the drawn point
-	 * @param drawY The y-Coordinate of the drawn point
-	 */
-	public void addDrawPoint(int drawX, int drawY) {
-		Point point = new Point(drawX, drawY);
+	public void addDrawPoint(Point point) {
 		drawPoints.add(new DrawPoint(point, xCoord, radius, scale, this.component.getHeight(), time, drawCircle));
 	}
 

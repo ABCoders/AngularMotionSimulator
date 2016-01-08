@@ -1,7 +1,10 @@
 package animation;
 
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 /**
  * A Controller that draws a point on where the user clicks with a mouse.
@@ -10,15 +13,17 @@ import java.awt.event.MouseListener;
  * @author Bryan Kristiono
  * @since 7/12/2015
  */
-public class DrawPointController implements MouseListener {
+public class DrawPointController implements MouseListener, MouseMotionListener{
 	private Animation animation;		//The model used for calculation animation
+	private ArrayList<DrawPoint> drawPoints;
 	
 	/**
 	 * Initializes the class.
 	 * @param animation The model of the controller
 	 */
-	public DrawPointController (Animation animation) {
+	public DrawPointController (Animation animation, ArrayList<DrawPoint> drawPoints) {
 		this.animation = animation;
+		this.drawPoints = drawPoints;
 	}
 	
 	/**
@@ -36,9 +41,17 @@ public class DrawPointController implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if (!animation.getState()) {
-			int drawX = (int) Math.floor(e.getX());
-			int drawY = (int) Math.floor(e.getY());
-			animation.addDrawPoint(drawX, drawY);
+			boolean onPoint = false;
+			Point location = new Point(e.getX(), e.getY());
+			
+			for(DrawPoint points: drawPoints) {
+				Point pointLocation = points.getLocation();
+				if(Math.abs(pointLocation.getX()-location.getX()) < 10 &&
+						Math.abs(pointLocation.getY()-location.getY()) < 10)
+					onPoint = true;
+			}
+			if(!onPoint)
+				animation.addDrawPoint(location);
 		}
 	}
 
@@ -64,6 +77,23 @@ public class DrawPointController implements MouseListener {
 	 */
 	@Override
 	public void mouseExited(MouseEvent e) {
+	}
+	
+	//***************************************************************************
+	//					   	MouseMotionListener Methods
+	//***************************************************************************
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		
+	}
+
+	/**
+	 * A Stub.
+	 * @param e The event sent from the mouse
+	 */
+	@Override
+	public void mouseMoved(MouseEvent e) {
 	}
 
 }

@@ -79,7 +79,7 @@ public class AnimationPanel extends JPanel {
 	 * Register listeners to sub-components.
 	 */
 	private void registerControllers() {
-		animationComponent.addMouseListener(new DrawPointController(animation));
+		animationComponent.addMouseListener(new DrawPointController(animation, animation.getDrawPoints()));
 	}
 	
 	/**
