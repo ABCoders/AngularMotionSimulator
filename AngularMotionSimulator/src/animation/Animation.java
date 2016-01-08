@@ -123,7 +123,7 @@ public class Animation implements Runnable {
 					}
 				}
 				else {
-					this.xCoord = -linearVelocity * 100 * time;
+					this.xCoord = this.component.getWidth() - (radius*scale*2) - linearVelocity * 100 * time;
 					this.angle = timeAngle + angularVelocity * time;
 					try {
 						for(DrawPoint point: drawPoints) {
@@ -178,7 +178,7 @@ public class Animation implements Runnable {
 				}
 			}
 			else {
-				this.xCoord = -linearVelocity * 100 * time;
+				this.xCoord = this.component.getWidth() - (radius*scale*2) - linearVelocity * 100 * time;
 				this.angle = timeAngle + angularVelocity * time;
 				try {
 					for(DrawPoint point: drawPoints) {

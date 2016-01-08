@@ -163,9 +163,13 @@ public class ActionPanel extends JPanel {
 			animationButton.setText("PAUSE");
 			animationButton.setIcon(pauseIcon);
 			animationButton.setActionCommand("pause");
-
-			timeSlider.setValue((int)Math.round(animation.getTime()*10));
-			scaleSlider.setValue((int)(animation.getScale()*100));
+			
+			try {
+				timeSlider.setValue((int)Math.round(animation.getTime()*10));
+				scaleSlider.setValue((int)(animation.getScale()*100));
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+			}
 		}
 		//When the animation is not running
 		else {
