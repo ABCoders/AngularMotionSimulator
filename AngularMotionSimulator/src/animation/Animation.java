@@ -123,8 +123,23 @@ public class Animation implements Runnable {
 					}
 				}
 				else {
-					
-					
+					this.xCoord = -linearVelocity * 100 * time;
+					this.angle = timeAngle + angularVelocity * time;
+					try {
+						for(DrawPoint point: drawPoints) {
+							point.setAngle(point.getEndAngle()+point.getStartAngle()+ angularVelocity * (time-point.getTime()));
+						}
+					} catch(Exception e) {}
+					if (this.xCoord * scale < 0) {
+						this.time = 0;
+						this.timeAngle = this.angle;
+						try {
+							for(DrawPoint point: drawPoints) {
+								point.setStartAngle(point.getAngle());
+								point.setTime(0);
+							}
+						} catch(Exception e) {}
+					}
 				}
 				
 				//Increase time
@@ -138,31 +153,57 @@ public class Animation implements Runnable {
 			}
 
 			//When animation is not running
-			this.xCoord = linearVelocity * 100 * time;
-			this.angle = timeAngle + -angularVelocity * time;
-			try {
-				for(DrawPoint point: drawPoints) {
-					point.setAngle(point.getEndAngle()+point.getStartAngle()+ -angularVelocity * (time-point.getTime()));
+			if(reverse) {
+				this.xCoord = linearVelocity * 100 * time;
+				this.angle = timeAngle + -angularVelocity * time;
+				try {
+					for(DrawPoint point: drawPoints) {
+						point.setAngle(point.getEndAngle()+point.getStartAngle()+ -angularVelocity * (time-point.getTime()));
+					}
+				} catch(Exception e) {}
+				//			this.pointAngle = pointTimeAngle + drawAngle + -angularVelocity * (time - difference);
+
+				//If circle location goes past animation frame
+				if (this.xCoord * scale > component.getWidth()) {
+					this.time = 0;
+					this.timeAngle = this.angle;
+					try {
+						for(DrawPoint point: drawPoints) {
+							point.setStartAngle(point.getAngle());
+							point.setTime(0);
+						}
+					} catch(Exception e) {}
+					//				this.drawAngle = this.pointAngle;
+					//				this.difference = 0;
 				}
-			} catch(Exception e) {}
-			//			this.pointAngle = pointTimeAngle + drawAngle + -angularVelocity * (time - difference);
+			}
+			else {
+				this.xCoord = -linearVelocity * 100 * time;
+				this.angle = timeAngle + angularVelocity * time;
+				try {
+					for(DrawPoint point: drawPoints) {
+						point.setAngle(point.getEndAngle()+point.getStartAngle()+ angularVelocity * (time-point.getTime()));
+					}
+				} catch(Exception e) {}
+				//			this.pointAngle = pointTimeAngle + drawAngle + -angularVelocity * (time - difference);
+
+				//If circle location goes past animation frame
+				if (this.xCoord * scale < 0) {
+					this.time = 0;
+					this.timeAngle = this.angle;
+					try {
+						for(DrawPoint point: drawPoints) {
+							point.setStartAngle(point.getAngle());
+							point.setTime(0);
+						}
+					} catch(Exception e) {}
+					//				this.drawAngle = this.pointAngle;
+					//				this.difference = 0;
+				}
+			}
 			try {
 				Thread.sleep(0);
 			} catch (Exception e) {}
-
-			//If circle location goes past animation frame
-			if (this.xCoord * scale > component.getWidth()) {
-				this.time = 0;
-				this.timeAngle = this.angle;
-				try {
-					for(DrawPoint point: drawPoints) {
-						point.setStartAngle(point.getAngle());
-						point.setTime(0);
-					}
-				} catch(Exception e) {}
-				//				this.drawAngle = this.pointAngle;
-				//				this.difference = 0;
-			}
 
 			//Updates Views
 			updateComponent();
@@ -341,6 +382,10 @@ public class Animation implements Runnable {
 
 	public void setDrawCircle(boolean state) {
 		drawCircle = state;
+	}
+	
+	public void undo() {
+		
 	}
 
 	//**********************************************************************
