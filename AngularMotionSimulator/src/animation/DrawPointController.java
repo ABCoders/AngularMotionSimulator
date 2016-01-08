@@ -38,7 +38,7 @@ public class DrawPointController implements MouseListener {
 		if (!animation.getState()) {
 			int drawX = (int) Math.floor(e.getX());
 			int drawY = (int) Math.floor(e.getY());
-			animation.setDrawPoints(drawX, drawY);
+			animation.addDrawPoint(drawX, drawY);
 		}
 	}
 
