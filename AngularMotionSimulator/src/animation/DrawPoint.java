@@ -29,6 +29,7 @@ public class DrawPoint {
 //		System.out.println("endAngle: " + endAngle);
 //		System.out.println("distance: " + distance);
 //		System.out.println("time: " + time);
+		
 	}
 	
 	public void setLocation(double xCoord, double radius, double height) {
