@@ -91,7 +91,7 @@ public class Animation implements Runnable {
 				this.angle = timeAngle + -angularVelocity * time;
 				try {
 					for(DrawPoint point: drawPoints) {
-						point.setAngle(point.getAngle()+point.getStartAngle()+ -angularVelocity * (time-point.getTime()));
+						point.setAngle(point.getEndAngle()+point.getStartAngle()+ -angularVelocity * (time-point.getTime()));
 					}
 				} catch(NullPointerException e) {}
 //				this.pointAngle = pointTimeAngle + drawAngle + -angularVelocity * (time - difference);
@@ -125,7 +125,7 @@ public class Animation implements Runnable {
 			this.angle = timeAngle + -angularVelocity * time;
 			try {
 				for(DrawPoint point: drawPoints) {
-					point.setAngle(point.getAngle()+point.getStartAngle()+ -angularVelocity * (time-point.getTime()));
+					point.setAngle(point.getEndAngle()+point.getStartAngle()+ -angularVelocity * (time-point.getTime()));
 				}
 			} catch(NullPointerException e) {}
 //			this.pointAngle = pointTimeAngle + drawAngle + -angularVelocity * (time - difference);
