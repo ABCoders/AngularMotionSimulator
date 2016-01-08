@@ -8,6 +8,7 @@ import calculation.Calculations;
  * Inputs information from user and sends to calculations model and updates input fields in answer machine
  * @author Cindy Zhao
  * @author Bryan Kristiono
+ * @author Amritpal Aujla
  * @since 09/12/15
  */
 
@@ -60,7 +61,6 @@ public class Input extends Object{
 	
 	public void setNumberPanel(int number) {
 		this.numberPanels = number;
-		this.updateView();
 	}
 	
 	/**
@@ -271,13 +271,6 @@ public class Input extends Object{
 	 */
 	public AnswerMachinePanel getView() {
 		return answerMachinePanel;
-	}
-	
-	/**
-	 * Updates answer machine GUI
-	 */
-	private void updateView() {
-		answerMachinePanel.update();
 	}
 	
 	/**

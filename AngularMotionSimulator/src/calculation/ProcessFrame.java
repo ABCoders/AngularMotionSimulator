@@ -38,6 +38,7 @@ public class ProcessFrame extends JFrame{
 		//setting the frame's properties to visible and size to 600 by 300
 		this.setVisible(true);
 	    this.setSize(600,300);
+	    this.setLocation(this.input.getView().getTopLevelAncestor().getX(), this.input.getView().getTopLevelAncestor().getHeight() + this.input.getView().getTopLevelAncestor().getY());
 	    
 	    //putting all components into their appropriate place in the grid layout
 	    this.mainPanel.setLayout(new GridLayout(3, 1));
@@ -63,6 +64,7 @@ public class ProcessFrame extends JFrame{
 	private void registerControllers(){
 		ProcessSaveController processSaveController;             //the controller to attach to the save button
 		processSaveController = new ProcessSaveController(this.calcPanel.getEquation(), this.calcPanel.getValueEquation(), this.calcPanel.getResult());
+		
 		//adding the action listener to the controller
 		this.save.addActionListener(processSaveController);
 	}

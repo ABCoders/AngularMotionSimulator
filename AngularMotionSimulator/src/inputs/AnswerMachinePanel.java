@@ -8,6 +8,7 @@ import java.awt.*;
  * GUI for answer machine
  * @author Cindy Zhao
  * @author Bryan Kristiono
+ * @author Amritpal Aujla
  * @since 09/12/15
  */
 
@@ -39,13 +40,6 @@ public class AnswerMachinePanel extends JPanel{
 		this.wantedFieldPanel = new WantedFieldPanel(input);
 		this.calculateButton = new JButton("CALCULATE");
 		this.addButton = new JButton("ADD");
-	}
-	
-	/**
-	 * 
-	 */
-	public void update()
-	{
 	}
 	
 	/**
