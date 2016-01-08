@@ -21,6 +21,17 @@ public class DrawPoint {
 	public DrawPoint(Point location, double xCoord, double radius, double scale, int height, double time) {
 		this.location = location;
 		this.calculateDistance(xCoord, radius, scale, height, time);
+		System.out.println("location: " + location);
+		System.out.println("startAngle: " + startAngle);
+		System.out.println("angle: " + angle);
+		System.out.println("endAngle: " + endAngle);
+		System.out.println("distance: " + distance);
+		System.out.println("time: " + time);
+	}
+	
+	public void setLocation(double xCoord, double radius, double height) {
+		this.location.x = (int) (xCoord + radius + distance * Math.sin(angle));
+		this.location.y = (int) (height - radius + distance * Math.cos(angle));
 	}
 	
 	public void setAngle(double angle) {

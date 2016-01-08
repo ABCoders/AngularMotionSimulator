@@ -17,8 +17,8 @@ public class AnimationComponent extends JComponent {
 	
 	/*  Attributes for drawing the circle  */
 	private int diameter;			//The diameter of the circle
-	private double distance;		//The distance between the circle and the drawn point
-	private double pointAngle;		//The angle between the drawn point and the circle
+//	private double distance;		//The distance between the circle and the drawn point
+//	private double pointAngle;		//The angle between the drawn point and the circle
 	private double scale;			//The scale of the animation
 	private int radius;				//The radius of the circle
 	private int xCoord;				//The x-Coordinate of the circle
@@ -70,8 +70,9 @@ public class AnimationComponent extends JComponent {
 		int endY = (int) (y + radius * Math.cos(angle));
 
 		//Determines the location of the drawn point
-		int circleX = (int) (xCoord + radius + distance * Math.sin(pointAngle));
-		int circleY = (int) (this.getHeight() - radius + distance * Math.cos(pointAngle));
+		for (DrawPoint drawPoint : drawPoints) {
+			drawPoint.setLocation(xCoord, radius, this.getHeight());
+		}
 		
 		
 		//Draws the circle
@@ -80,15 +81,21 @@ public class AnimationComponent extends JComponent {
 		d.setColor(Color.BLACK);
 		d.drawLine(x, y, endX, endY);
 		
-		//Draws the clicked point
+		//Draws each clicked point
 		d.setColor(Color.RED);
-		d.drawLine(x, y, circleX, circleY);
-		d.fillOval(circleX - 10, circleY - 10, 20, 20);
-		d.setColor(Color.BLACK);
+		for (DrawPoint drawPoint : drawPoints) {
+			d.drawLine(x, y, drawPoint.getLocation().x, drawPoint.getLocation().y);
+			d.fillOval(drawPoint.getLocation().x - 10, drawPoint.getLocation().y - 10, 20, 20);
+			d.drawOval((int)(x-drawPoint.getDistance()), (int)(y-drawPoint.getDistance()), (int)drawPoint.getDistance()*2, (int)drawPoint.getDistance()*2);
+		}
+//		d.drawLine(x, y, circleX, circleY);
+//		d.fillOval(circleX - 10, circleY - 10, 20, 20);
+//		d.setColor(Color.BLACK);
 		
 		//Draw concentric circle at drawn point
-		d.setColor(Color.RED);
-		d.drawOval((int)(x-distance), (int)(y-distance), (int)distance*2, (int)distance*2);
+//		d.setColor(Color.RED);
+//		d.drawOval((int)(x-distance), (int)(y-distance), (int)distance*2, (int)distance*2);
+//		d.drawOval((int)(x-distance), (int)(y-distance), (int)distance*2, (int)distance*2);
 		d.setColor(Color.BLACK);
 
 		//Draws the circle and clicked point if the circle goes past the view
@@ -98,8 +105,13 @@ public class AnimationComponent extends JComponent {
 			d.setColor(Color.BLACK);
 			d.drawLine(-this.getWidth() + x, y, -this.getWidth() + endX, endY);
 			d.setColor(Color.RED);
-			d.drawLine(-this.getWidth() + x, y, -this.getWidth() + circleX, circleY);
-			d.fillOval(-this.getWidth() + circleX - 10, circleY - 10, 20, 20);
+			for (DrawPoint drawPoint : drawPoints) {
+				d.drawLine(x, y, drawPoint.getLocation().x, drawPoint.getLocation().y);
+				d.fillOval(drawPoint.getLocation().x - 10, drawPoint.getLocation().y - 10, 20, 20);
+				d.drawOval((int)(x-drawPoint.getDistance()), (int)(y-drawPoint.getDistance()), (int)drawPoint.getDistance()*2, (int)drawPoint.getDistance()*2);
+			}
+//			d.drawLine(-this.getWidth() + x, y, -this.getWidth() + circleX, circleY);
+//			d.fillOval(-this.getWidth() + circleX - 10, circleY - 10, 20, 20);
 			d.setColor(Color.BLACK);
 		}
 		
