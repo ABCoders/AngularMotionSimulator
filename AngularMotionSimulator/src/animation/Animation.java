@@ -271,7 +271,8 @@ public class Animation implements Runnable {
 	}
 	
 	public void undo() {
-		this.drawPoints.remove(drawPoints.size()-1);
+		if(!drawPoints.isEmpty())
+			this.drawPoints.remove(drawPoints.size()-1);
 	}
 
 	//**********************************************************************
@@ -282,11 +283,11 @@ public class Animation implements Runnable {
 		if(reverse) {
 			this.xCoord = linearVelocity * 100 * time;
 			this.angle = timeAngle + -angularVelocity * time;
-			try {
+			if (!drawPoints.isEmpty()) {
 				for(DrawPoint point: drawPoints) {
 					point.setAngle(point.getEndAngle()+point.getStartAngle()+ -angularVelocity * (time-point.getTime()));
 				}
-			} catch(Exception e) {}
+			}
 
 			//If circle location goes past animation frame
 			if (this.xCoord * scale > component.getWidth()) {
@@ -297,11 +298,11 @@ public class Animation implements Runnable {
 		else {
 			this.xCoord = this.component.getWidth() - (radius*scale*2) - linearVelocity * 100 * time;
 			this.angle = timeAngle + angularVelocity * time;
-			try {
+			if (!drawPoints.isEmpty()) {
 				for(DrawPoint point: drawPoints) {
 					point.setAngle(point.getEndAngle()+point.getStartAngle()+ angularVelocity * (time-point.getTime()));
 				}
-			} catch(Exception e) {}
+			}
 			//If circle location goes past animation frame
 			if ((xCoord+radius*2)*scale < 0) {
 				this.resetVariables();
@@ -312,12 +313,12 @@ public class Animation implements Runnable {
 	private void resetVariables() {
 		this.time = 0;
 		this.timeAngle = this.angle;
-		try {
+		if (!drawPoints.isEmpty()) {
 			for(DrawPoint point: drawPoints) {
 				point.setStartAngle(point.getAngle());
 				point.setTime(0);
 			}
-		} catch(Exception e) {}
+		}
 	}
 	
 	/**
