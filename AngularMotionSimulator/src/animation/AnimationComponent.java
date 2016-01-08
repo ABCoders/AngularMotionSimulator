@@ -74,7 +74,6 @@ public class AnimationComponent extends JComponent {
 			drawPoint.setLocation(xCoord, radius, this.getHeight());
 		}
 		
-		
 		//Draws the circle
 		d.setColor(color);
 		d.fillOval(xCoord, this.getHeight() - diameter, diameter, diameter);
