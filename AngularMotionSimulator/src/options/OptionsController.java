@@ -103,11 +103,15 @@ public class OptionsController implements ActionListener {
 				loadVariables();
 			}
 		}
-		else if (e.getActionCommand().equalsIgnoreCase("one animation")) {
-			input.setNumberPanel(1);
+		
+		//choosing to reverse the animation direction
+		else if (e.getActionCommand().equalsIgnoreCase("Reverse Animation Direction")) {
+			this.input.getAnimation().setReverse();
 		}
-		else if (e.getActionCommand().equalsIgnoreCase("two animations")) {
-			input.setNumberPanel(2);
+		
+		//choosing to draw a circle with the red dots
+		else if (e.getActionCommand().equalsIgnoreCase("Draw/Not Draw Red Circle")) {
+			this.input.getAnimation().setDrawCircle();
 		}
 	}
 	

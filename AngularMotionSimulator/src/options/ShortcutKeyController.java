@@ -6,7 +6,7 @@ package options;
 import java.awt.event.*;
 
 import animation.Animation;
-import main.AngularMotionSimulatorPanel;
+import animation.AnimationComponent;
 
 /** ShortcutKeyController
  *  Gets input from the keyboard and does certain actions like undoing a DrawPoint drag in the program
@@ -16,18 +16,18 @@ import main.AngularMotionSimulatorPanel;
 public class ShortcutKeyController implements KeyListener{
 	
 	//attributes
-	private AngularMotionSimulatorPanel amsPanel;
+	private AnimationComponent component;
 	private Animation animation;
 	
 	/** Default Constructor - sets the panel to get the key input from and the animation to use methods from
 	 * @param amsPanel The main panel which the user must be focused on to get the input from
 	 * @param animation The animation model to use methods from for the shortcuts
 	 */
-	public ShortcutKeyController(AngularMotionSimulatorPanel amsPanel, Animation animation){
-		this.amsPanel = amsPanel;
+	public ShortcutKeyController(AnimationComponent component, Animation animation){
+		this.component = component;
 		this.animation = animation;
-		
-		System.out.println(amsPanel.isFocusable());
+		component.requestFocus();
+		System.out.println(component.isFocusable());
 	}
 
 	/** if a key is pressed, do a certain action based on what key is pressed
@@ -44,17 +44,17 @@ public class ShortcutKeyController implements KeyListener{
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		System.out.print("Key Typed");
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
 		System.out.println("Key Released");
 		// if the key pressed is a Ctrl key
 		if(e.getModifiers() == KeyEvent.VK_CONTROL){
 			System.out.println(KeyEvent.getKeyText(e.getKeyCode()));
 		}
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		System.out.print(e.getKeyChar());
 	}
 	
 	
