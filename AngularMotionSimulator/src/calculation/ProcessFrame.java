@@ -38,7 +38,7 @@ public class ProcessFrame extends JFrame{
 		//setting the frame's properties to visible and size to 600 by 300
 		this.setVisible(true);
 	    this.setSize(600,300);
-	    this.setLocation(this.input.getView().getTopLevelAncestor().getX(), this.input.getView().getTopLevelAncestor().getHeight() + this.input.getView().getTopLevelAncestor().getY());
+	    this.setLocation(this.input.getView().getTopLevelAncestor().getX(), this.input.getView().getTopLevelAncestor().getY() + this.input.getView().getY());
 	    
 	    //putting all components into their appropriate place in the grid layout
 	    this.mainPanel.setLayout(new GridLayout(3, 1));
