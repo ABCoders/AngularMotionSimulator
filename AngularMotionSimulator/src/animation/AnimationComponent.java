@@ -19,8 +19,6 @@ public class AnimationComponent extends JComponent {
 	
 	/*  Attributes for drawing the circle  */
 	private int diameter;			//The diameter of the circle
-//	private double distance;		//The distance between the circle and the drawn point
-//	private double pointAngle;		//The angle between the drawn point and the circle
 	private double scale;			//The scale of the animation
 	private int radius;				//The radius of the circle
 	private int xCoord;				//The x-Coordinate of the circle
@@ -74,7 +72,7 @@ public class AnimationComponent extends JComponent {
 
 		//Determines the location of the drawn point
 		for (DrawPoint drawPoint : drawPoints) {
-			drawPoint.setLocation(xCoord, radius, this.getHeight());
+			drawPoint.setLocation(xCoord, radius, this.getHeight(), scale);
 		}
 		
 		//Draws the circle

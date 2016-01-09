@@ -18,25 +18,32 @@ public class DrawPoint {
 	private double time;
 	private boolean withCircle;
 	
+	private double xCoord;
+	private double radius;
+	private double scale;
+	private int height;
+	
 	
 	public DrawPoint(Point location, double xCoord, double radius, double scale, int height, double time, boolean withCircle) {
 		this.location = location;
 		this.withCircle = withCircle;
-		this.calculateDistance(xCoord, radius, scale, height, time);
-//		System.out.println("location: " + location);
-//		System.out.println("startAngle: " + startAngle);
-//		System.out.println("angle: " + angle);
-//		System.out.println("endAngle: " + endAngle);
-//		System.out.println("distance: " + distance);
-//		System.out.println("time: " + time);
-		
+		this.xCoord = xCoord;
+		this.radius = radius;
+		this.height = height;
+		this.scale = scale;
+		this.time = time;
+		this.calculateDistance();
 	}
 	
 	//*************************************************************************
 	//								Setter Methods
 	//*************************************************************************
 	
-	public void setLocation(double xCoord, double radius, double height) {
+	public void setLocation(double xCoord, double radius, int height, double scale) {
+		this.xCoord = xCoord;
+		this.radius = radius;
+		this.height = height;
+		this.scale = scale;
 		this.location.x = (int) (xCoord + radius + distance * Math.sin(angle));
 		this.location.y = (int) (height - radius + distance * Math.cos(angle));
 	}
@@ -44,6 +51,7 @@ public class DrawPoint {
 	public void setLocation(int xCoord, int yCoord) {
 		this.location.x = xCoord;
 		this.location.y = yCoord;
+		this.calculateDistance();
 	}
 	
 	public void setAngle(double angle) {
@@ -102,13 +110,12 @@ public class DrawPoint {
 	 * Calculates the distance and angle between the drawn point and the circle.
 	 * Uses Pythagorean theorem to find distance Uses Trigonometry to find angle.
 	 */
-	private void calculateDistance(double xCoord, double radius, double scale, int height, double time) {
+	private void calculateDistance() {
 		double dBetweenX = ((xCoord + radius) * scale - location.x);
 		double dBetweenY = ((height - radius * scale) - location.y);
 		distance = Math.sqrt(Math.pow(dBetweenX, 2) + Math.pow(dBetweenY, 2));
 		startAngle = Math.atan((double) dBetweenY / (double) dBetweenX);
 		this.endAngle = 0;
-		this.time = time;
 
 		// System.out.println("Before: " + Math.toDegrees(drawAngle));
 		// Fixes 90 degree bug
