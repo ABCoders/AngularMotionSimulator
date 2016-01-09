@@ -8,6 +8,7 @@ import java.awt.*;
  * Panel for one variable value to be input, can be deleted
  * @author Cindy Zhao
  * @author Bryan Kristiono
+ * @author Amritpal Aujla
  * @since 09/12/15
  */
 public class InputFieldPanel extends JPanel{
