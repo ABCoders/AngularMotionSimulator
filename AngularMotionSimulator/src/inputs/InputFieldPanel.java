@@ -123,15 +123,15 @@ public class InputFieldPanel extends JPanel{
 			case("Angular Velocity"):
 				return "rad/s";
 			case("Linear Velocity"):
-				return "m/s";
+				return " m/s ";
 			case("Radius"):
-				return "m";
+				return "   m   ";
 			case("Arc Length"):
-				return "m";
+				return "   m   ";
 			case("Time"):
-				return "s";
+				return "   s    ";
 			case("Angle"):
-				return "rad";
+				return " rad ";
 		}
 		return "";
 	}
