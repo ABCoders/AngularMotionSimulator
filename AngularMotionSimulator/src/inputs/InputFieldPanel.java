@@ -18,6 +18,7 @@ public class InputFieldPanel extends JPanel{
 	
 	private JComboBox <String> variablePicker; //List of variable names
 	private JSpinner valueSpinner; //Spinner for inputting values
+	private JLabel unitLabel;    	//The label for what unit a certain variable is in
 	private JButton deleteButton; //Button to delete field
 	
 	/**
@@ -46,6 +47,7 @@ public class InputFieldPanel extends JPanel{
 		else
 			variablePicker.setSelectedIndex(position);
 		valueSpinner = new JSpinner(new SpinnerNumberModel(1.0, 0.0001, 99999.0, 0.5));
+		this.unitLabel = new JLabel(this.respectiveUnit());
 		deleteButton = new JButton("X");
 	}
 	
@@ -56,6 +58,7 @@ public class InputFieldPanel extends JPanel{
 		this.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
 		this.add(variablePicker);
 		this.add(valueSpinner);
+		this.add(this.unitLabel);
 		this.add(deleteButton);
 	}
 
@@ -64,6 +67,7 @@ public class InputFieldPanel extends JPanel{
 	 */
 	private void registerControllers() {
 		deleteButton.addActionListener(new RemoveController(input, this));
+		this.variablePicker.addActionListener(new UnitUpdateController(this));
 	}
 	
 	/**
@@ -111,12 +115,34 @@ public class InputFieldPanel extends JPanel{
 		valueSpinner.setValue(value);
 	}
 	
+	/** Returns the unit that the matches variable name in the in the combo box
+	 *  @return the unit that is to be returned for a certain variable
+	 */
+	private String respectiveUnit(){
+		switch((String)this.variablePicker.getSelectedItem()){
+			case("Angular Velocity"):
+				return "rad/s";
+			case("Linear Velocity"):
+				return "m/s";
+			case("Radius"):
+				return "m";
+			case("Arc Length"):
+				return "m";
+			case("Time"):
+				return "s";
+			case("Angle"):
+				return "rad";
+		}
+		return "";
+	}
+	
 	/**
-	 * 
+	 * Updates the spinner value
 	 */
 	public void update() {
 		try {	
 			valueSpinner.commitEdit();
+			this.unitLabel.setText(this.respectiveUnit());
 		} catch (Exception e) {
 		}
 	}
