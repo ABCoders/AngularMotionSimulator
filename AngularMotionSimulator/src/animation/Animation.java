@@ -27,8 +27,6 @@ public class Animation implements Runnable {
 	private double angularVelocity; //The angular velocity of the circle
 	private double angle; 			//The angle of the line that indicates the movement of the circle
 
-	/* Attributes for drawing a point */
-	
 
 	/* Attributes affected through buttons and sliders */
 	private double scale; 			//The scale of the animation
@@ -42,7 +40,7 @@ public class Animation implements Runnable {
 
 	private Color color; 			//The color of the circle
 
-	private ArrayList<DrawPoint> drawPoints;
+	private ArrayList<DrawPoint> drawPoints;	//A list of all points drawn by the user
 
 	/**
 	 * Initialize a new Animation with default values.

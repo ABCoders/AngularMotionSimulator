@@ -6,10 +6,12 @@ package animation;
 import java.awt.Point;
 
 /**
- * @author Bryan
- *
+ * 
+ * @author Bryan Kristiono
+ * @since 9/1/2016
  */
 public class DrawPoint {
+	/* Attributes of DrawPoint */
 	private Point location;		//The location of the point
 	private double startAngle;	//The original angle of the point
 	private double angle;		//The current angle of the point
@@ -18,6 +20,7 @@ public class DrawPoint {
 	private double time;		//The time the point is created
 	private boolean withCircle;	//Whether or not it is drawn with a red circle
 	
+	/* Attributes of animation for calculations */
 	private double xCoord;		//The x-coordinate of the circle
 	private double radius;		//The radius of the circle
 	private double scale;		//The scale of the animation
