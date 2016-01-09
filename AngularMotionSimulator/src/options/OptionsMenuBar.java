@@ -1,5 +1,7 @@
 package options;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -63,6 +65,9 @@ public class OptionsMenuBar extends JMenuBar {
 		this.reverseItem = new JCheckBoxMenuItem("Reverse Animation Direction");
 		this.circleItem = new JCheckBoxMenuItem("Do Not Draw Red Circle");
 		this.undoItem = new JMenuItem("Undo");
+		
+		//setting the accelerators for the items
+		this.setAccelerators();
 	}
 	
 	/**
@@ -82,6 +87,14 @@ public class OptionsMenuBar extends JMenuBar {
 		this.add(file);
 		this.add(this.animation);
 		this.add(other);
+	}
+	
+	/** Sets the menu items for animation to be accessible using keyboard shortcuts
+	 */
+	private void setAccelerators(){
+		this.reverseItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.CTRL_MASK));
+		this.circleItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
+		this.undoItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK));
 	}
 	
 	/**

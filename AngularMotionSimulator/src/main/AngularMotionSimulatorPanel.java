@@ -10,7 +10,6 @@ import inputs.AnswerMachinePanel;
 import inputs.Input;
 import options.HelpFrame;
 import options.OptionsMenuBar;
-import options.ShortcutKeyController;
 
 /**AngularMotionSimulatorPanel
  * The main Container of the program
@@ -35,7 +34,6 @@ public class AngularMotionSimulatorPanel extends JPanel {
 		this.input = input;
 		createComponents();
 		createPanel();
-		this.registerControllers();
 		this.showHelpForFirstTime();
 	}
 	
@@ -64,12 +62,6 @@ public class AngularMotionSimulatorPanel extends JPanel {
 			}
 		}
 		catch(Exception e) {System.out.println(e.getMessage());}
-	}
-	
-	/** Registers controllers for the ShortcutKeyController
-	 */
-	private void registerControllers() {
-		this.addKeyListener(new ShortcutKeyController(this.animationPanel.getAnimationComponent(), this.input.getAnimation()));
 	}
 
 	/** Shows a small splash screen image for a few seconds before the rest of the program opens
@@ -123,5 +115,6 @@ public class AngularMotionSimulatorPanel extends JPanel {
 	 */
 	public void update() {
 		animationPanel.update();
+		this.requestFocus();
 	}
 }
