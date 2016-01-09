@@ -11,6 +11,7 @@ import javax.swing.*;
  * Displays a circle moving and spinning across the screen.
  * Gets data from Animation class to create the animation in a certain way.
  * @author Bryan Kristiono
+ * @author Cindy Zhao
  * @since 7/12/2015
  */
 public class AnimationComponent extends JComponent {
@@ -47,8 +48,6 @@ public class AnimationComponent extends JComponent {
 		this.radius = (int)(animation.getRadius()*scale);
 		this.diameter = radius*2;
 		this.angle = animation.getAngle();
-//		this.distance = animation.getDistance();
-//		this.pointAngle = animation.getPointAngle();
 		this.drawPoints = animation.getDrawPoints();
 		this.color = animation.getColor();
 	}
