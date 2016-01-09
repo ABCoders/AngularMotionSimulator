@@ -200,8 +200,12 @@ public class Animation implements Runnable {
 	 * Returns the width of the animation view.
 	 * @return The width of the animation view
 	 */
-	public double getWidth() {
+	public int getWidth() {
 		return this.component.getWidth();
+	}
+	
+	public int getHeight() {
+		return this.component.getHeight();
 	}
 
 	public ArrayList<DrawPoint> getDrawPoints() {

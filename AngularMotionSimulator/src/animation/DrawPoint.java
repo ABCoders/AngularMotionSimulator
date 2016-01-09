@@ -27,10 +27,7 @@ public class DrawPoint {
 	public DrawPoint(Point location, double xCoord, double radius, double scale, int height, double time, boolean withCircle) {
 		this.location = location;
 		this.withCircle = withCircle;
-		this.xCoord = xCoord;
-		this.radius = radius;
-		this.height = height;
-		this.scale = scale;
+		this.setVariables(xCoord, radius, height, scale);
 		this.time = time;
 		this.calculateDistance();
 	}
@@ -39,11 +36,7 @@ public class DrawPoint {
 	//								Setter Methods
 	//*************************************************************************
 	
-	public void setLocation(double xCoord, double radius, int height, double scale) {
-		this.xCoord = xCoord;
-		this.radius = radius;
-		this.height = height;
-		this.scale = scale;
+	public void setLocation(double xCoord, double radius, int height) {
 		this.location.x = (int) (xCoord + radius + distance * Math.sin(angle));
 		this.location.y = (int) (height - radius + distance * Math.cos(angle));
 	}
@@ -68,6 +61,13 @@ public class DrawPoint {
 	
 	public void setWithCircle(boolean state) {
 		this.withCircle = state;
+	}
+	
+	public void setVariables(double xCoord, double radius, int height, double scale) {
+		this.xCoord = xCoord;
+		this.radius = radius;
+		this.height = height;
+		this.scale = scale;
 	}
 	
 	//*************************************************************************
