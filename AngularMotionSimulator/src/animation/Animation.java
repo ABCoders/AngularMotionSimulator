@@ -10,7 +10,7 @@ import inputs.Input;
  * The model of the animation. It contains all variables needed to create and configure the animation.
  * It calculates the values for animating angular motion form varying speed, scale and user-inputted values.
  * @author Bryan Kristiono
- * @since 27/12/2015
+ * @since 9/1/2016
  */
 public class Animation implements Runnable {
 
@@ -28,11 +28,7 @@ public class Animation implements Runnable {
 	private double angle; 			//The angle of the line that indicates the movement of the circle
 
 	/* Attributes for drawing a point */
-	//	private Point drawPoint; 	//The location of the point that the user clicks
-	//	private double drawAngle; 	//The original angle of the draw point
-	//	private double difference; 	//The time the user draws the location of the point
-	//	private double pointAngle; 	//The angle of the drawn point from the circle
-	//	private double distance; 	//The distance between the drawn point and the center of the circle
+	
 
 	/* Attributes affected through buttons and sliders */
 	private double scale; 			//The scale of the animation

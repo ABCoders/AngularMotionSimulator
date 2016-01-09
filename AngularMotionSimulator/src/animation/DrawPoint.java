@@ -10,13 +10,13 @@ import java.awt.Point;
  *
  */
 public class DrawPoint {
-	private Point location;
-	private double startAngle;
-	private double angle;
-	private double endAngle;
-	private double distance;
-	private double time;
-	private boolean withCircle;
+	private Point location;		//The location of the point
+	private double startAngle;	//The original angle of the point
+	private double angle;		//The current angle of the point
+	private double endAngle;	//The ending angle of the point
+	private double distance;	//The distance between the point and the center of the circle
+	private double time;		//The time the point is created
+	private boolean withCircle;	//Whether or not it is drawn with a red circle
 	
 	private double xCoord;
 	private double radius;
