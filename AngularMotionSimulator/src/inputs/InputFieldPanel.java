@@ -131,7 +131,7 @@ public class InputFieldPanel extends JPanel{
 			case("Time"):
 				return "   s    ";
 			case("Angle"):
-				return " rad ";
+				return "  rad  ";
 		}
 		return "";
 	}
