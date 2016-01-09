@@ -18,10 +18,10 @@ public class DrawPoint {
 	private double time;		//The time the point is created
 	private boolean withCircle;	//Whether or not it is drawn with a red circle
 	
-	private double xCoord;
-	private double radius;
-	private double scale;
-	private int height;
+	private double xCoord;		//The x-coordinate of the circle
+	private double radius;		//The radius of the circle
+	private double scale;		//The scale of the animation
+	private int height;			//The height of the animation
 	
 	
 	public DrawPoint(Point location, double xCoord, double radius, double scale, int height, double time, boolean withCircle) {
