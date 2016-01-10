@@ -42,26 +42,21 @@ public class AngularMotionSimulatorPanel extends JPanel {
 	private void showHelpForFirstTime() {
 		//getting input from the file
 		try {
-			File file = new File("ranYet.txt");
-			Scanner in = new Scanner(file);
-			
-			//if file has a 1 in it
-			if(in.nextInt() != 0){
-				//showing the help
+			//if a file on user's directory exists, do nothing
+			Scanner in = new Scanner(System.getProperty("user.home"));
+		}
+		catch(Exception e) {
+			//making a file in the user's home directory to signify the first time a program starts
+			try{
 				HelpFrame helpFrame = new HelpFrame();
 				Thread t = new Thread(helpFrame);
 				t.start();
-				//changing the value to a 0
-				try{
-					PrintWriter out = new PrintWriter(file);
-					out.write("0");
-					out.close();
-					in.close();
-				}
-				catch(IOException e){}
+				PrintWriter out = new PrintWriter(System.getProperty("user.home"));
+				out.write("0");
+				out.close();
 			}
+			catch(IOException ex){}
 		}
-		catch(Exception e) {System.out.println(e.getMessage());}
 	}
 
 	/** Shows a small splash screen image for a few seconds before the rest of the program opens
