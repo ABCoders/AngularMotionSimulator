@@ -58,16 +58,16 @@ public class OptionsMenuBar extends JMenuBar {
 		this.animation = new JMenu("Animation");
 		
 		//JMenuItems
-		saveItem = new JMenuItem("Save As");
+		saveItem = new JMenuItem("Save As   ");
 		loadItem = new JMenuItem("Load");
 		helpItem = new JMenuItem("Help");
-		colorItem = new JMenuItem("Change Color");
-		this.reverseItem = new JCheckBoxMenuItem("Reverse Animation Direction");
+		colorItem = new JMenuItem("Change Color   ");
+		this.reverseItem = new JCheckBoxMenuItem("Reverse Animation Direction   ");
 		this.circleItem = new JCheckBoxMenuItem("Do Not Draw Red Circle");
 		this.undoItem = new JMenuItem("Undo");
 		
-		//setting the accelerators for the items
-		this.setAccelerators();
+		//setting the shortcuts for the items
+		this.setShortcuts();
 	}
 	
 	/**
@@ -91,10 +91,19 @@ public class OptionsMenuBar extends JMenuBar {
 	
 	/** Sets the menu items for animation to be accessible using keyboard shortcuts
 	 */
-	private void setAccelerators(){
+	private void setShortcuts(){
+		//for saving and loading
+		this.saveItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+		this.loadItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
+		
+		//for the animation menu items
 		this.reverseItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.CTRL_MASK));
 		this.circleItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
 		this.undoItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK));
+		
+		//for other items
+		this.helpItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0));
+		this.colorItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
 	}
 	
 	/**
