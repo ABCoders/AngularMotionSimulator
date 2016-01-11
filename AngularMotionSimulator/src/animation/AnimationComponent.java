@@ -86,25 +86,33 @@ public class AnimationComponent extends JComponent {
 		for (DrawPoint drawPoint : drawPoints) {
 			d.drawLine(x, y, drawPoint.getLocation().x, drawPoint.getLocation().y);
 			d.fillOval(drawPoint.getLocation().x - 10, drawPoint.getLocation().y - 10, 20, 20);
-			Ellipse2D.Double circle = new Ellipse2D.Double((x-drawPoint.getDistance()), (y-drawPoint.getDistance()), drawPoint.getDistance()*2, drawPoint.getDistance()*2);
-			d.draw(circle);
-			if (drawPoint.getLocation().getX() > this.getWidth()||x+drawPoint.getDistance() > this.getWidth())
+			if (drawPoint.getWithCircle()) //if drawing circle is selected
+			{
+				Ellipse2D.Double circle = new Ellipse2D.Double((x-drawPoint.getDistance()), (y-drawPoint.getDistance()), drawPoint.getDistance()*2, drawPoint.getDistance()*2);
+				d.draw(circle);
+			}
+			if (drawPoint.getLocation().getX() > this.getWidth()||x+drawPoint.getDistance() > this.getWidth()) //if point location is past right edge frame
 			{
 				d.drawLine(x - this.getWidth(), y, drawPoint.getLocation().x - this.getWidth(), drawPoint.getLocation().y);
 				d.fillOval(drawPoint.getLocation().x - 10 - this.getWidth(), drawPoint.getLocation().y - 10, 20, 20);
-				Ellipse2D.Double circle2 = new Ellipse2D.Double((x-drawPoint.getDistance()) - this.getWidth(), (y-drawPoint.getDistance()), drawPoint.getDistance()*2, drawPoint.getDistance()*2);
-				d.draw(circle2);
+				if (drawPoint.getWithCircle())
+				{
+					Ellipse2D.Double circle2 = new Ellipse2D.Double((x-drawPoint.getDistance()) - this.getWidth(), (y-drawPoint.getDistance()), drawPoint.getDistance()*2, drawPoint.getDistance()*2);
+					d.draw(circle2);
+				}
 			}
 			else if (drawPoint.getLocation().getX() < 0 || x-drawPoint.getDistance() < 0)
 			{
 				d.drawLine(x + this.getWidth(), y, drawPoint.getLocation().x + this.getWidth(), drawPoint.getLocation().y);
 				d.fillOval(drawPoint.getLocation().x - 10 + this.getWidth(), drawPoint.getLocation().y - 10, 20, 20);
-				Ellipse2D.Double circle2 = new Ellipse2D.Double((x-drawPoint.getDistance()) + this.getWidth(), (y-drawPoint.getDistance()), drawPoint.getDistance()*2, drawPoint.getDistance()*2);
-				d.draw(circle2);
+				if (drawPoint.getWithCircle())
+				{
+					Ellipse2D.Double circle2 = new Ellipse2D.Double((x-drawPoint.getDistance()) + this.getWidth(), (y-drawPoint.getDistance()), drawPoint.getDistance()*2, drawPoint.getDistance()*2);
+					d.draw(circle2);
+				}
 			}
 		}
 		
-
 		d.setColor(Color.BLACK);
 
 		//Draws the circle and clicked point if the circle goes past the view
@@ -114,11 +122,7 @@ public class AnimationComponent extends JComponent {
 			d.setColor(Color.BLACK);
 			d.drawLine(-this.getWidth() + x, y, -this.getWidth() + endX, endY);
 			d.setColor(Color.RED);
-			for (DrawPoint drawPoint : drawPoints) {
-				d.drawLine(-this.getWidth() + x, y, -this.getWidth() + drawPoint.getLocation().x, drawPoint.getLocation().y);
-				d.fillOval(-this.getWidth() + drawPoint.getLocation().x - 10, drawPoint.getLocation().y - 10, 20, 20);
-				d.drawOval((int)(-this.getWidth() + x-drawPoint.getDistance()), (int)(y-drawPoint.getDistance()), (int)drawPoint.getDistance()*2, (int)drawPoint.getDistance()*2);
-			}
+			
 			d.setColor(Color.BLACK);
 		}
 		
@@ -128,11 +132,7 @@ public class AnimationComponent extends JComponent {
 			d.setColor(Color.BLACK);
 			d.drawLine(this.getWidth() + x, y, this.getWidth() + endX, endY);
 			d.setColor(Color.RED);
-			for (DrawPoint drawPoint : drawPoints) {
-				d.drawLine(this.getWidth() + x, y, this.getWidth() + drawPoint.getLocation().x, drawPoint.getLocation().y);
-				d.fillOval(this.getWidth() + drawPoint.getLocation().x - 10, drawPoint.getLocation().y - 10, 20, 20);
-				d.drawOval((int)(this.getWidth() + x-drawPoint.getDistance()), (int)(y-drawPoint.getDistance()), (int)drawPoint.getDistance()*2, (int)drawPoint.getDistance()*2);
-			}
+			
 			d.setColor(Color.BLACK);
 		}
 		

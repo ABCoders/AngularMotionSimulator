@@ -36,6 +36,8 @@ public class ActionController implements ActionListener {
 			animation.setState(false);
 		} else if(command.equalsIgnoreCase("clear")) {
 			animation.clear();
+		} else if (command.equalsIgnoreCase("reverse direction")) {
+			animation.setReverse();
 		}
 	}
 

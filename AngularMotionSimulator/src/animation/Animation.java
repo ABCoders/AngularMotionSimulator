@@ -207,6 +207,14 @@ public class Animation implements Runnable {
 	public ArrayList<DrawPoint> getDrawPoints() {
 		return drawPoints;
 	}
+	
+	public boolean getReverse() {
+		return reverse;
+	}
+	
+	public boolean getDrawCircle() {
+		return drawCircle;
+	}
 
 	//*************************************************************************
 	//								Setter Methods

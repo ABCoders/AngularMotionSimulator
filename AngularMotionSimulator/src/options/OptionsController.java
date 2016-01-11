@@ -71,11 +71,11 @@ public class OptionsController implements ActionListener {
 			help = new HelpFrame();
 		}
 		//Choosing to change color
-		else if (e.getActionCommand().equalsIgnoreCase("change color")) {
+		else if (e.getActionCommand().equalsIgnoreCase("change color   ")) {
 			new ColorChooserDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), input.getAnimation());
 		}
 		//Choosing to save inputs
-		else if (e.getActionCommand().equalsIgnoreCase("save as")) {
+		else if (e.getActionCommand().equalsIgnoreCase("save as   ")) {
 			int fileSelected = fileChooser.showSaveDialog(null);
 			if (fileSelected == JFileChooser.APPROVE_OPTION) {
 				String path = fileChooser.getSelectedFile().getAbsolutePath();
@@ -105,12 +105,13 @@ public class OptionsController implements ActionListener {
 		}
 		
 		//choosing to reverse the animation direction
-		else if (e.getActionCommand().equalsIgnoreCase("Reverse Animation Direction")) {
+		else if (e.getActionCommand().equalsIgnoreCase("reverse animation direction   ")) {
+			System.out.println("reverse");
 			this.input.getAnimation().setReverse();
 		}
 		
 		//choosing to draw a circle with the red dots
-		else if (e.getActionCommand().equalsIgnoreCase("Do Not Draw Red Circle")) {
+		else if (e.getActionCommand().equalsIgnoreCase("do not draw red circle")) {
 			this.input.getAnimation().setDrawCircle();
 		}
 		
