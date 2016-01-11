@@ -41,6 +41,7 @@ public class Animation implements Runnable {
 	private Color color; 			//The color of the circle
 
 	private ArrayList<DrawPoint> drawPoints;	//A list of all points drawn by the user
+	private ArrayList<DrawAction> drawActions;	//A list of all drawing actions
 
 	/**
 	 * Initialize a new Animation with default values.
@@ -63,6 +64,7 @@ public class Animation implements Runnable {
 		this.drawCircle = true;
 
 		this.drawPoints = new ArrayList<DrawPoint>();
+		this.drawActions = new ArrayList<DrawAction>();
 	}
 
 	/**
@@ -212,6 +214,11 @@ public class Animation implements Runnable {
 
 	public void addDrawPoint(Point point) {
 		drawPoints.add(new DrawPoint(point, xCoord, radius, scale, this.component.getHeight(), time, drawCircle));
+		drawActions.add(new DrawAction(DrawAction.CREATE, drawPoints.get(drawPoints.size()-1), drawPoints.size()-1));
+	}
+	
+	public void addDrawAction(DrawAction action) {
+		drawActions.add(action);
 	}
 
 	/**
@@ -247,6 +254,7 @@ public class Animation implements Runnable {
 	}
 
 	public void setReverse() {
+		System.out.println("REVER");
 		if(reverse)
 			reverse = false;
 		else
@@ -265,8 +273,17 @@ public class Animation implements Runnable {
 	}
 	
 	public void undo() {
-		if(!drawPoints.isEmpty())
-			this.drawPoints.remove(drawPoints.size()-1);
+		if(!drawActions.isEmpty()) {
+			DrawAction action = this.drawActions.get(drawActions.size()-1);
+			if(action.getAction()==DrawAction.CREATE) {
+				this.drawPoints.remove(action.getPoint());
+			}
+			else if(action.getAction()==DrawAction.MOVE) {
+				
+				action.getPoint().setLocation(action.getLocation());
+			}
+			this.drawActions.remove(drawActions.size()-1);
+		}
 	}
 
 	//**********************************************************************
@@ -319,7 +336,7 @@ public class Animation implements Runnable {
 	 * Resets the drawn point location.
 	 */
 	public void clear() {
-		//		distance = 0;
+		this.drawActions.clear();
 		this.drawPoints.clear();
 	}
 

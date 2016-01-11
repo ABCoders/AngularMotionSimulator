@@ -43,20 +43,26 @@ public class DrawPointController implements MouseListener, MouseMotionListener{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if (!animation.getState()) {
+			int index = 0;
 			onPoint = false;
 			Point location = new Point(e.getX(), e.getY());
 			
-			for(DrawPoint point: drawPoints) {
+			for(int i =0; i<drawPoints.size(); i++) {
+				DrawPoint point = drawPoints.get(i);
 				Point pointLocation = point.getLocation();
 				if(Math.abs(pointLocation.getX()-location.getX()) < 10 &&
 						Math.abs(pointLocation.getY()-location.getY()) < 10) {
 					onPoint = true;
 					dragPoint = point;
+					index = i;
 				}
 			}
 			if(!onPoint) {
 				animation.addDrawPoint(location);
 				dragPoint = drawPoints.get(drawPoints.size()-1);
+			}
+			else {
+				animation.addDrawAction(new DrawAction(DrawAction.MOVE, dragPoint, index));
 			}
 		}
 	}

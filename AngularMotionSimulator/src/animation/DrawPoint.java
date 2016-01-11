@@ -50,6 +50,11 @@ public class DrawPoint {
 		this.calculateDistance();
 	}
 	
+	public void setLocation(Point location) {
+		this.location = location;
+		this.calculateDistance();
+	}
+	
 	public void setAngle(double angle) {
 		this.angle = angle;
 	}
