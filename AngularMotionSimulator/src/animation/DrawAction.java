@@ -14,15 +14,8 @@ public class DrawAction {
 	public DrawAction(int action, DrawPoint point, int index) {
 		this.action = action;
 		this.point = point;
-		this.location = point.getLocation();
 		this.index = index;
 	}
-	
-//	public DrawAction(int action, DrawPoint point) {
-//		this.action = action;
-//		this.point = point;
-//		this.location = point.getLocation();
-//	}
 	
 	public int getAction() {
 		return this.action;
@@ -38,5 +31,9 @@ public class DrawAction {
 	
 	public int getIndex() {
 		return this.index;
+	}
+	
+	public void setLocation(Point location) {
+		this.location = location;
 	}
 }

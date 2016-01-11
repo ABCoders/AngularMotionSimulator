@@ -62,7 +62,9 @@ public class DrawPointController implements MouseListener, MouseMotionListener{
 				dragPoint = drawPoints.get(drawPoints.size()-1);
 			}
 			else {
-				animation.addDrawAction(new DrawAction(DrawAction.MOVE, dragPoint, index));
+				DrawAction action = new DrawAction(DrawAction.MOVE, dragPoint, index);
+				action.setLocation(location);
+				animation.addDrawAction(action);
 			}
 		}
 	}

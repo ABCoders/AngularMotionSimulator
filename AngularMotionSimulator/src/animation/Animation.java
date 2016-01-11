@@ -254,7 +254,6 @@ public class Animation implements Runnable {
 	}
 
 	public void setReverse() {
-		System.out.println("REVER");
 		if(reverse)
 			reverse = false;
 		else
@@ -279,8 +278,7 @@ public class Animation implements Runnable {
 				this.drawPoints.remove(action.getPoint());
 			}
 			else if(action.getAction()==DrawAction.MOVE) {
-				
-				action.getPoint().setLocation(action.getLocation());
+				this.drawPoints.get(action.getIndex()).setLocation(action.getLocation());;
 			}
 			this.drawActions.remove(drawActions.size()-1);
 		}
