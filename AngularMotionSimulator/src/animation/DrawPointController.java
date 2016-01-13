@@ -20,6 +20,7 @@ public class DrawPointController implements MouseListener, MouseMotionListener{
 	private ArrayList<DrawPoint> drawPoints;
 	private boolean onPoint;
 	private DrawPoint dragPoint;
+	private DropMenu menu;
 	
 	/**
 	 * Initializes the class.
@@ -28,6 +29,8 @@ public class DrawPointController implements MouseListener, MouseMotionListener{
 	public DrawPointController (Animation animation, ArrayList<DrawPoint> drawPoints) {
 		this.animation = animation;
 		this.drawPoints = drawPoints;
+		this.menu = new DropMenu(animation);
+		this.animation.getComponent().setComponentPopupMenu(menu);
 	}
 	
 	/**
@@ -73,8 +76,11 @@ public class DrawPointController implements MouseListener, MouseMotionListener{
 			}
 			else if (SwingUtilities.isRightMouseButton(e)) {
 				if(onPoint) {
-					this.dropMenu(location);
+//					this.menu.setVisible(true);
 					this.animation.setCurrentPoint(dragPoint);
+				}
+				else {
+//					this.menu.setVisible(false);
 				}
 			}
 		}
@@ -125,10 +131,5 @@ public class DrawPointController implements MouseListener, MouseMotionListener{
 	 */
 	@Override
 	public void mouseMoved(MouseEvent e) {
-	}
-
-	private void dropMenu(Point location) {
-		DropMenu menu = new DropMenu(animation);
-		animation.getComponent().setComponentPopupMenu(menu);
 	}
 }

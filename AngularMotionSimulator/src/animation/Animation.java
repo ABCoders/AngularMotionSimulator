@@ -306,6 +306,9 @@ public class Animation implements Runnable {
 			else if(action.getAction()==DrawAction.MOVE) {
 				this.drawPoints.get(action.getIndex()).setLocation(action.getLocation());;
 			}
+			else if(action.getAction()==DrawAction.DELETE) {
+				this.drawPoints.add(action.getIndex(), action.getPoint());
+			}
 			this.drawActions.remove(drawActions.size()-1);
 		}
 	}

@@ -26,8 +26,8 @@ public class AnimationPanel extends JPanel {
 		this.animation = animation;
 		createComponents();
 		createPanel();
-		registerControllers();
 		this.animation.setGUI(this);
+		registerControllers();
 	}
 	
 	/**
