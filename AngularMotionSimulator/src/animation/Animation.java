@@ -42,6 +42,8 @@ public class Animation implements Runnable {
 
 	private ArrayList<DrawPoint> drawPoints;	//A list of all points drawn by the user
 	private ArrayList<DrawAction> drawActions;	//A list of all drawing actions
+	
+	private DrawPoint currentPoint;
 
 	/**
 	 * Initialize a new Animation with default values.
@@ -65,6 +67,8 @@ public class Animation implements Runnable {
 
 		this.drawPoints = new ArrayList<DrawPoint>();
 		this.drawActions = new ArrayList<DrawAction>();
+		
+		this.currentPoint = null;
 	}
 
 	/**
@@ -203,6 +207,10 @@ public class Animation implements Runnable {
 	public int getHeight() {
 		return this.component.getHeight();
 	}
+	
+	public AnimationComponent getComponent() {
+		return this.component;
+	}
 
 	public ArrayList<DrawPoint> getDrawPoints() {
 		return drawPoints;
@@ -223,6 +231,16 @@ public class Animation implements Runnable {
 	public void addDrawPoint(Point point) {
 		drawPoints.add(new DrawPoint(point, xCoord, radius, scale, this.component.getHeight(), time, drawCircle));
 		drawActions.add(new DrawAction(DrawAction.CREATE, drawPoints.get(drawPoints.size()-1), drawPoints.size()-1));
+	}
+	
+	public void removeDrawPoint(DrawPoint point) {
+		int index = 0;
+		drawPoints.remove(point);
+		for (int i=0; i<drawPoints.size(); i++) {
+			if(drawPoints.get(i)==point)
+				index = i;
+		}
+		drawActions.add(new DrawAction(DrawAction.DELETE, point, index));
 	}
 	
 	public void addDrawAction(DrawAction action) {
@@ -290,6 +308,15 @@ public class Animation implements Runnable {
 			}
 			this.drawActions.remove(drawActions.size()-1);
 		}
+	}
+	
+	public void setCurrentPoint(DrawPoint point) {
+		this.currentPoint = point;
+	}
+	
+	public void deletePoint() {
+		this.removeDrawPoint(currentPoint);
+		currentPoint = null;
 	}
 
 	//**********************************************************************

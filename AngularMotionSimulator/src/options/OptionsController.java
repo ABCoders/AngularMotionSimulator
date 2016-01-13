@@ -106,7 +106,6 @@ public class OptionsController implements ActionListener {
 		
 		//choosing to reverse the animation direction
 		else if (e.getActionCommand().equalsIgnoreCase("reverse animation direction   ")) {
-			System.out.println("reverse");
 			this.input.getAnimation().setReverse();
 		}
 		

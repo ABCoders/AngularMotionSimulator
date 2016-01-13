@@ -6,6 +6,8 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
+import javax.swing.SwingUtilities;
+
 /**
  * A Controller that draws a point on where the user clicks with a mouse.
  * It only runs when the animation is paused.
@@ -57,14 +59,23 @@ public class DrawPointController implements MouseListener, MouseMotionListener{
 					index = i;
 				}
 			}
-			if(!onPoint) {
-				animation.addDrawPoint(location);
-				dragPoint = drawPoints.get(drawPoints.size()-1);
+			
+			if(SwingUtilities.isLeftMouseButton(e)) {
+				if(!onPoint) {
+					animation.addDrawPoint(location);
+					dragPoint = drawPoints.get(drawPoints.size()-1);
+				}
+				else {
+					DrawAction action = new DrawAction(DrawAction.MOVE, dragPoint, index);
+					action.setLocation(location);
+					animation.addDrawAction(action);
+				}
 			}
-			else {
-				DrawAction action = new DrawAction(DrawAction.MOVE, dragPoint, index);
-				action.setLocation(location);
-				animation.addDrawAction(action);
+			else if (SwingUtilities.isRightMouseButton(e)) {
+				if(onPoint) {
+					this.dropMenu(location);
+					this.animation.setCurrentPoint(dragPoint);
+				}
 			}
 		}
 	}
@@ -100,9 +111,11 @@ public class DrawPointController implements MouseListener, MouseMotionListener{
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		if (!animation.getState()) {
-			dragPoint.setVariables(animation.getXCoord(), animation.getRadius(), animation.getHeight(), animation.getScale());
-			dragPoint.setTime(animation.getTime());
-			dragPoint.setLocation(e.getX(), e.getY());
+			if(SwingUtilities.isLeftMouseButton(e)) {
+				dragPoint.setVariables(animation.getXCoord(), animation.getRadius(), animation.getHeight(), animation.getScale());
+				dragPoint.setTime(animation.getTime());
+				dragPoint.setLocation(e.getX(), e.getY());
+			}
 		}
 	}
 
@@ -114,4 +127,8 @@ public class DrawPointController implements MouseListener, MouseMotionListener{
 	public void mouseMoved(MouseEvent e) {
 	}
 
+	private void dropMenu(Point location) {
+		DropMenu menu = new DropMenu(animation);
+		animation.getComponent().setComponentPopupMenu(menu);
+	}
 }
