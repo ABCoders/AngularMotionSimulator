@@ -72,7 +72,7 @@ public class OptionsController implements ActionListener {
 		}
 		//Choosing to change color
 		else if (e.getActionCommand().equalsIgnoreCase("change color   ")) {
-			new ColorChooserDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), input.getAnimation());
+			new ColorChooserDialog(input.getAnimation(), ColorChooserDialog.CIRCLE);
 		}
 		//Choosing to save inputs
 		else if (e.getActionCommand().equalsIgnoreCase("save as   ")) {

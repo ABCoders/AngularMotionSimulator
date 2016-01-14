@@ -3,6 +3,8 @@ package animation;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import options.ColorChooserDialog;
+
 public class DropMenuController implements ActionListener {
 	private Animation animation;
 	
@@ -16,7 +18,7 @@ public class DropMenuController implements ActionListener {
 			this.animation.deletePoint();
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("change color")) {
-			
+			new ColorChooserDialog(animation, ColorChooserDialog.POINT);
 		}
 	}
 

@@ -77,6 +77,9 @@ public class DrawPointController implements MouseListener, MouseMotionListener{
 			else if (SwingUtilities.isRightMouseButton(e)) {
 				if(onPoint) {
 					this.animation.setCurrentPoint(dragPoint);
+				} 
+				else {
+					this.animation.setCurrentPoint(null);
 				}
 			}
 		}

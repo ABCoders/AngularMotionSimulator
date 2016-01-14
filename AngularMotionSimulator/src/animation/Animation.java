@@ -328,7 +328,8 @@ public class Animation implements Runnable {
 	}
 	
 	public void setPointColor(Color color) {
-		this.pointColor = color;
+		if(currentPoint!=null)
+			this.currentPoint.setColor(color);
 	}
 
 	//**********************************************************************
