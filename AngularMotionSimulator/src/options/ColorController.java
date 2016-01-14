@@ -35,6 +35,6 @@ public class ColorController implements ChangeListener {
 	 */
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		animation.setColor(colorChooser.getColor());
+		animation.setCircleColor(colorChooser.getColor());
 	}
 }

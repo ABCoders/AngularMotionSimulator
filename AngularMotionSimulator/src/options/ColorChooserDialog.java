@@ -33,7 +33,7 @@ public class ColorChooserDialog extends JDialog {
 	 */
 	private void createComponents() {
 		panel = new JPanel();
-		colorChooser = new JColorChooser(animation.getColor());
+		colorChooser = new JColorChooser(animation.getCircleColor());
 	}
 	
 	/**

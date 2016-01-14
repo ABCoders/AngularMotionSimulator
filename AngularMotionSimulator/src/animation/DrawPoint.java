@@ -3,6 +3,7 @@
  */
 package animation;
 
+import java.awt.Color;
 import java.awt.Point;
 
 /**
@@ -19,6 +20,7 @@ public class DrawPoint {
 	private double distance;	//The distance between the point and the center of the circle
 	private double time;		//The time the point is created
 	private boolean withCircle;	//Whether or not it is drawn with a red circle
+	private Color color;		//The color of the drawn point
 	
 	/* Attributes of animation for calculations */
 	private double xCoord;		//The x-coordinate of the circle
@@ -33,6 +35,7 @@ public class DrawPoint {
 		this.setVariables(xCoord, radius, height, scale);
 		this.time = time;
 		this.calculateDistance();
+		this.color = Color.red;
 	}
 	
 	//*************************************************************************
@@ -71,6 +74,10 @@ public class DrawPoint {
 		this.withCircle = state;
 	}
 	
+	public void setColor(Color color) {
+		this.color = color;
+	}
+	
 	public void setVariables(double xCoord, double radius, int height, double scale) {
 		this.xCoord = xCoord;
 		this.radius = radius;
@@ -82,32 +89,68 @@ public class DrawPoint {
 	//								Getter Methods
 	//*************************************************************************
 	
+	/**
+	 * Returns the location of the point
+	 * @return the location of the point
+	 */
 	public Point getLocation() {
-		return location;
+		return this.location;
 	}
 	
+	/**
+	 * Returns the starting angle of the point
+	 * @return the starting angle of the point
+	 */
 	public double getStartAngle() {
-		return startAngle;
+		return this.startAngle;
 	}
 	
+	/**
+	 * Returns the current angle of the point
+	 * @return the current angle of the point
+	 */
 	public double getAngle() {
-		return angle;
+		return this.angle;
 	}
 	
+	/**
+	 * Returns the ending angle of the point
+	 * @return the ending angle of the point
+	 */
 	public double getEndAngle() {
-		return endAngle;
+		return this.endAngle;
 	}
 	
+	/**
+	 * Returns the distance of the point from the center of the circle
+	 * @return the distance of the point from the center of the circle
+	 */
 	public double getDistance() {
-		return distance;
+		return this.distance;
 	}
 	
+	/**
+	 * Returns when the point was created
+	 * @return when the point was created
+	 */
 	public double getTime() {
-		return time;
+		return this.time;
 	}
 	
+	/**
+	 * Returns whether the point is created with a circle
+	 * @return whether the point is created with a circle
+	 */
 	public boolean getWithCircle() {
-		return withCircle;
+		return this.withCircle;
+	}
+	
+	/**
+	 * Returns the color of the point
+	 * @return the color of the point
+	 */
+	public Color getColor() {
+		return this.color;
 	}
 	
 	//*************************************************************************

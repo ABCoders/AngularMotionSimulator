@@ -47,7 +47,7 @@ public class AnimationComponent extends JComponent {
 		this.diameter = radius*2;
 		this.angle = animation.getAngle();
 		this.drawPoints = animation.getDrawPoints();
-		this.color = animation.getColor();
+		this.color = animation.getCircleColor();
 	}
 	
 	/**

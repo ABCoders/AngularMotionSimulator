@@ -15,6 +15,9 @@ public class DropMenuController implements ActionListener {
 		if (e.getActionCommand().equalsIgnoreCase("delete")) {
 			this.animation.deletePoint();
 		}
+		else if (e.getActionCommand().equalsIgnoreCase("change color")) {
+			
+		}
 	}
 
 }

@@ -38,12 +38,13 @@ public class Animation implements Runnable {
 	private boolean reverse;
 	private boolean drawCircle;
 
-	private Color color; 			//The color of the circle
+	private Color circleColor; 			//The color of the circle
 
 	private ArrayList<DrawPoint> drawPoints;	//A list of all points drawn by the user
 	private ArrayList<DrawAction> drawActions;	//A list of all drawing actions
 	
 	private DrawPoint currentPoint;
+	private Color pointColor;
 
 	/**
 	 * Initialize a new Animation with default values.
@@ -56,7 +57,7 @@ public class Animation implements Runnable {
 		this.angularVelocity = (double) linearVelocity / (radius / 100);
 		this.timeAngle = 0;
 		this.scale = 1;
-		this.color = Color.YELLOW;
+		this.circleColor = Color.YELLOW;
 		this.time = 0;
 		this.angle = 0;
 		this.state = false;
@@ -192,8 +193,8 @@ public class Animation implements Runnable {
 	 * Returns the color of the circle.
 	 * @return The color of the circle
 	 */
-	public Color getColor() {
-		return color;
+	public Color getCircleColor() {
+		return circleColor;
 	}
 
 	/**
@@ -213,15 +214,19 @@ public class Animation implements Runnable {
 	}
 
 	public ArrayList<DrawPoint> getDrawPoints() {
-		return drawPoints;
+		return this.drawPoints;
 	}
 	
 	public boolean getReverse() {
-		return reverse;
+		return this.reverse;
 	}
 	
 	public boolean getDrawCircle() {
-		return drawCircle;
+		return this.drawCircle;
+	}
+	
+	public Color getPointColor() {
+		return this.pointColor;
 	}
 
 	//*************************************************************************
@@ -275,8 +280,8 @@ public class Animation implements Runnable {
 	 * Sets the color of the circle.
 	 * @param color The new color
 	 */
-	public void setColor(Color color) {
-		this.color = color;
+	public void setCircleColor(Color color) {
+		this.circleColor = color;
 	}
 
 	public void setReverse() {
@@ -320,6 +325,10 @@ public class Animation implements Runnable {
 	public void deletePoint() {
 		this.removeDrawPoint(currentPoint);
 		currentPoint = null;
+	}
+	
+	public void setPointColor(Color color) {
+		this.pointColor = color;
 	}
 
 	//**********************************************************************
