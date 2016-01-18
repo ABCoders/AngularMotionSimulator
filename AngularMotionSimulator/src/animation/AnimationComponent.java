@@ -90,14 +90,6 @@ public class AnimationComponent extends JComponent {
 			d.fillOval(-this.getWidth() + xCoord, this.getHeight() - diameter, diameter, diameter);
 			d.setColor(Color.BLACK);
 			d.drawLine(-this.getWidth() + x, y, -this.getWidth() + endX, endY);
-
-			for (DrawPoint drawPoint : drawPoints) {
-				d.setColor(drawPoint.getColor());
-				d.drawLine(-this.getWidth() + x, y, -this.getWidth() + drawPoint.getLocation().x, drawPoint.getLocation().y);
-				d.fillOval(-this.getWidth() + drawPoint.getLocation().x - 10, drawPoint.getLocation().y - 10, 20, 20);
-
-			}
-			d.setColor(Color.BLACK);
 		}
 
 		else if (xCoord<0) {
@@ -114,7 +106,7 @@ public class AnimationComponent extends JComponent {
 			d.setColor(Color.BLACK);
 		}
 
-		//Draws each clicked point
+		//Draws each clicked point and concentric circle
 		for (DrawPoint drawPoint : drawPoints) {
 			d.setColor(drawPoint.getColor());
 			d.drawLine(x, y, drawPoint.getLocation().x, drawPoint.getLocation().y);
