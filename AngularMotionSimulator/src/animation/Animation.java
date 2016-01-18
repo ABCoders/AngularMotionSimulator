@@ -332,10 +332,19 @@ public class Animation implements Runnable {
 	 * Sets the color of all of the points
 	 * @param color The new color
 	 */
-	public void setPointColor(Color color) {
+	public void setAllPointsColor(Color color) {
 		for(DrawPoint point : this.drawPoints){
 			point.setColor(color);
 		}
+	}
+	
+	/**
+	 * Sets the color of a specific point
+	 * @param color The new color
+	 */
+	public void setPointColor(Color color) {
+		if(currentPoint != null)
+			currentPoint.setColor(color);
 	}
 
 	//**********************************************************************

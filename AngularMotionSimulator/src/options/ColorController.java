@@ -42,5 +42,7 @@ public class ColorController implements ChangeListener {
 			animation.setCircleColor(colorChooser.getColor());
 		else if(object==ColorChooserDialog.POINT)
 			animation.setPointColor(colorChooser.getColor());
+		else if(object==ColorChooserDialog.ALL_POINTS)
+			animation.setAllPointsColor(colorChooser.getColor());
 	}
 }

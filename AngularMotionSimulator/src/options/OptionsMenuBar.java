@@ -62,8 +62,8 @@ public class OptionsMenuBar extends JMenuBar {
 		saveItem = new JMenuItem("Save As   ");
 		loadItem = new JMenuItem("Load");
 		helpItem = new JMenuItem("Help");
-		colorItem = new JMenuItem("Change Color");
-		this.pointColorItem = new JMenuItem("Change Dot Color   ");
+		colorItem = new JMenuItem("Change Circle Color   ");
+		this.pointColorItem = new JMenuItem("Change Dot Color");
 		this.reverseItem = new JCheckBoxMenuItem("Reverse Animation Direction   ");
 		this.circleItem = new JCheckBoxMenuItem("Do Not Draw Red Circle");
 		this.undoItem = new JMenuItem("Undo");

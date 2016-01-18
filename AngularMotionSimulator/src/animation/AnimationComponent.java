@@ -72,7 +72,9 @@ public class AnimationComponent extends JComponent {
 
 		//Determines the location of the drawn point
 		for (DrawPoint drawPoint : drawPoints) {
-			drawPoint.setLocation(xCoord, radius, this.getHeight());
+			try {
+				drawPoint.setLocation(xCoord, radius, this.getHeight());
+			} catch(Exception e) {}
 		}
 
 		//Draws the circle

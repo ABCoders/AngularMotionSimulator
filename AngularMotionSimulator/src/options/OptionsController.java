@@ -71,12 +71,12 @@ public class OptionsController implements ActionListener {
 			help = new HelpFrame();
 		}
 		//Choosing to change color
-		else if (e.getActionCommand().equalsIgnoreCase("change color")) {
+		else if (e.getActionCommand().equalsIgnoreCase("change circle color   ")) {
 			new ColorChooserDialog(input.getAnimation(), ColorChooserDialog.CIRCLE);
 		}
 		//Choosing to change colour of the dots
-		else if (e.getActionCommand().equalsIgnoreCase("change dot color   ")) {
-			new ColorChooserDialog(input.getAnimation(), ColorChooserDialog.POINT);
+		else if (e.getActionCommand().equalsIgnoreCase("change dot color")) {
+			new ColorChooserDialog(input.getAnimation(), ColorChooserDialog.ALL_POINTS);
 		}
 		//Choosing to save inputs
 		else if (e.getActionCommand().equalsIgnoreCase("save as   ")) {
