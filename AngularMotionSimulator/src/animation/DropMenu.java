@@ -1,6 +1,5 @@
 package animation;
 
-import java.awt.*;
 import javax.swing.*;
 
 public class DropMenu extends JPopupMenu {
