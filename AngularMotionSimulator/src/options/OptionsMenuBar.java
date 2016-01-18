@@ -33,6 +33,7 @@ public class OptionsMenuBar extends JMenuBar {
 	private JCheckBoxMenuItem reverseItem;          //The menu item for reversing the direction the animation is moving
 	private JCheckBoxMenuItem circleItem;     		//The menu item for choosing whether click the animation draws a circle or not
 	private JMenuItem undoItem;						//The menu item that undoes an action with the red dots in animation
+	private JMenuItem pointColorItem;				//The menu item for choosing the color of the dots on the animation
 	
 	/**
 	 * Initializes a new OptionsMenuBar that sends data to Input from the information given from AnswerMachinePanel.
@@ -61,7 +62,8 @@ public class OptionsMenuBar extends JMenuBar {
 		saveItem = new JMenuItem("Save As   ");
 		loadItem = new JMenuItem("Load");
 		helpItem = new JMenuItem("Help");
-		colorItem = new JMenuItem("Change Color   ");
+		colorItem = new JMenuItem("Change Color");
+		this.pointColorItem = new JMenuItem("Change Dot Color   ");
 		this.reverseItem = new JCheckBoxMenuItem("Reverse Animation Direction   ");
 		this.circleItem = new JCheckBoxMenuItem("Do Not Draw Red Circle");
 		this.undoItem = new JMenuItem("Undo");
@@ -82,6 +84,7 @@ public class OptionsMenuBar extends JMenuBar {
 		this.animation.add(this.undoItem);
 		other.add(helpItem);
 		other.add(colorItem);
+		this.other.add(this.pointColorItem);
 		
 		//Adding the menus to the menu bar
 		this.add(file);
@@ -104,6 +107,7 @@ public class OptionsMenuBar extends JMenuBar {
 		//for other items
 		this.helpItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0));
 		this.colorItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
+		this.pointColorItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, ActionEvent.CTRL_MASK));
 	}
 	
 	/**
@@ -120,6 +124,7 @@ public class OptionsMenuBar extends JMenuBar {
 		loadItem.addActionListener(controller);
 		helpItem.addActionListener(controller);
 		colorItem.addActionListener(controller);
+		this.pointColorItem.addActionListener(controller);
 		this.reverseItem.addActionListener(controller);
 		this.circleItem.addActionListener(controller);
 		this.undoItem.addActionListener(controller);

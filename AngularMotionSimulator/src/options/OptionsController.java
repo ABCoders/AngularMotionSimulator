@@ -71,8 +71,12 @@ public class OptionsController implements ActionListener {
 			help = new HelpFrame();
 		}
 		//Choosing to change color
-		else if (e.getActionCommand().equalsIgnoreCase("change color   ")) {
+		else if (e.getActionCommand().equalsIgnoreCase("change color")) {
 			new ColorChooserDialog(input.getAnimation(), ColorChooserDialog.CIRCLE);
+		}
+		//Choosing to change colour of the dots
+		else if (e.getActionCommand().equalsIgnoreCase("change dot color   ")) {
+			new ColorChooserDialog(input.getAnimation(), ColorChooserDialog.POINT);
 		}
 		//Choosing to save inputs
 		else if (e.getActionCommand().equalsIgnoreCase("save as   ")) {
@@ -115,7 +119,7 @@ public class OptionsController implements ActionListener {
 		}
 		
 		//choosing to undo a red dot move
-		else if(e.getActionCommand().equalsIgnoreCase("Undo")){
+		else if(e.getActionCommand().equalsIgnoreCase("undo")){
 			this.input.getAnimation().undo();
 		}
 	}
