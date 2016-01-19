@@ -32,20 +32,19 @@ public class Animation implements Runnable {
 	/* Attributes affected through buttons and sliders */
 	private double scale; 			//The scale of the animation
 	private double timeAngle; 		//The angle of the black line after animation ends
-	//	private double pointTimeAngle; 	//The angle of the red line after animation ends
 	private double time;			//The time the animation starts on
-	private boolean state = false; 	//The state of the animation
+	private boolean state;		 	//The state of the animation
 
-	private boolean reverse;
-	private boolean drawCircle;
+	private boolean reverse;		//Whether the animation is reverse
+	private boolean drawCircle;		//Whether to draw a concurrent circle
 
 	private Color circleColor; 			//The color of the circle
 
 	private ArrayList<DrawPoint> drawPoints;	//A list of all points drawn by the user
 	private ArrayList<DrawAction> drawActions;	//A list of all drawing actions
 	
-	private DrawPoint currentPoint;
-	private Color pointColor;
+	private DrawPoint currentPoint;			//Selected draw point
+	private Color pointColor;				//The current color
 
 	/**
 	 * Initialize a new Animation with default values.
@@ -71,6 +70,7 @@ public class Animation implements Runnable {
 		this.drawActions = new ArrayList<DrawAction>();
 		
 		this.currentPoint = null;
+		this.pointColor = Color.RED;
 	}
 
 	/**
@@ -206,26 +206,50 @@ public class Animation implements Runnable {
 		return this.component.getWidth();
 	}
 	
+	/**
+	 * Returns the height of the animation view.
+	 * @return the height of the animation view
+	 */
 	public int getHeight() {
 		return this.component.getHeight();
 	}
 	
+	/**
+	 * Returns the animation component.
+	 * @return the animation component
+	 */
 	public AnimationComponent getComponent() {
 		return this.component;
 	}
 
+	/**
+	 * Returns the list of draw points.
+	 * @return the list of draw points
+	 */
 	public ArrayList<DrawPoint> getDrawPoints() {
 		return this.drawPoints;
 	}
 	
+	/**
+	 * Returns whether or not the animation is in reverse.
+	 * @return whether or not the animation is in reverse
+	 */
 	public boolean getReverse() {
 		return this.reverse;
 	}
 	
+	/**
+	 * Returns whether the dot is drawn with a concurrent circle.
+	 * @return whether to draw a concurrent circle
+	 */
 	public boolean getDrawCircle() {
 		return this.drawCircle;
 	}
 	
+	/**
+	 * Returns the color of the point.
+	 * @return the color of the point
+	 */
 	public Color getPointColor() {
 		return this.pointColor;
 	}
@@ -234,11 +258,19 @@ public class Animation implements Runnable {
 	//								Setter Methods
 	//*************************************************************************
 
+	/**
+	 * Adds a draw point to the list and adds an "add" action.
+	 * @param point The point being added
+	 */
 	public void addDrawPoint(Point point) {
 		drawPoints.add(new DrawPoint(point, xCoord, radius, scale, this.component.getHeight(), time, drawCircle));
 		drawActions.add(new DrawAction(DrawAction.CREATE, drawPoints.get(drawPoints.size()-1), drawPoints.size()-1));
 	}
 	
+	/**
+	 * Removes the selected draw point ands a "delete" action.
+	 * @param point The point being deleted
+	 */
 	public void removeDrawPoint(DrawPoint point) {
 		int index = 0;
 		drawPoints.remove(point);

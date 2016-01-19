@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
  * A Controller that listens to the button events on ActionPanel.
  * Sends the data to the Animation model. Either stopping, playing, or clearing the animation.
  * @author Bryan Kristiono
- * @since 12/12/2015
+ * @since 19/01/2016
  */
 public class ActionController implements ActionListener {
 	private Animation animation;		//The model used for calculation animation
@@ -25,6 +25,7 @@ public class ActionController implements ActionListener {
 	 * Sets values to the model after a button is clicked.
 	 * It changes the state of the animation.
 	 * It also resets the drawn point in the animation.
+	 * And reverses the direction of animation
 	 * @param e The event sent from the buttons in the action panel
 	 */
 	@Override
