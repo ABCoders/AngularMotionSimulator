@@ -98,8 +98,8 @@ public class ActionPanel extends JPanel {
 	 */
 	public void update() {
 		//Updates the timeSlider if need be changed
-		if(max!=(int) (Math.ceil(animation.getWidth()/10/animation.getLinearVelocity()/animation.getScale()))) {
-			max = (int) (Math.ceil(animation.getWidth()/10/animation.getLinearVelocity()/animation.getScale()));
+		if(max!=(int) (Math.floor(animation.getWidth()/10/animation.getLinearVelocity()/animation.getScale()))) {
+			max = (int) (Math.floor(animation.getWidth()/10/animation.getLinearVelocity()/animation.getScale()));
 
 			//Updates the slider ticks
 			try {
