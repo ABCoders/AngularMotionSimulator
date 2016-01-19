@@ -111,7 +111,7 @@ public class AnimationComponent extends JComponent {
 				Ellipse2D.Double circle = new Ellipse2D.Double((x-drawPoint.getDistance()), (y-drawPoint.getDistance()), drawPoint.getDistance()*2, drawPoint.getDistance()*2);
 				d.draw(circle);
 			}
-			if (drawPoint.getLocation().getX() > this.getWidth()||x+drawPoint.getDistance() > this.getWidth()) //if point location is past right edge frame
+			if (drawPoint.getLocation().getX() > this.getWidth()||x+drawPoint.getDistance() > this.getWidth()) //if point location or circle is past right edge of frame
 			{
 				d.drawLine(x - this.getWidth(), y, drawPoint.getLocation().x - this.getWidth(), drawPoint.getLocation().y);
 				d.fillOval(drawPoint.getLocation().x - 10 - this.getWidth(), drawPoint.getLocation().y - 10, 20, 20);
@@ -121,7 +121,7 @@ public class AnimationComponent extends JComponent {
 					d.draw(circle2);
 				}
 			}
-			else if (drawPoint.getLocation().getX() < 0 || x-drawPoint.getDistance() < 0)
+			else if (drawPoint.getLocation().getX() < 0 || x-drawPoint.getDistance() < 0) //if point location or circle is past left edge of frame
 			{
 				d.drawLine(x + this.getWidth(), y, drawPoint.getLocation().x + this.getWidth(), drawPoint.getLocation().y);
 				d.fillOval(drawPoint.getLocation().x - 10 + this.getWidth(), drawPoint.getLocation().y - 10, 20, 20);
