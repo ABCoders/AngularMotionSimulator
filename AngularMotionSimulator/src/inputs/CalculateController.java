@@ -75,8 +75,8 @@ public class CalculateController implements ActionListener{
 						break;
 				}
 			}
-			//updates the calculations model from input to calcuate for the wanted variable
-			this.input.updateCalculations();
+			//updates the calculations model from input to calculate for the wanted variable
+			this.input.getCalculations().update();
 		}
 	}
 
@@ -89,7 +89,7 @@ public class CalculateController implements ActionListener{
 		//going through the entire list of variable names
 		for (int x = 0; x < variables.size(); x++) {
 			String variable = variables.get(x);
-			//checking against the wanted varible
+			//checking against the wanted variable
 			if (variable.equals(wantedVariable))
 				return true;
 			

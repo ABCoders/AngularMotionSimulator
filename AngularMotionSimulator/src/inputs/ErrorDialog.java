@@ -8,7 +8,6 @@ import java.awt.*;
 
 /**
  * @author Bryan Kristiono
- * @author Amritpal Aujla
  * @since 09/12/15
  */
 public class ErrorDialog extends JDialog {

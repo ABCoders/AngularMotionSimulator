@@ -25,7 +25,6 @@ public class ActionController implements ActionListener {
 	 * Sets values to the model after a button is clicked.
 	 * It changes the state of the animation.
 	 * It also resets the drawn point in the animation.
-	 * And reverses the direction of animation
 	 * @param e The event sent from the buttons in the action panel
 	 */
 	@Override
@@ -37,9 +36,6 @@ public class ActionController implements ActionListener {
 			animation.setState(false);
 		} else if(command.equalsIgnoreCase("clear")) {
 			animation.clear();
-		} else if (command.equalsIgnoreCase("reverse direction")) {
-			animation.setReverse();
 		}
 	}
-
 }

@@ -308,11 +308,4 @@ public class Input extends Object{
 		}
 		return false;
 	}
-	
-	/**
-	 * Updates calculations model
-	 */
-	public void updateCalculations() {
-		calculations.update();
-	}
 }

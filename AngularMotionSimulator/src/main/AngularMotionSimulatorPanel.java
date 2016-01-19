@@ -61,7 +61,7 @@ public class AngularMotionSimulatorPanel extends JPanel {
 				catch(IOException e){}
 			}
 		}
-		catch(Exception e) {System.out.println(e.getMessage());}
+		catch(Exception e) {}
 	}
 
 	/** Shows a small splash screen image for a few seconds before the rest of the program opens

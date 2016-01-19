@@ -26,6 +26,7 @@ import inputs.WantedFieldPanel;
  * <p>
  * It has other features like opening a help frame and changing the color of the animation.
  * @author Bryan Kristiono
+ * @author Amritpal Aujla
  * @since 12/12/2015
  */
 public class OptionsController implements ActionListener {
@@ -74,7 +75,7 @@ public class OptionsController implements ActionListener {
 		else if (e.getActionCommand().equalsIgnoreCase("change circle color   ")) {
 			new ColorChooserDialog(input.getAnimation(), ColorChooserDialog.CIRCLE);
 		}
-		//Choosing to change colour of the dots
+		//Choosing to change color of the dots
 		else if (e.getActionCommand().equalsIgnoreCase("change dot color")) {
 			new ColorChooserDialog(input.getAnimation(), ColorChooserDialog.ALL_POINTS);
 		}
