@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import javax.swing.SwingUtilities;
 
 /**
- * A Controller that draws a point on where the user clicks with a mouse.
+ * A Controller that draws a point on when the user left clicks with a mouse. A right click allows
+ * a pop-up menu to appear. Holding a left click allows the user to move a point.
  * It only runs when the animation is paused.
  * Sends information gained to animation model.
  * @author Bryan Kristiono
@@ -23,8 +24,9 @@ public class DrawPointController implements MouseListener, MouseMotionListener{
 	private DropMenu menu;
 	
 	/**
-	 * Initializes the class.
-	 * @param animation The model of the controller
+	 * Initializes a newly created listener for the motion and actions of the mouse.
+	 * The model that calculates the animation
+	 * @param animation The model that calculates the animation
 	 */
 	public DrawPointController (Animation animation, ArrayList<DrawPoint> drawPoints) {
 		this.animation = animation;

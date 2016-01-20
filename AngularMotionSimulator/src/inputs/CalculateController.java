@@ -83,5 +83,4 @@ public class CalculateController implements ActionListener{
 		}
 		return false;
 	}
-
 }
