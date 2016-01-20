@@ -263,21 +263,21 @@ public class Animation implements Runnable {
 	 * @param point The point being added
 	 */
 	public void addDrawPoint(Point point) {
-		drawPoints.add(new DrawPoint(point, this.xCoord, this.radius, this.scale,
-								this.component.getHeight(), this.time, this.drawCircle, this.pointColor));
+		drawPoints.add(new DrawPoint(point, xCoord, radius, scale, component.getHeight(), time, drawCircle, pointColor));
 		drawActions.add(new DrawAction(DrawAction.CREATE, drawPoints.get(drawPoints.size()-1), drawPoints.size()-1));
 	}
 	
 	/**
-	 * Removes the selected draw point ands a "delete" action.
+	 * Removes the selected draw point and adds a "delete" action.
 	 * @param point The point being deleted
 	 */
 	public void removeDrawPoint(DrawPoint point) {
 		int index = 0;
-		drawPoints.remove(point);
 		for (int i=0; i<drawPoints.size(); i++) {
-			if(drawPoints.get(i)==point)
+			if(drawPoints.get(i)==point) {
+				drawPoints.remove(point);
 				index = i;
+			}
 		}
 		drawActions.add(new DrawAction(DrawAction.DELETE, point, index));
 	}
@@ -303,8 +303,8 @@ public class Animation implements Runnable {
 	}
 
 	/**
-	 * Sets the state of the animation.
-	 * @param newState The new state of the animation
+	 * Sets whether or not the animation should be running.
+	 * @param newState The state of the animation
 	 */
 	public void setState(boolean newState) {
 		this.state = newState;
@@ -318,6 +318,9 @@ public class Animation implements Runnable {
 		this.circleColor = color;
 	}
 
+	/**
+	 * Sets whether or not the animation should be in reverse.
+	 */
 	public void setReverse() {
 		if(reverse)
 			reverse = false;
@@ -325,20 +328,23 @@ public class Animation implements Runnable {
 			reverse = true;
 	}
 
+	/**
+	 * Sets whether or not the point should be drawn with a circle.
+	 */
 	public void setDrawCircle() {
 		if(drawCircle)
 			drawCircle = false;
 		else
 			drawCircle = true;
 	}
-
-	public void setDrawCircle(boolean state) {
-		drawCircle = state;
-	}
 	
+	/**
+	 * Undoes the last action. Whether it was to create a point, move a point, or delete a point.
+	 */
 	public void undo() {
 		if(!drawActions.isEmpty()) {
 			DrawAction action = this.drawActions.get(drawActions.size()-1);
+			
 			if(action.getAction()==DrawAction.CREATE) {
 				this.drawPoints.remove(action.getPoint());
 			}
@@ -352,10 +358,17 @@ public class Animation implements Runnable {
 		}
 	}
 	
+	/**
+	 * Sets the currently selected point
+	 * @param point The selected point
+	 */
 	public void setCurrentPoint(DrawPoint point) {
 		this.currentPoint = point;
 	}
 	
+	/**
+	 * Deletes the currently selected point.
+	 */
 	public void deletePoint() {
 		if (currentPoint!=null)
 			this.removeDrawPoint(currentPoint);
@@ -363,7 +376,7 @@ public class Animation implements Runnable {
 	}
 
 	/**
-	 * Sets the color of all of the points
+	 * Sets the color of all of the points.
 	 * @param color The new color
 	 */
 	public void setAllPointsColor(Color color) {
@@ -374,7 +387,7 @@ public class Animation implements Runnable {
 	}
 	
 	/**
-	 * Sets the color of a specific point
+	 * Sets the color of the currently selected point.
 	 * @param color The new color
 	 */
 	public void setPointColor(Color color) {
@@ -386,22 +399,34 @@ public class Animation implements Runnable {
 	//								Methods
 	//**********************************************************************
 
+	/**
+	 * Runs the animation by changing the values over time.
+	 */
 	private void runAnimation() {
+		//In reverse
 		if(reverse) {
+			//Changes the movement of the circle with time
 			this.xCoord = this.component.getWidth() - (radius*scale*2) - linearVelocity * 100 * time;
 			this.angle = timeAngle + angularVelocity * time;
+			
+			//Changes the location of all points
 			try {
 				for(DrawPoint point: drawPoints)
 					point.setAngle(point.getEndAngle()+point.getStartAngle()+ angularVelocity * (time-point.getTime()));
 			} catch (Exception e) {}
+			
 			//If circle location goes past animation frame
 			if ((xCoord+radius*2)*scale < 0)
 				this.resetVariables();
 		}
-		//In reverse
+		
+		//Normal
 		else {
+			//Changes the movement of the circle with time
 			this.xCoord = linearVelocity * 100 * time;
 			this.angle = timeAngle + -angularVelocity * time;
+			
+			//Changes the location of all points
 			try {
 				for(DrawPoint point: drawPoints)
 					point.setAngle(point.getEndAngle()+point.getStartAngle()+ -angularVelocity * (time-point.getTime()));
@@ -413,6 +438,9 @@ public class Animation implements Runnable {
 		}
 	}
 	
+	/**
+	 * Resets the variables whenever the circle completely passes the frame.
+	 */
 	private void resetVariables() {
 		this.time = 0;
 		this.timeAngle = this.angle;
@@ -425,7 +453,7 @@ public class Animation implements Runnable {
 	}
 	
 	/**
-	 * Resets the drawn point location.
+	 * Clears the list of points and actions
 	 */
 	public void clear() {
 		this.drawActions.clear();
