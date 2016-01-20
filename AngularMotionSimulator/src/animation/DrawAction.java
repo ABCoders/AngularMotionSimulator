@@ -7,14 +7,6 @@ import java.awt.Point;
  * @author Bryan Kristiono
  * @since 19/01/2016
  */
-/**
- * @author Bryan
- *
- */
-/**
- * @author Bryan
- *
- */
 public class DrawAction {
 	/*       Constants      */
 	public static final int MOVE 	= 0;	//When a point is moved

@@ -78,16 +78,15 @@ public class AnimationComponent extends JComponent {
 			} catch(Exception e) {}
 		}
 
-		//Draws the circle
+		//Draws the circle with a black line
 		d.setColor(color);
 		d.fillOval(xCoord, this.getHeight() - diameter, diameter, diameter);
 		d.setColor(Color.BLACK);
 		d.drawLine(x, y, endX, endY);
-
-
-		d.setColor(Color.BLACK);
+		
 
 		//Draws the circle if it goes past the view
+		//If it pasts the right side
 		if ((xCoord + diameter) > this.getWidth()) {
 			d.setColor(color);
 			d.fillOval(-this.getWidth() + xCoord, this.getHeight() - diameter, diameter, diameter);
@@ -95,6 +94,7 @@ public class AnimationComponent extends JComponent {
 			d.drawLine(-this.getWidth() + x, y, -this.getWidth() + endX, endY);
 		}
 
+		//If it pasts the left side
 		else if (xCoord<0) {
 			d.setColor(color);
 			d.fillOval(this.getWidth() + xCoord, this.getHeight() - diameter, diameter, diameter);
@@ -104,10 +104,13 @@ public class AnimationComponent extends JComponent {
 
 		//Draws each clicked point and concentric circle
 		for (DrawPoint drawPoint : drawPoints) {
+			//Draws the point and line connecting to the main circle
 			d.setColor(drawPoint.getColor());
 			d.drawLine(x, y, drawPoint.getLocation().x, drawPoint.getLocation().y);
 			d.fillOval(drawPoint.getLocation().x - 10, drawPoint.getLocation().y - 10, 20, 20);
-			if (drawPoint.getWithCircle()) //if drawing circle is selected
+			
+			//If it has a concurrent circle
+			if (drawPoint.getWithCircle())
 			{
 				Ellipse2D.Double circle = new Ellipse2D.Double((x-drawPoint.getDistance()), (y-drawPoint.getDistance()), drawPoint.getDistance()*2, drawPoint.getDistance()*2);
 				d.draw(circle);

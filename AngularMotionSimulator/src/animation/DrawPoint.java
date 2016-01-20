@@ -1,15 +1,13 @@
-/**
- * 
- */
 package animation;
 
 import java.awt.Color;
 import java.awt.Point;
 
 /**
- * 
+ * A class to store information for an individual point. Contains all information needed to display
+ * properly on components.
  * @author Bryan Kristiono
- * @since 9/1/2016
+ * @since 19/01/2016
  */
 public class DrawPoint {
 	/* Attributes of DrawPoint */
