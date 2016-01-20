@@ -19,7 +19,7 @@ public class Input extends Object{
 															"Arc Length",
 															"Time",
 															"Angle"};
-	private TreeMap<String, Double> variables; //Variables names and associated values
+	private TreeMap<String, Double> variables; //Variables names and values
 	
 	private Animation animation; //The Animation model
 	private Calculations calculations; //The Calculations model the Input is managing

@@ -15,7 +15,7 @@ public class AddFieldController implements ActionListener{
 	
 	/**
 	 * Main constructor 
-	 * @param input - input model that adds a field
+	 * @param input input model that adds a field
 	 */
 	public AddFieldController(Input input) {
 		this.input = input;
