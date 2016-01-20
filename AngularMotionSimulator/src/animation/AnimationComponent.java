@@ -73,7 +73,8 @@ public class AnimationComponent extends JComponent {
 		//Determines the location of the drawn point
 		for (DrawPoint drawPoint : drawPoints) {
 			try {
-				drawPoint.setLocation(xCoord, radius, this.getHeight());
+				drawPoint.setVariables(xCoord, radius, this.getHeight(), scale);
+				drawPoint.updateLocation();
 			} catch(Exception e) {}
 		}
 

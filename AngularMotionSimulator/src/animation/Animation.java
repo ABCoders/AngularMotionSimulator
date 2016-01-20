@@ -38,13 +38,13 @@ public class Animation implements Runnable {
 	private boolean reverse;		//Whether the animation is reverse
 	private boolean drawCircle;		//Whether to draw a concurrent circle
 
-	private Color circleColor; 			//The color of the circle
-
+	/*   Drawing related variables   */
 	private ArrayList<DrawPoint> drawPoints;	//A list of all points drawn by the user
 	private ArrayList<DrawAction> drawActions;	//A list of all drawing actions
 	
-	private DrawPoint currentPoint;			//Selected draw point
-	private Color pointColor;				//The color of the drawn points
+	private Color circleColor; 			//The color of the circle
+	private DrawPoint currentPoint;		//Selected draw point
+	private Color pointColor;			//The color of the drawn points
 
 	/**
 	 * Initialize a new Animation with default values.
@@ -208,7 +208,7 @@ public class Animation implements Runnable {
 	
 	/**
 	 * Returns the height of the animation view.
-	 * @return the height of the animation view
+	 * @return The height of the animation view
 	 */
 	public int getHeight() {
 		return this.component.getHeight();
@@ -216,7 +216,7 @@ public class Animation implements Runnable {
 	
 	/**
 	 * Returns the animation component.
-	 * @return the animation component
+	 * @return The animation component
 	 */
 	public AnimationComponent getComponent() {
 		return this.component;
@@ -224,7 +224,7 @@ public class Animation implements Runnable {
 
 	/**
 	 * Returns the list of draw points.
-	 * @return the list of draw points
+	 * @return The list of draw points
 	 */
 	public ArrayList<DrawPoint> getDrawPoints() {
 		return this.drawPoints;
@@ -232,7 +232,7 @@ public class Animation implements Runnable {
 	
 	/**
 	 * Returns whether or not the animation is in reverse.
-	 * @return whether or not the animation is in reverse
+	 * @return Whether or not the animation is in reverse
 	 */
 	public boolean getReverse() {
 		return this.reverse;
@@ -240,7 +240,7 @@ public class Animation implements Runnable {
 	
 	/**
 	 * Returns whether the dot is drawn with a concurrent circle.
-	 * @return whether to draw a concurrent circle
+	 * @return Whether to draw a concurrent circle
 	 */
 	public boolean getDrawCircle() {
 		return this.drawCircle;
@@ -248,7 +248,7 @@ public class Animation implements Runnable {
 	
 	/**
 	 * Returns the color of the point.
-	 * @return the color of the point
+	 * @return The color of the point
 	 */
 	public Color getPointColor() {
 		return this.pointColor;
