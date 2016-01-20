@@ -11,6 +11,7 @@ import inputs.Input;
  *  The model of the calculations contains all variables from input, calculates for the wanted variable, and provides needed values for animation.
  *  Calculates the value of the wanted variable and the equations for its process work
  *  @author Amritpal Aujla
+ *  @author Bryan Kristiono
  *  @since 26/12/2015
  */
 public class Calculations{
@@ -31,7 +32,7 @@ public class Calculations{
 	public Calculations(Input input){
 		this.input = input;
 	}
-	
+
 	/** Sets the view for Calculations
 	 *  @param frame the ProcessFrame that is set as the view for this model 
 	 */
@@ -49,7 +50,7 @@ public class Calculations{
 		}
 		this.wantedVariable = input.getWantedVariable();
 	}
-	
+
 	/** Finds angular velocity, linear velocity, and radius for Animation to use to generate the animation 
 	 */
 	private void setAnimationVariables(){
@@ -57,7 +58,7 @@ public class Calculations{
 		this.variables.put("Angular Velocity", this.findAngularVelocity());
 		this.variables.put("Linear Velocity", this.findLinearVelocity());
 		this.variables.put("Radius", this.findRadius());
-		
+
 		//setting the default variables if only angular velocity is given
 		if(this.variables.get("Linear Velocity") == 0 && this.variables.get("Radius") == 0 && this.variables.get("Angular Velocity") != 0){
 			this.variables.put("Linear Velocity", this.variables.get("Angular Velocity"));
@@ -74,7 +75,7 @@ public class Calculations{
 			this.variables.put("Linear Velocity", this.findLinearVelocity());
 		}
 	}
-	
+
 	/** decides the value for the equation, valueEquation, and result attributes
 	 *  @param variable1 the first variable in the equation
 	 *  @param operation1 the first operation character in the equation evaluating the first and second variable
@@ -87,10 +88,10 @@ public class Calculations{
 		boolean addBracketAfter = false;                        //whether the equation should add a bracket after one of the variables
 		//making the word equation
 		this.equation = variable1 + " " + operation1 + " " + variable2 + " " + operation2 + " " + variable3;
-		
+
 		//making the equation with values replacing words
 		String valueEquation = "";
-		
+
 		//making brackets appear in front of the equation, replacing the word with the value and adding first operator
 		if(variable1.contains("(")){
 			valueEquation = "(";
@@ -98,7 +99,7 @@ public class Calculations{
 		}
 		valueEquation = valueEquation + getRespectiveValue(variable1);
 		valueEquation = valueEquation + operation1;
-		
+
 		//replacing variable 2's brackets, replacing the words with values and adding operator
 		if(variable2.contains("(")){
 			valueEquation = valueEquation + "(";
@@ -114,7 +115,7 @@ public class Calculations{
 			addBracketAfter = false;
 		}
 		valueEquation = valueEquation + operation2;
-		
+
 		//adding brackets after variable 3 and replacing variable 3 with value if variable3 is not nothing
 		if(!variable3.equals("")){
 			if(variable3.contains(")")){
@@ -129,55 +130,33 @@ public class Calculations{
 		this.valueEquation = valueEquation;
 		this.result = "" + result;
 	}
-	
+
 	/** Returns the value that the variable name in the parameter has
 	 *  @param variable the name of the variable that the value is to be retrieved for
 	 *  @return the value that is to be returned for a certain variable
 	 */
 	private Double getRespectiveValue(String variable){
-		switch(variable){
-			case("Angular Velocity"):
-				return this.variables.get("Angular Velocity");
-			case("Linear Velocity"):
-				return this.variables.get("Linear Velocity");
-			case("Radius"):
-				return this.variables.get("Radius");
-			case("Arc Length"):
-				return this.variables.get("Arc Length");
-			case("Time"):
-				return this.variables.get("Time");
-			case("Angle"):
-				return this.variables.get("Angle");
-		}
-		return 0.0;
+		return this.variables.get(variable);
 	}
-	
+
 	/** Calculates for the wanted variable and returns true after doing so, returning false if it is unable to calculate
 	 *  @return whether the calculation has finished properly 
 	 */
 	public boolean calculate(){
 		//calculating for a certain wanted variable
 		double solution = 0;
-		switch(this.wantedVariable){
-			case("Angular Velocity"):
-				solution = this.findAngularVelocity();
-				break;
-			case("Linear Velocity"):
-				solution = this.findLinearVelocity();
-				break;
-			case("Radius"):
-				solution = this.findRadius();
-				break;
-			case("Time"):
-				solution = this.findTime();
-				break;
-			case("Arc Length"):
-				solution = this.findArcLength();
-				break;
-			case("Angle"):
-				solution = this.findAngle();
-				break;
-		}
+		if(this.wantedVariable.equalsIgnoreCase(Input.VARIABLES[0]))
+			solution = this.findAngularVelocity();
+		else if(this.wantedVariable.equalsIgnoreCase(Input.VARIABLES[1]))
+			solution = this.findLinearVelocity();
+		else if(this.wantedVariable.equalsIgnoreCase(Input.VARIABLES[2]))
+			solution = this.findRadius();
+		else if(this.wantedVariable.equalsIgnoreCase(Input.VARIABLES[3]))
+			solution = this.findTime();
+		else if(this.wantedVariable.equalsIgnoreCase(Input.VARIABLES[4]))
+			solution = this.findArcLength();
+		else if(this.wantedVariable.equalsIgnoreCase(Input.VARIABLES[5]))
+			solution = this.findAngle();
 		//if the solution could not be calculated
 		if(solution == 0){
 			return false;
@@ -191,7 +170,7 @@ public class Calculations{
 	private double findAngularVelocity(){
 		//gets the current angular velocity to return if a value cannot be calculated for
 		double angularVelocity = this.variables.get("Angular Velocity");
-		
+
 		//if the user enters certain variables, the program is able to calculate angular velocity with them and then make their equations
 		//angular velocity = angle / time if the user enters angle and time
 		if(this.variables.get("Angle") != 0 && this.variables.get("Time") != 0){
@@ -213,7 +192,7 @@ public class Calculations{
 			angularVelocity = this.variables.get("Angle")/(this.variables.get("Arc Length")/this.variables.get("Linear Velocity"));
 			this.decideEquation("Angle", "/", "(Arc Length", "/", "Linear Velocity)", angularVelocity);
 		}
-		
+
 		return angularVelocity;
 	}
 
@@ -223,7 +202,7 @@ public class Calculations{
 	private double findLinearVelocity(){
 		//gets the current linear velocity to return if a value cannot be calculated for
 		double linearVelocity = this.variables.get("Linear Velocity");
-		
+
 		//if the user enters certain variables, the program is able to calculate linear velocity with them and then make their equations
 		//linear velocity = angular velocity x radius if the user enters angular velocity and radius
 		if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Radius") != 0){
@@ -254,7 +233,7 @@ public class Calculations{
 	private double findRadius(){
 		//gets the current radius to return if a value cannot be calculated for
 		double radius = this.variables.get("Radius");
-		
+
 		//if the user enters certain variables, the program is able to calculate radius with them and then make their equations
 		//radius = linear velocity / angular velocity if the user enters linear velocity and angular velocity
 		if(this.variables.get("Linear Velocity") != 0 && this.variables.get("Angular Velocity") != 0){
@@ -285,7 +264,7 @@ public class Calculations{
 	private double findArcLength(){
 		//gets the current arc length to return if a value cannot be calculated for
 		double arcLength = this.variables.get("Arc Length");
-		
+
 		//if the user enters certain variables, the program is able to calculate arc length with them and then make their equations
 		//arc length = angle x radius if the user enters angle and radius
 		if(this.variables.get("Angle") != 0 && this.variables.get("Radius") != 0){
@@ -316,7 +295,7 @@ public class Calculations{
 	private double findTime(){
 		//gets the current time to return if a value cannot be calculated for
 		double time = this.variables.get("Time");
-		
+
 		//if the user enters certain variables, the program is able to calculate for time with them and then make their equations
 		//time = angular velocity / angle if the user enters angular velocity and angle
 		if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Angle") != 0){
@@ -347,7 +326,7 @@ public class Calculations{
 	private double findAngle(){
 		//gets the current angle value to return if a value cannot be calculated for
 		double angle = this.variables.get("Angle");
-		
+
 		//if the user enters certain variables, the program is able to calculate for angle with them and then make their equations
 		//angle = angular velocity x time if the user enters angular velocity and time
 		if(this.variables.get("Angular Velocity") != 0 && this.variables.get("Time") != 0){
@@ -371,7 +350,7 @@ public class Calculations{
 		}
 		return angle;
 	}
-	
+
 	/** Returns the equation attribute
 	 *  @return the equation 
 	 */
@@ -427,26 +406,24 @@ public class Calculations{
 			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(this.input.getView()), "Cannot calculate using current givens. " + this.giveRelevantError());
 		}
 	}
-	
+
 	/** Returns the appropriate error containing all the values the user needs to calculate for the wanted variable
 	 *  @return the error message that the user gets for their respective wanted variable 
 	 */
 	private String giveRelevantError(){
 		//sets the error message as which variables the user needs to calculate for the wanted variable that the user has input
-		switch(this.wantedVariable){
-			case("Angular Velocity"):
-				return "To calculate Angular Velocity, you need either of these sets of measurements: Angle and Time <p>Linear Velocity and Radius <p>Arc Length, Angle, and Linear Velocity <p>Time, Radius, and Arc Length</p></p></p></p>";
-			case("Linear Velocity"):
-				return "To calculate Linear Velocity, you need either of these sets of measurements: <p>Arc Length and Time <p>Angular Velocity and Radius <p>Arc Length, Angle, and Angular Velocity <p>Time, Radius, and Angle</p></p></p></p>";
-			case("Radius"):
-				return "To calculate Radius, you need either of these sets of measurements: <p>Linear Velocity and Angular Velocity <p>Arc Length and Angle <p>Arc Length, Time, and Angular Velocity <p>Time, Angle, and Linear Velocity</p></p></p></p>";
-			case("Time"):
-				return "To calculate Time, you need either of these sets of measurements: <p>Angular Velocity and Angle <p>Linear Velocity and Arc Length <p>Radius, Angle, and Linear Velocity <p>Angular Velocity, Radius, and Arc Length</p></p></p></p>";
-			case("Arc Length"):
-				return "To calculate Arc Length you need either of these sets of measurements: <p>Time and Linear Velocity <p>Angle and Radius <p>Radius, Time, and Angular Velocity <p>Angular Velocity, Angle, and Angular Velocity</p></p></p></p>";
-			case("Angle"):
-				return "To calculate Angle, you need either of these sets of measurements: <p>Angular Velocity and Time <p>Radius and Arc Length <p>Arc Length, Angular Velocity, and Linear Velocity <p>Time, Radius, and Linear Velocity</p></p></p></p>";
-		}
+		if(this.wantedVariable.equalsIgnoreCase(Input.VARIABLES[0]))
+			return "To calculate Angular Velocity, you need either of these sets of measurements: Angle and Time <p>Linear Velocity and Radius <p>Arc Length, Angle, and Linear Velocity <p>Time, Radius, and Arc Length</p></p></p></p>";
+		else if(this.wantedVariable.equalsIgnoreCase(Input.VARIABLES[1]))
+			return "To calculate Linear Velocity, you need either of these sets of measurements: <p>Arc Length and Time <p>Angular Velocity and Radius <p>Arc Length, Angle, and Angular Velocity <p>Time, Radius, and Angle</p></p></p></p>";
+		else if(this.wantedVariable.equalsIgnoreCase(Input.VARIABLES[2]))
+			return "To calculate Radius, you need either of these sets of measurements: <p>Linear Velocity and Angular Velocity <p>Arc Length and Angle <p>Arc Length, Time, and Angular Velocity <p>Time, Angle, and Linear Velocity</p></p></p></p>";
+		else if(this.wantedVariable.equalsIgnoreCase(Input.VARIABLES[3]))
+			return "To calculate Time, you need either of these sets of measurements: <p>Angular Velocity and Angle <p>Linear Velocity and Arc Length <p>Radius, Angle, and Linear Velocity <p>Angular Velocity, Radius, and Arc Length</p></p></p></p>";
+		else if(this.wantedVariable.equalsIgnoreCase(Input.VARIABLES[4]))
+			return "To calculate Arc Length you need either of these sets of measurements: <p>Time and Linear Velocity <p>Angle and Radius <p>Radius, Time, and Angular Velocity <p>Angular Velocity, Angle, and Angular Velocity</p></p></p></p>";
+		else if(this.wantedVariable.equalsIgnoreCase(Input.VARIABLES[5]))
+			return "To calculate Angle, you need either of these sets of measurements: <p>Angular Velocity and Time <p>Radius and Arc Length <p>Arc Length, Angular Velocity, and Linear Velocity <p>Time, Radius, and Linear Velocity</p></p></p></p>";
 		return "";
 	}
 }

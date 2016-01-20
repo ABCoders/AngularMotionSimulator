@@ -10,7 +10,6 @@ import inputs.Input;
  * The model of the animation. It contains all variables needed to create and configure the animation.
  * It calculates the values for animating angular motion form varying speed, scale and user-inputted values.
  * @author Bryan Kristiono
- * @author Amritpal Aujla
  * @since 9/1/2016
  */
 public class Animation implements Runnable {

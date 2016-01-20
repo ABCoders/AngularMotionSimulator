@@ -12,15 +12,15 @@ import java.awt.*;
  * @since 09/12/15
  */
 public class InputFieldPanel extends JPanel{
-	
+
 	private Input input; //Model that variables and values are sent to
 	private int position; //Position of specific field in answer machine
-	
+
 	private JComboBox <String> variablePicker; //List of variable names
 	private JSpinner valueSpinner; //Spinner for inputting values
 	private JLabel unitLabel;    	//The label for what unit a certain variable is in
 	private JButton deleteButton; //Button to delete field
-	
+
 	/**
 	 * Main constructor to set variables and create panel
 	 * @param input input model
@@ -34,7 +34,7 @@ public class InputFieldPanel extends JPanel{
 		this.createPanel();
 		this.registerControllers();
 	}
-	
+
 	/**
 	 * Creates separate components of panel
 	 */
@@ -50,7 +50,7 @@ public class InputFieldPanel extends JPanel{
 		this.unitLabel = new JLabel(this.respectiveUnit());
 		deleteButton = new JButton("X");
 	}
-	
+
 	/**
 	 * Lays out components in panel
 	 */
@@ -69,7 +69,7 @@ public class InputFieldPanel extends JPanel{
 		deleteButton.addActionListener(new RemoveController(input, this));
 		this.variablePicker.addActionListener(new UnitUpdateController(this));
 	}
-	
+
 	/**
 	 * Sets location of panel
 	 * @param index position of panel
@@ -77,36 +77,36 @@ public class InputFieldPanel extends JPanel{
 	public void setPosition(int index) {
 		this.position = index;
 	}
-	
+
 	/**
 	 * @return location of panel
 	 */
 	public int getPosition() {
 		return position;
 	}
-	
+
 	/**
 	 * @return variable selected by user to input value for
 	 */
 	public String getSelectedVariable() {
 		return (String)variablePicker.getSelectedItem();
 	}
-	
+
 	/**
 	 * @return value of variable selected by user
 	 */
 	public double getValue() {
-		return (double)valueSpinner.getValue();
+		return Double.parseDouble(valueSpinner.getValue().toString());
 	}
-	
+
 	/**
 	 * Sets which variable the field is inputting
-	 * @param index index of variable in combobox
+	 * @param index The index of the selected variable in the combo box
 	 */
 	public void setSelectedVariable(int index) {
 		variablePicker.setSelectedIndex(index);
 	}
-	
+
 	/**
 	 * Sets value of variable selected by user
 	 * @param value value to be set
@@ -114,28 +114,26 @@ public class InputFieldPanel extends JPanel{
 	public void setValue(double value) {
 		valueSpinner.setValue(value);
 	}
-	
+
 	/** Returns the unit that the matches variable name in the in the combo box
 	 *  @return the unit that is to be returned for a certain variable
 	 */
 	private String respectiveUnit(){
-		switch((String)this.variablePicker.getSelectedItem()){
-			case("Angular Velocity"):
-				return "rad/s";
-			case("Linear Velocity"):
-				return " m/s ";
-			case("Radius"):
-				return "   m   ";
-			case("Arc Length"):
-				return "   m   ";
-			case("Time"):
-				return "   s    ";
-			case("Angle"):
-				return "  rad  ";
-		}
+		if(this.variablePicker.getSelectedItem().toString().equalsIgnoreCase(Input.VARIABLES[0]))
+			return "rad/s";
+		else if(this.variablePicker.getSelectedItem().toString().equalsIgnoreCase(Input.VARIABLES[1]))
+			return " m/s ";
+		else if(this.variablePicker.getSelectedItem().toString().equalsIgnoreCase(Input.VARIABLES[2]))
+			return "   m   ";
+		else if(this.variablePicker.getSelectedItem().toString().equalsIgnoreCase(Input.VARIABLES[3]))
+			return "   m   ";
+		else if(this.variablePicker.getSelectedItem().toString().equalsIgnoreCase(Input.VARIABLES[4]))
+			return "   s    ";
+		else if(this.variablePicker.getSelectedItem().toString().equalsIgnoreCase(Input.VARIABLES[5]))
+			return "  rad  ";
 		return "";
 	}
-	
+
 	/**
 	 * Updates the spinner value
 	 */
