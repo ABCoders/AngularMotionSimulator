@@ -356,7 +356,8 @@ public class Animation implements Runnable {
 	}
 	
 	public void deletePoint() {
-		this.removeDrawPoint(currentPoint);
+		if (currentPoint!=null)
+			this.removeDrawPoint(currentPoint);
 		currentPoint = null;
 	}
 

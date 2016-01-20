@@ -28,7 +28,6 @@ public class Input extends Object{
 	public static final int MIN_FIELDS = 2; //Minimum number of fields
 	public static final int MAX_FIELDS = 5; //Maximum number of fields
 	
-	private int numberPanels; //
 	private int numberFields; //The current number of input fields
 	private int removedField; //The location of the field being removed
 	
@@ -43,11 +42,9 @@ public class Input extends Object{
 		this.animation = new Animation(calculations);
 		this.variables = new TreeMap<String, Double>();
 		
+		this.numberFields = MIN_FIELDS;
 		this.resetVariables();
-		
 		this.wantedVariable = VARIABLES[0];
-		this.numberPanels = 1;
-		this.numberFields = 2;
 	}
 	
 	/**
@@ -57,10 +54,6 @@ public class Input extends Object{
 	public void setGUI(AnswerMachinePanel answerMachinePanel) //Sets GUI
 	{
 		this.answerMachinePanel = answerMachinePanel;
-	}
-	
-	public void setNumberPanel(int number) {
-		this.numberPanels = number;
 	}
 	
 	/**
@@ -84,62 +77,12 @@ public class Input extends Object{
 			this.updateInputPanel(false);
 		}
 	}
-	
-	/**
-	 * @param arcLength the arcLength to set
-	 */
-	public void setArcLength(double arcLength) {
-		this.variables.put("Arc Length", arcLength);
-	}
 
 	/**
 	 * @param wantedVariable the wantedVariable to set
 	 */
 	public void setWantedVariable(String wantedVariable) {
 		this.wantedVariable = wantedVariable;
-	}
-
-	/**
-	 * @param radius the radius to set
-	 */
-	public void setRadius(double radius) {
-		this.variables.put("Radius", radius);	
-		}
-
-	/**
-	 * @param time the time to set
-	 */
-	public void setTime(double time) {
-		this.variables.put("Time", time);
-	}
-
-	/**
-	 * @param angularVelocity the angularVelocity to set
-	 */
-	public void setAngularVelocity(double angularVelocity) {
-		this.variables.put("Angular Velocity", angularVelocity);
-	}
-
-	/**
-	 * @param linearVelocity the linearVelocity to set
-	 */
-	public void setLinearVelocity(double linearVelocity) {
-		this.variables.put("Linear Velocity", linearVelocity);
-	}
-
-	/**
-	 * @param angle the angle to set
-	 */
-	public void setAngle(double angle) {
-		this.variables.put("Angle", angle);
-	}
-
-	/**
-	 * Return number of panels
-	 * @return number of panels
-	 */
-	public int getNumberPanels() {
-		return this.numberPanels;
 	}
 	
 	/**
@@ -180,6 +123,11 @@ public class Input extends Object{
 	 */
 	public Calculations getCalculations() {
 		return this.calculations;
+	}
+	
+	public void setVariableValue(String variable, Double value) {
+		if(variables.containsKey(variable))
+			variables.put(variable, value);
 	}
 	
 	/**

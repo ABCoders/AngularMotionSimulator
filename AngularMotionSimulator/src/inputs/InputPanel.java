@@ -54,17 +54,17 @@ public class InputPanel extends JPanel{
 	}
 	
 	/**
-	 * @param state - whether or not to update panel
+	 * @param state whether or not to update panel
 	 */
 	public void update(boolean state) {
-		System.out.println(input.getNumberFields() + " " + field.size());
+		//If there should be more fields
 		while(input.getNumberFields()>field.size()) {
-			System.out.println("Adding a Field");
 			field.add(new InputFieldPanel(input, field.size()));
 			this.add(field.get(field.size()-1));
 		}
+		
+		//There should be less fields
 		while(input.getNumberFields()<field.size()) {
-			System.out.println("Removing Field" + " " + input.getRemovedField());
 			field.remove(input.getRemovedField());
 			this.remove(input.getRemovedField());
 			for(int i=input.getRemovedField(); i<field.size(); i++) {
@@ -72,6 +72,7 @@ public class InputPanel extends JPanel{
 			}
 		}
 		
+		//Whether or not the field should updated from input
 		if (state) {
 			int variable = 0;
 			for(int i=0; i<field.size(); i++) {

@@ -110,7 +110,7 @@ public class OptionsController implements ActionListener {
 		}
 		
 		//choosing to reverse the animation direction
-		else if (e.getActionCommand().equalsIgnoreCase("reverse animation direction   ")) {
+		else if (e.getActionCommand().equalsIgnoreCase("reverse animation   ")) {
 			this.input.getAnimation().setReverse();
 		}
 		
@@ -139,12 +139,7 @@ public class OptionsController implements ActionListener {
 			input.setWantedVariable(wantedField.getSelectedVariable());
 			for (InputFieldPanel field: inputFields) {
 				field.update();
-				for(int i=0; i<Input.VARIABLES.length; i++) {
-					if (field.getSelectedVariable().equals(Input.VARIABLES[i])) {
-						input.setVariableValue(i, field.getValue());
-						break;
-					}
-				}
+				input.setVariableValue(field.getSelectedVariable(), field.getValue());
 			}
 			
 			//Saves the information from the Input class to the chosen file
@@ -176,10 +171,13 @@ public class OptionsController implements ActionListener {
 			if(!input.updateModel())
 				new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), "Incorrect File Layout");
 			in.close();
-		} catch (FileNotFoundException e) {
+		}
+		//If error occurs
+		catch (FileNotFoundException e) {
 			//If the file chosen cannot be found
 			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), "File cannot be recognized");
-		} catch (InputMismatchException ie) {
+		}
+		catch (InputMismatchException ie) {
 			//If file is not in same format
 			new ErrorDialog((JFrame)SwingUtilities.getWindowAncestor(menuBar), "Incorrect File Layout");
 		}
