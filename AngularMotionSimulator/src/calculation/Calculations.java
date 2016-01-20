@@ -8,7 +8,8 @@ import inputs.ErrorDialog;
 import inputs.Input;
 
 /** Calculations
- *  The model of the calculations contains all variables from input, calculates for the wanted variable, and provides needed values for animation
+ *  The model of the calculations contains all variables from input, calculates for the wanted variable, and provides needed values for animation.
+ *  Calculates the value of the wanted variable and the equations for its process work
  *  @author Amritpal Aujla
  *  @since 26/12/2015
  */
@@ -41,14 +42,11 @@ public class Calculations{
 	/** Gets the many measurements and variables from the input model and sets them to the collection in this Calculations 
 	 */
 	private void setVariables(){
+		//making the array list and setting its values
 		this.variables = new TreeMap<String, Double>();
-		variables.put("Angular Velocity", input.getVariableValue(0));
-		variables.put("Linear Velocity", input.getVariableValue(1));
-		variables.put("Radius", input.getVariableValue(2));
-		variables.put("Arc Length", input.getVariableValue(3));
-		variables.put("Time", input.getVariableValue(4));
-		variables.put("Angle", input.getVariableValue(5));
-		
+		for(int x = 0; x < Input.VARIABLES.length; x++){
+			this.variables.put(Input.VARIABLES[x], input.getVariableValue(x));
+		}
 		this.wantedVariable = input.getWantedVariable();
 	}
 	
