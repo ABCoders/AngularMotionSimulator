@@ -28,14 +28,13 @@ public class DrawPoint {
 	private double scale;		//The scale of the animation
 	private int height;			//The height of the animation
 	
-	
-	public DrawPoint(Point location, double xCoord, double radius, double scale, int height, double time, boolean withCircle) {
+	public DrawPoint(Point location, double xCoord, double radius, double scale, int height, double time, boolean withCircle, Color color) {
 		this.location = location;
 		this.withCircle = withCircle;
 		this.setVariables(xCoord, radius, height, scale);
 		this.time = time;
 		this.calculateDistance();
-		this.color = Color.red;
+		this.color = color;
 	}
 	
 	//*************************************************************************

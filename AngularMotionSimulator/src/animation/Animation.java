@@ -44,7 +44,7 @@ public class Animation implements Runnable {
 	private ArrayList<DrawAction> drawActions;	//A list of all drawing actions
 	
 	private DrawPoint currentPoint;			//Selected draw point
-	private Color pointColor;				//The current color
+	private Color pointColor;				//The color of the drawn points
 
 	/**
 	 * Initialize a new Animation with default values.
@@ -263,7 +263,8 @@ public class Animation implements Runnable {
 	 * @param point The point being added
 	 */
 	public void addDrawPoint(Point point) {
-		drawPoints.add(new DrawPoint(point, xCoord, radius, scale, this.component.getHeight(), time, drawCircle));
+		drawPoints.add(new DrawPoint(point, this.xCoord, this.radius, this.scale,
+								this.component.getHeight(), this.time, this.drawCircle, this.pointColor));
 		drawActions.add(new DrawAction(DrawAction.CREATE, drawPoints.get(drawPoints.size()-1), drawPoints.size()-1));
 	}
 	
@@ -369,6 +370,7 @@ public class Animation implements Runnable {
 		for(DrawPoint point : this.drawPoints){
 			point.setColor(color);
 		}
+		this.pointColor = color;
 	}
 	
 	/**
