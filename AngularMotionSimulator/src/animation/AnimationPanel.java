@@ -9,6 +9,7 @@ import javax.swing.*;
  * @since 7/12/2015
  */
 public class AnimationPanel extends JPanel {
+	/*		Attributes		*/
 	private Animation animation;
 	private ActionPanel actionPanel;
 	private AnimationComponent animationComponent;
@@ -50,6 +51,7 @@ public class AnimationPanel extends JPanel {
 	 * Initialize and set values to all needed components.
 	 */
 	private void createComponents() {
+		//Sub-Views
 		animationComponent = new AnimationComponent(animation);
 		actionPanel = new ActionPanel(animation);
 		

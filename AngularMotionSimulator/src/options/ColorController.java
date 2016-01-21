@@ -18,7 +18,7 @@ import animation.Animation;
 public class ColorController implements ChangeListener {
 	private Animation animation;			//The model used for calculation animation
 	private JColorChooser colorChooser;		//The color chooser being listened
-	private int object;
+	private int object;						//The object that is changing color
 	
 	/**
 	 * Initializes a newly created listener for buttons in the ActionPanel.

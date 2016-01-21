@@ -10,6 +10,7 @@ import javax.swing.*;
 public class ActionPanel extends JPanel {
 	private Animation animation;		//The model of the animation
 
+	/*		Components		*/
 	private JButton animationButton;	//The button that starts and stops the animation
 	private JButton clearButton;		//The button that resets the drawn point
 	private JLabel timeLabel;			//The label to indicate which slider is for time
@@ -17,6 +18,7 @@ public class ActionPanel extends JPanel {
 	private JSlider timeSlider;			//The slider that changes the time of the animation
 	private JSlider scaleSlider;		//The slider that changes the scale of the animation
 
+	/*		Icons		*/
 	private ImageIcon playIcon;			//The icon to indicate the play button
 	private ImageIcon pauseIcon;		//The icon to indicate the pause button
 

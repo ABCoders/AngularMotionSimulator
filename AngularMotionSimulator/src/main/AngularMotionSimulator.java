@@ -15,9 +15,10 @@ public class AngularMotionSimulator {
 		JFrame frame = new JFrame("Angular Motion Simulator");
 		Input input = new Input();
 		AngularMotionSimulatorPanel contentPane = new AngularMotionSimulatorPanel(input);
+		
+		//Sets the frame to appear visually
 		frame.setContentPane(contentPane);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 		ImageIcon icon = new ImageIcon(AngularMotionSimulator.class.getResource("Logo.png"));
 		frame.setIconImage(icon.getImage());
 		

@@ -11,14 +11,15 @@ import animation.Animation;
  * @since 27/12/2015
  */
 public class ColorChooserDialog extends JDialog {
-	public static final int CIRCLE = 0;
-	public static final int POINT = 1;
-	public static final int ALL_POINTS = 2;
+	/*		Constants		*/
+	public static final int CIRCLE = 0;			//the main circle
+	public static final int POINT = 1;			//An individual point
+	public static final int ALL_POINTS = 2;		//All available points
 	
-	private Animation animation;		//The model used for calculation animation
+	private Animation animation;		//The model used for calculating animation
 	private JPanel panel;				//The main panel that contains the color chooser
 	private JColorChooser colorChooser;	//The component that allows color to be chosen
-	private int object;
+	private int object;					//The object that is changing color
 	
 	/**
 	 * Initializes a new JDialog that contains a color chooser for the user to.

@@ -22,10 +22,12 @@ public class OptionsMenuBar extends JMenuBar {
 	private Input input;							//The model that contains information of the given variables
 	private AnswerMachinePanel answerMachinePanel;	//The view where the user input all the variable values
 	
+	/*		Menus		*/
 	private JMenu file;								//The menu for file related menu items
 	private JMenu animation;						//The menu for animation related menu items
 	private JMenu other;							//The menu for other related menu items
 	
+	/*		Menu Attributes		*/
 	private JMenuItem saveItem;						//The menu item for saving information
 	private JMenuItem loadItem;						//The menu item for loading information
 	private JMenuItem helpItem;						//The menu item for showing the help frame
