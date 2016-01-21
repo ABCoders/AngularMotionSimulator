@@ -46,14 +46,15 @@ public class InputPanel extends JPanel{
 	}
 	
 	/**
-	 * Returns an array
-	 * @return array list of user input fields
+	 * Returns the array of input fields
+	 * @return field array list of user input fields
 	 */
 	public ArrayList<InputFieldPanel> getFields() {
 		return field;
 	}
 	
 	/**
+	 * Updates fields
 	 * @param state whether or not to update panel
 	 */
 	public void update(boolean state) {

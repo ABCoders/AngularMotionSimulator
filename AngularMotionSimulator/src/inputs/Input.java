@@ -79,6 +79,7 @@ public class Input extends Object{
 	}
 
 	/**
+	 * Sets the variable user wants to calculate for
 	 * @param wantedVariable the wantedVariable to set
 	 */
 	public void setWantedVariable(String wantedVariable) {
@@ -125,24 +126,16 @@ public class Input extends Object{
 		return this.calculations;
 	}
 	
+	/**
+	 * Sets value of specified variable
+	 * @param variable the variable to set
+	 * @param value the value to set
+	 */
 	public void setVariableValue(String variable, Double value) {
 		if(variables.containsKey(variable))
 			variables.put(variable, value);
 	}
 	
-	/**
-	 * Sets value of specified variable
-	 * @param index the variable to set
-	 * @param value the value to set
-	 * @return
-	 */
-	public boolean setVariableValue(int index,  double value) {
-		if(index > -1 && index < VARIABLES.length) {
-			variables.put(VARIABLES[index], value);
-			return true;
-		}
-		return false;
-	}
 	
 	/**
 	 * Returns value of variable
@@ -243,7 +236,7 @@ public class Input extends Object{
 	 */
 	public boolean updateModel() {
 		int numVar = 0;
-		//Checks if there is suffecient amount of information
+		//Checks if there is sufficient amount of information
 		for(int i=0; i<VARIABLES.length; i++) {
 			if(variables.get(VARIABLES[i])!=0)
 				numVar++;

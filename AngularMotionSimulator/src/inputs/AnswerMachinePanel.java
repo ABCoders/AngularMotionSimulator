@@ -68,6 +68,7 @@ public class AnswerMachinePanel extends JPanel{
 	}
 	
 	/**
+	 * Returns panel of input fields in panel
 	 * @return panel of input fields 
 	 */
 	public InputPanel getInputPanel() {
@@ -75,6 +76,7 @@ public class AnswerMachinePanel extends JPanel{
 	}
 	
 	/**
+	 * Returns panel for wanted variable in panel
 	 * @return panel for wanted variable
 	 */
 	public WantedFieldPanel getWantedFieldPanel() {

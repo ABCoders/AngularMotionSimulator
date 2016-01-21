@@ -27,6 +27,7 @@ public class RemoveController implements ActionListener{
 	
 	/**
 	 * Deletes field
+	 * @param e action performed on remove field button
 	 */
 	public void actionPerformed(ActionEvent e) {
 		input.removeField(inputField.getPosition());

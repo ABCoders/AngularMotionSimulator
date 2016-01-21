@@ -79,6 +79,7 @@ public class InputFieldPanel extends JPanel{
 	}
 
 	/**
+	 * Returns the location of panel
 	 * @return location of panel
 	 */
 	public int getPosition() {
@@ -86,6 +87,7 @@ public class InputFieldPanel extends JPanel{
 	}
 
 	/**
+	 * Returns variable that user wants to input
 	 * @return variable selected by user to input value for
 	 */
 	public String getSelectedVariable() {
@@ -93,6 +95,7 @@ public class InputFieldPanel extends JPanel{
 	}
 
 	/**
+	 * Returns the value of user-selected variable
 	 * @return value of variable selected by user
 	 */
 	public double getValue() {
@@ -115,7 +118,8 @@ public class InputFieldPanel extends JPanel{
 		valueSpinner.setValue(value);
 	}
 
-	/** Returns the unit that the matches variable name in the in the combo box
+	/** 
+	 * Returns the unit that the matches variable name in the in the combo box
 	 *  @return the unit that is to be returned for a certain variable
 	 */
 	private String respectiveUnit(){

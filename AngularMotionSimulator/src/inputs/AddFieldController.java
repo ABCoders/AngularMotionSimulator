@@ -23,6 +23,7 @@ public class AddFieldController implements ActionListener{
 	
 	/**
 	 * Adds field in input model
+	 * @param e the action performed on add field button by user
 	 */
 	public void actionPerformed(ActionEvent e) {
 		input.addField();
