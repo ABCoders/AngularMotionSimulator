@@ -411,7 +411,7 @@ public class Animation implements Runnable {
 			try {
 				for(DrawPoint point: drawPoints)
 					point.setAngle(point.getEndAngle()+point.getStartAngle()+ angularVelocity * (time-point.getTime()));
-			} catch (Exception e) {}
+			} catch (Exception e) {} //If there is mismatched information while thread is running
 			
 			//If circle location goes past animation frame
 			if ((xCoord+radius*2)*scale < 0)
@@ -428,7 +428,7 @@ public class Animation implements Runnable {
 			try {
 				for(DrawPoint point: drawPoints)
 					point.setAngle(point.getEndAngle()+point.getStartAngle()+ -angularVelocity * (time-point.getTime()));
-			} catch (Exception e) {}
+			} catch (Exception e) {} //If there is mismatched information while thread is running
 
 			//If circle location goes past animation frame
 			if (this.xCoord * scale > component.getWidth())
