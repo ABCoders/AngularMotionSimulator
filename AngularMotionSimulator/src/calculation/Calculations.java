@@ -177,16 +177,19 @@ public class Calculations{
 			angularVelocity = this.variables.get("Angle")/this.variables.get("Time");
 			this.decideEquation("Angle", "/", "Time", "", "", angularVelocity);
 		}
+		
 		//angular velocity = linear velocity / radius if the user enters linear velocity and radius
 		else if(this.variables.get("Linear Velocity") != 0 && this.variables.get("Radius") != 0){
 			angularVelocity = this.variables.get("Linear Velocity")/this.variables.get("Radius");
 			this.decideEquation("Linear Velocity", "/", "Radius", "", "", angularVelocity);
 		}
+		
 		//angular velocity = (arc length / radius) / linear velocity if the user enters arc length, time, and radius
 		else if(this.variables.get("Arc Length") != 0 && this.variables.get("Time") != 0 && this.variables.get("Radius")!= 0){
 			angularVelocity = (this.variables.get("Arc Length")/this.variables.get("Radius"))/this.variables.get("Time");
 			this.decideEquation("(Arc Length", "/", "Radius)", "/", "Time", angularVelocity);
 		}
+		
 		//angular velocity = angle / (arc length / linear velocity) if the user enters angle, arc length, and linear velocity
 		else if(this.variables.get("Angle") != 0 && this.variables.get("Arc Length") != 0 && this.variables.get("Linear Velocity") != 0){
 			angularVelocity = this.variables.get("Angle")/(this.variables.get("Arc Length")/this.variables.get("Linear Velocity"));
@@ -227,6 +230,7 @@ public class Calculations{
 			linearVelocity = (this.variables.get("Angle") / this.variables.get("Time")) * this.variables.get("Radius");
 			this.decideEquation("(Angle", "/", "Time)", "x", "Radius", linearVelocity);
 		}
+		
 		return linearVelocity;
 	}
 
@@ -261,6 +265,7 @@ public class Calculations{
 			radius = this.variables.get("Linear Velocity")/(this.variables.get("Angle") / this.variables.get("Time"));
 			this.decideEquation("Linear Velocity", "/", "(Angle", "/", "Time)", radius);
 		}
+		
 		return radius;
 	}
 
@@ -295,6 +300,7 @@ public class Calculations{
 			arcLength = this.variables.get("Linear Velocity") * (this.variables.get("Angle") / this.variables.get("Angular Velocity"));
 			this.decideEquation("Linear Velocity", "x", "(Angle", "/", "Angular Velocity)", arcLength);
 		}
+		
 		return arcLength;
 	}
 
@@ -329,6 +335,7 @@ public class Calculations{
 			time = (this.variables.get("Arc Length") / this.variables.get("Radius")) / this.variables.get("Angular Velocity");
 			this.decideEquation("(Arc Length", "/", "Radius)", "/", "Angular Velocity", time);
 		}
+		
 		return time;
 	}
 
@@ -363,6 +370,7 @@ public class Calculations{
 			angle = this.variables.get("Angular Velocity") * (this.variables.get("Arc Length") / this.variables.get("Linear Velocity"));
 			this.decideEquation("Angular Velocity", "x", "(Arc Length", "/", "Linear Velocity)", angle);
 		}
+		
 		return angle;
 	}
 
