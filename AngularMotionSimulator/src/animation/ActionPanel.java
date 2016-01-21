@@ -56,6 +56,7 @@ public class ActionPanel extends JPanel {
 		timeSlider = new JSlider(JSlider.HORIZONTAL, 0, 100, 0);
 		timeSlider.setMajorTickSpacing(20);
 		timeSlider.setMinorTickSpacing(5);
+		timeSlider.setExtent(1);
 		timeSlider.setPaintTicks(true);
 		timeSlider.setPaintLabels(true);
 
