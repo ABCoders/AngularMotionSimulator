@@ -405,13 +405,15 @@ public class Calculations{
 	 */
 	public void update() {
 		this.setVariables();
-		//if the calculation is successful, make a new process frame and give animation its variables
+		//if the calculation is successful
 		if(this.calculate()){
+			//getting rid of an old process frame if one exists
 			try{
 				this.processFrame.dispose();
 			}
 			catch(NullPointerException ex){
 			}
+			//making a new process frame and giving animation its variables before updating it
 			this.processFrame = new ProcessFrame(this, this.input);
 			this.setAnimationVariables();
 			this.input.getAnimation().updateModel();
