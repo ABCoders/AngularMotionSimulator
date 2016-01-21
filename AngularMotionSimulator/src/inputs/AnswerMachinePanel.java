@@ -22,7 +22,7 @@ public class AnswerMachinePanel extends JPanel{
 	
 	/**
 	 * Main constructor 
-	 * @param input - input model of panel
+	 * @param input input model of panel
 	 */
 	public AnswerMachinePanel(Input input) {
 		this.input = input;
