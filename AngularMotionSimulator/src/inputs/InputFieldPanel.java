@@ -79,7 +79,7 @@ public class InputFieldPanel extends JPanel{
 	}
 
 	/**
-	 * Returns the location of panel
+	 * Returns the location of the input field in input panel
 	 * @return location of panel
 	 */
 	public int getPosition() {

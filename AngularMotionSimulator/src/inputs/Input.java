@@ -140,7 +140,7 @@ public class Input extends Object{
 	/**
 	 * Returns value of variable
 	 * @param index - the variable to get value of 
-	 * @return value
+	 * @return value value of variable
 	 */
 	public double getVariableValue(int index) {
 		if(index > -1 && index < VARIABLES.length) {
