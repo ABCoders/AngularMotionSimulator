@@ -150,6 +150,20 @@ public class Input extends Object{
 	}
 	
 	/**
+	 * Sets value of specified variable
+	 * @param index the variable to set
+	 * @param value the value to set
+	 * @return
+	 */
+	public boolean setVariableValue(int index,  double value) {
+		if(index > -1 && index < VARIABLES.length) {
+			variables.put(VARIABLES[index], value);
+			return true;
+		}
+		return false;
+	}
+	
+	/**
 	 * Sets all variable values to 0
 	 */
 	public void resetVariables() {

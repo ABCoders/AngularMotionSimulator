@@ -53,6 +53,7 @@ public class InputPanel extends JPanel{
 		return field;
 	}
 	
+	
 	/**
 	 * Updates fields
 	 * @param state whether or not to update panel
