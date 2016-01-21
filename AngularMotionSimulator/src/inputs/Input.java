@@ -222,7 +222,7 @@ public class Input extends Object{
 	}
 	
 	/**
-	 * Updates input panel
+	 * Updates input panel.
 	 * @param state whether or not to update field
 	 */
 	private void updateInputPanel(boolean state) {
@@ -231,23 +231,25 @@ public class Input extends Object{
 	}
 	
 	/**
-	 * Updates wanted variable combobox from text file
+	 * Updates wanted variable combo box.
 	 */
 	private void updateWantedFieldPanel() {
 		answerMachinePanel.getWantedFieldPanel().update();
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Updates the model and views.
+	 * @return Whether it has enough information to update
 	 */
 	public boolean updateModel() {
 		int numVar = 0;
+		//Checks if there is suffecient amount of information
 		for(int i=0; i<VARIABLES.length; i++) {
-			if(variables.get(VARIABLES[i])!=0) {
+			if(variables.get(VARIABLES[i])!=0)
 				numVar++;
-			}
 		}
+		
+		//Updates the view
 		if(numVar>1) {
 			this.numberFields = numVar;
 			this.updateInputPanel(true);

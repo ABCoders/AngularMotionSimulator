@@ -4,20 +4,19 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * GUI for collection of user input fields
+ * A panel that contains all the InputFieldPanels and manages them in a user-friendly view.
  * @author Cindy Zhao
  * @author Bryan Kristiono
- * @since 09/12/15
+ * @since 19/01/16
  */
-
 public class InputPanel extends JPanel{
-	
-	private Input input; //Input model
-	private ArrayList<InputFieldPanel> field; //Array list of panels for user input variables
+	/*		Attributes		*/
+	private Input input;					 	//The model that calculates the inputs
+	private ArrayList<InputFieldPanel> field; 	//Array list of panels for user input variables
 	
 	/**
-	 * Main constructor
-	 * @param input - input model of panel
+	 * Creates a new instance of the panel
+	 * @param input input model of panel
 	 */
 	public InputPanel(Input input) {
 		this.input = input;
@@ -47,6 +46,7 @@ public class InputPanel extends JPanel{
 	}
 	
 	/**
+	 * Returns an array
 	 * @return array list of user input fields
 	 */
 	public ArrayList<InputFieldPanel> getFields() {
