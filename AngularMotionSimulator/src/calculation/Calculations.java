@@ -419,9 +419,9 @@ public class Calculations{
 		else if(this.wantedVariable.equalsIgnoreCase(Input.VARIABLES[2]))
 			return "To calculate Radius, you need either of these sets of measurements: <p>Linear Velocity and Angular Velocity <p>Arc Length and Angle <p>Arc Length, Time, and Angular Velocity <p>Time, Angle, and Linear Velocity</p></p></p></p>";
 		else if(this.wantedVariable.equalsIgnoreCase(Input.VARIABLES[3]))
-			return "To calculate Time, you need either of these sets of measurements: <p>Angular Velocity and Angle <p>Linear Velocity and Arc Length <p>Radius, Angle, and Linear Velocity <p>Angular Velocity, Radius, and Arc Length</p></p></p></p>";
-		else if(this.wantedVariable.equalsIgnoreCase(Input.VARIABLES[4]))
 			return "To calculate Arc Length you need either of these sets of measurements: <p>Time and Linear Velocity <p>Angle and Radius <p>Radius, Time, and Angular Velocity <p>Angular Velocity, Angle, and Angular Velocity</p></p></p></p>";
+		else if(this.wantedVariable.equalsIgnoreCase(Input.VARIABLES[4]))
+			return "To calculate Time, you need either of these sets of measurements: <p>Angular Velocity and Angle <p>Linear Velocity and Arc Length <p>Radius, Angle, and Linear Velocity <p>Angular Velocity, Radius, and Arc Length</p></p></p></p>";
 		else if(this.wantedVariable.equalsIgnoreCase(Input.VARIABLES[5]))
 			return "To calculate Angle, you need either of these sets of measurements: <p>Angular Velocity and Time <p>Radius and Arc Length <p>Arc Length, Angular Velocity, and Linear Velocity <p>Time, Radius, and Linear Velocity</p></p></p></p>";
 		return "";
